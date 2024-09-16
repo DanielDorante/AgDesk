@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <TextView
+        android:id="@+id/tvAddFields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:text="Add Field" />
+
+    <Button
+        android:id="@+id/btn_draw_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Draw Field" />
+
+    <Button
+        android:id="@+id/btn_drag_drop_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Drag and Drop Points for Field" />
+
+</LinearLayout>
