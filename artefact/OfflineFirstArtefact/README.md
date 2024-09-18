@@ -20,3 +20,11 @@ resources used:
     -https://developer.android.com/training/data-storage/room
 
     -https://developer.android.com/reference/kotlin/android/net/ConnectivityManager
+
+**18/09/2024**
+
+Got a super basic implementation of room working. Was having issues with the gradle build. 
+
+resources used 
+
+    -https://www.geeksforgeeks.org/room-database-with-kotlin-coroutines-in-android/
