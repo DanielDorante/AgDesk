@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.agdesk.models.FieldsModel
 import com.example.agdesk.models.InventoryModel
 import com.example.agdesk.models.TaskModel
@@ -12,6 +13,8 @@ import com.google.android.gms.maps.model.LatLng
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+
+import com.example.agdesk.Converters.DatabaseConverter
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -72,10 +75,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     // Fields operations
     fun saveField(name: String, points: List<LatLng>) {
+
+
+
         val db = writableDatabase
         val values = ContentValues()
         values.put(COLUMN_NAME, name)
         values.put(COLUMN_POINTS, points.joinToString(";") { "${it.latitude},${it.longitude}" }) // Convert LatLng list to a string
+
+
+
 
         db.insert(TABLE_FIELDS, null, values)
         db.close()

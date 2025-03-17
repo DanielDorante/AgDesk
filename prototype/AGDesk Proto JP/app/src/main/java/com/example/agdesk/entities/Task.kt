@@ -1,13 +1,12 @@
 package com.example.agdesk.entities
 
-import android.webkit.WebSettings.RenderPriority
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
 @Entity
-data class task(
+data class Task(
     @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "taskName") val name: String?,
     @ColumnInfo(name = "description") val desc: String?,

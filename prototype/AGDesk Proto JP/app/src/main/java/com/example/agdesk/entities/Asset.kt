@@ -1,13 +1,12 @@
 package com.example.agdesk.entities
 
-import android.media.Image
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
 @Entity
-data class asset(
+data class Asset(
     @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "asset_Prefix") val assetPrefix: String?,
     @ColumnInfo(name = "asset_Name") val name: String?,

@@ -1,3 +1,23 @@
 package com.example.agdesk.entities
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 
-data class LargeEquipment()
+@Entity(
+    tableName = "Large_Equipment",
+    foreignKeys = [
+        ForeignKey(
+            entity = Asset::class,
+            parentColumns = arrayOf("uid"),
+            childColumns = arrayOf("uid"),
+            onUpdate = ForeignKey.CASCADE,
+            onDelete = ForeignKey.CASCADE
+        )]
+)
+data class LargeEquipment(
+    @PrimaryKey
+    @ColumnInfo(name = "uid") val uid: Int,
+    @ColumnInfo(name = "vin") val vin: Int,
+
+    )

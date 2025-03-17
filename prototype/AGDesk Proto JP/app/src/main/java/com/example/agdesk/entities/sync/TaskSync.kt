@@ -1,8 +1,9 @@
-package com.example.agdesk.entities
+package com.example.agdesk.entities.sync
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.example.agdesk.entities.Task
 
 @Entity(
     tableName = "task_sync",
