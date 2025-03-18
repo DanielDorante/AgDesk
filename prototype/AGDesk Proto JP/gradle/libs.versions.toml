@@ -1,6 +1,7 @@
 [versions]
 agp = "8.9.0"
 datepickertimeline = "0.0.4"
+hiltAndroidVersion = "2.51.1"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -20,13 +21,20 @@ playServicesMaps = "19.0.0"
 roomCompiler = "2.6.1"
 sqlite = "2.4.0"
 gson = "2.12.1"
+hiltCommon = "1.2.0"
+hiltAndroid = "2.55"
+hiltAndroidCompiler = "2.55"
+roomKtx = "2.7.0-rc02"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltCommon" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCompiler" }
 androidx-sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
 datepickertimeline = { module = "com.vivekkaushik.datepicker:datePickerTimeline", version.ref = "datepickertimeline" }
+hilt-android-v2511 = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidVersion" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroidVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -42,6 +50,10 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 material-v180 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+androidx-hilt-common = { group = "androidx.hilt", name = "hilt-common", version.ref = "hiltCommon" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

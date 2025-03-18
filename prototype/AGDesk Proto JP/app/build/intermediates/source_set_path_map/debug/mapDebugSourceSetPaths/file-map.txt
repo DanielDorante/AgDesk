@@ -1,57 +1,75 @@
-com.example.agdesk.app-appcompat-1.7.0-0 /home/computer/.gradle/caches/8.11.1/transforms/052130e2255c8ae755bdca05344077d5/transformed/appcompat-1.7.0/res
-com.example.agdesk.app-lifecycle-livedata-core-ktx-2.8.4-1 /home/computer/.gradle/caches/8.11.1/transforms/0a422ab4ac6211cd8ed51f3c88d4f8e5/transformed/lifecycle-livedata-core-ktx-2.8.4/res
-com.example.agdesk.app-lifecycle-runtime-release-2 /home/computer/.gradle/caches/8.11.1/transforms/16cb3293ec7b5a7dc16c2ed36ca85a78/transformed/lifecycle-runtime-release/res
-com.example.agdesk.app-drawerlayout-1.1.1-3 /home/computer/.gradle/caches/8.11.1/transforms/1c5176c33607dc08e7c45fcc720802cf/transformed/drawerlayout-1.1.1/res
-com.example.agdesk.app-navigation-common-2.7.7-4 /home/computer/.gradle/caches/8.11.1/transforms/1fbf6ae6be74f8bcd2fcf7bae237d053/transformed/navigation-common-2.7.7/res
-com.example.agdesk.app-profileinstaller-1.3.1-5 /home/computer/.gradle/caches/8.11.1/transforms/27e95f4f86c241f5f24315414410df31/transformed/profileinstaller-1.3.1/res
-com.example.agdesk.app-activity-ktx-1.9.1-6 /home/computer/.gradle/caches/8.11.1/transforms/2a01955a9f9cf4ce27994c89c036e898/transformed/activity-ktx-1.9.1/res
-com.example.agdesk.app-lifecycle-viewmodel-savedstate-2.8.4-7 /home/computer/.gradle/caches/8.11.1/transforms/2a612d3197e1161bd83f8c01ade21a33/transformed/lifecycle-viewmodel-savedstate-2.8.4/res
-com.example.agdesk.app-lifecycle-process-2.8.4-8 /home/computer/.gradle/caches/8.11.1/transforms/2b38923968c7493b5f5f7d302b971281/transformed/lifecycle-process-2.8.4/res
-com.example.agdesk.app-coordinatorlayout-1.1.0-9 /home/computer/.gradle/caches/8.11.1/transforms/2f0027b1e9352ca76e98c2d0a263e106/transformed/coordinatorlayout-1.1.0/res
-com.example.agdesk.app-navigation-ui-ktx-2.7.7-10 /home/computer/.gradle/caches/8.11.1/transforms/32ec8bf8ccc8a95fa0814f15c0f6c33e/transformed/navigation-ui-ktx-2.7.7/res
-com.example.agdesk.app-lifecycle-runtime-ktx-release-11 /home/computer/.gradle/caches/8.11.1/transforms/3bfde874a6af0a7930a587e4caef75d9/transformed/lifecycle-runtime-ktx-release/res
-com.example.agdesk.app-emoji2-1.3.0-12 /home/computer/.gradle/caches/8.11.1/transforms/3d00a12d21ab13857b4e6c1fb4f3c302/transformed/emoji2-1.3.0/res
-com.example.agdesk.app-annotation-experimental-1.4.0-13 /home/computer/.gradle/caches/8.11.1/transforms/3dda0073cc5617f1e51be4202cb44f04/transformed/annotation-experimental-1.4.0/res
-com.example.agdesk.app-sqlite-2.4.0-14 /home/computer/.gradle/caches/8.11.1/transforms/41e26fc2cbfbff341592ff7911771c86/transformed/sqlite-2.4.0/res
-com.example.agdesk.app-lifecycle-livedata-2.8.4-15 /home/computer/.gradle/caches/8.11.1/transforms/4a46458e1e7473fd08c93926ef0b6ce0/transformed/lifecycle-livedata-2.8.4/res
-com.example.agdesk.app-fragment-ktx-1.6.2-16 /home/computer/.gradle/caches/8.11.1/transforms/4bfe38971e61839761023b653a308ce9/transformed/fragment-ktx-1.6.2/res
-com.example.agdesk.app-navigation-runtime-ktx-2.7.7-17 /home/computer/.gradle/caches/8.11.1/transforms/4f1844fa45f65e6ae350de8259063dea/transformed/navigation-runtime-ktx-2.7.7/res
-com.example.agdesk.app-lifecycle-livedata-ktx-2.8.4-18 /home/computer/.gradle/caches/8.11.1/transforms/4fba145c25f7b920ef5d97e6b2420dbf/transformed/lifecycle-livedata-ktx-2.8.4/res
-com.example.agdesk.app-core-ktx-1.13.1-19 /home/computer/.gradle/caches/8.11.1/transforms/59bcee106ddb9aa545ad5e18499e63e6/transformed/core-ktx-1.13.1/res
-com.example.agdesk.app-constraintlayout-2.1.4-20 /home/computer/.gradle/caches/8.11.1/transforms/687bd2c63372e6fc975b55b12890f378/transformed/constraintlayout-2.1.4/res
-com.example.agdesk.app-play-services-base-18.5.0-21 /home/computer/.gradle/caches/8.11.1/transforms/69d63b2cb2b9ddba7331ad9679970b18/transformed/play-services-base-18.5.0/res
-com.example.agdesk.app-play-services-maps-19.0.0-22 /home/computer/.gradle/caches/8.11.1/transforms/6e7d4eaf64a28bd873c775e13abba0e2/transformed/play-services-maps-19.0.0/res
-com.example.agdesk.app-navigation-ui-2.7.7-23 /home/computer/.gradle/caches/8.11.1/transforms/6e818728430edf752607a1e0d1c221fe/transformed/navigation-ui-2.7.7/res
-com.example.agdesk.app-navigation-runtime-2.7.7-24 /home/computer/.gradle/caches/8.11.1/transforms/71978ceded796fb2a4e4adfca58a9396/transformed/navigation-runtime-2.7.7/res
-com.example.agdesk.app-cardview-1.0.0-25 /home/computer/.gradle/caches/8.11.1/transforms/7838594a611311358657f613bc7296da/transformed/cardview-1.0.0/res
-com.example.agdesk.app-core-1.13.1-26 /home/computer/.gradle/caches/8.11.1/transforms/785f70f60e2be5feaa2ee80780b314ae/transformed/core-1.13.1/res
-com.example.agdesk.app-emoji2-views-helper-1.3.0-27 /home/computer/.gradle/caches/8.11.1/transforms/7a6d91e5ef11bc7a4d73bfe27a00942d/transformed/emoji2-views-helper-1.3.0/res
-com.example.agdesk.app-activity-1.9.1-28 /home/computer/.gradle/caches/8.11.1/transforms/7f867b9e41c163fc60e49e9d9989fe33/transformed/activity-1.9.1/res
-com.example.agdesk.app-slidingpanelayout-1.2.0-29 /home/computer/.gradle/caches/8.11.1/transforms/83c3d78053b85c5a7a12822ab55550bb/transformed/slidingpanelayout-1.2.0/res
-com.example.agdesk.app-savedstate-1.2.1-30 /home/computer/.gradle/caches/8.11.1/transforms/8ba33995582ce10efee58b2996e4c4a1/transformed/savedstate-1.2.1/res
-com.example.agdesk.app-transition-1.5.0-31 /home/computer/.gradle/caches/8.11.1/transforms/8cc85926b06c59b0108517a47956932c/transformed/transition-1.5.0/res
-com.example.agdesk.app-sqlite-framework-2.4.0-32 /home/computer/.gradle/caches/8.11.1/transforms/97592a3088fb4e8a8c2eee72902df02e/transformed/sqlite-framework-2.4.0/res
-com.example.agdesk.app-navigation-common-ktx-2.7.7-33 /home/computer/.gradle/caches/8.11.1/transforms/9c88d7dbb0537d3bd1aa341c629f7049/transformed/navigation-common-ktx-2.7.7/res
-com.example.agdesk.app-core-runtime-2.2.0-34 /home/computer/.gradle/caches/8.11.1/transforms/a968bfb8b7639f0a82a955e9945c8e77/transformed/core-runtime-2.2.0/res
-com.example.agdesk.app-material-1.12.0-35 /home/computer/.gradle/caches/8.11.1/transforms/ab9d549272532d04ccb3a77488f68941/transformed/material-1.12.0/res
-com.example.agdesk.app-savedstate-ktx-1.2.1-36 /home/computer/.gradle/caches/8.11.1/transforms/adf45116c4625fa2c5bbd4ad791caee6/transformed/savedstate-ktx-1.2.1/res
-com.example.agdesk.app-navigation-fragment-2.7.7-37 /home/computer/.gradle/caches/8.11.1/transforms/c07d05c9b74672d4245635989d847361/transformed/navigation-fragment-2.7.7/res
-com.example.agdesk.app-navigation-fragment-ktx-2.7.7-38 /home/computer/.gradle/caches/8.11.1/transforms/c09737604e4b1140b0b8c6499bf40d18/transformed/navigation-fragment-ktx-2.7.7/res
-com.example.agdesk.app-appcompat-resources-1.7.0-39 /home/computer/.gradle/caches/8.11.1/transforms/c8e55019cac13641a8ef4351089cdeea/transformed/appcompat-resources-1.7.0/res
-com.example.agdesk.app-startup-runtime-1.1.1-40 /home/computer/.gradle/caches/8.11.1/transforms/cde7010939eb88f074211c31b53d93e0/transformed/startup-runtime-1.1.1/res
-com.example.agdesk.app-lifecycle-livedata-core-2.8.4-41 /home/computer/.gradle/caches/8.11.1/transforms/ce625941fe774b8ccbb2975fb482c08e/transformed/lifecycle-livedata-core-2.8.4/res
-com.example.agdesk.app-fragment-1.6.2-42 /home/computer/.gradle/caches/8.11.1/transforms/d00d23f2c2602e45c3d320980f186605/transformed/fragment-1.6.2/res
-com.example.agdesk.app-lifecycle-viewmodel-ktx-2.8.4-43 /home/computer/.gradle/caches/8.11.1/transforms/d0477ff09d938fb8f3a73961421b3995/transformed/lifecycle-viewmodel-ktx-2.8.4/res
-com.example.agdesk.app-lifecycle-viewmodel-release-44 /home/computer/.gradle/caches/8.11.1/transforms/d200a81dbcee7edb60291c9511791712/transformed/lifecycle-viewmodel-release/res
-com.example.agdesk.app-room-runtime-2.6.1-45 /home/computer/.gradle/caches/8.11.1/transforms/db9e43dad1dea75d01a0187f4c76c06c/transformed/room-runtime-2.6.1/res
-com.example.agdesk.app-viewpager2-1.0.0-46 /home/computer/.gradle/caches/8.11.1/transforms/e09e1bcaf472f2877e5824be4aa46481/transformed/viewpager2-1.0.0/res
-com.example.agdesk.app-recyclerview-1.1.0-47 /home/computer/.gradle/caches/8.11.1/transforms/e610ceaea90eb23e5720f1997aacf58e/transformed/recyclerview-1.1.0/res
-com.example.agdesk.app-window-1.0.0-48 /home/computer/.gradle/caches/8.11.1/transforms/ede3ec8a717e78d8d9f2a290125f0c90/transformed/window-1.0.0/res
-com.example.agdesk.app-play-services-basement-18.4.0-49 /home/computer/.gradle/caches/8.11.1/transforms/faea37bd0a8a210bca3a267c37457918/transformed/play-services-basement-18.4.0/res
-com.example.agdesk.app-pngs-50 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/generated/res/pngs/debug
-com.example.agdesk.app-resValues-51 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/generated/res/resValues/debug
-com.example.agdesk.app-packageDebugResources-52 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
-com.example.agdesk.app-packageDebugResources-53 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
-com.example.agdesk.app-debug-54 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/intermediates/merged_res/debug/mergeDebugResources
-com.example.agdesk.app-debug-55 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/debug/res
-com.example.agdesk.app-main-56 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/res
+com.example.agdesk.app-customview-poolingcontainer-1.0.0-0 /home/computer/.gradle/caches/8.11.1/transforms/02e3d77d89e0c374e15aa464523aa877/transformed/customview-poolingcontainer-1.0.0/res
+com.example.agdesk.app-sqlite-framework-release-1 /home/computer/.gradle/caches/8.11.1/transforms/04ba626fd1558ed2abb8bfb156bd057c/transformed/sqlite-framework-release/res
+com.example.agdesk.app-foundation-layout-release-2 /home/computer/.gradle/caches/8.11.1/transforms/0712c01c5fe272c80ac4b9d5f46c19fc/transformed/foundation-layout-release/res
+com.example.agdesk.app-ui-geometry-release-3 /home/computer/.gradle/caches/8.11.1/transforms/0c15e4df4e4e8a2f9f20d681f7a883c2/transformed/ui-geometry-release/res
+com.example.agdesk.app-fragment-1.6.2-4 /home/computer/.gradle/caches/8.11.1/transforms/0c5998a16c3e760237a070875f071969/transformed/fragment-1.6.2/res
+com.example.agdesk.app-navigation-common-ktx-2.7.7-5 /home/computer/.gradle/caches/8.11.1/transforms/0d913d70388e01dd5bec146d4e8b2295/transformed/navigation-common-ktx-2.7.7/res
+com.example.agdesk.app-animation-core-release-6 /home/computer/.gradle/caches/8.11.1/transforms/108bf10f0bd974199f8ea3a1fed05c10/transformed/animation-core-release/res
+com.example.agdesk.app-lifecycle-process-2.8.4-7 /home/computer/.gradle/caches/8.11.1/transforms/194fe0a6a15d607d8d20acb455d216f4/transformed/lifecycle-process-2.8.4/res
+com.example.agdesk.app-hilt-navigation-1.2.0-8 /home/computer/.gradle/caches/8.11.1/transforms/1f0793ae97153a941634e815040adb5b/transformed/hilt-navigation-1.2.0/res
+com.example.agdesk.app-annotation-experimental-1.4.1-9 /home/computer/.gradle/caches/8.11.1/transforms/21ac9468cf01cc7cc062313aa395585d/transformed/annotation-experimental-1.4.1/res
+com.example.agdesk.app-ui-graphics-release-10 /home/computer/.gradle/caches/8.11.1/transforms/22c0d8116cea6d7ee5a9a471f33de63f/transformed/ui-graphics-release/res
+com.example.agdesk.app-play-services-base-18.5.0-11 /home/computer/.gradle/caches/8.11.1/transforms/23138d998c68a1e8fb04c88b92d7bd96/transformed/play-services-base-18.5.0/res
+com.example.agdesk.app-lifecycle-viewmodel-savedstate-2.8.4-12 /home/computer/.gradle/caches/8.11.1/transforms/232af8c40996494db9d597b20d285db4/transformed/lifecycle-viewmodel-savedstate-2.8.4/res
+com.example.agdesk.app-navigation-ui-ktx-2.7.7-13 /home/computer/.gradle/caches/8.11.1/transforms/23f0d77ea97a43a301d473101a8b7c86/transformed/navigation-ui-ktx-2.7.7/res
+com.example.agdesk.app-core-1.13.1-14 /home/computer/.gradle/caches/8.11.1/transforms/255e977e8ffb6290a285bb711959b5b6/transformed/core-1.13.1/res
+com.example.agdesk.app-core-ktx-1.13.1-15 /home/computer/.gradle/caches/8.11.1/transforms/2584b0e0b29adc643200dd195c308751/transformed/core-ktx-1.13.1/res
+com.example.agdesk.app-coordinatorlayout-1.1.0-16 /home/computer/.gradle/caches/8.11.1/transforms/2abd907418494a1b0b05d38214c7931d/transformed/coordinatorlayout-1.1.0/res
+com.example.agdesk.app-activity-compose-1.9.1-17 /home/computer/.gradle/caches/8.11.1/transforms/2ca83755f7a5f1541147f4f855297e1a/transformed/activity-compose-1.9.1/res
+com.example.agdesk.app-lifecycle-runtime-release-18 /home/computer/.gradle/caches/8.11.1/transforms/3018346eb99f813765c9fbdfb2174737/transformed/lifecycle-runtime-release/res
+com.example.agdesk.app-ui-release-19 /home/computer/.gradle/caches/8.11.1/transforms/345a0e9d929de9492cdef41cd268631f/transformed/ui-release/res
+com.example.agdesk.app-navigation-ui-2.7.7-20 /home/computer/.gradle/caches/8.11.1/transforms/3a6671fe7bffb0e93633215be3af7f25/transformed/navigation-ui-2.7.7/res
+com.example.agdesk.app-navigation-fragment-2.7.7-21 /home/computer/.gradle/caches/8.11.1/transforms/450e8ea27e49003ae39089b1fe3f8b5d/transformed/navigation-fragment-2.7.7/res
+com.example.agdesk.app-ui-util-release-22 /home/computer/.gradle/caches/8.11.1/transforms/4514ec11405d787d4481d10fd8467087/transformed/ui-util-release/res
+com.example.agdesk.app-viewpager2-1.0.0-23 /home/computer/.gradle/caches/8.11.1/transforms/4ade4d362f0c389d96a619fd15cfdc48/transformed/viewpager2-1.0.0/res
+com.example.agdesk.app-navigation-runtime-ktx-2.7.7-24 /home/computer/.gradle/caches/8.11.1/transforms/4c7466d306452862ba8b21a550df5c4f/transformed/navigation-runtime-ktx-2.7.7/res
+com.example.agdesk.app-navigation-compose-2.7.7-25 /home/computer/.gradle/caches/8.11.1/transforms/4f08696939e1af53546a5dec93c95c14/transformed/navigation-compose-2.7.7/res
+com.example.agdesk.app-savedstate-ktx-1.2.1-26 /home/computer/.gradle/caches/8.11.1/transforms/4f8cd20e9a33c07b02c3edae68f1325e/transformed/savedstate-ktx-1.2.1/res
+com.example.agdesk.app-drawerlayout-1.1.1-27 /home/computer/.gradle/caches/8.11.1/transforms/4f9b564e2caf8463304730cd2fa752e2/transformed/drawerlayout-1.1.1/res
+com.example.agdesk.app-runtime-release-28 /home/computer/.gradle/caches/8.11.1/transforms/51b8b9d81bc88b205c5fc8991ab2a779/transformed/runtime-release/res
+com.example.agdesk.app-ui-unit-release-29 /home/computer/.gradle/caches/8.11.1/transforms/59be876f1ea93ef3e2f41510adf5b1ed/transformed/ui-unit-release/res
+com.example.agdesk.app-constraintlayout-2.1.4-30 /home/computer/.gradle/caches/8.11.1/transforms/5b17339a43cb5dafbc428edfc30fc315/transformed/constraintlayout-2.1.4/res
+com.example.agdesk.app-fragment-ktx-1.6.2-31 /home/computer/.gradle/caches/8.11.1/transforms/5f5a13155ac593318153115626516208/transformed/fragment-ktx-1.6.2/res
+com.example.agdesk.app-cardview-1.0.0-32 /home/computer/.gradle/caches/8.11.1/transforms/6219991b4abfad7c39a367980a669931/transformed/cardview-1.0.0/res
+com.example.agdesk.app-window-1.0.0-33 /home/computer/.gradle/caches/8.11.1/transforms/67aa1fde91540c7981ff4b2670855d5e/transformed/window-1.0.0/res
+com.example.agdesk.app-startup-runtime-1.1.1-34 /home/computer/.gradle/caches/8.11.1/transforms/6888c9ec3e3e1c7fea18559f22af050a/transformed/startup-runtime-1.1.1/res
+com.example.agdesk.app-navigation-runtime-2.7.7-35 /home/computer/.gradle/caches/8.11.1/transforms/6b7dc5b35a4cccf9351b911ddb28ef4e/transformed/navigation-runtime-2.7.7/res
+com.example.agdesk.app-activity-1.9.1-36 /home/computer/.gradle/caches/8.11.1/transforms/6bb314ace74b6ff12eb870c7f7dcf7d1/transformed/activity-1.9.1/res
+com.example.agdesk.app-transition-1.5.0-37 /home/computer/.gradle/caches/8.11.1/transforms/78c2709d8ec3698e999f7e334c2ac082/transformed/transition-1.5.0/res
+com.example.agdesk.app-lifecycle-livedata-2.8.4-38 /home/computer/.gradle/caches/8.11.1/transforms/7cbc86576b815b1fa58e8f004897f831/transformed/lifecycle-livedata-2.8.4/res
+com.example.agdesk.app-lifecycle-runtime-ktx-release-39 /home/computer/.gradle/caches/8.11.1/transforms/830bc97f3279f7eaa88200754515701b/transformed/lifecycle-runtime-ktx-release/res
+com.example.agdesk.app-slidingpanelayout-1.2.0-40 /home/computer/.gradle/caches/8.11.1/transforms/84ac12a5a72c948382ac72609f643ea6/transformed/slidingpanelayout-1.2.0/res
+com.example.agdesk.app-play-services-basement-18.4.0-41 /home/computer/.gradle/caches/8.11.1/transforms/8592026bd1ead23df9010fd4167dc649/transformed/play-services-basement-18.4.0/res
+com.example.agdesk.app-animation-release-42 /home/computer/.gradle/caches/8.11.1/transforms/85b3feb2fdceb444353901071f6d7143/transformed/animation-release/res
+com.example.agdesk.app-lifecycle-viewmodel-ktx-2.8.4-43 /home/computer/.gradle/caches/8.11.1/transforms/8ad2fe4d7e029c9850573d0759659e83/transformed/lifecycle-viewmodel-ktx-2.8.4/res
+com.example.agdesk.app-savedstate-1.2.1-44 /home/computer/.gradle/caches/8.11.1/transforms/8be9337e189daa2b1011744a360a571d/transformed/savedstate-1.2.1/res
+com.example.agdesk.app-lifecycle-viewmodel-compose-release-45 /home/computer/.gradle/caches/8.11.1/transforms/8e37d892790ce536d6b82fed97782d3a/transformed/lifecycle-viewmodel-compose-release/res
+com.example.agdesk.app-appcompat-resources-1.7.0-46 /home/computer/.gradle/caches/8.11.1/transforms/903e939279404375313f4af9979d5b4d/transformed/appcompat-resources-1.7.0/res
+com.example.agdesk.app-ui-text-release-47 /home/computer/.gradle/caches/8.11.1/transforms/9759efa98c301105a198f20fd7ac97aa/transformed/ui-text-release/res
+com.example.agdesk.app-navigation-common-2.7.7-48 /home/computer/.gradle/caches/8.11.1/transforms/986b70d5688d94b5ca0af75e53d13c5a/transformed/navigation-common-2.7.7/res
+com.example.agdesk.app-play-services-maps-19.0.0-49 /home/computer/.gradle/caches/8.11.1/transforms/9ef06c914effdbec6efcf066fe1ed2a6/transformed/play-services-maps-19.0.0/res
+com.example.agdesk.app-emoji2-1.3.0-50 /home/computer/.gradle/caches/8.11.1/transforms/a24eadff930ee2a10e6d9a8baec5519a/transformed/emoji2-1.3.0/res
+com.example.agdesk.app-recyclerview-1.1.0-51 /home/computer/.gradle/caches/8.11.1/transforms/a25aa3eb4ceca28db34a858e16845a96/transformed/recyclerview-1.1.0/res
+com.example.agdesk.app-lifecycle-livedata-core-ktx-2.8.4-52 /home/computer/.gradle/caches/8.11.1/transforms/acc0704e140970934e38a008cd09b4dc/transformed/lifecycle-livedata-core-ktx-2.8.4/res
+com.example.agdesk.app-profileinstaller-1.3.1-53 /home/computer/.gradle/caches/8.11.1/transforms/b27de1daac2e528e1fbcaa0f4f5fd8bd/transformed/profileinstaller-1.3.1/res
+com.example.agdesk.app-lifecycle-livedata-core-2.8.4-54 /home/computer/.gradle/caches/8.11.1/transforms/b7080fadd73a57424505742fa5772df1/transformed/lifecycle-livedata-core-2.8.4/res
+com.example.agdesk.app-sqlite-release-55 /home/computer/.gradle/caches/8.11.1/transforms/c2d66697733874e38fee21e93f388717/transformed/sqlite-release/res
+com.example.agdesk.app-hilt-navigation-compose-1.2.0-56 /home/computer/.gradle/caches/8.11.1/transforms/c33a0fe44917d57f9de29529d803b6f1/transformed/hilt-navigation-compose-1.2.0/res
+com.example.agdesk.app-room-ktx-2.7.0-rc02-57 /home/computer/.gradle/caches/8.11.1/transforms/c791c379d0eead25b1fe891d1b007193/transformed/room-ktx-2.7.0-rc02/res
+com.example.agdesk.app-runtime-saveable-release-58 /home/computer/.gradle/caches/8.11.1/transforms/c80a17d88b32b9233101394164442c0d/transformed/runtime-saveable-release/res
+com.example.agdesk.app-appcompat-1.7.0-59 /home/computer/.gradle/caches/8.11.1/transforms/c8409a46e9f260dd7343155f5dcb3240/transformed/appcompat-1.7.0/res
+com.example.agdesk.app-material-1.12.0-60 /home/computer/.gradle/caches/8.11.1/transforms/c9a439df4823aa815d0ecf464a64c937/transformed/material-1.12.0/res
+com.example.agdesk.app-lifecycle-livedata-ktx-2.8.4-61 /home/computer/.gradle/caches/8.11.1/transforms/d311c508f513854ad0a0028998261766/transformed/lifecycle-livedata-ktx-2.8.4/res
+com.example.agdesk.app-activity-ktx-1.9.1-62 /home/computer/.gradle/caches/8.11.1/transforms/d555d05acaa934eac33a60799d7232e2/transformed/activity-ktx-1.9.1/res
+com.example.agdesk.app-emoji2-views-helper-1.3.0-63 /home/computer/.gradle/caches/8.11.1/transforms/f06e887e0181991e288beb291a80cbea/transformed/emoji2-views-helper-1.3.0/res
+com.example.agdesk.app-navigation-fragment-ktx-2.7.7-64 /home/computer/.gradle/caches/8.11.1/transforms/f0b227c88155938d42263c9aa9cb7272/transformed/navigation-fragment-ktx-2.7.7/res
+com.example.agdesk.app-room-runtime-release-65 /home/computer/.gradle/caches/8.11.1/transforms/f6e2158aa330792b751fa1116d7ede3e/transformed/room-runtime-release/res
+com.example.agdesk.app-lifecycle-viewmodel-release-66 /home/computer/.gradle/caches/8.11.1/transforms/f8fd10f6696c7c18252a1de83a595365/transformed/lifecycle-viewmodel-release/res
+com.example.agdesk.app-core-runtime-2.2.0-67 /home/computer/.gradle/caches/8.11.1/transforms/fdc5e2221e5ff9c173c12735c3ab2d2e/transformed/core-runtime-2.2.0/res
+com.example.agdesk.app-pngs-68 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/generated/res/pngs/debug
+com.example.agdesk.app-resValues-69 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/generated/res/resValues/debug
+com.example.agdesk.app-packageDebugResources-70 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.example.agdesk.app-packageDebugResources-71 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.example.agdesk.app-debug-72 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.example.agdesk.app-debug-73 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/debug/res
+com.example.agdesk.app-main-74 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/res

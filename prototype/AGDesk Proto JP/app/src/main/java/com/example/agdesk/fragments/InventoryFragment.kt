@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.agdesk.R
 import com.example.agdesk.adapters.InventoryAdapter
-import com.example.agdesk.database.DatabaseHelper
+import com.example.agdesk.DataLayer.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentInventoryBinding
 import com.example.agdesk.models.InventoryModel
 import com.google.android.material.button.MaterialButton

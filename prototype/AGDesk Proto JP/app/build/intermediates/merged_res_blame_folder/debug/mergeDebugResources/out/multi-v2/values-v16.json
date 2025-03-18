@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-52:/values-v16/values-v16.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-70:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/052130e2255c8ae755bdca05344077d5/transformed/appcompat-1.7.0/res/values-v16/values-v16.xml",
+                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/c8409a46e9f260dd7343155f5dcb3240/transformed/appcompat-1.7.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

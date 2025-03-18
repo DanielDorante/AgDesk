@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.agdesk.R
 import com.example.agdesk.adapters.DateAdapter
 import com.example.agdesk.adapters.TasksAdapter
-import com.example.agdesk.database.DatabaseHelper
+import com.example.agdesk.DataLayer.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentTasksBinding
 import com.example.agdesk.models.TaskModel
 import java.text.SimpleDateFormat

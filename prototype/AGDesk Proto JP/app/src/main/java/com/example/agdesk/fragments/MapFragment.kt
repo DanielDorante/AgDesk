@@ -1,6 +1,6 @@
 package com.example.agdesk.fragments
 
-import com.example.agdesk.database.DatabaseHelper
+import com.example.agdesk.DataLayer.database.DatabaseHelper
 import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.agdesk.models.FieldsModel
 import com.example.agdesk.R
+import com.example.agdesk.DataLayer.database.AgDeskDatabase
 import com.example.agdesk.databinding.FragmentMapBinding
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,10 +26,31 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polygon
 import com.google.android.gms.maps.model.PolygonOptions
+import android.content.Context
+import androidx.compose.runtime.Composable
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.lifecycle.lifecycleScope
 
+import com.example.agdesk.DataLayer.entities.Fields
 
+import com.example.agdesk.ViewModels.FieldViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.math.hypot
+
+@AndroidEntryPoint
 class MapFragment : Fragment(), OnMapReadyCallback {
 
+
+    private val fieldViewModel: FieldViewModel by viewModels()
     // Reference to GoogleMap object for map operations
     private lateinit var googleMap: GoogleMap
 
@@ -51,9 +73,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     // Holds the polygon that represents the field
     private var currentPolygon: Polygon? = null
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+
         // Inflate the layout and bind it to the fragment
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -184,8 +209,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 val field = FieldsModel(fieldName, fieldPoints.toMutableList())
                 fieldsModelData.add(field)
 
-                val dbHelper = DatabaseHelper(requireContext())
-                dbHelper.saveField(fieldName, fieldPoints)  // Save field to database
+
+
+                val fieldEntity = Fields(0,fieldName, fieldPoints, null)
+                fieldViewModel.insertFields(fieldEntity)  // Save field to database
 
                 val centroid = calculateCentroid(fieldPoints)  // Calculate the centroid of the polygon
                 showFieldNameInsidePolygon(fieldName, centroid)  // Show the field name inside the polygon
@@ -284,22 +311,42 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE  // Set the map type to satellite
 
         // Load fields previously saved in the database
-        val dbHelper = DatabaseHelper(requireContext())
-        val savedFields = dbHelper.getFields()
 
-        // Draw each saved field on the map
-        for (field in savedFields) {
-            fieldsModelData.add(field)
-            drawPolygon(field)  // Draw polygon for each field
-            val centroid = calculateCentroid(field.points)
-            showFieldNameInsidePolygon(field.name, centroid)  // Display field name inside polygon
+
+
+        lifecycleScope.launch {
+            withContext(Dispatchers.Default) {
+                fieldViewModel.fields.collect { savedFields ->
+                    // Draw each saved field on the map
+                  drawAll(savedFields)
+                }
+            }
+
         }
+
+
+
+
+
 
         // Update the position of field names when the map moves
         googleMap.setOnCameraMoveListener {
             for (field in fieldsModelData) {
                 val centroid = calculateCentroid(field.points)
                 updateFieldNamePosition(field.name, centroid)
+            }
+        }
+    }
+
+    private fun drawAll(savedFields: List<FieldsModel>) {
+        lifecycleScope.launch {
+            withContext(Dispatchers.Main) {
+                for (field in savedFields) {
+                    fieldsModelData.add(field)
+                    drawPolygon(field)  // Draw polygon for each field
+                    val centroid = calculateCentroid(field.points)
+                    showFieldNameInsidePolygon(field.name, centroid)  // Display field name inside polygon
+                }
             }
         }
     }
