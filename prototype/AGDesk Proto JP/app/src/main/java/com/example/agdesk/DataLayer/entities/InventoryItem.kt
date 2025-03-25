@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class InventoryItem(
-    @PrimaryKey(autoGenerate = true) val uid: Int,
+    @PrimaryKey val uid: String,
     @ColumnInfo(name = "item_Name") val name: String?,
     @ColumnInfo(name = "stock_Keeping_Unit") val sku: Int?,
     @ColumnInfo(name = "category") val category: String?,

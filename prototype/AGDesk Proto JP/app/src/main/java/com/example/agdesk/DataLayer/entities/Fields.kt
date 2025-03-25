@@ -11,8 +11,9 @@ import com.example.agdesk.DataLayer.Converters.DatabaseConverter
 
 @Entity
 data class Fields (
-    @PrimaryKey(autoGenerate = true)
-    val uid: Int,
+    @PrimaryKey
+    @field:TypeConverters(DatabaseConverter::class)
+    val uid: String,
     val name: String,
     @field:TypeConverters(DatabaseConverter::class) val points: List<LatLng>,
     @ColumnInfo(name = "global_Id") val syncid: Int?,

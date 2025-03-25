@@ -16,6 +16,8 @@ interface FieldDAO {
     @Query("SELECT name, points FROM Fields")
     suspend fun getAllFields(): MutableList<FieldsModel>
 
+    @Insert
+    suspend fun insertSync(vararg sync: FieldSync)
 
 
 }

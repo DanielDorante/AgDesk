@@ -17,7 +17,7 @@ import androidx.room.PrimaryKey
 )
 data class LargeEquipment(
     @PrimaryKey
-    @ColumnInfo(name = "uid") val uid: Int,
-    @ColumnInfo(name = "vin") val vin: Int,
+    @ColumnInfo(name = "uid") val uid: String,
+    @ColumnInfo(name = "vin") val vin: Int?,
 
     )

@@ -18,7 +18,7 @@ import com.example.agdesk.DataLayer.entities.InventoryItem
 )
 data class InventorySync(
     @PrimaryKey
-    @ColumnInfo(name = "uid") val uid: Int,
+    @ColumnInfo(name = "uid") val uid: String,
     @ColumnInfo(name = "synctimestamp") val synctime: Int,
 
     )

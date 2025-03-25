@@ -1,10 +1,8 @@
 package com.example.agdesk.DataLayer.Converters
 
-import android.util.Log
 import androidx.room.TypeConverter
-import com.example.agdesk.models.FieldsModel
 import com.google.android.gms.maps.model.LatLng
-import kotlinx.serialization.json.Json
+import java.util.UUID
 
 
 class DatabaseConverter {
@@ -30,6 +28,18 @@ class DatabaseConverter {
 
 
     }
+
+
+    @TypeConverter
+    public fun fromUUID(uuid: UUID): String {
+            return uuid.toString()
+    }
+
+    @TypeConverter
+    public fun uuidFromString(string: String): UUID {
+            return UUID.fromString(string)
+    }
+
 
 
 }

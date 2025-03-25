@@ -17,8 +17,8 @@ import androidx.room.PrimaryKey
 )
 data class Vehicle(
     @PrimaryKey
-    @ColumnInfo(name = "uid") val uid: Int,
-    @ColumnInfo(name = "vin") val vin: Int,
-    @ColumnInfo(name = "registration") val reg: Int,
+    @ColumnInfo(name = "uid") val uid: String,
+    @ColumnInfo(name = "vin") val vin: Int?,
+    @ColumnInfo(name = "registration") val reg: Int?,
 
     )

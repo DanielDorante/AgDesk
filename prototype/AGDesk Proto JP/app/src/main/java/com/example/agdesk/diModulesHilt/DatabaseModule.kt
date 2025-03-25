@@ -1,7 +1,9 @@
 package com.example.agdesk.diModulesHilt
 
 import android.content.Context
+import com.example.agdesk.DataLayer.DAOs.AssetDAO
 import com.example.agdesk.DataLayer.DAOs.FieldDAO
+import com.example.agdesk.DataLayer.DAOs.TaskDAO
 import com.example.agdesk.DataLayer.database.AgDeskDatabase
 import dagger.Module
 import dagger.Provides
@@ -25,6 +27,18 @@ object DatabaseModule {
     @Singleton
     fun provideFeildDao(agDeskDatabase: AgDeskDatabase): FieldDAO {
         return agDeskDatabase.fieldDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAssetDao(agDeskDatabase: AgDeskDatabase): AssetDAO {
+        return agDeskDatabase.assetDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideTaskDao(agDeskDatabase: AgDeskDatabase): TaskDAO {
+        return agDeskDatabase.taskDao()
     }
 
 

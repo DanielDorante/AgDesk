@@ -211,8 +211,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
 
 
-                val fieldEntity = Fields(0,fieldName, fieldPoints, null)
-                fieldViewModel.insertFields(fieldEntity)  // Save field to database
+
+                fieldViewModel.insertFields(field)  // Save field to database
 
                 val centroid = calculateCentroid(fieldPoints)  // Calculate the centroid of the polygon
                 showFieldNameInsidePolygon(fieldName, centroid)  // Show the field name inside the polygon

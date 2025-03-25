@@ -22,7 +22,7 @@ import com.example.agdesk.DataLayer.entities.sync.TaskSync
 
 @Database(entities = [Asset::class, AssetSync::class, Vehicle::class, SmallEquipment::class,
                      LargeEquipment::class, Task::class, TaskSync::class, Fields::class, FieldSync::class,
-                     InventoryItem::class, InventorySync::class], version = 1)
+                     InventoryItem::class, InventorySync::class], version = 2)
 abstract class AgDeskDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDAO
     abstract fun assetDao(): AssetDAO

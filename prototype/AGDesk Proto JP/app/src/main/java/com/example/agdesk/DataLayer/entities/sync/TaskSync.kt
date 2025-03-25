@@ -18,7 +18,7 @@ import com.example.agdesk.DataLayer.entities.Task
 )
 data class TaskSync(
     @PrimaryKey
-    @ColumnInfo(name = "uid") val uid: Int,
+    @ColumnInfo(name = "uid") val uid: String,
     @ColumnInfo(name = "synctimestamp") val synctime: Int,
 
     )

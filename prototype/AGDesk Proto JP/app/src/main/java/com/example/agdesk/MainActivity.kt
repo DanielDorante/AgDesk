@@ -1,5 +1,6 @@
 package com.example.agdesk
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,6 +22,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.agdesk.Application.AgDesk
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

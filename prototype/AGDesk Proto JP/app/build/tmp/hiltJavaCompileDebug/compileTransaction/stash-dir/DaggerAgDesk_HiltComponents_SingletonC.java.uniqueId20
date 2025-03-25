@@ -7,16 +7,21 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
+import com.example.agdesk.DataLayer.DAOs.AssetDAO;
 import com.example.agdesk.DataLayer.DAOs.FieldDAO;
 import com.example.agdesk.DataLayer.database.AgDeskDatabase;
 import com.example.agdesk.MainActivity;
 import com.example.agdesk.SplashScreen;
+import com.example.agdesk.ViewModels.AssetViewModel;
+import com.example.agdesk.ViewModels.AssetViewModel_HiltModules;
 import com.example.agdesk.ViewModels.FieldViewModel;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules;
+import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideAssetDaoFactory;
 import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideDatabaseFactory;
 import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideFeildDaoFactory;
 import com.example.agdesk.fragments.MapFragment;
-import com.example.agdesk.repository.FieldRepositry;
+import com.example.agdesk.repository.AssetRepository;
+import com.example.agdesk.repository.FieldRepository;
 import dagger.hilt.android.ActivityRetainedLifecycle;
 import dagger.hilt.android.ViewModelLifecycle;
 import dagger.hilt.android.internal.builders.ActivityComponentBuilder;
@@ -37,6 +42,7 @@ import dagger.internal.DoubleCheck;
 import dagger.internal.IdentifierNameString;
 import dagger.internal.KeepFieldType;
 import dagger.internal.LazyClassKeyMap;
+import dagger.internal.MapBuilder;
 import dagger.internal.Preconditions;
 import dagger.internal.Provider;
 import java.util.Collections;
@@ -379,7 +385,7 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     @Override
     public Map<Class<?>, Boolean> getViewModelKeys() {
-      return LazyClassKeyMap.<Boolean>of(Collections.<String, Boolean>singletonMap(LazyClassKeyProvider.com_example_agdesk_ViewModels_FieldViewModel, FieldViewModel_HiltModules.KeyModule.provide()));
+      return LazyClassKeyMap.<Boolean>of(MapBuilder.<String, Boolean>newMapBuilder(2).put(LazyClassKeyProvider.com_example_agdesk_ViewModels_AssetViewModel, AssetViewModel_HiltModules.KeyModule.provide()).put(LazyClassKeyProvider.com_example_agdesk_ViewModels_FieldViewModel, FieldViewModel_HiltModules.KeyModule.provide()).build());
     }
 
     @Override
@@ -399,7 +405,12 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
+      static String com_example_agdesk_ViewModels_AssetViewModel = "com.example.agdesk.ViewModels.AssetViewModel";
+
       static String com_example_agdesk_ViewModels_FieldViewModel = "com.example.agdesk.ViewModels.FieldViewModel";
+
+      @KeepFieldType
+      AssetViewModel com_example_agdesk_ViewModels_AssetViewModel2;
 
       @KeepFieldType
       FieldViewModel com_example_agdesk_ViewModels_FieldViewModel2;
@@ -413,6 +424,8 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final ViewModelCImpl viewModelCImpl = this;
 
+    private Provider<AssetViewModel> assetViewModelProvider;
+
     private Provider<FieldViewModel> fieldViewModelProvider;
 
     private ViewModelCImpl(SingletonCImpl singletonCImpl,
@@ -425,19 +438,24 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     }
 
-    private FieldRepositry fieldRepositry() {
-      return new FieldRepositry(singletonCImpl.provideFeildDaoProvider.get());
+    private AssetRepository assetRepository() {
+      return new AssetRepository(singletonCImpl.provideAssetDaoProvider.get());
+    }
+
+    private FieldRepository fieldRepository() {
+      return new FieldRepository(singletonCImpl.provideFeildDaoProvider.get());
     }
 
     @SuppressWarnings("unchecked")
     private void initialize(final SavedStateHandle savedStateHandleParam,
         final ViewModelLifecycle viewModelLifecycleParam) {
-      this.fieldViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
+      this.assetViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
+      this.fieldViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
     }
 
     @Override
     public Map<Class<?>, javax.inject.Provider<ViewModel>> getHiltViewModelMap() {
-      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(Collections.<String, javax.inject.Provider<ViewModel>>singletonMap(LazyClassKeyProvider.com_example_agdesk_ViewModels_FieldViewModel, ((Provider) fieldViewModelProvider)));
+      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(MapBuilder.<String, javax.inject.Provider<ViewModel>>newMapBuilder(2).put(LazyClassKeyProvider.com_example_agdesk_ViewModels_AssetViewModel, ((Provider) assetViewModelProvider)).put(LazyClassKeyProvider.com_example_agdesk_ViewModels_FieldViewModel, ((Provider) fieldViewModelProvider)).build());
     }
 
     @Override
@@ -449,8 +467,13 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
     private static final class LazyClassKeyProvider {
       static String com_example_agdesk_ViewModels_FieldViewModel = "com.example.agdesk.ViewModels.FieldViewModel";
 
+      static String com_example_agdesk_ViewModels_AssetViewModel = "com.example.agdesk.ViewModels.AssetViewModel";
+
       @KeepFieldType
       FieldViewModel com_example_agdesk_ViewModels_FieldViewModel2;
+
+      @KeepFieldType
+      AssetViewModel com_example_agdesk_ViewModels_AssetViewModel2;
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -474,8 +497,11 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.example.agdesk.ViewModels.FieldViewModel 
-          return (T) new FieldViewModel(viewModelCImpl.fieldRepositry());
+          case 0: // com.example.agdesk.ViewModels.AssetViewModel 
+          return (T) new AssetViewModel(viewModelCImpl.assetRepository());
+
+          case 1: // com.example.agdesk.ViewModels.FieldViewModel 
+          return (T) new FieldViewModel(viewModelCImpl.fieldRepository());
 
           default: throw new AssertionError(id);
         }
@@ -559,6 +585,8 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private Provider<AgDeskDatabase> provideDatabaseProvider;
 
+    private Provider<AssetDAO> provideAssetDaoProvider;
+
     private Provider<FieldDAO> provideFeildDaoProvider;
 
     private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
@@ -570,7 +598,8 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
     @SuppressWarnings("unchecked")
     private void initialize(final ApplicationContextModule applicationContextModuleParam) {
       this.provideDatabaseProvider = DoubleCheck.provider(new SwitchingProvider<AgDeskDatabase>(singletonCImpl, 1));
-      this.provideFeildDaoProvider = DoubleCheck.provider(new SwitchingProvider<FieldDAO>(singletonCImpl, 0));
+      this.provideAssetDaoProvider = DoubleCheck.provider(new SwitchingProvider<AssetDAO>(singletonCImpl, 0));
+      this.provideFeildDaoProvider = DoubleCheck.provider(new SwitchingProvider<FieldDAO>(singletonCImpl, 2));
     }
 
     @Override
@@ -606,11 +635,14 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.example.agdesk.DataLayer.DAOs.FieldDAO 
-          return (T) DatabaseModule_ProvideFeildDaoFactory.provideFeildDao(singletonCImpl.provideDatabaseProvider.get());
+          case 0: // com.example.agdesk.DataLayer.DAOs.AssetDAO 
+          return (T) DatabaseModule_ProvideAssetDaoFactory.provideAssetDao(singletonCImpl.provideDatabaseProvider.get());
 
           case 1: // com.example.agdesk.DataLayer.database.AgDeskDatabase 
           return (T) DatabaseModule_ProvideDatabaseFactory.provideDatabase(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 2: // com.example.agdesk.DataLayer.DAOs.FieldDAO 
+          return (T) DatabaseModule_ProvideFeildDaoFactory.provideFeildDao(singletonCImpl.provideDatabaseProvider.get());
 
           default: throw new AssertionError(id);
         }

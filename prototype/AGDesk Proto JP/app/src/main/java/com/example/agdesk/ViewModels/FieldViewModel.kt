@@ -2,9 +2,8 @@ package com.example.agdesk.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.agdesk.DataLayer.entities.Fields
 import com.example.agdesk.models.FieldsModel
-import com.example.agdesk.repository.FieldRepositry
+import com.example.agdesk.repository.FieldRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,11 +12,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
 @HiltViewModel
-class FieldViewModel @Inject constructor(private val repository: FieldRepositry): ViewModel() {
+class FieldViewModel @Inject constructor(private val repository: FieldRepository): ViewModel() {
 
 
     private val _fields = MutableStateFlow<List<FieldsModel>>(emptyList())
@@ -27,7 +25,7 @@ class FieldViewModel @Inject constructor(private val repository: FieldRepositry)
         loadFields()
     }
 
-    fun insertFields(vararg fields: Fields) = viewModelScope.launch {
+    fun insertFields(vararg fields: FieldsModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
             repository.insertFields(*fields)
             loadFields()

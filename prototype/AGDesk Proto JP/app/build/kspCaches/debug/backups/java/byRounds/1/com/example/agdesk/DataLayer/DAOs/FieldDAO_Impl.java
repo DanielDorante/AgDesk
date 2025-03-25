@@ -11,6 +11,7 @@ import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter;
 import com.example.agdesk.DataLayer.entities.Fields;
+import com.example.agdesk.DataLayer.entities.sync.FieldSync;
 import com.example.agdesk.models.FieldsModel;
 import com.google.android.gms.maps.model.LatLng;
 import java.lang.Class;
@@ -36,19 +37,21 @@ public final class FieldDAO_Impl implements FieldDAO {
 
   private final DatabaseConverter __databaseConverter = new DatabaseConverter();
 
+  private final EntityInsertionAdapter<FieldSync> __insertionAdapterOfFieldSync;
+
   public FieldDAO_Impl(@NonNull final RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfFields = new EntityInsertionAdapter<Fields>(__db) {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `Fields` (`uid`,`name`,`points`,`global_Id`) VALUES (nullif(?, 0),?,?,?)";
+        return "INSERT OR ABORT INTO `Fields` (`uid`,`name`,`points`,`global_Id`) VALUES (?,?,?,?)";
       }
 
       @Override
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final Fields entity) {
-        statement.bindLong(1, entity.getUid());
+        statement.bindString(1, entity.getUid());
         statement.bindString(2, entity.getName());
         final String _tmp = __databaseConverter.fromLatLng(entity.getPoints());
         statement.bindString(3, _tmp);
@@ -57,6 +60,20 @@ public final class FieldDAO_Impl implements FieldDAO {
         } else {
           statement.bindLong(4, entity.getSyncid());
         }
+      }
+    };
+    this.__insertionAdapterOfFieldSync = new EntityInsertionAdapter<FieldSync>(__db) {
+      @Override
+      @NonNull
+      protected String createQuery() {
+        return "INSERT OR ABORT INTO `Field_Sync` (`uid`,`synctimestamp`) VALUES (?,?)";
+      }
+
+      @Override
+      protected void bind(@NonNull final SupportSQLiteStatement statement,
+          @NonNull final FieldSync entity) {
+        statement.bindString(1, entity.getUid());
+        statement.bindString(2, entity.getSynctime());
       }
     };
   }
@@ -70,6 +87,24 @@ public final class FieldDAO_Impl implements FieldDAO {
         __db.beginTransaction();
         try {
           __insertionAdapterOfFields.insert(fields);
+          __db.setTransactionSuccessful();
+          return Unit.INSTANCE;
+        } finally {
+          __db.endTransaction();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object insertSync(final FieldSync[] sync, final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        __db.beginTransaction();
+        try {
+          __insertionAdapterOfFieldSync.insert(sync);
           __db.setTransactionSuccessful();
           return Unit.INSTANCE;
         } finally {

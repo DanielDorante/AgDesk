@@ -46,22 +46,22 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `Asset` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `asset_Prefix` TEXT, `asset_Name` TEXT, `manufacture` TEXT, `part_List` TEXT, `location` TEXT, `date_Manufactured` INTEGER, `date_Purchased` INTEGER, `is_Delete` INTEGER NOT NULL, `asset_Image` TEXT, `farm_Id` INTEGER, `global_Id` INTEGER)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `asset_sync` (`uid` INTEGER NOT NULL, `synctimestamp` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `Vehicles` (`uid` INTEGER NOT NULL, `vin` INTEGER NOT NULL, `registration` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `small_Equipment` (`uid` INTEGER NOT NULL, `serial_Number` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `Large_Equipment` (`uid` INTEGER NOT NULL, `vin` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `Task` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `taskName` TEXT, `description` TEXT, `time_stamp` INTEGER, `is_Delete` INTEGER, `due_Date` INTEGER, `expire_Date` INTEGER, `status` INTEGER, `priority` INTEGER, `assigned_To` INTEGER, `farm_Id` INTEGER, `global_Id` INTEGER)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `task_sync` (`uid` INTEGER NOT NULL, `synctimestamp` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Task`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `Fields` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `points` TEXT NOT NULL, `global_Id` INTEGER)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `Field_Sync` (`uid` INTEGER NOT NULL, `synctimestamp` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Fields`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `InventoryItem` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `item_Name` TEXT, `stock_Keeping_Unit` INTEGER, `category` TEXT, `quantity` TEXT, `cost_Price` REAL, `sell_Price` REAL, `global_Id` INTEGER, `name` TEXT, `email` TEXT, `phone` INTEGER)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `inventory_Sync` (`uid` INTEGER NOT NULL, `synctimestamp` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `InventoryItem`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `Asset` (`uid` TEXT NOT NULL, `asset_Prefix` TEXT, `asset_Name` TEXT, `manufacture` TEXT, `part_List` TEXT, `location` TEXT, `date_Manufactured` INTEGER, `date_Purchased` INTEGER, `is_Delete` INTEGER NOT NULL, `asset_Image` TEXT, `farm_Id` INTEGER, `global_Id` INTEGER, PRIMARY KEY(`uid`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `asset_sync` (`uid` TEXT NOT NULL, `synctimestamp` TEXT NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `Vehicles` (`uid` TEXT NOT NULL, `vin` INTEGER, `registration` INTEGER, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `small_Equipment` (`uid` TEXT NOT NULL, `serial_Number` INTEGER, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `Large_Equipment` (`uid` TEXT NOT NULL, `vin` INTEGER, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `Task` (`uid` TEXT NOT NULL, `taskName` TEXT, `description` TEXT, `time_stamp` INTEGER, `is_Delete` INTEGER, `due_Date` INTEGER, `expire_Date` INTEGER, `status` INTEGER, `priority` INTEGER, `assigned_To` INTEGER, `farm_Id` INTEGER, `global_Id` INTEGER, PRIMARY KEY(`uid`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `task_sync` (`uid` TEXT NOT NULL, `synctimestamp` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Task`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `Fields` (`uid` TEXT NOT NULL, `name` TEXT NOT NULL, `points` TEXT NOT NULL, `global_Id` INTEGER, PRIMARY KEY(`uid`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `Field_Sync` (`uid` TEXT NOT NULL, `synctimestamp` TEXT NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Fields`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `InventoryItem` (`uid` TEXT NOT NULL, `item_Name` TEXT, `stock_Keeping_Unit` INTEGER, `category` TEXT, `quantity` TEXT, `cost_Price` REAL, `sell_Price` REAL, `global_Id` INTEGER, `name` TEXT, `email` TEXT, `phone` INTEGER, PRIMARY KEY(`uid`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `inventory_Sync` (`uid` TEXT NOT NULL, `synctimestamp` INTEGER NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `InventoryItem`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bed711d521690aa11f563057d97fd1d3')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4ba363bf9bd0fec3f4a0e08478ad3299')");
       }
 
       @Override
@@ -122,7 +122,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
         final HashMap<String, TableInfo.Column> _columnsAsset = new HashMap<String, TableInfo.Column>(12);
-        _columnsAsset.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsAsset.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsAsset.put("asset_Prefix", new TableInfo.Column("asset_Prefix", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsAsset.put("asset_Name", new TableInfo.Column("asset_Name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsAsset.put("manufacture", new TableInfo.Column("manufacture", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -144,8 +144,8 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingAsset);
         }
         final HashMap<String, TableInfo.Column> _columnsAssetSync = new HashMap<String, TableInfo.Column>(2);
-        _columnsAssetSync.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsAssetSync.put("synctimestamp", new TableInfo.Column("synctimestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsAssetSync.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsAssetSync.put("synctimestamp", new TableInfo.Column("synctimestamp", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysAssetSync = new HashSet<TableInfo.ForeignKey>(1);
         _foreignKeysAssetSync.add(new TableInfo.ForeignKey("Asset", "CASCADE", "CASCADE", Arrays.asList("uid"), Arrays.asList("uid")));
         final HashSet<TableInfo.Index> _indicesAssetSync = new HashSet<TableInfo.Index>(0);
@@ -157,9 +157,9 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingAssetSync);
         }
         final HashMap<String, TableInfo.Column> _columnsVehicles = new HashMap<String, TableInfo.Column>(3);
-        _columnsVehicles.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsVehicles.put("vin", new TableInfo.Column("vin", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsVehicles.put("registration", new TableInfo.Column("registration", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsVehicles.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsVehicles.put("vin", new TableInfo.Column("vin", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsVehicles.put("registration", new TableInfo.Column("registration", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysVehicles = new HashSet<TableInfo.ForeignKey>(1);
         _foreignKeysVehicles.add(new TableInfo.ForeignKey("Asset", "CASCADE", "CASCADE", Arrays.asList("uid"), Arrays.asList("uid")));
         final HashSet<TableInfo.Index> _indicesVehicles = new HashSet<TableInfo.Index>(0);
@@ -171,8 +171,8 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingVehicles);
         }
         final HashMap<String, TableInfo.Column> _columnsSmallEquipment = new HashMap<String, TableInfo.Column>(2);
-        _columnsSmallEquipment.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsSmallEquipment.put("serial_Number", new TableInfo.Column("serial_Number", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSmallEquipment.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSmallEquipment.put("serial_Number", new TableInfo.Column("serial_Number", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysSmallEquipment = new HashSet<TableInfo.ForeignKey>(1);
         _foreignKeysSmallEquipment.add(new TableInfo.ForeignKey("Asset", "CASCADE", "CASCADE", Arrays.asList("uid"), Arrays.asList("uid")));
         final HashSet<TableInfo.Index> _indicesSmallEquipment = new HashSet<TableInfo.Index>(0);
@@ -184,8 +184,8 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingSmallEquipment);
         }
         final HashMap<String, TableInfo.Column> _columnsLargeEquipment = new HashMap<String, TableInfo.Column>(2);
-        _columnsLargeEquipment.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsLargeEquipment.put("vin", new TableInfo.Column("vin", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsLargeEquipment.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsLargeEquipment.put("vin", new TableInfo.Column("vin", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysLargeEquipment = new HashSet<TableInfo.ForeignKey>(1);
         _foreignKeysLargeEquipment.add(new TableInfo.ForeignKey("Asset", "CASCADE", "CASCADE", Arrays.asList("uid"), Arrays.asList("uid")));
         final HashSet<TableInfo.Index> _indicesLargeEquipment = new HashSet<TableInfo.Index>(0);
@@ -197,7 +197,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingLargeEquipment);
         }
         final HashMap<String, TableInfo.Column> _columnsTask = new HashMap<String, TableInfo.Column>(12);
-        _columnsTask.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTask.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTask.put("taskName", new TableInfo.Column("taskName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTask.put("description", new TableInfo.Column("description", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTask.put("time_stamp", new TableInfo.Column("time_stamp", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -219,7 +219,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingTask);
         }
         final HashMap<String, TableInfo.Column> _columnsTaskSync = new HashMap<String, TableInfo.Column>(2);
-        _columnsTaskSync.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTaskSync.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTaskSync.put("synctimestamp", new TableInfo.Column("synctimestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysTaskSync = new HashSet<TableInfo.ForeignKey>(1);
         _foreignKeysTaskSync.add(new TableInfo.ForeignKey("Task", "CASCADE", "CASCADE", Arrays.asList("uid"), Arrays.asList("uid")));
@@ -232,7 +232,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingTaskSync);
         }
         final HashMap<String, TableInfo.Column> _columnsFields = new HashMap<String, TableInfo.Column>(4);
-        _columnsFields.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFields.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsFields.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsFields.put("points", new TableInfo.Column("points", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsFields.put("global_Id", new TableInfo.Column("global_Id", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -246,8 +246,8 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingFields);
         }
         final HashMap<String, TableInfo.Column> _columnsFieldSync = new HashMap<String, TableInfo.Column>(2);
-        _columnsFieldSync.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsFieldSync.put("synctimestamp", new TableInfo.Column("synctimestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFieldSync.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFieldSync.put("synctimestamp", new TableInfo.Column("synctimestamp", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysFieldSync = new HashSet<TableInfo.ForeignKey>(1);
         _foreignKeysFieldSync.add(new TableInfo.ForeignKey("Fields", "CASCADE", "CASCADE", Arrays.asList("uid"), Arrays.asList("uid")));
         final HashSet<TableInfo.Index> _indicesFieldSync = new HashSet<TableInfo.Index>(0);
@@ -259,7 +259,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingFieldSync);
         }
         final HashMap<String, TableInfo.Column> _columnsInventoryItem = new HashMap<String, TableInfo.Column>(11);
-        _columnsInventoryItem.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsInventoryItem.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsInventoryItem.put("item_Name", new TableInfo.Column("item_Name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsInventoryItem.put("stock_Keeping_Unit", new TableInfo.Column("stock_Keeping_Unit", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsInventoryItem.put("category", new TableInfo.Column("category", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -280,7 +280,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Found:\n" + _existingInventoryItem);
         }
         final HashMap<String, TableInfo.Column> _columnsInventorySync = new HashMap<String, TableInfo.Column>(2);
-        _columnsInventorySync.put("uid", new TableInfo.Column("uid", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsInventorySync.put("uid", new TableInfo.Column("uid", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsInventorySync.put("synctimestamp", new TableInfo.Column("synctimestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysInventorySync = new HashSet<TableInfo.ForeignKey>(1);
         _foreignKeysInventorySync.add(new TableInfo.ForeignKey("InventoryItem", "CASCADE", "CASCADE", Arrays.asList("uid"), Arrays.asList("uid")));
@@ -294,7 +294,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "bed711d521690aa11f563057d97fd1d3", "40d6b6c0d418f772ec6697a0f2186cfc");
+    }, "4ba363bf9bd0fec3f4a0e08478ad3299", "803cd70cd42d456cbb7545e862e3b6a0");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

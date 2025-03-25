@@ -3,11 +3,14 @@ package com.example.agdesk.DataLayer.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.agdesk.DataLayer.Converters.DatabaseConverter
+import java.util.UUID
 
 
 @Entity
 data class Asset(
-    @PrimaryKey(autoGenerate = true) val uid: Int,
+    @PrimaryKey @field:TypeConverters(DatabaseConverter::class) val uid: String,
     @ColumnInfo(name = "asset_Prefix") val assetPrefix: String?,
     @ColumnInfo(name = "asset_Name") val name: String?,
     @ColumnInfo(name = "manufacture") val manufac: String?,
