@@ -20,6 +20,7 @@ import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideAssetDaoFactory;
 import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideDatabaseFactory;
 import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideFeildDaoFactory;
 import com.example.agdesk.fragments.MapFragment;
+import com.example.agdesk.fragments.TasksFragment;
 import com.example.agdesk.repository.AssetRepository;
 import com.example.agdesk.repository.FieldRepository;
 import dagger.hilt.android.ActivityRetainedLifecycle;
@@ -323,6 +324,10 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     @Override
     public void injectMapFragment(MapFragment mapFragment) {
+    }
+
+    @Override
+    public void injectTasksFragment(TasksFragment tasksFragment) {
     }
 
     @Override

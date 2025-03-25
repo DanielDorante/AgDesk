@@ -15,10 +15,14 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
+
+//ViewModel for persisting state to the UI through configuration changes(rotate screen ect)
+//Also handles concurrency scope and thread for coroutines, Stops the Room Calls being called from Main
 @HiltViewModel
 class AssetViewModel @Inject constructor(private val assetRepository: AssetRepository): ViewModel() {
 
     private val _assets = MutableStateFlow<List<AssetModel>>(emptyList())
+    //state held here ready for collectors
     val assets: StateFlow<List<AssetModel>> = _assets.asStateFlow()
 
     init {
@@ -26,7 +30,7 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
     }
 
     fun insertAsssets(vararg assetModel: AssetModel) = viewModelScope.launch {
-        withContext(Dispatchers.IO) {
+        withContext(Dispatchers.IO) { //Executing jobs on the InputOutput Thread, good for database interaction
             assetRepository.insertAsset(*assetModel)
             loadAssets()
         }

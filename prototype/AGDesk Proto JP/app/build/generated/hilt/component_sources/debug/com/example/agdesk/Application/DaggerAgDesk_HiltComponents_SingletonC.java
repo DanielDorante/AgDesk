@@ -20,6 +20,7 @@ import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideAssetDaoFactory;
 import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideDatabaseFactory;
 import com.example.agdesk.diModulesHilt.DatabaseModule_ProvideFeildDaoFactory;
 import com.example.agdesk.fragments.MapFragment;
+import com.example.agdesk.fragments.TasksFragment;
 import com.example.agdesk.repository.AssetRepository;
 import com.example.agdesk.repository.FieldRepository;
 import dagger.hilt.android.ActivityRetainedLifecycle;
@@ -326,6 +327,10 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
     }
 
     @Override
+    public void injectTasksFragment(TasksFragment tasksFragment) {
+    }
+
+    @Override
     public DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory() {
       return activityCImpl.getHiltInternalFactoryFactory();
     }
@@ -465,15 +470,15 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_example_agdesk_ViewModels_AssetViewModel = "com.example.agdesk.ViewModels.AssetViewModel";
-
       static String com_example_agdesk_ViewModels_FieldViewModel = "com.example.agdesk.ViewModels.FieldViewModel";
 
-      @KeepFieldType
-      AssetViewModel com_example_agdesk_ViewModels_AssetViewModel2;
+      static String com_example_agdesk_ViewModels_AssetViewModel = "com.example.agdesk.ViewModels.AssetViewModel";
 
       @KeepFieldType
       FieldViewModel com_example_agdesk_ViewModels_FieldViewModel2;
+
+      @KeepFieldType
+      AssetViewModel com_example_agdesk_ViewModels_AssetViewModel2;
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {

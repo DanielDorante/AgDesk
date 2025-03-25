@@ -19,6 +19,7 @@ class FieldViewModel @Inject constructor(private val repository: FieldRepository
 
 
     private val _fields = MutableStateFlow<List<FieldsModel>>(emptyList())
+    //State held here for collectors
     val fields: StateFlow<List<FieldsModel>> = _fields.asStateFlow()
 
     init {
@@ -26,7 +27,7 @@ class FieldViewModel @Inject constructor(private val repository: FieldRepository
     }
 
     fun insertFields(vararg fields: FieldsModel) = viewModelScope.launch {
-        withContext(Dispatchers.IO) {
+        withContext(Dispatchers.IO) { //Executing jobs on the InputOutput Thread, good for database interaction
             repository.insertFields(*fields)
             loadFields()
         }
