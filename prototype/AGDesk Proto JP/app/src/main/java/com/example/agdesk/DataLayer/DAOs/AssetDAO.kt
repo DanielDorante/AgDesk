@@ -1,6 +1,7 @@
 package com.example.agdesk.DataLayer.DAOs
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -43,6 +44,9 @@ interface AssetDAO {
 
     @Update
     suspend fun updateAsset(asset: Asset)
+
+    @Delete
+    suspend fun deleteAsset(asset: Asset)
 
 }
 
