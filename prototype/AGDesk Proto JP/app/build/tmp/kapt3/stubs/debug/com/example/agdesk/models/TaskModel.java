@@ -1,18 +1,61 @@
 package com.example.agdesk.models;
 
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000 \n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0013\n\u0002\u0010\u000b\n\u0002\b\u0004\b\u0086\b\u0018\u00002\u00020\u0001B5\u0012\n\b\u0002\u0010\u0002\u001a\u0004\u0018\u00010\u0003\u0012\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\u0002\u0010\bJ\u0010\u0010\u0012\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003\u00a2\u0006\u0002\u0010\fJ\u000b\u0010\u0013\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u0010\u0014\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u0010\u0015\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J>\u0010\u0016\u001a\u00020\u00002\n\b\u0002\u0010\u0002\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\u0005H\u00c6\u0001\u00a2\u0006\u0002\u0010\u0017J\u0013\u0010\u0018\u001a\u00020\u00192\b\u0010\u001a\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u0010\u001b\u001a\u00020\u0003H\u00d6\u0001J\t\u0010\u001c\u001a\u00020\u0005H\u00d6\u0001R\u0013\u0010\u0006\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u001e\u0010\u0002\u001a\u0004\u0018\u00010\u0003X\u0086\u000e\u00a2\u0006\u0010\n\u0002\u0010\u000f\u001a\u0004\b\u000b\u0010\f\"\u0004\b\r\u0010\u000eR\u0013\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0010\u0010\nR\u0013\u0010\u0007\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0011\u0010\n\u00a8\u0006\u001d"}, d2 = {"Lcom/example/agdesk/models/TaskModel;", "", "id", "", "name", "", "date", "time", "(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getDate", "()Ljava/lang/String;", "getId", "()Ljava/lang/Integer;", "setId", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "getName", "getTime", "component1", "component2", "component3", "component4", "copy", "(Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/example/agdesk/models/TaskModel;", "equals", "", "other", "hashCode", "toString", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000b\n\u0002\b/\b\u0086\b\u0018\u00002\u00020\u0001B}\u0012\b\u0010\u0002\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\u0006\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\u0007\u001a\u0004\u0018\u00010\b\u0012\b\u0010\t\u001a\u0004\u0018\u00010\n\u0012\b\u0010\u000b\u001a\u0004\u0018\u00010\b\u0012\b\u0010\f\u001a\u0004\u0018\u00010\b\u0012\b\u0010\r\u001a\u0004\u0018\u00010\b\u0012\b\u0010\u000e\u001a\u0004\u0018\u00010\b\u0012\b\u0010\u000f\u001a\u0004\u0018\u00010\b\u0012\b\u0010\u0010\u001a\u0004\u0018\u00010\b\u0012\b\u0010\u0011\u001a\u0004\u0018\u00010\b\u00a2\u0006\u0002\u0010\u0012J\u000b\u0010\'\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0010\u0010(\u001a\u0004\u0018\u00010\bH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u0010)\u001a\u0004\u0018\u00010\bH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u0010*\u001a\u0004\u0018\u00010\bH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u000b\u0010+\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u0010,\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u0010\u0010-\u001a\u0004\u0018\u00010\bH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u0010.\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0017J\u0010\u0010/\u001a\u0004\u0018\u00010\bH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u00100\u001a\u0004\u0018\u00010\bH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u00101\u001a\u0004\u0018\u00010\bH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u00102\u001a\u0004\u0018\u00010\bH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u009e\u0001\u00103\u001a\u00020\u00002\n\b\u0002\u0010\u0002\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\b2\n\b\u0002\u0010\t\u001a\u0004\u0018\u00010\n2\n\b\u0002\u0010\u000b\u001a\u0004\u0018\u00010\b2\n\b\u0002\u0010\f\u001a\u0004\u0018\u00010\b2\n\b\u0002\u0010\r\u001a\u0004\u0018\u00010\b2\n\b\u0002\u0010\u000e\u001a\u0004\u0018\u00010\b2\n\b\u0002\u0010\u000f\u001a\u0004\u0018\u00010\b2\n\b\u0002\u0010\u0010\u001a\u0004\u0018\u00010\b2\n\b\u0002\u0010\u0011\u001a\u0004\u0018\u00010\bH\u00c6\u0001\u00a2\u0006\u0002\u00104J\u0013\u00105\u001a\u00020\n2\b\u00106\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u00107\u001a\u00020\bH\u00d6\u0001J\t\u00108\u001a\u00020\u0005H\u00d6\u0001R\u001a\u0010\u000f\u001a\u0004\u0018\u00010\b8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u0013\u0010\u0014R\u001a\u0010\t\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0018\u001a\u0004\b\u0016\u0010\u0017R\u0018\u0010\u0006\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u001aR\u001a\u0010\u000b\u001a\u0004\u0018\u00010\b8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u001b\u0010\u0014R\u001a\u0010\f\u001a\u0004\u0018\u00010\b8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u001c\u0010\u0014R\u001a\u0010\u0010\u001a\u0004\u0018\u00010\b8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u001d\u0010\u0014R\u0018\u0010\u0004\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001e\u0010\u001aR\u001a\u0010\u000e\u001a\u0004\u0018\u00010\b8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u001f\u0010\u0014R\u001a\u0010\r\u001a\u0004\u0018\u00010\b8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b \u0010\u0014R\u001a\u0010\u0011\u001a\u0004\u0018\u00010\b8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b!\u0010\u0014R\u001a\u0010\u0007\u001a\u0004\u0018\u00010\b8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\"\u0010\u0014R \u0010\u0002\u001a\u0004\u0018\u00010\u00038\u0006@\u0006X\u0087\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b#\u0010$\"\u0004\b%\u0010&\u00a8\u00069"}, d2 = {"Lcom/example/agdesk/models/TaskModel;", "", "uid", "Ljava/util/UUID;", "name", "", "desc", "timestamp", "", "del", "", "due", "exp", "status", "priority", "assigned", "farm", "syncid", "(Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V", "getAssigned", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "getDel", "()Ljava/lang/Boolean;", "Ljava/lang/Boolean;", "getDesc", "()Ljava/lang/String;", "getDue", "getExp", "getFarm", "getName", "getPriority", "getStatus", "getSyncid", "getTimestamp", "getUid", "()Ljava/util/UUID;", "setUid", "(Ljava/util/UUID;)V", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Lcom/example/agdesk/models/TaskModel;", "equals", "other", "hashCode", "toString", "app_debug"})
 public final class TaskModel {
+    @androidx.room.TypeConverters(value = {com.example.agdesk.DataLayer.Converters.DatabaseConverter.class})
     @org.jetbrains.annotations.Nullable()
-    private java.lang.Integer id;
+    private java.util.UUID uid;
+    @androidx.room.ColumnInfo(name = "taskName")
     @org.jetbrains.annotations.Nullable()
     private final java.lang.String name = null;
+    @androidx.room.ColumnInfo(name = "description")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.String date = null;
+    private final java.lang.String desc = null;
+    @androidx.room.ColumnInfo(name = "time_stamp")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.String time = null;
+    private final java.lang.Integer timestamp = null;
+    @androidx.room.ColumnInfo(name = "is_Delete")
+    @org.jetbrains.annotations.Nullable()
+    private final java.lang.Boolean del = null;
+    @androidx.room.ColumnInfo(name = "due_Date")
+    @org.jetbrains.annotations.Nullable()
+    private final java.lang.Integer due = null;
+    @androidx.room.ColumnInfo(name = "expire_Date")
+    @org.jetbrains.annotations.Nullable()
+    private final java.lang.Integer exp = null;
+    @androidx.room.ColumnInfo(name = "status")
+    @org.jetbrains.annotations.Nullable()
+    private final java.lang.Integer status = null;
+    @androidx.room.ColumnInfo(name = "priority")
+    @org.jetbrains.annotations.Nullable()
+    private final java.lang.Integer priority = null;
+    @androidx.room.ColumnInfo(name = "assigned_To")
+    @org.jetbrains.annotations.Nullable()
+    private final java.lang.Integer assigned = null;
+    @androidx.room.ColumnInfo(name = "farm_Id")
+    @org.jetbrains.annotations.Nullable()
+    private final java.lang.Integer farm = null;
+    @androidx.room.ColumnInfo(name = "global_Id")
+    @org.jetbrains.annotations.Nullable()
+    private final java.lang.Integer syncid = null;
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component1() {
+    public final java.util.UUID component1() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer component10() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer component11() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer component12() {
         return null;
     }
     
@@ -27,16 +70,49 @@ public final class TaskModel {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.String component4() {
+    public final java.lang.Integer component4() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Boolean component5() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer component6() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer component7() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer component8() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer component9() {
         return null;
     }
     
     @org.jetbrains.annotations.NotNull()
     public final com.example.agdesk.models.TaskModel copy(@org.jetbrains.annotations.Nullable()
-    java.lang.Integer id, @org.jetbrains.annotations.Nullable()
+    java.util.UUID uid, @org.jetbrains.annotations.Nullable()
     java.lang.String name, @org.jetbrains.annotations.Nullable()
-    java.lang.String date, @org.jetbrains.annotations.Nullable()
-    java.lang.String time) {
+    java.lang.String desc, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer timestamp, @org.jetbrains.annotations.Nullable()
+    java.lang.Boolean del, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer due, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer exp, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer status, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer priority, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer assigned, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer farm, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer syncid) {
         return null;
     }
     
@@ -58,20 +134,28 @@ public final class TaskModel {
     }
     
     public TaskModel(@org.jetbrains.annotations.Nullable()
-    java.lang.Integer id, @org.jetbrains.annotations.Nullable()
+    java.util.UUID uid, @org.jetbrains.annotations.Nullable()
     java.lang.String name, @org.jetbrains.annotations.Nullable()
-    java.lang.String date, @org.jetbrains.annotations.Nullable()
-    java.lang.String time) {
+    java.lang.String desc, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer timestamp, @org.jetbrains.annotations.Nullable()
+    java.lang.Boolean del, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer due, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer exp, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer status, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer priority, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer assigned, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer farm, @org.jetbrains.annotations.Nullable()
+    java.lang.Integer syncid) {
         super();
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getId() {
+    public final java.util.UUID getUid() {
         return null;
     }
     
-    public final void setId(@org.jetbrains.annotations.Nullable()
-    java.lang.Integer p0) {
+    public final void setUid(@org.jetbrains.annotations.Nullable()
+    java.util.UUID p0) {
     }
     
     @org.jetbrains.annotations.Nullable()
@@ -80,16 +164,52 @@ public final class TaskModel {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.String getDate() {
+    public final java.lang.String getDesc() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.String getTime() {
+    public final java.lang.Integer getTimestamp() {
         return null;
     }
     
-    public TaskModel() {
-        super();
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Boolean getDel() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer getDue() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer getExp() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer getStatus() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer getPriority() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer getAssigned() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer getFarm() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Integer getSyncid() {
+        return null;
     }
 }

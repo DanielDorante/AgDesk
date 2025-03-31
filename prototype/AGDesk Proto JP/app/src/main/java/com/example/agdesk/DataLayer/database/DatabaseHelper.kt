@@ -139,7 +139,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val name = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_NAME))
                 val date = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_DATE))
                 val time = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_TIME))
-                tasks.add(TaskModel(id, name, date, time))
+                //tasks.add(TaskModel(id, name, date, time)) obsolete
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -177,7 +177,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val name = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_NAME))
                 val date = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_DATE))
                 val time = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_TIME))
-                tasks.add(TaskModel(id, name, date, time))
+                //tasks.add(TaskModel(id, name, date, time))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -215,7 +215,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val name = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_NAME))
                 val date = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_DATE))
                 val time = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_TIME))
-                tasks.add(TaskModel(id, name, date, time))
+                //tasks.add(TaskModel(id, name, date, time))
             } while (cursor.moveToNext())
         }
         cursor.close()

@@ -11,10 +11,10 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter;
-import com.example.agdesk.DataLayer.entities.Asset;
-import com.example.agdesk.DataLayer.entities.LargeEquipment;
-import com.example.agdesk.DataLayer.entities.SmallEquipment;
-import com.example.agdesk.DataLayer.entities.Vehicle;
+import com.example.agdesk.DataLayer.entities.Asset.Asset;
+import com.example.agdesk.DataLayer.entities.Asset.LargeEquipment;
+import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment;
+import com.example.agdesk.DataLayer.entities.Asset.Vehicle;
 import com.example.agdesk.DataLayer.entities.sync.AssetSync;
 import com.example.agdesk.models.AssetModel;
 import java.lang.Class;
@@ -47,6 +47,8 @@ public final class AssetDAO_Impl implements AssetDAO {
   private final EntityInsertionAdapter<SmallEquipment> __insertionAdapterOfSmallEquipment;
 
   private final EntityInsertionAdapter<LargeEquipment> __insertionAdapterOfLargeEquipment;
+
+  private final EntityDeletionOrUpdateAdapter<Asset> __deletionAdapterOfAsset;
 
   private final EntityDeletionOrUpdateAdapter<Asset> __updateAdapterOfAsset;
 
@@ -190,6 +192,19 @@ public final class AssetDAO_Impl implements AssetDAO {
         } else {
           statement.bindLong(2, entity.getVin());
         }
+      }
+    };
+    this.__deletionAdapterOfAsset = new EntityDeletionOrUpdateAdapter<Asset>(__db) {
+      @Override
+      @NonNull
+      protected String createQuery() {
+        return "DELETE FROM `Asset` WHERE `uid` = ?";
+      }
+
+      @Override
+      protected void bind(@NonNull final SupportSQLiteStatement statement,
+          @NonNull final Asset entity) {
+        statement.bindString(1, entity.getUid());
       }
     };
     this.__updateAdapterOfAsset = new EntityDeletionOrUpdateAdapter<Asset>(__db) {
@@ -344,6 +359,24 @@ public final class AssetDAO_Impl implements AssetDAO {
         __db.beginTransaction();
         try {
           __insertionAdapterOfLargeEquipment.insert(largeEquipment);
+          __db.setTransactionSuccessful();
+          return Unit.INSTANCE;
+        } finally {
+          __db.endTransaction();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object deleteAsset(final Asset asset, final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        __db.beginTransaction();
+        try {
+          __deletionAdapterOfAsset.handle(asset);
           __db.setTransactionSuccessful();
           return Unit.INSTANCE;
         } finally {

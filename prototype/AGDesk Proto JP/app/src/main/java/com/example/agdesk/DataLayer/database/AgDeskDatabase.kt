@@ -8,13 +8,13 @@ import com.example.agdesk.DataLayer.DAOs.AssetDAO
 import com.example.agdesk.DataLayer.DAOs.FieldDAO
 import com.example.agdesk.DataLayer.DAOs.InventoryDAO
 import com.example.agdesk.DataLayer.DAOs.TaskDAO
-import com.example.agdesk.DataLayer.entities.Asset
+import com.example.agdesk.DataLayer.entities.Asset.*
 import com.example.agdesk.DataLayer.entities.Fields
 import com.example.agdesk.DataLayer.entities.InventoryItem
-import com.example.agdesk.DataLayer.entities.LargeEquipment
-import com.example.agdesk.DataLayer.entities.SmallEquipment
+import com.example.agdesk.DataLayer.entities.Asset.LargeEquipment
+import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment
 import com.example.agdesk.DataLayer.entities.Task
-import com.example.agdesk.DataLayer.entities.Vehicle
+import com.example.agdesk.DataLayer.entities.Asset.Vehicle
 import com.example.agdesk.DataLayer.entities.sync.AssetSync
 import com.example.agdesk.DataLayer.entities.sync.FieldSync
 import com.example.agdesk.DataLayer.entities.sync.InventorySync
