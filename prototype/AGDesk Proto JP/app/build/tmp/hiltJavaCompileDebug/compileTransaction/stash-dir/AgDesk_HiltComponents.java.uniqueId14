@@ -4,6 +4,7 @@ import com.example.agdesk.MainActivity_GeneratedInjector;
 import com.example.agdesk.SplashScreen_GeneratedInjector;
 import com.example.agdesk.ViewModels.AssetViewModel_HiltModules;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules;
+import com.example.agdesk.ViewModels.TaskViewModel_HiltModules;
 import com.example.agdesk.diModulesHilt.DatabaseModule;
 import com.example.agdesk.fragments.MapFragment_GeneratedInjector;
 import com.example.agdesk.fragments.TasksFragment_GeneratedInjector;
@@ -154,7 +155,8 @@ public final class AgDesk_HiltComponents {
           AssetViewModel_HiltModules.KeyModule.class,
           FieldViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
-          HiltWrapper_SavedStateHandleModule.class
+          HiltWrapper_SavedStateHandleModule.class,
+          TaskViewModel_HiltModules.KeyModule.class
       }
   )
   @ActivityRetainedScoped
@@ -193,7 +195,8 @@ public final class AgDesk_HiltComponents {
       modules = {
           AssetViewModel_HiltModules.BindsModule.class,
           FieldViewModel_HiltModules.BindsModule.class,
-          HiltWrapper_HiltViewModelFactory_ViewModelModule.class
+          HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
+          TaskViewModel_HiltModules.BindsModule.class
       }
   )
   @ViewModelScoped

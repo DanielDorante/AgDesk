@@ -3,7 +3,7 @@ package com.example.agdesk.repository
 import android.util.Log
 import androidx.annotation.WorkerThread
 import com.example.agdesk.DataLayer.DAOs.AssetDAO
-import com.example.agdesk.DataLayer.entities.Asset
+import com.example.agdesk.DataLayer.entities.Asset.*
 import com.example.agdesk.DataLayer.entities.Asset.LargeEquipment
 import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment
 import com.example.agdesk.DataLayer.entities.Asset.Vehicle

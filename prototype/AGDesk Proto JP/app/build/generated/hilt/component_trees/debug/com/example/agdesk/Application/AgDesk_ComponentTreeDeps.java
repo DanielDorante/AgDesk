@@ -24,6 +24,8 @@ import hilt_aggregated_deps._com_example_agdesk_ViewModels_AssetViewModel_HiltMo
 import hilt_aggregated_deps._com_example_agdesk_ViewModels_AssetViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._com_example_agdesk_ViewModels_FieldViewModel_HiltModules_BindsModule;
 import hilt_aggregated_deps._com_example_agdesk_ViewModels_FieldViewModel_HiltModules_KeyModule;
+import hilt_aggregated_deps._com_example_agdesk_ViewModels_TaskViewModel_HiltModules_BindsModule;
+import hilt_aggregated_deps._com_example_agdesk_ViewModels_TaskViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._com_example_agdesk_diModulesHilt_DatabaseModule;
 import hilt_aggregated_deps._com_example_agdesk_fragments_MapFragment_GeneratedInjector;
 import hilt_aggregated_deps._com_example_agdesk_fragments_TasksFragment_GeneratedInjector;
@@ -74,6 +76,8 @@ import hilt_aggregated_deps._dagger_hilt_android_internal_modules_HiltWrapper_Ac
         _com_example_agdesk_ViewModels_AssetViewModel_HiltModules_KeyModule.class,
         _com_example_agdesk_ViewModels_FieldViewModel_HiltModules_BindsModule.class,
         _com_example_agdesk_ViewModels_FieldViewModel_HiltModules_KeyModule.class,
+        _com_example_agdesk_ViewModels_TaskViewModel_HiltModules_BindsModule.class,
+        _com_example_agdesk_ViewModels_TaskViewModel_HiltModules_KeyModule.class,
         _com_example_agdesk_diModulesHilt_DatabaseModule.class,
         _com_example_agdesk_fragments_MapFragment_GeneratedInjector.class,
         _com_example_agdesk_fragments_TasksFragment_GeneratedInjector.class,

@@ -3,7 +3,7 @@ package com.example.agdesk.repository
 import android.util.Log
 import androidx.annotation.WorkerThread
 import com.example.agdesk.DataLayer.DAOs.TaskDAO
-import com.example.agdesk.DataLayer.entities.Asset
+import com.example.agdesk.DataLayer.entities.Asset.*
 import com.example.agdesk.DataLayer.entities.Asset.LargeEquipment
 import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment
 import com.example.agdesk.DataLayer.entities.Task
@@ -32,7 +32,7 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO){
             //for the child tables. Autogenerate an int would be a pain to link it seems.
             //cons for UUID is primarily storage, as the primary keys are indexed so query speed should be no issue
             val uuid = UUID.randomUUID().toString()
-            val task = Task(uuid, e.name, e.desc, e.timestamp, false, e.due, e.exp, e.status, e.priority, e.assigned, e.farm, e.syncid)
+            val task = Task(uuid, e.name, e.desc, e.timestamp, false, e.due, e.exp, e.status, e.priority, e.assignedId, e.farm, e.syncid)
             //When coming from the user the syncId SHOULD be null, when coming from the network sync it should be known.
             if (e.syncid == null) {
                 val taskOffline = TaskSync(uuid, System.currentTimeMillis().toString())
@@ -51,15 +51,15 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO){
 
 
     @WorkerThread
-    suspend fun updateTask(taskModel: TaskModel) {
-        // if the id is null the value hasn't been initalised
+    suspend fun updateTask(taskModel: TaskModel) { //Expects an existing task model with valid id
+        // if the id is null the value hasn't been initialised
         //possible revision for network sync????
         if (taskModel.uid == null) {
             Log.d("UpdateTask", "UpdateFailed: uid is null, cannot locate local asset")
             return
         }
         val taskOffline = TaskSync(taskModel.uid.toString(), System.currentTimeMillis().toString())
-        taskDAO.updateTask(Task(taskModel.uid.toString(),  taskModel.name, taskModel.desc, taskModel.timestamp, false, taskModel.due, taskModel.exp, taskModel.status, taskModel.priority, taskModel.assigned, taskModel.farm, taskModel.syncid))
+        taskDAO.updateTask(Task(taskModel.uid.toString(),  taskModel.name, taskModel.desc, taskModel.timestamp, false, taskModel.due, taskModel.exp, taskModel.status, taskModel.priority, taskModel.assignedId, taskModel.farm, taskModel.syncid))
         taskDAO.insertSync(taskOffline)
     }
 }

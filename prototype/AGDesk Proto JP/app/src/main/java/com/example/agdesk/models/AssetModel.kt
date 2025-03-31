@@ -3,6 +3,7 @@ package com.example.agdesk.models
 import androidx.room.ColumnInfo
 import androidx.room.TypeConverters
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter
+import org.jetbrains.annotations.ApiStatus
 import java.util.UUID
 
 //Model to hold data for interaction with the UI layer and ViewModel/ Maybe network repository
@@ -21,4 +22,6 @@ data class AssetModel(
     @ColumnInfo(name = "serial_Number") val serialNo: Int?,
     @ColumnInfo(name = "registration") val reg: Int?,
     @ColumnInfo(name = "global_Id") val syncId: Int?, //incremented Id from the master database. used for syncing purposes
+    val checkoutStatus: Boolean?,// TO BE IMPLEMENTED
+    val checkoutBy: String?, // TO BE IMPLEMENTED, will be a name of user who checked out
     )

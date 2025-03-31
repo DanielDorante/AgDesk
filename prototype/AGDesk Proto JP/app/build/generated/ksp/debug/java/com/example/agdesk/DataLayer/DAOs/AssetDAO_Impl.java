@@ -497,7 +497,7 @@ public final class AssetDAO_Impl implements AssetDAO {
         } else {
           _tmpSyncId = _cursor.getInt(_cursorIndexOfSyncId);
         }
-        _item = new AssetModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,null,null,null,_tmpSyncId);
+        _item = new AssetModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,null,null,null,_tmpSyncId,null,null);
         _result.add(_item);
       }
       return _result;
@@ -607,7 +607,7 @@ public final class AssetDAO_Impl implements AssetDAO {
         } else {
           _tmpVin = _cursor.getInt(_cursorIndexOfVin);
         }
-        _item = new AssetModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,_tmpVin,null,null,_tmpSyncId);
+        _item = new AssetModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,_tmpVin,null,null,_tmpSyncId,null,null);
         _result.add(_item);
       }
       return _result;
@@ -717,7 +717,7 @@ public final class AssetDAO_Impl implements AssetDAO {
         } else {
           _tmpSerialNo = _cursor.getInt(_cursorIndexOfSerialNo);
         }
-        _item = new AssetModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,null,_tmpSerialNo,null,_tmpSyncId);
+        _item = new AssetModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,null,_tmpSerialNo,null,_tmpSyncId,null,null);
         _result.add(_item);
       }
       return _result;
@@ -834,7 +834,7 @@ public final class AssetDAO_Impl implements AssetDAO {
         } else {
           _tmpReg = _cursor.getInt(_cursorIndexOfReg);
         }
-        _item = new AssetModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,_tmpVin,null,_tmpReg,_tmpSyncId);
+        _item = new AssetModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,_tmpVin,null,_tmpReg,_tmpSyncId,null,null);
         _result.add(_item);
       }
       return _result;

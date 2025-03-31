@@ -309,7 +309,6 @@ public final class TaskDAO_Impl implements TaskDAO {
           final int _cursorIndexOfExp = CursorUtil.getColumnIndexOrThrow(_cursor, "expire_Date");
           final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
           final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
-          final int _cursorIndexOfAssigned = CursorUtil.getColumnIndexOrThrow(_cursor, "assigned_To");
           final int _cursorIndexOfFarm = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
           final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
           final List<TaskModel> _result = new ArrayList<TaskModel>(_cursor.getCount());
@@ -377,12 +376,6 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpPriority = _cursor.getInt(_cursorIndexOfPriority);
             }
-            final Integer _tmpAssigned;
-            if (_cursor.isNull(_cursorIndexOfAssigned)) {
-              _tmpAssigned = null;
-            } else {
-              _tmpAssigned = _cursor.getInt(_cursorIndexOfAssigned);
-            }
             final Integer _tmpFarm;
             if (_cursor.isNull(_cursorIndexOfFarm)) {
               _tmpFarm = null;
@@ -395,7 +388,7 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpSyncid = _cursor.getInt(_cursorIndexOfSyncid);
             }
-            _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssigned,_tmpFarm,_tmpSyncid);
+            _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,null,null,_tmpFarm,_tmpSyncid);
             _result.add(_item);
           }
           return _result;
