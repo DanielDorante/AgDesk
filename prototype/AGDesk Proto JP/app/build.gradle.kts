@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp") apply true
+    id("kotlin-kapt") apply true
+    id("com.google.dagger.hilt.android") apply true
 }
 
 android {
@@ -39,7 +42,18 @@ android {
 }
 
 dependencies {
+    //val room_version = "2.6.1"
 
+    implementation(libs.hilt.android.v2511)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.room.runtime)
+
+
+    ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -60,3 +74,4 @@ dependencies {
 
 
 }
+

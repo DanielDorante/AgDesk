@@ -1,6 +1,7 @@
 package com.example.agdesk.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,23 +9,32 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agdesk.R
 import com.example.agdesk.adapters.DateAdapter
 import com.example.agdesk.adapters.TasksAdapter
-import com.example.agdesk.database.DatabaseHelper
+import com.example.agdesk.DataLayer.database.DatabaseHelper
+import com.example.agdesk.ViewModels.AssetViewModel
+import com.example.agdesk.ViewModels.FieldViewModel
 import com.example.agdesk.databinding.FragmentTasksBinding
+import com.example.agdesk.models.AssetModel
 import com.example.agdesk.models.TaskModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-
+@AndroidEntryPoint
 class TasksFragment : Fragment() {
-
+    private val assetViewModel: AssetViewModel by viewModels()
     private var _binding: FragmentTasksBinding? = null
     private val binding get() = _binding!!
     var adapter: DateAdapter? = null
@@ -47,6 +57,12 @@ class TasksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
+
+
 
         databaseHelper = DatabaseHelper(requireContext())
         setDatePicker()

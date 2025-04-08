@@ -46,8 +46,8 @@ class TasksAdapter(
 
         fun bind(task: TaskModel) {
             tvName.text = task.name
-            tvTaskDate.text = formatDate(task.date.toString())
-            tvTaskTime.text = task.time
+            //tvTaskDate.text = formatDate(task.date.toString())
+            //tvTaskTime.text = task.time //Needs Reformating to fit new TaskModel
 
         }
 
