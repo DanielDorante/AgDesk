@@ -8,6 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agdesk.R
 import com.example.agdesk.models.InventoryModel
+import com.example.agdesk.models.TaskModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class InventoryAdapter(
     private var inventoryList: List<InventoryModel>,

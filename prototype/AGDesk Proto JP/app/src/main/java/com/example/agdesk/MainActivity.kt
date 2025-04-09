@@ -1,16 +1,39 @@
 package com.example.agdesk
 
+import android.content.Context
 import android.os.Bundle
+import androidx.activity.viewModels
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.agdesk.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
+import com.example.agdesk.ViewModels.FieldViewModel
+import com.example.agdesk.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+
+
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.agdesk.Application.AgDesk
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+
+
+
     private lateinit var binding: ActivityMainBinding
+    private val fieldViewModel: FieldViewModel by viewModels()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +48,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home,
-                R.id.navigation_tasks,
-                R.id.navigation_inventory,
-                R.id.navigation_assets,
-                R.id.navigation_map
+                R.id.navigation_home, R.id.navigation_tasks, R.id.navigation_inventory,R.id.navigation_map
             )
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
