@@ -14,9 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.agdesk.R
 import com.example.agdesk.adapters.InventoryAdapter
-import com.example.agdesk.database.DatabaseHelper
+import com.example.agdesk.DataLayer.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentInventoryBinding
-import com.example.agdesk.models.HelperClass
 import com.example.agdesk.models.InventoryModel
 import com.google.android.material.button.MaterialButton
 import java.util.Locale
@@ -45,7 +44,7 @@ class InventoryFragment : Fragment() {
 
         dbHelper = DatabaseHelper(requireContext())
         listOfInventories.clear()
-        listOfInventories.addAll(dbHelper?.getAllInventories(HelperClass.users?.id.toString())!!)
+        listOfInventories.addAll(dbHelper?.getAllInventories()!!)
         setAdapter()
         setSortSpinner()
         binding.fabAddInventory.setOnClickListener {
@@ -99,11 +98,11 @@ class InventoryFragment : Fragment() {
             val quantity = etQuantity.text.toString().trim()
 
             if (name.isNotEmpty() && quantity.isNotEmpty()) {
-                val inventoryItem = InventoryModel(userId = HelperClass.users?.id.toString(), name = name, quantity = quantity)
+                val inventoryItem = InventoryModel(name = name, quantity = quantity)
                 dbHelper?.addInventory(inventoryItem)
                 dialog.dismiss()
                 listOfInventories.clear()
-                listOfInventories.addAll(dbHelper?.getAllInventories(HelperClass.users?.id.toString())!!)
+                listOfInventories.addAll(dbHelper?.getAllInventories()!!)
                 inventoryAdapter.setList(listOfInventories)
                 Toast.makeText(requireContext(), "Inventory added successfully", Toast.LENGTH_SHORT).show()
             } else {

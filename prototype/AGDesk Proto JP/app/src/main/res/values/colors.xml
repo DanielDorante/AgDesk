@@ -9,12 +9,7 @@
     <color name="unblack">#4F4A4B4D</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#E9DADA</color>
-    <color name="gray_text">#666666</color>
-    <color name="text_light_color">#454567</color>
-    <color name="gray_card">#80F0F0E9</color>
     <color name="main">#2FC66B</color>
     <color name="dark_main">#00923A</color>
     <color name="textColor">#153853</color>
-    <color name="item_bg_green">#732AAE37</color>
-    <color name="red">#F44336</color>
 </resources>
