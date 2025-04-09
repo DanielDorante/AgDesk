@@ -1,47 +1,22 @@
 package com.example.agdesk
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
-import com.example.agdesk.Application.AgDesk
-import com.example.agdesk.DataLayer.database.AgDeskDatabase
-import com.example.agdesk.ViewModels.FieldViewModel
-import com.example.agdesk.databinding.ActivityMainBinding
 import com.example.agdesk.databinding.ActivitySplashScreenBinding
-import dagger.hilt.android.AndroidEntryPoint
-import com.example.agdesk.diModulesHilt.DatabaseModule
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-@AndroidEntryPoint
 class SplashScreen : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
-
-
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoadingActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000)

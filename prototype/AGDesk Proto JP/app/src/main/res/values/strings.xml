@@ -5,6 +5,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="tasks">Tasks</string>
     <string name="inventory">Inventory</string>
+    <string name="assets">Assets</string>
     <string name="map">Map</string>
     <string name="add_field">Add Field</string>
     <string-array name="task_sort_list">
