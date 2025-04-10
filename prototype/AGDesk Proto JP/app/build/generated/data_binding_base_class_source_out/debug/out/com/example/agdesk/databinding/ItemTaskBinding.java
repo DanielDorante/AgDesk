@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -27,6 +28,9 @@ public final class ItemTaskBinding implements ViewBinding {
   public final ImageView ivImage;
 
   @NonNull
+  public final RelativeLayout rlItemTask;
+
+  @NonNull
   public final AppCompatTextView tvName;
 
   @NonNull
@@ -36,11 +40,13 @@ public final class ItemTaskBinding implements ViewBinding {
   public final AppCompatTextView tvTaskTime;
 
   private ItemTaskBinding(@NonNull CardView rootView, @NonNull CardView cvDate,
-      @NonNull ImageView ivImage, @NonNull AppCompatTextView tvName,
-      @NonNull AppCompatTextView tvTaskDate, @NonNull AppCompatTextView tvTaskTime) {
+      @NonNull ImageView ivImage, @NonNull RelativeLayout rlItemTask,
+      @NonNull AppCompatTextView tvName, @NonNull AppCompatTextView tvTaskDate,
+      @NonNull AppCompatTextView tvTaskTime) {
     this.rootView = rootView;
     this.cvDate = cvDate;
     this.ivImage = ivImage;
+    this.rlItemTask = rlItemTask;
     this.tvName = tvName;
     this.tvTaskDate = tvTaskDate;
     this.tvTaskTime = tvTaskTime;
@@ -85,6 +91,12 @@ public final class ItemTaskBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rlItemTask;
+      RelativeLayout rlItemTask = ViewBindings.findChildViewById(rootView, id);
+      if (rlItemTask == null) {
+        break missingId;
+      }
+
       id = R.id.tvName;
       AppCompatTextView tvName = ViewBindings.findChildViewById(rootView, id);
       if (tvName == null) {
@@ -103,8 +115,8 @@ public final class ItemTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemTaskBinding((CardView) rootView, cvDate, ivImage, tvName, tvTaskDate,
-          tvTaskTime);
+      return new ItemTaskBinding((CardView) rootView, cvDate, ivImage, rlItemTask, tvName,
+          tvTaskDate, tvTaskTime);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

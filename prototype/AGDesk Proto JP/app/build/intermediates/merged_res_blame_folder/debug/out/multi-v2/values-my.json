@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-50:/values-my/values-my.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-52:/values-my/values-my.xml",
             "map": [
                 {
                     "source": "/Users/JackPate_1/.gradle/caches/transforms-4/5db0d28f2e65140675e1a3324cb3f087/transformed/navigation-ui-2.7.7/res/values-my/values-my.xml",

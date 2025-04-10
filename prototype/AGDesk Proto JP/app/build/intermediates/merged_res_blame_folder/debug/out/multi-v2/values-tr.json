@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-50:/values-tr/values-tr.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-52:/values-tr/values-tr.xml",
             "map": [
                 {
                     "source": "/Users/JackPate_1/.gradle/caches/transforms-4/98ff34916ffdd123b40e84d037b865ba/transformed/appcompat-1.7.0/res/values-tr/values-tr.xml",
@@ -52,6 +52,23 @@
                         "startOffsets": "5443",
                         "endColumns": "146",
                         "endOffsets": "5585"
+                    }
+                },
+                {
+                    "source": "/Users/JackPate_1/.gradle/caches/transforms-4/974348fdc067346832d98a2dc32bebc4/transformed/zxing-android-embedded-4.3.0/res/values-tr/values-tr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,116,166,313",
+                        "endColumns": "60,49,146,119",
+                        "endOffsets": "111,161,308,428"
+                    },
+                    "to": {
+                        "startLines": "137,138,139,140",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "12316,12377,12427,12574",
+                        "endColumns": "60,49,146,119",
+                        "endOffsets": "12372,12422,12569,12689"
                     }
                 },
                 {

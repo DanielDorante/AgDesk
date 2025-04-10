@@ -11,6 +11,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:id="@+id/rlItemTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#732AAE37"
@@ -72,7 +73,7 @@
             android:textColor="@color/main"
             android:textSize="16sp"
             android:layout_alignParentEnd="true"/>
-        
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cvDate"
             android:layout_width="wrap_content"

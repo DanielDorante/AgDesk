@@ -55,6 +55,9 @@ dependencies {
     implementation (libs.play.services.maps)
     implementation (libs.material.v180)
     implementation (libs.androidx.sqlite)
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("com.google.zxing:core:3.4.1")
 
 
 

@@ -9,10 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.agdesk.R
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentAddTaskBinding
-import com.example.agdesk.models.TaskModel
+import com.example.agdesk.models.HelperClass
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -50,7 +49,7 @@ class AddTaskFragment : Fragment() {
         binding?.ivBack?.setOnClickListener { findNavController().navigateUp() }
         binding?.btnAddNow?.setOnClickListener {
             if (isValidated()) {
-                dbHelper?.addTask(name ?: "", date ?: "", time ?: "")
+                dbHelper?.addTask(HelperClass.users?.id.toString(), name ?: "", date ?: "", time ?: "")
                 showMessage("Task added successfully")
                 findNavController().navigateUp()
             }

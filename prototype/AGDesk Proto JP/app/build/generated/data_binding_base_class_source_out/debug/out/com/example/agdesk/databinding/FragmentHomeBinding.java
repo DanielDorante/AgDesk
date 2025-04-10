@@ -4,13 +4,17 @@ package com.example.agdesk.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.agdesk.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -20,11 +24,74 @@ public final class FragmentHomeBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final TextView textHome;
+  public final FloatingActionButton addTaskBtn;
 
-  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull TextView textHome) {
+  @NonNull
+  public final TextView appTitle;
+
+  @NonNull
+  public final LinearLayout headerLayout;
+
+  @NonNull
+  public final ImageView ivRiskPercentage;
+
+  @NonNull
+  public final ImageView profileImage;
+
+  @NonNull
+  public final RecyclerView recyclerTasks;
+
+  @NonNull
+  public final RecyclerView recyclerWeather;
+
+  @NonNull
+  public final TextView riskAlertMessage;
+
+  @NonNull
+  public final TextView riskAlertMessageDetal;
+
+  @NonNull
+  public final TextView riskPercentage;
+
+  @NonNull
+  public final ImageView settingsIcon;
+
+  @NonNull
+  public final TextView tasksTitle;
+
+  @NonNull
+  public final TextView tvViewAll;
+
+  @NonNull
+  public final LinearLayout weatherLayout;
+
+  @NonNull
+  public final TextView weatherOverviewTitle;
+
+  private FragmentHomeBinding(@NonNull ConstraintLayout rootView,
+      @NonNull FloatingActionButton addTaskBtn, @NonNull TextView appTitle,
+      @NonNull LinearLayout headerLayout, @NonNull ImageView ivRiskPercentage,
+      @NonNull ImageView profileImage, @NonNull RecyclerView recyclerTasks,
+      @NonNull RecyclerView recyclerWeather, @NonNull TextView riskAlertMessage,
+      @NonNull TextView riskAlertMessageDetal, @NonNull TextView riskPercentage,
+      @NonNull ImageView settingsIcon, @NonNull TextView tasksTitle, @NonNull TextView tvViewAll,
+      @NonNull LinearLayout weatherLayout, @NonNull TextView weatherOverviewTitle) {
     this.rootView = rootView;
-    this.textHome = textHome;
+    this.addTaskBtn = addTaskBtn;
+    this.appTitle = appTitle;
+    this.headerLayout = headerLayout;
+    this.ivRiskPercentage = ivRiskPercentage;
+    this.profileImage = profileImage;
+    this.recyclerTasks = recyclerTasks;
+    this.recyclerWeather = recyclerWeather;
+    this.riskAlertMessage = riskAlertMessage;
+    this.riskAlertMessageDetal = riskAlertMessageDetal;
+    this.riskPercentage = riskPercentage;
+    this.settingsIcon = settingsIcon;
+    this.tasksTitle = tasksTitle;
+    this.tvViewAll = tvViewAll;
+    this.weatherLayout = weatherLayout;
+    this.weatherOverviewTitle = weatherOverviewTitle;
   }
 
   @Override
@@ -54,13 +121,100 @@ public final class FragmentHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.text_home;
-      TextView textHome = ViewBindings.findChildViewById(rootView, id);
-      if (textHome == null) {
+      id = R.id.addTaskBtn;
+      FloatingActionButton addTaskBtn = ViewBindings.findChildViewById(rootView, id);
+      if (addTaskBtn == null) {
         break missingId;
       }
 
-      return new FragmentHomeBinding((ConstraintLayout) rootView, textHome);
+      id = R.id.appTitle;
+      TextView appTitle = ViewBindings.findChildViewById(rootView, id);
+      if (appTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.headerLayout;
+      LinearLayout headerLayout = ViewBindings.findChildViewById(rootView, id);
+      if (headerLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.ivRiskPercentage;
+      ImageView ivRiskPercentage = ViewBindings.findChildViewById(rootView, id);
+      if (ivRiskPercentage == null) {
+        break missingId;
+      }
+
+      id = R.id.profileImage;
+      ImageView profileImage = ViewBindings.findChildViewById(rootView, id);
+      if (profileImage == null) {
+        break missingId;
+      }
+
+      id = R.id.recyclerTasks;
+      RecyclerView recyclerTasks = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerTasks == null) {
+        break missingId;
+      }
+
+      id = R.id.recyclerWeather;
+      RecyclerView recyclerWeather = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerWeather == null) {
+        break missingId;
+      }
+
+      id = R.id.riskAlertMessage;
+      TextView riskAlertMessage = ViewBindings.findChildViewById(rootView, id);
+      if (riskAlertMessage == null) {
+        break missingId;
+      }
+
+      id = R.id.riskAlertMessageDetal;
+      TextView riskAlertMessageDetal = ViewBindings.findChildViewById(rootView, id);
+      if (riskAlertMessageDetal == null) {
+        break missingId;
+      }
+
+      id = R.id.riskPercentage;
+      TextView riskPercentage = ViewBindings.findChildViewById(rootView, id);
+      if (riskPercentage == null) {
+        break missingId;
+      }
+
+      id = R.id.settingsIcon;
+      ImageView settingsIcon = ViewBindings.findChildViewById(rootView, id);
+      if (settingsIcon == null) {
+        break missingId;
+      }
+
+      id = R.id.tasksTitle;
+      TextView tasksTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tasksTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvViewAll;
+      TextView tvViewAll = ViewBindings.findChildViewById(rootView, id);
+      if (tvViewAll == null) {
+        break missingId;
+      }
+
+      id = R.id.weatherLayout;
+      LinearLayout weatherLayout = ViewBindings.findChildViewById(rootView, id);
+      if (weatherLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.weatherOverviewTitle;
+      TextView weatherOverviewTitle = ViewBindings.findChildViewById(rootView, id);
+      if (weatherOverviewTitle == null) {
+        break missingId;
+      }
+
+      return new FragmentHomeBinding((ConstraintLayout) rootView, addTaskBtn, appTitle,
+          headerLayout, ivRiskPercentage, profileImage, recyclerTasks, recyclerWeather,
+          riskAlertMessage, riskAlertMessageDetal, riskPercentage, settingsIcon, tasksTitle,
+          tvViewAll, weatherLayout, weatherOverviewTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
