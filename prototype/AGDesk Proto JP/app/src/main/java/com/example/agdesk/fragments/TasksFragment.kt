@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +15,7 @@ import com.example.agdesk.adapters.DateAdapter
 import com.example.agdesk.adapters.TasksAdapter
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentTasksBinding
+import com.example.agdesk.models.HelperClass
 import com.example.agdesk.models.TaskModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -62,7 +62,7 @@ class TasksFragment : Fragment() {
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvTasks.layoutManager = layoutManager
-        taskAdapter = TasksAdapter(listOfTasks)
+        taskAdapter = TasksAdapter(listOfTasks, false)
         binding.rvTasks.adapter = taskAdapter
     }
 
@@ -85,19 +85,19 @@ class TasksFragment : Fragment() {
                 when (sortList[position]) {
                     "All" -> {
                         listOfTasks.clear()
-                        listOfTasks.addAll(databaseHelper.getAllTasks())
+                        listOfTasks.addAll(databaseHelper.getAllTasks(HelperClass.users?.id.toString()))
                         taskAdapter.setList(listOfTasks)
                     }
 
                     "Weekly" -> {
                         listOfTasks.clear()
-                        listOfTasks.addAll(databaseHelper.getWeeklyTasks())
+                        listOfTasks.addAll(databaseHelper.getWeeklyTasks(HelperClass.users?.id.toString()))
                         taskAdapter.setList(listOfTasks)
                     }
 
                     "Monthly" -> {
                         listOfTasks.clear()
-                        listOfTasks.addAll(databaseHelper.getMonthlyTasks())
+                        listOfTasks.addAll(databaseHelper.getMonthlyTasks(HelperClass.users?.id.toString()))
                         taskAdapter.setList(listOfTasks)
                     }
                 }

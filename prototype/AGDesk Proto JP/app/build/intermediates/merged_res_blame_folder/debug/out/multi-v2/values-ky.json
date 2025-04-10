@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-50:/values-ky/values-ky.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-52:/values-ky/values-ky.xml",
             "map": [
                 {
                     "source": "/Users/JackPate_1/.gradle/caches/transforms-4/a2a97f3e08d94251eae60dc2e6dabaac/transformed/play-services-basement-18.4.0/res/values-ky/values.xml",

@@ -1,13 +1,12 @@
 package com.example.agdesk
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.agdesk.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +25,11 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_tasks, R.id.navigation_inventory,R.id.navigation_map
+                R.id.navigation_home,
+                R.id.navigation_tasks,
+                R.id.navigation_inventory,
+                R.id.navigation_assets,
+                R.id.navigation_map
             )
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
