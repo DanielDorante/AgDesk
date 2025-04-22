@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.example.agdesk.fragments.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_tasks"
+            app:destination="@id/navigation_tasks" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_map"
         android:name="com.example.agdesk.fragments.MapFragment"
@@ -33,5 +40,19 @@
         android:name="com.example.agdesk.fragments.AddTaskFragment"
         android:label="fragment_add_task"
         tools:layout="@layout/fragment_add_task" />
+
+    <fragment
+        android:id="@+id/navigation_assets"
+        android:name="com.example.agdesk.fragments.AssetsFragment"
+        android:label="@string/assets"
+        tools:layout="@layout/fragment_assets" >
+        <action
+            android:id="@+id/action_navigation_assets_to_addAssetFragment"
+            app:destination="@id/addAssetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAssetFragment"
+        android:name="com.example.agdesk.fragments.AddAssetFragment"
+        android:label="AddAssetFragment" />
 
 </navigation>

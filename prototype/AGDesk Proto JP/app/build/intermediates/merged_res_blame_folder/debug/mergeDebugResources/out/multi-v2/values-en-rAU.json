@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-70:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-72:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "/home/computer/.gradle/caches/8.11.1/transforms/c36d2487fd8a9b5cec5d26c659cf2fd9/transformed/navigation-ui-2.7.7/res/values-en-rAU/values-en-rAU.xml",

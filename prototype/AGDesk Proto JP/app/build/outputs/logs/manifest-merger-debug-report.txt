@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-38:12
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-48:12
 MERGED from [androidx.databinding:viewbinding:8.9.1] /home/computer/.gradle/caches/8.11.1/transforms/53c75381a7decb559124c4619120e5d1/transformed/viewbinding-8.9.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.hilt:hilt-navigation-compose:1.2.0] /home/computer/.gradle/caches/8.11.1/transforms/edfa6c93d752ca1495e632573bf2a262/transformed/hilt-navigation-compose-1.2.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.hilt:hilt-navigation:1.2.0] /home/computer/.gradle/caches/8.11.1/transforms/2aa3283d8a0c99b6bd065b2cf454e9ce/transformed/hilt-navigation-1.2.0/AndroidManifest.xml:2:1-7:12
@@ -24,6 +24,7 @@ MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/computer/.g
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /home/computer/.gradle/caches/8.11.1/transforms/4b6e6b85485881c1e42c7bd1bf1d84c5/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat:1.7.0] /home/computer/.gradle/caches/8.11.1/transforms/0a7f364cf9e581f5fc46ffe45c4fdbdd/transformed/appcompat-1.7.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-maps:19.0.0] /home/computer/.gradle/caches/8.11.1/transforms/ae6f0865a2f16da27c928759346982b1/transformed/play-services-maps-19.0.0/AndroidManifest.xml:17:1-44:12
+MERGED from [com.github.bumptech.glide:glide:4.16.0] /home/computer/.gradle/caches/8.11.1/transforms/55811e26d6cc687c62966d418b43f862/transformed/glide-4.16.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/183014912c0afedb589ceb81c6c5ca8b/transformed/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /home/computer/.gradle/caches/8.11.1/transforms/ef00a5c1667fb9e6f1cfd1d00b5f2ed5/transformed/play-services-base-18.5.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /home/computer/.gradle/caches/8.11.1/transforms/fc60be920c06101af0db7a0886db37ca/transformed/play-services-tasks-18.2.0/AndroidManifest.xml:2:1-5:12
@@ -86,11 +87,14 @@ MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/computer/.g
 MERGED from [androidx.cardview:cardview:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/02fa0dac09fd9c5bd8030271a22ef7fb/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] /home/computer/.gradle/caches/8.11.1/transforms/4c6a0e9e02f421ab74ff589352fbc846/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/b604dda7359370d9d6375a774031a594/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /home/computer/.gradle/caches/8.11.1/transforms/f798ae68c0a02ff0f06e4d98235f100c/transformed/gifdecoder-4.16.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /home/computer/.gradle/caches/8.11.1/transforms/4cfb1b8a27e91a2b5e5b375f0c5bf5cf/transformed/exifinterface-1.3.6/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/367bbba7b584abc66e3ab7cc9a51cc89/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/computer/.gradle/caches/8.11.1/transforms/c1188740240fcd30e27228cab87dc738/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/6996e30534847ba7b92760a2344772b1/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/f1a795756edf43d4eeb8580458f77d06/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/1e1a2044b52e3be3cabf9454ada6cd83/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:17:1-56:12
 MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] /home/computer/.gradle/caches/8.11.1/transforms/b4238bec6c70839c78ac66e403d2b951/transformed/dagger-lint-aar-2.51.1/AndroidManifest.xml:16:1-19:12
 	package
 		INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml
@@ -111,8 +115,8 @@ ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto 
 	android:name
 		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:6:22-78
 application
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:7:5-36:19
-INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:7:5-36:19
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:8:5-46:19
+INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:8:5-46:19
 MERGED from [androidx.room:room-runtime-android:2.7.0-rc02] /home/computer/.gradle/caches/8.11.1/transforms/294e234d72c06cf22aa11b1f951c06e9/transformed/room-runtime-release/AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.room:room-runtime-android:2.7.0-rc02] /home/computer/.gradle/caches/8.11.1/transforms/294e234d72c06cf22aa11b1f951c06e9/transformed/room-runtime-release/AndroidManifest.xml:23:5-29:19
 MERGED from [com.google.android.material:material:1.12.0] /home/computer/.gradle/caches/8.11.1/transforms/73572c1ce78866aafacc845560d3606a/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
@@ -141,60 +145,80 @@ MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/computer/.g
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/computer/.gradle/caches/8.11.1/transforms/b02d45d750bc51bddb33ab56a88a682c/transformed/profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] /home/computer/.gradle/caches/8.11.1/transforms/4c6a0e9e02f421ab74ff589352fbc846/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] /home/computer/.gradle/caches/8.11.1/transforms/4c6a0e9e02f421ab74ff589352fbc846/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:46:5-54:19
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:46:5-54:19
 	android:extractNativeLibs
 		INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] /home/computer/.gradle/caches/8.11.1/transforms/8295f0504e63a9a71eb381034b8235e4/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:15:9-35
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:14:9-41
 	android:fullBackupContent
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:11:9-54
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:12:9-54
 	android:roundIcon
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:14:9-54
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:15:9-54
 	tools:targetApi
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:17:9-29
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:18:9-29
 	android:icon
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:12:9-43
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:13:9-43
 	android:allowBackup
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:9:9-35
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:16:9-44
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:17:9-44
 	android:dataExtractionRules
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:10:9-65
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:11:9-65
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:8:9-43
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:9:9-43
+activity#com.example.agdesk.RegisterActivity
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:19:9-21:40
+	android:exported
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:21:13-37
+	android:name
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:20:13-45
+activity#com.example.agdesk.LoginActivity
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:22:9-24:40
+	android:exported
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:24:13-37
+	android:name
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:23:13-42
+activity#com.example.agdesk.LoadingActivity
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:25:9-27:40
+	android:exported
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:26:13-44
 meta-data#com.google.android.geo.API_KEY
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:18:9-20:71
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:29:9-31:71
 	android:value
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:20:13-68
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:31:13-68
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:19:13-58
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:30:13-58
 activity#com.example.agdesk.SplashScreen
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:21:9-29:20
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:33:9-41:20
 	android:exported
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:23:13-36
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:35:13-36
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:22:13-41
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:34:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:24:13-28:29
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:36:13-40:29
 action#android.intent.action.MAIN
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:25:17-69
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:37:17-69
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:25:25-66
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:37:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:27:17-77
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:39:17-77
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:27:27-74
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:39:27-74
 activity#com.example.agdesk.MainActivity
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:30:9-35:20
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:42:9-45:48
 	android:label
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:33:13-45
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:45:13-45
 	android:exported
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:32:13-36
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:44:13-36
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:31:13-41
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:43:13-41
 uses-sdk
 INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml
@@ -239,6 +263,8 @@ MERGED from [androidx.appcompat:appcompat:1.7.0] /home/computer/.gradle/caches/8
 MERGED from [androidx.appcompat:appcompat:1.7.0] /home/computer/.gradle/caches/8.11.1/transforms/0a7f364cf9e581f5fc46ffe45c4fdbdd/transformed/appcompat-1.7.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-maps:19.0.0] /home/computer/.gradle/caches/8.11.1/transforms/ae6f0865a2f16da27c928759346982b1/transformed/play-services-maps-19.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:19.0.0] /home/computer/.gradle/caches/8.11.1/transforms/ae6f0865a2f16da27c928759346982b1/transformed/play-services-maps-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:glide:4.16.0] /home/computer/.gradle/caches/8.11.1/transforms/55811e26d6cc687c62966d418b43f862/transformed/glide-4.16.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:glide:4.16.0] /home/computer/.gradle/caches/8.11.1/transforms/55811e26d6cc687c62966d418b43f862/transformed/glide-4.16.0/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/183014912c0afedb589ceb81c6c5ca8b/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/183014912c0afedb589ceb81c6c5ca8b/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-base:18.5.0] /home/computer/.gradle/caches/8.11.1/transforms/ef00a5c1667fb9e6f1cfd1d00b5f2ed5/transformed/play-services-base-18.5.0/AndroidManifest.xml:3:5-44
@@ -363,6 +389,10 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/computer/.gradle/cach
 MERGED from [androidx.startup:startup-runtime:1.1.1] /home/computer/.gradle/caches/8.11.1/transforms/4c6a0e9e02f421ab74ff589352fbc846/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/b604dda7359370d9d6375a774031a594/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/b604dda7359370d9d6375a774031a594/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /home/computer/.gradle/caches/8.11.1/transforms/f798ae68c0a02ff0f06e4d98235f100c/transformed/gifdecoder-4.16.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /home/computer/.gradle/caches/8.11.1/transforms/f798ae68c0a02ff0f06e4d98235f100c/transformed/gifdecoder-4.16.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /home/computer/.gradle/caches/8.11.1/transforms/4cfb1b8a27e91a2b5e5b375f0c5bf5cf/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /home/computer/.gradle/caches/8.11.1/transforms/4cfb1b8a27e91a2b5e5b375f0c5bf5cf/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/367bbba7b584abc66e3ab7cc9a51cc89/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/367bbba7b584abc66e3ab7cc9a51cc89/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/computer/.gradle/caches/8.11.1/transforms/c1188740240fcd30e27228cab87dc738/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
@@ -373,6 +403,8 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/c
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/f1a795756edf43d4eeb8580458f77d06/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/1e1a2044b52e3be3cabf9454ada6cd83/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /home/computer/.gradle/caches/8.11.1/transforms/1e1a2044b52e3be3cabf9454ada6cd83/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] /home/computer/.gradle/caches/8.11.1/transforms/b4238bec6c70839c78ac66e403d2b951/transformed/dagger-lint-aar-2.51.1/AndroidManifest.xml:18:3-42
 MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] /home/computer/.gradle/caches/8.11.1/transforms/b4238bec6c70839c78ac66e403d2b951/transformed/dagger-lint-aar-2.51.1/AndroidManifest.xml:18:3-42
 	android:targetSdkVersion
@@ -531,3 +563,57 @@ action#androidx.profileinstaller.action.BENCHMARK_OPERATION
 ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/computer/.gradle/caches/8.11.1/transforms/b02d45d750bc51bddb33ab56a88a682c/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
 	android:name
 		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/computer/.gradle/caches/8.11.1/transforms/b02d45d750bc51bddb33ab56a88a682c/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+uses-permission#android.permission.CAMERA
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:22:5-65
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:22:22-62
+uses-feature#android.hardware.camera
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:27:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:26:9-47
+uses-feature#android.hardware.camera.front
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+uses-feature#android.hardware.camera.autofocus
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+uses-feature#android.hardware.camera.flash
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+uses-feature#android.hardware.screen.landscape
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+uses-feature#android.hardware.wifi
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
+activity#com.journeyapps.barcodescanner.CaptureActivity
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+	android:screenOrientation
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
+	android:clearTaskOnLaunch
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+	android:stateNotNeeded
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+	android:windowSoftInputMode
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+	android:theme
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74

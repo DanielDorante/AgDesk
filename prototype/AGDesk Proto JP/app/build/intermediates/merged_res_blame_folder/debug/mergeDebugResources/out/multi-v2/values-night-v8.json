@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-70:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-72:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "/home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/res/values-night/themes.xml",

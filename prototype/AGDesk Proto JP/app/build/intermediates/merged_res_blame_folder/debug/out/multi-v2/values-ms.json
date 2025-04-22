@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-50:/values-ms/values-ms.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-52:/values-ms/values-ms.xml",
             "map": [
                 {
                     "source": "/home/computer/.gradle/caches/transforms-4/170aae55ed7cb6aa8887dbc5e8978a87/transformed/core-1.13.1/res/values-ms/values-ms.xml",

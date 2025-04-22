@@ -10,11 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 import com.example.agdesk.ViewModels.FieldViewModel
 import com.example.agdesk.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -48,7 +48,11 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_tasks, R.id.navigation_inventory,R.id.navigation_map
+                R.id.navigation_home,
+                R.id.navigation_tasks,
+                R.id.navigation_inventory,
+                R.id.navigation_assets,
+                R.id.navigation_map
             )
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)

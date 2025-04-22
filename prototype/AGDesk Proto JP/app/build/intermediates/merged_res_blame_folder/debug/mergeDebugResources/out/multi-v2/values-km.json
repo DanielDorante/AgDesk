@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-70:/values-km/values-km.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-72:/values-km/values-km.xml",
             "map": [
                 {
                     "source": "/home/computer/.gradle/caches/8.11.1/transforms/ef00a5c1667fb9e6f1cfd1d00b5f2ed5/transformed/play-services-base-18.5.0/res/values-km/values.xml",

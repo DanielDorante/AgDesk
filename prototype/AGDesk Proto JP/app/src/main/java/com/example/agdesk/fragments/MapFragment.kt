@@ -13,10 +13,12 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.agdesk.models.FieldsModel
 import com.example.agdesk.R
 import com.example.agdesk.DataLayer.database.AgDeskDatabase
+import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentMapBinding
+import com.example.agdesk.models.FieldsModel
+import com.example.agdesk.models.HelperClass
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -56,9 +58,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     // Binding to handle the fragment's layout efficiently
     private var _binding: FragmentMapBinding? = null
-    private val binding get() = _binding!!  // Getter for safe access to the binding
-
-    // Stores fields data (name and points)
+    private val binding get() = _binding!!
     private val fieldsModelData = mutableListOf<FieldsModel>()
 
     // Check variable to validate field creation
@@ -73,12 +73,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     // Holds the polygon that represents the field
     private var currentPolygon: Polygon? = null
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-
         // Inflate the layout and bind it to the fragment
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -97,7 +94,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun clickListeners() {
         // Start the field creation process when the "Add Field" button is clicked
         binding.fabAddField.setOnClickListener {
-            showAddFieldDialog()  // Show dialog to choose field creation method
+            showAddFieldDialog()
         }
 
         // Cancel field creation process
@@ -114,23 +111,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.btnConfirmField.setOnClickListener {
             finalizeFieldCreation()
             if (check == "allow") {
-                showNameFieldDialog()  // Ask user to name the field
+                showNameFieldDialog()
             } else {
                 Toast.makeText(
                     context, "You need at least 3 points to create a field.", Toast.LENGTH_SHORT
                 ).show()
             }
+
         }
     }
 
     // Displays a dialog that allows the user to choose how to add a field
     private fun showAddFieldDialog() {
-        binding.fabAddField.setImageResource(R.drawable.ic_croos)  // Change FAB icon
-
-        // Build and show the dialog
+        binding.fabAddField.setImageResource(R.drawable.ic_croos)
         val builder = AlertDialog.Builder(requireContext())
         val dialogView = layoutInflater.inflate(R.layout.add_field_dialog, null)
         builder.setView(dialogView)
+
         val dialog = builder.create()
         dialog.show()
 
@@ -147,10 +144,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             binding.ivFabDone.visibility = View.VISIBLE
             Toast.makeText(context, "Tap the map to drop points", Toast.LENGTH_SHORT).show()
 
-            // Allow the user to drop points on the map to create a field
+            // Allow the user to click on the map and add points
             googleMap.setOnMapClickListener { latLng ->
-                addCustomMarker(latLng)  // Add marker at clicked position
-                fieldPoints.add(latLng)  // Add the point to the field's point list
+                addCustomMarker(latLng)
+                fieldPoints.add(latLng)
             }
         }
 
@@ -209,10 +206,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 val field = FieldsModel(fieldName, fieldPoints.toMutableList())
                 fieldsModelData.add(field)
 
-
-
-
-                fieldViewModel.insertFields(field)  // Save field to database
+                val dbHelper = DatabaseHelper(requireContext())
+                dbHelper.saveField(fieldName, fieldPoints)  // Save field to database
 
                 val centroid = calculateCentroid(fieldPoints)  // Calculate the centroid of the polygon
                 showFieldNameInsidePolygon(fieldName, centroid)  // Show the field name inside the polygon
@@ -300,15 +295,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             Toast.makeText(context, "You need at least 3 points to create a field.", Toast.LENGTH_SHORT).show()
         } else {
             check = "allow"
-            val tempField = FieldsModel("Unnamed Field", fieldPoints.toMutableList())
-            drawPolygon(tempField)  // Draw the field as a polygon
+            val tempField = FieldsModel(HelperClass.users?.id.toString(),"Unnamed Field", fieldPoints.toMutableList())
+            drawPolygon(tempField)
         }
     }
 
     // Called when the map is ready to be used
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
-        googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE  // Set the map type to satellite
+        googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
 
         // Load fields previously saved in the database
 

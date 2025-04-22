@@ -1,62 +1,98 @@
 [
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/fragment_add_task.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/fragment_add_task.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/activity_register.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/activity_register.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/activity_main.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/activity_main.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/item_date.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/item_date.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/activity_splash_screen.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/activity_splash_screen.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/fragment_assets.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/fragment_assets.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/item_date.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/item_date.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/fragment_map.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/fragment_map.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/item_inventory.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/item_inventory.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/activity_main.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/add_field_dialog.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/add_field_dialog.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/item_asset.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/item_asset.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/fragment_inventory.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/fragment_inventory.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/activity_splash_screen.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/activity_splash_screen.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/item_add_inventory.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/item_add_inventory.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/fragment_add_asset.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/fragment_add_asset.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/fragment_home.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/fragment_home.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/item_add_inventory.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/item_add_inventory.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/item_date_layout.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/item_date_layout.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/add_field_dialog.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/add_field_dialog.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/fragment_map.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/fragment_map.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/item_inventory.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/item_inventory.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/item_task.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/item_task.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/fragment_add_task.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/fragment_add_task.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/item_sort.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/item_sort.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/dialog_asset_details.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/dialog_asset_details.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/dialog_name_field.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/dialog_name_field.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/item_weather.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/item_weather.xml"
     },
     {
-        "merged": "com.example.agdesk.app-mergeDebugResources-71:/layout/fragment_tasks.xml",
-        "source": "com.example.agdesk.app-main-74:/layout/fragment_tasks.xml"
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/item_task.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/item_task.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/activity_loading.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/activity_loading.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/activity_login.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/fragment_home.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/dialog_generate_qr.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/dialog_generate_qr.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/fragment_inventory.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/fragment_inventory.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/item_sort.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/item_sort.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/dialog_name_field.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/dialog_name_field.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/fragment_tasks.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/fragment_tasks.xml"
+    },
+    {
+        "merged": "com.example.agdesk.app-mergeDebugResources-73:/layout/item_date_layout.xml",
+        "source": "com.example.agdesk.app-main-76:/layout/item_date_layout.xml"
     }
 ]

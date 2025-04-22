@@ -30,6 +30,26 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.example.agdesk.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.landscape"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
 
     <application
         android:name="com.example.agdesk.Application.AgDesk"
@@ -45,6 +65,16 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AGDesk" >
+        <activity
+            android:name="com.example.agdesk.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.agdesk.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.agdesk.LoadingActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCxMjBVZv-SaZn9f-8KljiSb8dHZARrKX4" />
@@ -61,8 +91,7 @@
         <activity
             android:name="com.example.agdesk.MainActivity"
             android:exported="true"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
@@ -122,6 +151,14 @@
                 <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:screenOrientation="sensorLandscape"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>

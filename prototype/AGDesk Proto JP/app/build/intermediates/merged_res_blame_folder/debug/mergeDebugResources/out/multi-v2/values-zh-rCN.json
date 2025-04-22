@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-70:/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-72:/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "/home/computer/.gradle/caches/8.11.1/transforms/68d4d63fe4f7e3cf2546ce33101c9597/transformed/ui-release/res/values-zh-rCN/values-zh-rCN.xml",
@@ -18,6 +18,23 @@
                         "startOffsets": "4131,4208,6098,6183,6274,6600,6674,11048,11126,11201,11266,11400,11473,11775,12014,12087,12153",
                         "endColumns": "76,75,84,90,76,73,76,77,74,64,64,72,74,67,72,65,115",
                         "endOffsets": "4203,4279,6178,6269,6346,6669,6746,11121,11196,11261,11326,11468,11543,11838,12082,12148,12264"
+                    }
+                },
+                {
+                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/c5fac7d836d305b173420abc4183d506/transformed/zxing-android-embedded-4.3.0/res/values-zh-rCN/values-zh-rCN.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,104,151,238",
+                        "endColumns": "48,46,86,68",
+                        "endOffsets": "99,146,233,302"
+                    },
+                    "to": {
+                        "startLines": "154,155,156,157",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "12269,12318,12365,12452",
+                        "endColumns": "48,46,86,68",
+                        "endOffsets": "12313,12360,12447,12516"
                     }
                 },
                 {
