@@ -40,6 +40,17 @@ class DatabaseConverter {
             return UUID.fromString(string)
     }
 
+    @TypeConverter
+    public fun fromUnix(uuid: UUID): String {
+        return uuid.toString()
+    }
+
+    @TypeConverter
+    public fun dateToUnix(string: String): UUID {
+        return UUID.fromString(string)
+    }
+
+
 
 
 }

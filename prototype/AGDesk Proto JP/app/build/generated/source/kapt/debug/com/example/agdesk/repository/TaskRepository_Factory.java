@@ -2,6 +2,7 @@
 package com.example.agdesk.repository;
 
 import com.example.agdesk.DataLayer.DAOs.TaskDAO;
+import com.example.agdesk.DataLayer.DAOs.UserDAO;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;
@@ -21,20 +22,25 @@ import javax.inject.Provider;
 public final class TaskRepository_Factory implements Factory<TaskRepository> {
   private final Provider<TaskDAO> taskDAOProvider;
 
-  public TaskRepository_Factory(Provider<TaskDAO> taskDAOProvider) {
+  private final Provider<UserDAO> userDAOProvider;
+
+  public TaskRepository_Factory(Provider<TaskDAO> taskDAOProvider,
+      Provider<UserDAO> userDAOProvider) {
     this.taskDAOProvider = taskDAOProvider;
+    this.userDAOProvider = userDAOProvider;
   }
 
   @Override
   public TaskRepository get() {
-    return newInstance(taskDAOProvider.get());
+    return newInstance(taskDAOProvider.get(), userDAOProvider.get());
   }
 
-  public static TaskRepository_Factory create(Provider<TaskDAO> taskDAOProvider) {
-    return new TaskRepository_Factory(taskDAOProvider);
+  public static TaskRepository_Factory create(Provider<TaskDAO> taskDAOProvider,
+      Provider<UserDAO> userDAOProvider) {
+    return new TaskRepository_Factory(taskDAOProvider, userDAOProvider);
   }
 
-  public static TaskRepository newInstance(TaskDAO taskDAO) {
-    return new TaskRepository(taskDAO);
+  public static TaskRepository newInstance(TaskDAO taskDAO, UserDAO userDAO) {
+    return new TaskRepository(taskDAO, userDAO);
   }
 }

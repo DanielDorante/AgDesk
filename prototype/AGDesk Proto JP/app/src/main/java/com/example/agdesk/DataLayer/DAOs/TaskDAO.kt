@@ -23,6 +23,11 @@ interface TaskDAO {
     @Query("SELECT * FROM TASK")
     suspend fun getAll(): MutableList<TaskModel>
 
+    @Query("SELECT * FROM TASK WHERE due_Date < :timeFrame") //gets all the tasks that have a due date within the time frame
+    suspend fun getTimeframe(timeFrame: Int): MutableList<TaskModel>
+
+
+
     @Insert
     suspend fun insertTask(vararg task: Task)
 

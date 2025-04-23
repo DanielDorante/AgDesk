@@ -29,7 +29,7 @@ public final class TaskModel {
     @androidx.room.ColumnInfo(name = "priority")
     @org.jetbrains.annotations.Nullable()
     private final java.lang.Integer priority = null;
-    @androidx.room.ColumnInfo(name = "assigned_ToId")
+    @androidx.room.ColumnInfo(name = "assigned_To")
     @org.jetbrains.annotations.Nullable()
     private final java.lang.Integer assignedId = null;
     @androidx.room.ColumnInfo(name = "assigned_ToName")

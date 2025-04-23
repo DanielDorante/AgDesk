@@ -1,6 +1,6 @@
 package com.example.agdesk.fragments
 
-import com.example.agdesk.DataLayer.database.DatabaseHelper
+
 import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
@@ -206,8 +206,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 val field = FieldsModel(fieldName, fieldPoints.toMutableList())
                 fieldsModelData.add(field)
 
-                val dbHelper = DatabaseHelper(requireContext())
-                dbHelper.saveField(fieldName, fieldPoints)  // Save field to database
+                 // Save field to database
+                fieldViewModel.insertFields(field)
 
                 val centroid = calculateCentroid(fieldPoints)  // Calculate the centroid of the polygon
                 showFieldNameInsidePolygon(fieldName, centroid)  // Show the field name inside the polygon
@@ -295,7 +295,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             Toast.makeText(context, "You need at least 3 points to create a field.", Toast.LENGTH_SHORT).show()
         } else {
             check = "allow"
-            val tempField = FieldsModel(HelperClass.users?.id.toString(),"Unnamed Field", fieldPoints.toMutableList())
+            val tempField = FieldsModel(HelperClass.users?.id.toString(), fieldPoints.toMutableList())
             drawPolygon(tempField)
         }
     }

@@ -55,6 +55,8 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
     suspend fun getAllAssets(): MutableList<AssetModel> {
         return  assetDAO.getAll()
     }
+
+
     //get all LV assets
     suspend fun getAllVehicles(): MutableList<AssetModel> {
         return  assetDAO.getAllVehicles()

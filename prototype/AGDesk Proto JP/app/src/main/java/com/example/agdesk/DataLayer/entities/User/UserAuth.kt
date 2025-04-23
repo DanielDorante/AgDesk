@@ -2,6 +2,7 @@ package com.example.agdesk.DataLayer.entities.User
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 import com.example.agdesk.DataLayer.entities.Asset.Asset
 
 @Entity(
@@ -17,5 +18,5 @@ import com.example.agdesk.DataLayer.entities.Asset.Asset
 )
 data class UserAuth(
     val placeholder: String?, //yet to implement
-    val id: Int
+    @PrimaryKey val id: Int
 )

@@ -37,6 +37,7 @@
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/fragments/AssetsFragment.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/models/FieldsModel.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/fragments/AddAssetFragment.kt
+/home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/DataLayer/DAOs/UserDAO.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/fragments/MapFragment.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/DataLayer/DAOs/InventoryDAO.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/adapters/AssetsAdapter.kt

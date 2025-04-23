@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.example.agdesk.DataLayer.entities.User.Users
 
 @Entity(
     foreignKeys = [
@@ -13,15 +14,9 @@ import androidx.room.PrimaryKey
             childColumns = arrayOf("Asset_Id"),
             onUpdate = ForeignKey.Companion.CASCADE,
             onDelete = ForeignKey.Companion.CASCADE
-        ),
-
-        ForeignKey( // TO DO: implement userid and tie it to operation
-            entity = Asset::class,
-            parentColumns = arrayOf("uid"),
-            childColumns = arrayOf("uid"),
-            onUpdate = ForeignKey.Companion.CASCADE,
-            onDelete = ForeignKey.Companion.CASCADE
         )
+
+
     ]
 
 )

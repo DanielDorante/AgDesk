@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.agdesk.R
 import com.example.agdesk.adapters.DateAdapter
 import com.example.agdesk.adapters.TasksAdapter
-import com.example.agdesk.DataLayer.database.DatabaseHelper
 import com.example.agdesk.ViewModels.AssetViewModel
 import com.example.agdesk.ViewModels.FieldViewModel
+import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.databinding.FragmentTasksBinding
 import com.example.agdesk.models.AssetModel
 import com.example.agdesk.models.HelperClass
@@ -41,7 +41,7 @@ class TasksFragment : Fragment() {
     var date: String? = null
     var timeInMillis: Long = System.currentTimeMillis()
     var listOfTasks: ArrayList<TaskModel> = ArrayList()
-    lateinit var databaseHelper: DatabaseHelper
+    private val taskViewModel: TaskViewModel by viewModels()
     lateinit var taskAdapter: TasksAdapter
 
     override fun onCreateView(
@@ -58,7 +58,20 @@ class TasksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        databaseHelper = DatabaseHelper(requireContext())
+
+        lifecycleScope.launch {
+            withContext(Dispatchers.Default) {
+                taskViewModel.tasks.collect {savedTasks ->
+                    listOfTasks.clear()
+                    listOfTasks.addAll(savedTasks)
+
+                }
+            }
+
+        }
+
+
+        //databaseHelper = DatabaseHelper(requireContext())
         setDatePicker()
         setAdapter()
         setSortSpinner()
@@ -94,20 +107,17 @@ class TasksFragment : Fragment() {
             ) {
                 when (sortList[position]) {
                     "All" -> {
-                        listOfTasks.clear()
-                        listOfTasks.addAll(databaseHelper.getAllTasks(HelperClass.users?.id.toString()))
+                        taskViewModel.loadTasks()
                         taskAdapter.setList(listOfTasks)
                     }
 
                     "Weekly" -> {
-                        listOfTasks.clear()
-                        listOfTasks.addAll(databaseHelper.getWeeklyTasks(HelperClass.users?.id.toString()))
+                        taskViewModel.loadTasksByTimeFrame("Week")
                         taskAdapter.setList(listOfTasks)
                     }
 
                     "Monthly" -> {
-                        listOfTasks.clear()
-                        listOfTasks.addAll(databaseHelper.getMonthlyTasks(HelperClass.users?.id.toString()))
+                        taskViewModel.loadTasksByTimeFrame("Month")
                         taskAdapter.setList(listOfTasks)
                     }
                 }

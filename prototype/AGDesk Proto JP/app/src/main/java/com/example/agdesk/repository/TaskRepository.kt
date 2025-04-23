@@ -50,6 +50,30 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
         return  taskDAO.getAll()
     }
 
+    suspend fun getTasksByTimeFrame(timeFrame: String): MutableList<TaskModel> {
+
+        val list: MutableList<TaskModel>
+        when(timeFrame) {
+            "Month" -> {
+                val unixTimeParameter: Int = (System.currentTimeMillis() + 2629800000).toInt()
+                list = taskDAO.getTimeframe(unixTimeParameter)
+            }
+
+            "Week" -> {
+                val unixTimeParameter: Int = (System.currentTimeMillis() + 604800000).toInt()
+                list = taskDAO.getTimeframe(unixTimeParameter)
+            }
+
+            else -> {
+                list = taskDAO.getAll() // have to initialise everything
+                list.clear() // return empty list
+            }
+
+        }
+
+        return list
+    }
+
     suspend fun getThisUsersTasks(): MutableList<TaskModel> {
         val id = userDAO.getCurrentUser()
         return  taskDAO.getUserTasks(id)

@@ -82,6 +82,8 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             withContext(Dispatchers.Default) {
+                taskViewModel.loadUserTasks()
+
                 taskViewModel.tasks.collect {savedTasks ->
                     listOfTasks.clear()
                     listOfTasks.addAll(savedTasks.take(4))
@@ -92,12 +94,15 @@ class HomeFragment : Fragment() {
                             taskAdapter = TasksAdapter(listOfTasks,true)
                             binding.recyclerTasks.adapter = taskAdapter
                         }
+                    }
 
 
                 }
             }
 
         }
+
+
 
 
     }

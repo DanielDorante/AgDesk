@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.example.agdesk.DataLayer.entities.User.Users
 
 @Entity(
     foreignKeys = [
@@ -18,9 +19,9 @@ import androidx.room.PrimaryKey
         ),
 
         ForeignKey( // TO DO: implement userid and tie it to operation
-            entity = Asset::class,
-            parentColumns = arrayOf("uid"),
-            childColumns = arrayOf("uid"),
+            entity = Users::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("Lodged_by_id"),
             onUpdate = ForeignKey.Companion.CASCADE,
             onDelete = ForeignKey.Companion.CASCADE
         )
@@ -35,7 +36,7 @@ data class Expense(
     @ColumnInfo(name = "is_Delete") val isDelete: Boolean?,
     @ColumnInfo(name = "Maintenance_Id") val maintenanceId: String,
     @ColumnInfo(name = "Asset_Id") val assetId: String,
-    @ColumnInfo(name = "Lodged_by_id") val lodgedById: String,
+    @ColumnInfo(name = "Lodged_by_id") val lodgedById: Int,
 
 
 )

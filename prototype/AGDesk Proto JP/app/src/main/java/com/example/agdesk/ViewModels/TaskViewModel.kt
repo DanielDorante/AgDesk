@@ -50,6 +50,15 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
 
     }
 
+    fun loadTasksByTimeFrame(timeFrame: String) = viewModelScope.launch {
+        withContext(Dispatchers.IO){
+            val taskList = taskRepository.getTasksByTimeFrame(timeFrame)
+            _tasks.value = taskList // Update the StateFlow
+
+        }
+
+    }
+
     fun updateTask(taskModel: TaskModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
             taskRepository.updateTask(taskModel)
