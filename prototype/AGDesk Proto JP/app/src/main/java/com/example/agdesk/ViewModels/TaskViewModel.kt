@@ -42,6 +42,14 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
 
     }
 
+    fun loadUserTasks() = viewModelScope.launch {
+        withContext(Dispatchers.IO){
+            val taskList = taskRepository.getThisUsersTasks()
+            _tasks.value = taskList // Update the StateFlow
+        }
+
+    }
+
     fun updateTask(taskModel: TaskModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
             taskRepository.updateTask(taskModel)

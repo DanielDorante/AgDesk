@@ -14,7 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 
 import com.example.agdesk.ViewModels.FieldViewModel
 import com.example.agdesk.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+
 import dagger.hilt.android.AndroidEntryPoint
 
 

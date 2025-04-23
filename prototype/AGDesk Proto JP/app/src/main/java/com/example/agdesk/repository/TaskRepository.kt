@@ -3,6 +3,7 @@ package com.example.agdesk.repository
 import android.util.Log
 import androidx.annotation.WorkerThread
 import com.example.agdesk.DataLayer.DAOs.TaskDAO
+import com.example.agdesk.DataLayer.DAOs.UserDAO
 import com.example.agdesk.DataLayer.entities.Asset.*
 import com.example.agdesk.DataLayer.entities.Asset.LargeEquipment
 import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment
@@ -15,7 +16,7 @@ import com.example.agdesk.models.TaskModel
 import java.util.UUID
 import javax.inject.Inject
 
-class TaskRepository @Inject constructor(private val taskDAO: TaskDAO){
+class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private val userDAO: UserDAO){
     @WorkerThread
     suspend fun insertTask(vararg taskModel: TaskModel) {
         taskModel.forEach { e ->
@@ -47,6 +48,11 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO){
 
     suspend fun getAllTasks(): MutableList<TaskModel> {
         return  taskDAO.getAll()
+    }
+
+    suspend fun getThisUsersTasks(): MutableList<TaskModel> {
+        val id = userDAO.getCurrentUser()
+        return  taskDAO.getUserTasks(id)
     }
 
 

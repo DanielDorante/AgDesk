@@ -15,6 +15,8 @@ import com.example.agdesk.DataLayer.entities.sync.TaskSync
 import com.example.agdesk.models.AssetModel
 import com.example.agdesk.models.FieldsModel
 import com.example.agdesk.models.TaskModel
+import com.example.agdesk.DataLayer.entities.User.UserAuth
+import java.net.IDN
 
 @Dao
 interface TaskDAO {
@@ -32,5 +34,8 @@ interface TaskDAO {
 
     @Delete
     suspend fun deleteTask(task: Task)
+
+    @Query("SELECT * FROM Task WHERE assigned_To = :id")
+    suspend fun getUserTasks(id: Int): MutableList<TaskModel>
 
 }

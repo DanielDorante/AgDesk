@@ -7,9 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.agdesk.R
+import com.example.agdesk.ViewModels.FieldViewModel
+import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.adapters.TasksAdapter
 import com.example.agdesk.adapters.WeatherAdapter
 import com.example.agdesk.database.DatabaseHelper
@@ -18,6 +22,10 @@ import com.example.agdesk.models.HelperClass
 import com.example.agdesk.models.TaskModel
 import com.example.agdesk.models.WeatherInfo
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.getValue
 
 class HomeFragment : Fragment() {
 
@@ -27,6 +35,8 @@ class HomeFragment : Fragment() {
     var listOfTasks: ArrayList<TaskModel> = ArrayList()
     lateinit var databaseHelper: DatabaseHelper
     lateinit var taskAdapter: TasksAdapter
+    private val taskViewModel: TaskViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,14 +80,26 @@ class HomeFragment : Fragment() {
         binding.recyclerWeather.adapter = weatherAdapter
 
 
-        listOfTasks.clear()
-        val latestTasks = databaseHelper.getAllTasks(HelperClass.users?.id.toString())
-            .sortedByDescending { it.id }
-            .take(4)
-        listOfTasks.addAll(latestTasks)
-        binding.recyclerTasks.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        taskAdapter = TasksAdapter(listOfTasks,true)
-        binding.recyclerTasks.adapter = taskAdapter
+        lifecycleScope.launch {
+            withContext(Dispatchers.Default) {
+                taskViewModel.tasks.collect {savedTasks ->
+                    listOfTasks.clear()
+                    listOfTasks.addAll(savedTasks.take(4))
+
+                    lifecycleScope.launch {
+                        withContext(Dispatchers.Main) {
+                            binding.recyclerTasks.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                            taskAdapter = TasksAdapter(listOfTasks,true)
+                            binding.recyclerTasks.adapter = taskAdapter
+                        }
+
+
+                }
+            }
+
+        }
+
+
     }
 
     override fun onDestroyView() {

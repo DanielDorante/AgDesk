@@ -45,6 +45,8 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
 
     }
 
+
+
     fun loadVehicleAssets() = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val assetList = assetRepository.getAllVehicles()
