@@ -1,4 +1,47 @@
 package com.example.agdesk.ViewModels
 
-class InventoryViewModel {
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.agdesk.DataLayer.entities.InventoryItem
+import com.example.agdesk.models.AssetModel
+import com.example.agdesk.models.InventoryModel
+import com.example.agdesk.repository.AssetRepository
+import com.example.agdesk.repository.InventoryRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
+
+
+@HiltViewModel
+class InventoryViewModel @Inject constructor(private val inventoryRepository: InventoryRepository): ViewModel() {
+
+    private val _items = MutableStateFlow<List<InventoryModel>>(emptyList())
+    //state held here ready for collectors
+    val items: StateFlow<List<InventoryModel>> = _items.asStateFlow()
+
+    init {
+        loadItems()
+    }
+
+    fun insertItems(inventoryModel: InventoryModel) = viewModelScope.launch {
+        withContext(Dispatchers.IO) { //Executing jobs on the InputOutput Thread, good for database interaction
+            inventoryRepository.insertInventoryItem(inventoryModel)
+            loadItems()
+        }
+    }
+
+
+    fun loadItems() = viewModelScope.launch {
+        withContext(Dispatchers.IO){
+            val itemList = inventoryRepository.getAllItems()
+            _items.value = itemList // Update the StateFlow
+        }
+
+    }
+
 }

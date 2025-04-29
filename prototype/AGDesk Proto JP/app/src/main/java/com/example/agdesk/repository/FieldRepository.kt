@@ -20,7 +20,7 @@ class FieldRepository @Inject constructor(private val fieldDAO: FieldDAO) {
          }
 
     }
-
+    @WorkerThread
     suspend fun getAllFields(): MutableList<FieldsModel> {
         return  fieldDAO.getAllFields()
     }

@@ -3,6 +3,9 @@ package com.example.agdesk.DataLayer.Converters
 import androidx.room.TypeConverter
 import com.google.android.gms.maps.model.LatLng
 import java.util.UUID
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class DatabaseConverter {
@@ -41,14 +44,16 @@ class DatabaseConverter {
     }
 
     @TypeConverter
-    public fun fromUnix(uuid: UUID): String {
-        return uuid.toString()
+    public fun fromUnix(timestamp: Int): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val date = Date(timestamp.toLong())
+        return sdf.format(date)
     }
 
-    @TypeConverter
-    public fun dateToUnix(string: String): UUID {
-        return UUID.fromString(string)
-    }
+    //@TypeConverter
+    //public fun dateToUnix(string: String): UUID {
+    //    return UUID.fromString(string)
+   // }
 
 
 
