@@ -9,7 +9,7 @@ import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment
 import com.example.agdesk.DataLayer.entities.Asset.Vehicle
 import com.example.agdesk.DataLayer.entities.sync.AssetSync
 import com.example.agdesk.models.AssetModel
-import com.example.agdesk.models.FieldsModel
+
 import java.util.UUID
 import javax.inject.Inject
 
@@ -52,22 +52,33 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
 
     }
 
+    suspend fun getCheckoutStatus(assets: MutableList<AssetModel>): MutableList<AssetModel> {
+        for (model in assets) {
+            val operations = assetDAO.getActiveOperationsByUUid(model.uid.toString())
+            if (!operations.isEmpty()) {
+                model.checkoutStatus = true
+                model.checkoutBy = operations[0].userid
+            }
+        }
+        return assets
+    }
+
     suspend fun getAllAssets(): MutableList<AssetModel> {
-        return  assetDAO.getAll()
+        return  getCheckoutStatus(assetDAO.getAll())
     }
 
 
     //get all LV assets
     suspend fun getAllVehicles(): MutableList<AssetModel> {
-        return  assetDAO.getAllVehicles()
+        return  getCheckoutStatus(assetDAO.getAllVehicles())
     }
     //get all LE assets
     suspend fun getAllLargeEquipment(): MutableList<AssetModel> {
-        return  assetDAO.getAllLargeEquipment()
+        return  getCheckoutStatus(assetDAO.getAllLargeEquipment())
     }
     //get all SE assets
     suspend fun getAllSmallEquipment(): MutableList<AssetModel> {
-        return  assetDAO.getAllSmallEquipment()
+        return  getCheckoutStatus(assetDAO.getAllSmallEquipment())
     }
 
     @WorkerThread

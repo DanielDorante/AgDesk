@@ -10,6 +10,7 @@ import com.example.agdesk.DataLayer.entities.Asset.LargeEquipment
 import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment
 import com.example.agdesk.DataLayer.entities.Asset.Vehicle
 
+
 import com.example.agdesk.DataLayer.entities.sync.AssetSync
 import com.example.agdesk.models.AssetModel
 
@@ -47,6 +48,9 @@ interface AssetDAO {
 
     @Delete
     suspend fun deleteAsset(asset: Asset)
+
+    @Query("SELECT * FROM Operations WHERE Asset_Id = :uid AND End_Date_Time IS NULL")
+    suspend fun getActiveOperationsByUUid(uid: String): List<Operations>
 
 }
 

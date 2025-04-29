@@ -18,7 +18,7 @@ import androidx.room.PrimaryKey
         ForeignKey( // TO DO: implement userid and tie it to operation
             entity = Asset::class,
             parentColumns = arrayOf("uid"),
-            childColumns = arrayOf("uid"),
+            childColumns = arrayOf("Asset_Id"),
             onUpdate = ForeignKey.Companion.CASCADE,
             onDelete = ForeignKey.Companion.CASCADE
         )

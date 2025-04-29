@@ -11,10 +11,12 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.agdesk.R
+import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.adapters.AssetsAdapter
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentAssetsBinding
@@ -22,6 +24,7 @@ import com.example.agdesk.models.AssetModel
 import com.example.agdesk.models.OnClick
 import java.util.Locale
 import java.util.UUID
+import kotlin.getValue
 
 
 class AssetsFragment : Fragment(), OnClick {
@@ -30,6 +33,7 @@ class AssetsFragment : Fragment(), OnClick {
     var listOfAssets: List<AssetModel> = ArrayList()
     lateinit var databaseHelper: DatabaseHelper
     lateinit var assetsAdapter: AssetsAdapter
+    private val taskViewModel: TaskViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -51,6 +51,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `Asset` (`uid` TEXT NOT NULL, `asset_Prefix` TEXT, `asset_Name` TEXT, `manufacture` TEXT, `part_List` TEXT, `location` TEXT, `date_Manufactured` INTEGER, `date_Purchased` INTEGER, `is_Delete` INTEGER NOT NULL, `asset_Image` TEXT, `farm_Id` INTEGER, `global_Id` INTEGER, PRIMARY KEY(`uid`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS `asset_sync` (`uid` TEXT NOT NULL, `synctimestamp` TEXT NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `Operations` (`Log_id` TEXT NOT NULL, `Global_id` INTEGER, `Start_Date_Time` TEXT NOT NULL, `End_Date_Time` TEXT, `Location` TEXT NOT NULL, `Notes` TEXT, `isDelete` INTEGER NOT NULL, `Asset_Id` TEXT NOT NULL, `User_ID` TEXT NOT NULL, PRIMARY KEY(`Log_id`), FOREIGN KEY(`Asset_Id`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`Asset_Id`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
         db.execSQL("CREATE TABLE IF NOT EXISTS `Damage` (`Damage_Id` TEXT NOT NULL, `Global_id` INTEGER, `Damage_Observed_Date` TEXT NOT NULL, `Damage_Occurred_Date` TEXT NOT NULL, `Damage_Type` TEXT NOT NULL, `Damage_Severity` TEXT NOT NULL, `Notes` TEXT NOT NULL, `Damage_Image` TEXT, `Scheduled_Maintenance_Date` INTEGER, `Is_Delete` INTEGER, `Asset_Id` TEXT NOT NULL, PRIMARY KEY(`Damage_Id`), FOREIGN KEY(`Asset_Id`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
         db.execSQL("CREATE TABLE IF NOT EXISTS `Expense` (`Expense_id` TEXT NOT NULL, `Global_id` INTEGER, `Cost` INTEGER NOT NULL, `receipt_Number` INTEGER NOT NULL, `is_Delete` INTEGER, `Maintenance_Id` TEXT NOT NULL, `Asset_Id` TEXT NOT NULL, `Lodged_by_id` INTEGER NOT NULL, PRIMARY KEY(`Expense_id`), FOREIGN KEY(`Asset_Id`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`Lodged_by_id`) REFERENCES `Users`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )");
         db.execSQL("CREATE TABLE IF NOT EXISTS `Vehicles` (`uid` TEXT NOT NULL, `vin` INTEGER, `registration` INTEGER, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `Asset`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
@@ -65,13 +66,14 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
         db.execSQL("CREATE TABLE IF NOT EXISTS `Users` (`placeholder` TEXT, `id` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS `UserAuth` (`placeholder` TEXT, `id` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`id`) REFERENCES `Users`(`id`) ON UPDATE CASCADE ON DELETE SET NULL )");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4f087f202c03ca943491cf61073f82c8')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bafc1ab8e3da95221fd3dcd7141e6c63')");
       }
 
       @Override
       public void dropAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS `Asset`");
         db.execSQL("DROP TABLE IF EXISTS `asset_sync`");
+        db.execSQL("DROP TABLE IF EXISTS `Operations`");
         db.execSQL("DROP TABLE IF EXISTS `Damage`");
         db.execSQL("DROP TABLE IF EXISTS `Expense`");
         db.execSQL("DROP TABLE IF EXISTS `Vehicles`");
@@ -163,6 +165,27 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
           return new RoomOpenHelper.ValidationResult(false, "asset_sync(com.example.agdesk.DataLayer.entities.sync.AssetSync).\n"
                   + " Expected:\n" + _infoAssetSync + "\n"
                   + " Found:\n" + _existingAssetSync);
+        }
+        final HashMap<String, TableInfo.Column> _columnsOperations = new HashMap<String, TableInfo.Column>(9);
+        _columnsOperations.put("Log_id", new TableInfo.Column("Log_id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOperations.put("Global_id", new TableInfo.Column("Global_id", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOperations.put("Start_Date_Time", new TableInfo.Column("Start_Date_Time", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOperations.put("End_Date_Time", new TableInfo.Column("End_Date_Time", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOperations.put("Location", new TableInfo.Column("Location", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOperations.put("Notes", new TableInfo.Column("Notes", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOperations.put("isDelete", new TableInfo.Column("isDelete", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOperations.put("Asset_Id", new TableInfo.Column("Asset_Id", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOperations.put("User_ID", new TableInfo.Column("User_ID", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysOperations = new HashSet<TableInfo.ForeignKey>(2);
+        _foreignKeysOperations.add(new TableInfo.ForeignKey("Asset", "CASCADE", "CASCADE", Arrays.asList("Asset_Id"), Arrays.asList("uid")));
+        _foreignKeysOperations.add(new TableInfo.ForeignKey("Asset", "CASCADE", "CASCADE", Arrays.asList("Asset_Id"), Arrays.asList("uid")));
+        final HashSet<TableInfo.Index> _indicesOperations = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoOperations = new TableInfo("Operations", _columnsOperations, _foreignKeysOperations, _indicesOperations);
+        final TableInfo _existingOperations = TableInfo.read(db, "Operations");
+        if (!_infoOperations.equals(_existingOperations)) {
+          return new RoomOpenHelper.ValidationResult(false, "Operations(com.example.agdesk.DataLayer.entities.Asset.Operations).\n"
+                  + " Expected:\n" + _infoOperations + "\n"
+                  + " Found:\n" + _existingOperations);
         }
         final HashMap<String, TableInfo.Column> _columnsDamage = new HashMap<String, TableInfo.Column>(11);
         _columnsDamage.put("Damage_Id", new TableInfo.Column("Damage_Id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
@@ -370,7 +393,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "4f087f202c03ca943491cf61073f82c8", "07ac42d6aa902f6e9f6adf100b036c11");
+    }, "bafc1ab8e3da95221fd3dcd7141e6c63", "aeb7db0fbbb75c72b54613fa12535da0");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -381,7 +404,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "Asset","asset_sync","Damage","Expense","Vehicles","small_Equipment","Large_Equipment","Task","task_sync","Fields","Field_Sync","InventoryItem","inventory_Sync","Users","UserAuth");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "Asset","asset_sync","Operations","Damage","Expense","Vehicles","small_Equipment","Large_Equipment","Task","task_sync","Fields","Field_Sync","InventoryItem","inventory_Sync","Users","UserAuth");
   }
 
   @Override
@@ -399,6 +422,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
       }
       _db.execSQL("DELETE FROM `Asset`");
       _db.execSQL("DELETE FROM `asset_sync`");
+      _db.execSQL("DELETE FROM `Operations`");
       _db.execSQL("DELETE FROM `Damage`");
       _db.execSQL("DELETE FROM `Expense`");
       _db.execSQL("DELETE FROM `Vehicles`");

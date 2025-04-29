@@ -27,6 +27,7 @@
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/adapters/WeatherAdapter.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/ViewModels/FieldViewModel.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/DataLayer/entities/Asset/LargeEquipment.kt
+/home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/models/networkModels/AssetNetworkModel.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/repository/TaskRepository.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/adapters/DateAdapter.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/ViewModels/AssetViewModel.kt
@@ -58,5 +59,6 @@
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/DataLayer/entities/Asset/SmallEquipment.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/DataLayer/entities/Fields.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/RegisterActivity.kt
+/home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/repository/NetworkRepository.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/DataLayer/entities/sync/TaskSync.kt
 /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/java/com/example/agdesk/diModulesHilt/DatabaseModule.kt

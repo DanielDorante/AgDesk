@@ -43,6 +43,11 @@ android {
 
 dependencies {
     //val room_version = "2.6.1"
+    val ktorVersion = "3.1.2"
+    implementation("io.ktor:ktor-client-android:$ktorVersion")
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-serialization-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-client-logging:$ktorVersion")
 
     implementation(libs.hilt.android.v2511)
     implementation(libs.androidx.room.ktx)

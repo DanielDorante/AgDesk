@@ -22,7 +22,7 @@ import com.example.agdesk.DataLayer.entities.sync.FieldSync
 import com.example.agdesk.DataLayer.entities.sync.InventorySync
 import com.example.agdesk.DataLayer.entities.sync.TaskSync
 
-@Database(entities = [Asset::class, AssetSync::class, Damage::class, Expense::class, Vehicle::class, SmallEquipment::class,
+@Database(entities = [Asset::class, AssetSync::class, Operations::class, Damage::class, Expense::class, Vehicle::class, SmallEquipment::class,
                      LargeEquipment::class, Task::class, TaskSync::class, Fields::class, FieldSync::class,
                      InventoryItem::class, InventorySync::class, Users::class, UserAuth::class ], version = 3)
 abstract class AgDeskDatabase : RoomDatabase() {

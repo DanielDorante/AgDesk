@@ -1,6 +1,7 @@
 package com.example.agdesk.DataLayer.DAOs;
 
 import android.database.Cursor;
+import android.os.CancellationSignal;
 import androidx.annotation.NonNull;
 import androidx.room.CoroutinesRoom;
 import androidx.room.EntityDeletionOrUpdateAdapter;
@@ -13,6 +14,7 @@ import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter;
 import com.example.agdesk.DataLayer.entities.Asset.Asset;
 import com.example.agdesk.DataLayer.entities.Asset.LargeEquipment;
+import com.example.agdesk.DataLayer.entities.Asset.Operations;
 import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment;
 import com.example.agdesk.DataLayer.entities.Asset.Vehicle;
 import com.example.agdesk.DataLayer.entities.sync.AssetSync;
@@ -842,6 +844,76 @@ public final class AssetDAO_Impl implements AssetDAO {
       _cursor.close();
       _statement.release();
     }
+  }
+
+  @Override
+  public Object getActiveOperationsByUUid(final String uid,
+      final Continuation<? super List<Operations>> $completion) {
+    final String _sql = "SELECT * FROM Operations WHERE Asset_Id = ? AND End_Date_Time IS NULL";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindString(_argIndex, uid);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<List<Operations>>() {
+      @Override
+      @NonNull
+      public List<Operations> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfUid = CursorUtil.getColumnIndexOrThrow(_cursor, "Log_id");
+          final int _cursorIndexOfSyncId = CursorUtil.getColumnIndexOrThrow(_cursor, "Global_id");
+          final int _cursorIndexOfStart = CursorUtil.getColumnIndexOrThrow(_cursor, "Start_Date_Time");
+          final int _cursorIndexOfEnd = CursorUtil.getColumnIndexOrThrow(_cursor, "End_Date_Time");
+          final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "Location");
+          final int _cursorIndexOfNotes = CursorUtil.getColumnIndexOrThrow(_cursor, "Notes");
+          final int _cursorIndexOfIsDelete = CursorUtil.getColumnIndexOrThrow(_cursor, "isDelete");
+          final int _cursorIndexOfAssetUid = CursorUtil.getColumnIndexOrThrow(_cursor, "Asset_Id");
+          final int _cursorIndexOfUserid = CursorUtil.getColumnIndexOrThrow(_cursor, "User_ID");
+          final List<Operations> _result = new ArrayList<Operations>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final Operations _item;
+            final String _tmpUid;
+            _tmpUid = _cursor.getString(_cursorIndexOfUid);
+            final Integer _tmpSyncId;
+            if (_cursor.isNull(_cursorIndexOfSyncId)) {
+              _tmpSyncId = null;
+            } else {
+              _tmpSyncId = _cursor.getInt(_cursorIndexOfSyncId);
+            }
+            final String _tmpStart;
+            _tmpStart = _cursor.getString(_cursorIndexOfStart);
+            final String _tmpEnd;
+            if (_cursor.isNull(_cursorIndexOfEnd)) {
+              _tmpEnd = null;
+            } else {
+              _tmpEnd = _cursor.getString(_cursorIndexOfEnd);
+            }
+            final String _tmpLocation;
+            _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
+            final String _tmpNotes;
+            if (_cursor.isNull(_cursorIndexOfNotes)) {
+              _tmpNotes = null;
+            } else {
+              _tmpNotes = _cursor.getString(_cursorIndexOfNotes);
+            }
+            final boolean _tmpIsDelete;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfIsDelete);
+            _tmpIsDelete = _tmp != 0;
+            final String _tmpAssetUid;
+            _tmpAssetUid = _cursor.getString(_cursorIndexOfAssetUid);
+            final String _tmpUserid;
+            _tmpUserid = _cursor.getString(_cursorIndexOfUserid);
+            _item = new Operations(_tmpUid,_tmpSyncId,_tmpStart,_tmpEnd,_tmpLocation,_tmpNotes,_tmpIsDelete,_tmpAssetUid,_tmpUserid);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
   }
 
   @NonNull
