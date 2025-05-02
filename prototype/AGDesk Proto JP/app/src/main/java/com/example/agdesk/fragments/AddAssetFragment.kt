@@ -21,9 +21,12 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
 
+
+@AndroidEntryPoint
 class AddAssetFragment : Fragment() {
 
     private var binding: FragmentAddAssetBinding? = null

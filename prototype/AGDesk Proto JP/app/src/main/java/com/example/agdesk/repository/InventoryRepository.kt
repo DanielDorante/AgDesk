@@ -40,14 +40,15 @@ class InventoryRepository @Inject constructor(private val inventoryDAO: Inventor
         //cons for UUID is primarily storage, as the primary keys are indexed so query speed should be no issue
         val uuid = UUID.randomUUID().toString()
         val item = InventoryItem(uuid, inventoryModel.name, inventoryModel.sku, inventoryModel.category, inventoryModel.quantity, inventoryModel.costPrice, inventoryModel.salePrice,
-            Supplier(inventoryModel.supplier?.name, inventoryModel.supplier?.email, inventoryModel.supplier?.phone), inventoryModel.syncid)
+            Supplier(inventoryModel.supplier?.name, inventoryModel.supplier?.email, inventoryModel.supplier?.phone), null)
         //When coming from the user the syncId SHOULD be null, when coming from the network sync it should be known.
+        inventoryDAO.Insert(item)
         if (item.syncid == null) {
             val itemOffline = InventorySync(uuid, System.currentTimeMillis().toString())
             inventoryDAO.insertSync(itemOffline)
         }
 
-        inventoryDAO.Insert(item)
+
         //creation of child table based on prefix.
 
 

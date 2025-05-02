@@ -46,9 +46,17 @@ dependencies {
     val ktorVersion = "3.1.2"
     implementation("io.ktor:ktor-client-android:$ktorVersion")
     implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation ("io.ktor:ktor-client-json:$ktorVersion") // Ktor client JSON feature
+    implementation ("io.ktor:ktor-client-json-jvm:$ktorVersion")
     implementation("io.ktor:ktor-client-serialization-jvm:$ktorVersion")
     implementation("io.ktor:ktor-client-logging:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
 
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.startup.runtime)
     implementation(libs.hilt.android.v2511)
     implementation(libs.androidx.room.ktx)
     kapt(libs.hilt.compiler)

@@ -22,11 +22,14 @@ import com.example.agdesk.models.HelperClass
 import com.example.agdesk.models.TaskModel
 import com.example.agdesk.models.WeatherInfo
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.getValue
 
+
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null

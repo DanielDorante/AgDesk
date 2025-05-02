@@ -22,11 +22,12 @@ import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentAssetsBinding
 import com.example.agdesk.models.AssetModel
 import com.example.agdesk.models.OnClick
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 import java.util.UUID
 import kotlin.getValue
 
-
+@AndroidEntryPoint
 class AssetsFragment : Fragment(), OnClick {
     private var _binding: FragmentAssetsBinding? = null
     private val binding get() = _binding!!

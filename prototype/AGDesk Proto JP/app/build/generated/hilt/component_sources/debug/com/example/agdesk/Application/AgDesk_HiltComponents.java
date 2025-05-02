@@ -4,8 +4,14 @@ import com.example.agdesk.MainActivity_GeneratedInjector;
 import com.example.agdesk.SplashScreen_GeneratedInjector;
 import com.example.agdesk.ViewModels.AssetViewModel_HiltModules;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules;
+import com.example.agdesk.ViewModels.InventoryViewModel_HiltModules;
 import com.example.agdesk.ViewModels.TaskViewModel_HiltModules;
 import com.example.agdesk.diModulesHilt.DatabaseModule;
+import com.example.agdesk.fragments.AddAssetFragment_GeneratedInjector;
+import com.example.agdesk.fragments.AddTaskFragment_GeneratedInjector;
+import com.example.agdesk.fragments.AssetsFragment_GeneratedInjector;
+import com.example.agdesk.fragments.HomeFragment_GeneratedInjector;
+import com.example.agdesk.fragments.InventoryFragment_GeneratedInjector;
 import com.example.agdesk.fragments.MapFragment_GeneratedInjector;
 import com.example.agdesk.fragments.TasksFragment_GeneratedInjector;
 import dagger.Binds;
@@ -156,6 +162,7 @@ public final class AgDesk_HiltComponents {
           FieldViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
           HiltWrapper_SavedStateHandleModule.class,
+          InventoryViewModel_HiltModules.KeyModule.class,
           TaskViewModel_HiltModules.KeyModule.class
       }
   )
@@ -196,6 +203,7 @@ public final class AgDesk_HiltComponents {
           AssetViewModel_HiltModules.BindsModule.class,
           FieldViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
+          InventoryViewModel_HiltModules.BindsModule.class,
           TaskViewModel_HiltModules.BindsModule.class
       }
   )
@@ -221,7 +229,12 @@ public final class AgDesk_HiltComponents {
       modules = ViewWithFragmentCBuilderModule.class
   )
   @FragmentScoped
-  public abstract static class FragmentC implements MapFragment_GeneratedInjector,
+  public abstract static class FragmentC implements AddAssetFragment_GeneratedInjector,
+      AddTaskFragment_GeneratedInjector,
+      AssetsFragment_GeneratedInjector,
+      HomeFragment_GeneratedInjector,
+      InventoryFragment_GeneratedInjector,
+      MapFragment_GeneratedInjector,
       TasksFragment_GeneratedInjector,
       FragmentComponent,
       DefaultViewModelFactories.FragmentEntryPoint,

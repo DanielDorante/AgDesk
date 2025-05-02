@@ -6,7 +6,7 @@ import javax.inject.Inject
 class NetworkRepository @Inject constructor (taskRepository: TaskRepository, assetRepository: AssetRepository){
 
     suspend fun offlinesyncgen(): String {
-
+        return "yet to implement"
     }
 
 }

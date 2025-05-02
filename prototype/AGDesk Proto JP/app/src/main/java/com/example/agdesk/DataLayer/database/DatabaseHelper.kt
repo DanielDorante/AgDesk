@@ -196,7 +196,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                     val latLng = it.split(",")
                     LatLng(latLng[0].toDouble(), latLng[1].toDouble())
                 }
-                fields.add(FieldsModel(name, userId, points.toMutableList()))
+                //fields.add(FieldsModel(name, userId, points.toMutableList()))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -231,7 +231,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val name = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_NAME))
                 val date = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_DATE))
                 val time = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_TIME))
-                tasks.add(TaskModel(id, userId, name, date, time))
+                //tasks.add(TaskModel(id, userId, name, date, time))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -269,7 +269,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val name = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_NAME))
                 val date = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_DATE))
                 val time = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_TIME))
-                tasks.add(TaskModel(id, userId, name, date, time))
+                //tasks.add(TaskModel(id, userId, name, date, time))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -308,7 +308,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val name = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_NAME))
                 val date = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_DATE))
                 val time = cursor.getString(cursor.getColumnIndex(COLUMN_TASK_TIME))
-                tasks.add(TaskModel(id, userId, name, date, time))
+                //tasks.add(TaskModel(id, userId, name, date, time))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -321,7 +321,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     fun addInventory(inventory: InventoryModel): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(INVENTORY_USER_ID, inventory.userId)
+            //put(INVENTORY_USER_ID, inventory.userId)
             put(COLUMN_INVENTORY_NAME, inventory.name)
             put(COLUMN_INVENTORY_QUANTITY, inventory.quantity)
         }
@@ -341,7 +341,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val id = cursor.getInt(cursor.getColumnIndex(COLUMN_INVENTORY_ID))
                 val name = cursor.getString(cursor.getColumnIndex(COLUMN_INVENTORY_NAME))
                 val quantity = cursor.getString(cursor.getColumnIndex(COLUMN_INVENTORY_QUANTITY))
-                inventories.add(InventoryModel(id, userId, name, quantity))
+                //inventories.add(InventoryModel(id, userId, name, quantity))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -382,7 +382,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         if (cursor.moveToFirst()) {
             do {
                 val asset = AssetModel(
-                    id = cursor.getInt(cursor.getColumnIndex(COLUMN_ASSET_ID)),
+                    uid =  null//cursor.getInt(cursor.getColumnIndex(COLUMN_ASSET_ID)),
+                            ,
                     assetPrefix = cursor.getString(cursor.getColumnIndex(COLUMN_ASSET_PREFIX)),
                     name = cursor.getString(cursor.getColumnIndex(COLUMN_ASSET_NAME)),
                     manufac = cursor.getString(cursor.getColumnIndex(COLUMN_ASSET_MANUFAC)),
@@ -397,7 +398,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                     reg = cursor.getInt(cursor.getColumnIndex(COLUMN_ASSET_REG)),
                     syncId = cursor.getInt(cursor.getColumnIndex(COLUMN_ASSET_SYNC_ID)),
                     checkoutStatus = cursor.getInt(cursor.getColumnIndex(COLUMN_ASSET_CHECKOUT_STATUS)) == 1,
-                    checkoutBy = cursor.getString(cursor.getColumnIndex(COLUMN_ASSET_CHECKOUT_BY))
+                    checkoutBy =  null//cursor.getString(cursor.getColumnIndex(COLUMN_ASSET_CHECKOUT_BY)),
+
                 )
                 assets.add(asset)
             } while (cursor.moveToNext())
@@ -431,7 +433,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             TABLE_ASSETS,
             values,
             "$COLUMN_ASSET_ID=?",
-            arrayOf(asset.id.toString())
+            arrayOf(asset.toString())
         )
         db.close()
         return result // returns number of rows affected

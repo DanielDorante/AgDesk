@@ -5,6 +5,7 @@ import com.example.agdesk.DataLayer.DAOs.AssetDAO
 import com.example.agdesk.DataLayer.DAOs.FieldDAO
 import com.example.agdesk.DataLayer.DAOs.InventoryDAO
 import com.example.agdesk.DataLayer.DAOs.TaskDAO
+import com.example.agdesk.DataLayer.DAOs.UserDAO
 import com.example.agdesk.DataLayer.database.AgDeskDatabase
 import dagger.Module
 import dagger.Provides
@@ -46,6 +47,12 @@ object DatabaseModule {
     @Singleton
     fun provideInventoryDao(agDeskDatabase: AgDeskDatabase): InventoryDAO {
         return agDeskDatabase.inventoryDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserDao(agDeskDatabase: AgDeskDatabase): UserDAO {
+        return agDeskDatabase.userDao()
     }
 
 

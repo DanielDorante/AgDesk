@@ -12,10 +12,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentAddTaskBinding
 import com.example.agdesk.models.HelperClass
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
+@AndroidEntryPoint
 class AddTaskFragment : Fragment() {
     var binding: FragmentAddTaskBinding? = null
     var name: String? = ""

@@ -3,10 +3,12 @@ package com.example.agdesk.models.networkModels
 import androidx.room.ColumnInfo
 import androidx.room.TypeConverters
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter
+import kotlinx.serialization.Serializable
 import org.jetbrains.annotations.ApiStatus
 import java.util.UUID
 
 //Model to hold data for interaction with the UI layer and ViewModel/ Maybe network repository
+@Serializable
 data class AssetNetworkModel(
 
     @field:TypeConverters(DatabaseConverter::class) var uid: UUID?, //unique ID for local storage

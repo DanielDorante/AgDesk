@@ -19,6 +19,8 @@ import com.example.agdesk.DataLayer.DAOs.InventoryDAO;
 import com.example.agdesk.DataLayer.DAOs.InventoryDAO_Impl;
 import com.example.agdesk.DataLayer.DAOs.TaskDAO;
 import com.example.agdesk.DataLayer.DAOs.TaskDAO_Impl;
+import com.example.agdesk.DataLayer.DAOs.UserDAO;
+import com.example.agdesk.DataLayer.DAOs.UserDAO_Impl;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
@@ -42,6 +44,8 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
   private volatile InventoryDAO _inventoryDAO;
 
   private volatile FieldDAO _fieldDAO;
+
+  private volatile UserDAO _userDAO;
 
   @Override
   @NonNull
@@ -457,6 +461,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
     _typeConvertersMap.put(AssetDAO.class, AssetDAO_Impl.getRequiredConverters());
     _typeConvertersMap.put(InventoryDAO.class, InventoryDAO_Impl.getRequiredConverters());
     _typeConvertersMap.put(FieldDAO.class, FieldDAO_Impl.getRequiredConverters());
+    _typeConvertersMap.put(UserDAO.class, UserDAO_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -527,6 +532,20 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
           _fieldDAO = new FieldDAO_Impl(this);
         }
         return _fieldDAO;
+      }
+    }
+  }
+
+  @Override
+  public UserDAO userDao() {
+    if (_userDAO != null) {
+      return _userDAO;
+    } else {
+      synchronized(this) {
+        if(_userDAO == null) {
+          _userDAO = new UserDAO_Impl(this);
+        }
+        return _userDAO;
       }
     }
   }

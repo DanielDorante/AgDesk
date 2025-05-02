@@ -8,6 +8,7 @@ import com.example.agdesk.DataLayer.DAOs.AssetDAO
 import com.example.agdesk.DataLayer.DAOs.FieldDAO
 import com.example.agdesk.DataLayer.DAOs.InventoryDAO
 import com.example.agdesk.DataLayer.DAOs.TaskDAO
+import com.example.agdesk.DataLayer.DAOs.UserDAO
 import com.example.agdesk.DataLayer.entities.Asset.*
 import com.example.agdesk.DataLayer.entities.Fields
 import com.example.agdesk.DataLayer.entities.InventoryItem
@@ -30,6 +31,7 @@ abstract class AgDeskDatabase : RoomDatabase() {
     abstract fun assetDao(): AssetDAO
     abstract fun inventoryDao(): InventoryDAO
     abstract fun fieldDao(): FieldDAO
+    abstract fun userDao(): UserDAO
 
     companion object {
         @Volatile
@@ -40,7 +42,7 @@ abstract class AgDeskDatabase : RoomDatabase() {
                     context.applicationContext,
                     AgDeskDatabase::class.java,
                     "AgDeskDatabase"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 instance
             }

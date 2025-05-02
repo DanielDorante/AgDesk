@@ -11,21 +11,32 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.agdesk.R
 import com.example.agdesk.adapters.InventoryAdapter
-import com.example.agdesk.DataLayer.database.DatabaseHelper
+
+import com.example.agdesk.ViewModels.InventoryViewModel
+import com.example.agdesk.ViewModels.TaskViewModel
+import com.example.agdesk.adapters.TasksAdapter
 import com.example.agdesk.databinding.FragmentInventoryBinding
 import com.example.agdesk.models.HelperClass
 import com.example.agdesk.models.InventoryModel
 import com.google.android.material.button.MaterialButton
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Locale
+import kotlin.getValue
 
+@AndroidEntryPoint
 class InventoryFragment : Fragment() {
 
     private var _binding: FragmentInventoryBinding? = null
     private val binding get() = _binding!!
-    var dbHelper : DatabaseHelper? = null
+    private val inventoryViewModel: InventoryViewModel by viewModels()
     var listOfInventories: ArrayList<InventoryModel> = ArrayList()
     lateinit var inventoryAdapter: InventoryAdapter
 
@@ -43,9 +54,18 @@ class InventoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dbHelper = DatabaseHelper(requireContext())
-        listOfInventories.clear()
-        listOfInventories.addAll(dbHelper?.getAllInventories(HelperClass.users?.id.toString())!!)
+        lifecycleScope.launch {
+            withContext(Dispatchers.Default) {
+                inventoryViewModel.loadItems()
+
+                inventoryViewModel.items.collect {savedTasks ->
+                    listOfInventories.clear()
+                    listOfInventories.addAll(savedTasks)
+
+                }
+            }
+
+        }
         setAdapter()
         setSortSpinner()
         binding.fabAddInventory.setOnClickListener {
@@ -99,13 +119,21 @@ class InventoryFragment : Fragment() {
             val quantity = etQuantity.text.toString().trim()
 
             if (name.isNotEmpty() && quantity.isNotEmpty()) {
-                val inventoryItem = InventoryModel(userId = HelperClass.users?.id.toString(), name = name, quantity = quantity)
-                dbHelper?.addInventory(inventoryItem)
-                dialog.dismiss()
-                listOfInventories.clear()
-                listOfInventories.addAll(dbHelper?.getAllInventories(HelperClass.users?.id.toString())!!)
-                inventoryAdapter.setList(listOfInventories)
+                lifecycleScope.launch {
+                    withContext(Dispatchers.Default) {
+                        val inventoryItem = InventoryModel(null, name = name,null,null, quantity, null, null, null, null)
+                        inventoryViewModel.insertItems(inventoryItem)
+                        dialog.dismiss()
+
+
+
+                        }
+                    }
                 Toast.makeText(requireContext(), "Inventory added successfully", Toast.LENGTH_SHORT).show()
+
+
+
+
             } else {
                 Toast.makeText(requireContext(), "Please enter both name and quantity", Toast.LENGTH_SHORT).show()
             }
