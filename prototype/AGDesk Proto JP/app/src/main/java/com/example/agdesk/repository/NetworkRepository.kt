@@ -19,7 +19,7 @@ class NetworkRepository @Inject constructor(private val assetRepository: AssetRe
 
     suspend fun syncFromServer(lastSyncTimestamp: String) {
         try {
-            val response: SyncResponse = httpClient.post("https://httpbin.org/post") {
+            val response: SyncResponse = httpClient.post("https://run.mocky.io/v3/47866f66-04b2-4d21-814f-4a47397f435a") {
                 contentType(ContentType.Application.Json)
                 setBody(SyncRequest(lastSyncTimestamp))
             }.body()
@@ -40,7 +40,7 @@ class NetworkRepository @Inject constructor(private val assetRepository: AssetRe
 
         val syncWrite = SyncWrite(assets, tasks)
         try {
-            val response: SyncWrite = httpClient.post("https://run.mocky.io/v3/434aebd0-2520-44b6-aed8-61f06de5a4db") {
+            val response: SyncWrite = httpClient.post("") {
                 contentType(ContentType.Application.Json)
                 setBody(syncWrite)
             }.body()

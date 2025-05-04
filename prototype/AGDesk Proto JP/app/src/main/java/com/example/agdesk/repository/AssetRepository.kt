@@ -121,7 +121,7 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
                 farmId = networkAsset.farmId,
                 syncId = networkAsset.syncId
             )
-            assetDAO.deleteSync(asset.uid)
+
             assetDAO.insertAsset(asset) // REPLACE ensures update/insert both work
 
             when(networkAsset.assetPrefix) {
@@ -129,10 +129,10 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
                 "HV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vehicleVin, networkAsset.reg))
                 "SE" -> assetDAO.insertSmallEquipment(SmallEquipment(asset.uid,networkAsset.serialNo))
                 "HE" -> assetDAO.insertLargeEquipment(LargeEquipment(asset.uid,networkAsset.largeEquipmentVin))
-                null -> return
-                else -> return
+                null -> continue
+                else -> continue
             }
-
+            assetDAO.deleteSync(asset.uid)
 
         }
     }
