@@ -8,7 +8,7 @@ public abstract interface AssetDAO {
     @org.jetbrains.annotations.NotNull()
     public abstract java.util.List<com.example.agdesk.models.AssetModel> getAll();
     
-    @androidx.room.Query(value = "SELECT * FROM ASSET_SYNC INNER JOIN Asset ON asset_sync.uid = Asset.uid\n            INNER JOIN Large_Equipment ON asset_sync.uid = Large_Equipment.uid\n            INNER JOIN small_Equipment ON asset_sync.uid = small_Equipment.uid\n            INNER JOIN Vehicles ON asset_sync.uid = Vehicles.uid")
+    @androidx.room.Query(value = "\n    SELECT \n        asset_sync.uid AS uid,\n        Asset.asset_Prefix,\n        Asset.asset_Name,\n        Asset.manufacture,\n        Asset.part_List,\n        Asset.location,\n        Asset.date_Manufactured,\n        Asset.date_Purchased,\n        Asset.asset_Image,\n        Asset.farm_Id,\n        Asset.global_Id,\n        asset_sync.synctimestamp,\n        Large_Equipment.vin AS largeEquipmentVin,  -- Alias for the vin from Large_Equipment\n        small_Equipment.serial_Number,\n        Vehicles.vin AS vehicleVin,  -- Alias for the vin from Vehicles\n        Vehicles.registration\n    FROM ASSET_SYNC \n    INNER JOIN Asset ON asset_sync.uid = Asset.uid\n    LEFT JOIN Large_Equipment ON asset_sync.uid = Large_Equipment.uid\n    LEFT JOIN small_Equipment ON asset_sync.uid = small_Equipment.uid\n    LEFT JOIN Vehicles ON asset_sync.uid = Vehicles.uid\n")
     @org.jetbrains.annotations.NotNull()
     public abstract java.util.List<com.example.agdesk.models.networkModels.dataModels.AssetNetworkModel> getOfflineAssets();
     

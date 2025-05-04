@@ -3,10 +3,12 @@ package com.example.agdesk.models.networkModels.dataModels
 import androidx.room.ColumnInfo
 import androidx.room.TypeConverters
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter
+import kotlinx.serialization.Serializable
 import java.util.UUID
 
+@Serializable
 data class TaskNetworkModel(
-    @field:TypeConverters(DatabaseConverter::class) var uid: UUID?, //UUID for local use
+    @field:TypeConverters(DatabaseConverter::class) var uid: String?, //UUID for local use
     @ColumnInfo(name = "taskName") val name: String?,
     @ColumnInfo(name = "description") val desc: String?,
     @ColumnInfo(name = "time_stamp") val timestamp: Int?, //time stamp of task creation

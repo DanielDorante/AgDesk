@@ -4,6 +4,8 @@ plugins {
     id("com.google.devtools.ksp") apply true
     id("kotlin-kapt") apply true
     id("com.google.dagger.hilt.android") apply true
+    kotlin("plugin.serialization") apply true// or whatever Kotlin version you're using
+
 }
 
 android {

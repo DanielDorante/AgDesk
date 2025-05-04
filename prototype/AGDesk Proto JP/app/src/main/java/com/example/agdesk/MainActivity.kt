@@ -22,21 +22,29 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.lifecycleScope
 import com.example.agdesk.Application.AgDesk
+import com.example.agdesk.TestData.dbDataCreator
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 
-
+    
 
     private lateinit var binding: ActivityMainBinding
     private val fieldViewModel: FieldViewModel by viewModels()
 
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

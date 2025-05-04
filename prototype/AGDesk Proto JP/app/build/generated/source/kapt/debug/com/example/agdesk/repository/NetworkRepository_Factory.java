@@ -5,6 +5,7 @@ import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
+import io.ktor.client.HttpClient;
 import javax.inject.Provider;
 
 @ScopeMetadata
@@ -18,28 +19,31 @@ import javax.inject.Provider;
     "cast"
 })
 public final class NetworkRepository_Factory implements Factory<NetworkRepository> {
-  private final Provider<TaskRepository> taskRepositoryProvider;
-
   private final Provider<AssetRepository> assetRepositoryProvider;
 
-  public NetworkRepository_Factory(Provider<TaskRepository> taskRepositoryProvider,
-      Provider<AssetRepository> assetRepositoryProvider) {
-    this.taskRepositoryProvider = taskRepositoryProvider;
+  private final Provider<TaskRepository> taskRepositoryProvider;
+
+  private final Provider<HttpClient> httpClientProvider;
+
+  public NetworkRepository_Factory(Provider<AssetRepository> assetRepositoryProvider,
+      Provider<TaskRepository> taskRepositoryProvider, Provider<HttpClient> httpClientProvider) {
     this.assetRepositoryProvider = assetRepositoryProvider;
+    this.taskRepositoryProvider = taskRepositoryProvider;
+    this.httpClientProvider = httpClientProvider;
   }
 
   @Override
   public NetworkRepository get() {
-    return newInstance(taskRepositoryProvider.get(), assetRepositoryProvider.get());
+    return newInstance(assetRepositoryProvider.get(), taskRepositoryProvider.get(), httpClientProvider.get());
   }
 
-  public static NetworkRepository_Factory create(Provider<TaskRepository> taskRepositoryProvider,
-      Provider<AssetRepository> assetRepositoryProvider) {
-    return new NetworkRepository_Factory(taskRepositoryProvider, assetRepositoryProvider);
+  public static NetworkRepository_Factory create(Provider<AssetRepository> assetRepositoryProvider,
+      Provider<TaskRepository> taskRepositoryProvider, Provider<HttpClient> httpClientProvider) {
+    return new NetworkRepository_Factory(assetRepositoryProvider, taskRepositoryProvider, httpClientProvider);
   }
 
-  public static NetworkRepository newInstance(TaskRepository taskRepository,
-      AssetRepository assetRepository) {
-    return new NetworkRepository(taskRepository, assetRepository);
+  public static NetworkRepository newInstance(AssetRepository assetRepository,
+      TaskRepository taskRepository, HttpClient httpClient) {
+    return new NetworkRepository(assetRepository, taskRepository, httpClient);
   }
 }

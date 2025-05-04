@@ -21,10 +21,30 @@ interface AssetDAO {
     @Query("SELECT * FROM Asset")
     fun getAll(): MutableList<AssetModel>
 
-    @Query("""SELECT * FROM ASSET_SYNC INNER JOIN Asset ON asset_sync.uid = Asset.uid
-            INNER JOIN Large_Equipment ON asset_sync.uid = Large_Equipment.uid
-            INNER JOIN small_Equipment ON asset_sync.uid = small_Equipment.uid
-            INNER JOIN Vehicles ON asset_sync.uid = Vehicles.uid""")
+    @Query("""
+    SELECT 
+        asset_sync.uid AS uid,
+        Asset.asset_Prefix,
+        Asset.asset_Name,
+        Asset.manufacture,
+        Asset.part_List,
+        Asset.location,
+        Asset.date_Manufactured,
+        Asset.date_Purchased,
+        Asset.asset_Image,
+        Asset.farm_Id,
+        Asset.global_Id,
+        asset_sync.synctimestamp,
+        Large_Equipment.vin AS largeEquipmentVin,  -- Alias for the vin from Large_Equipment
+        small_Equipment.serial_Number,
+        Vehicles.vin AS vehicleVin,  -- Alias for the vin from Vehicles
+        Vehicles.registration
+    FROM ASSET_SYNC 
+    INNER JOIN Asset ON asset_sync.uid = Asset.uid
+    LEFT JOIN Large_Equipment ON asset_sync.uid = Large_Equipment.uid
+    LEFT JOIN small_Equipment ON asset_sync.uid = small_Equipment.uid
+    LEFT JOIN Vehicles ON asset_sync.uid = Vehicles.uid
+""")
     fun getOfflineAssets(): MutableList<AssetNetworkModel>
 
 

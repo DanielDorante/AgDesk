@@ -2,6 +2,7 @@ package com.example.agdesk.Application;
 
 import com.example.agdesk.MainActivity_GeneratedInjector;
 import com.example.agdesk.SplashScreen_GeneratedInjector;
+import com.example.agdesk.TestData.TestModule;
 import com.example.agdesk.ViewModels.AssetViewModel_HiltModules;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules;
 import com.example.agdesk.ViewModels.InventoryViewModel_HiltModules;
@@ -135,7 +136,8 @@ public final class AgDesk_HiltComponents {
           ApplicationContextModule.class,
           DatabaseModule.class,
           HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule.class,
-          NetworkModule.class
+          NetworkModule.class,
+          TestModule.class
       }
   )
   @Singleton

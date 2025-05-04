@@ -36,12 +36,13 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
             val uuid = UUID.randomUUID().toString()
             val task = Task(uuid, e.name, e.desc, e.timestamp, false, e.due, e.exp, e.status, e.priority, e.assignedId, e.farm, e.syncid)
             //When coming from the user the syncId SHOULD be null, when coming from the network sync it should be known.
+
+
+            taskDAO.insertTask(task)
             if (e.syncid == null) {
                 val taskOffline = TaskSync(uuid, System.currentTimeMillis().toString())
                 taskDAO.insertSync(taskOffline)
             }
-
-            taskDAO.insertTask(task)
 
         }
 

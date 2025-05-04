@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-48:12
-INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-48:12
-INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-48:12
-INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-48:12
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:2:1-53:12
 MERGED from [androidx.databinding:viewbinding:8.9.1] /home/computer/.gradle/caches/8.11.1/transforms/6b27c9fd61e10bbed00bf8c7d068e8d9/transformed/viewbinding-8.9.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.work:work-runtime-ktx:2.7.0] /home/computer/.gradle/caches/8.11.1/transforms/76fd7bc84e92dbbb39e095e3a80f4270/transformed/work-runtime-ktx-2.7.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.hilt:hilt-navigation-compose:1.2.0] /home/computer/.gradle/caches/8.11.1/transforms/16db5d509a2747348c6009757ccbeb32/transformed/hilt-navigation-compose-1.2.0/AndroidManifest.xml:2:1-7:12
@@ -124,8 +124,8 @@ MERGED from [com.google.android.gms:play-services-maps:19.0.0] /home/computer/.g
 	android:name
 		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:7:22-64
 application
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:8:5-46:19
-INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:8:5-46:19
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:8:5-51:19
+INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:8:5-51:19
 MERGED from [androidx.work:work-runtime:2.7.0] /home/computer/.gradle/caches/8.11.1/transforms/fb85aa4efa043f78dd01b898bb778df0/transformed/work-runtime-2.7.0/AndroidManifest.xml:30:5-143:19
 MERGED from [androidx.work:work-runtime:2.7.0] /home/computer/.gradle/caches/8.11.1/transforms/fb85aa4efa043f78dd01b898bb778df0/transformed/work-runtime-2.7.0/AndroidManifest.xml:30:5-143:19
 MERGED from [androidx.room:room-runtime-android:2.7.0-rc02] /home/computer/.gradle/caches/8.11.1/transforms/5fcda302a27b5c97254995e6e455bf97/transformed/room-runtime-release/AndroidManifest.xml:23:5-29:19
@@ -163,73 +163,75 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/computer/.gradl
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] /home/computer/.gradle/caches/8.11.1/transforms/d8fad2c75a96f131098f335126c8b3cb/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:16:9-35
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:21:9-35
 	android:label
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:14:9-41
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:19:9-41
 	android:fullBackupContent
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:12:9-54
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:17:9-54
 	android:roundIcon
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:15:9-54
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:20:9-54
 	tools:targetApi
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:18:9-29
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:23:9-29
 	android:icon
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:13:9-43
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:18:9-43
 	android:allowBackup
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:15:9-35
 	android:theme
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:17:9-44
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:22:9-44
 	android:dataExtractionRules
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:11:9-65
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:16:9-65
+	android:usesCleartextTraffic
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:12:9-44
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:9:9-43
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:14:9-43
 activity#com.example.agdesk.RegisterActivity
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:19:9-21:40
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:24:9-26:40
 	android:exported
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:21:13-37
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:26:13-37
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:20:13-45
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:25:13-45
 activity#com.example.agdesk.LoginActivity
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:22:9-24:40
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:27:9-29:40
 	android:exported
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:24:13-37
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:29:13-37
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:23:13-42
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:28:13-42
 activity#com.example.agdesk.LoadingActivity
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:25:9-27:40
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:30:9-32:40
 	android:exported
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:27:13-37
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:26:13-44
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:31:13-44
 meta-data#com.google.android.geo.API_KEY
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:29:9-31:71
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:34:9-36:71
 	android:value
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:31:13-68
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:36:13-68
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:30:13-58
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:35:13-58
 activity#com.example.agdesk.SplashScreen
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:33:9-41:20
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:38:9-46:20
 	android:exported
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:35:13-36
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:40:13-36
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:34:13-41
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:39:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:36:13-40:29
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:41:13-45:29
 action#android.intent.action.MAIN
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:37:17-69
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:42:17-69
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:37:25-66
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:42:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:39:17-77
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:44:17-77
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:39:27-74
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:44:27-74
 activity#com.example.agdesk.MainActivity
-ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:42:9-45:48
+ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:47:9-50:48
 	android:label
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:45:13-45
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:50:13-45
 	android:exported
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:44:13-36
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:49:13-36
 	android:name
-		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:43:13-41
+		ADDED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml:48:13-41
 uses-sdk
 INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/computer/Documents/capstone-repo/AgDesk/prototype/AGDesk Proto JP/app/src/main/AndroidManifest.xml

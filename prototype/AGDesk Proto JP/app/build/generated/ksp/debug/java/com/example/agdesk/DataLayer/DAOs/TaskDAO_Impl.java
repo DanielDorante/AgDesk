@@ -472,17 +472,11 @@ public final class TaskDAO_Impl implements TaskDAO {
           final List<TaskNetworkModel> _result = new ArrayList<TaskNetworkModel>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final TaskNetworkModel _item;
-            final UUID _tmpUid;
-            final String _tmp;
+            final String _tmpUid;
             if (_cursor.isNull(_cursorIndexOfUid)) {
-              _tmp = null;
-            } else {
-              _tmp = _cursor.getString(_cursorIndexOfUid);
-            }
-            if (_tmp == null) {
               _tmpUid = null;
             } else {
-              _tmpUid = __databaseConverter.uuidFromString(_tmp);
+              _tmpUid = _cursor.getString(_cursorIndexOfUid);
             }
             final String _tmpName;
             if (_cursor.isNull(_cursorIndexOfName)) {
@@ -503,13 +497,13 @@ public final class TaskDAO_Impl implements TaskDAO {
               _tmpTimestamp = _cursor.getInt(_cursorIndexOfTimestamp);
             }
             final Boolean _tmpDel;
-            final Integer _tmp_1;
+            final Integer _tmp;
             if (_cursor.isNull(_cursorIndexOfDel)) {
-              _tmp_1 = null;
+              _tmp = null;
             } else {
-              _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
+              _tmp = _cursor.getInt(_cursorIndexOfDel);
             }
-            _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
+            _tmpDel = _tmp == null ? null : _tmp != 0;
             final Integer _tmpDue;
             if (_cursor.isNull(_cursorIndexOfDue)) {
               _tmpDue = null;

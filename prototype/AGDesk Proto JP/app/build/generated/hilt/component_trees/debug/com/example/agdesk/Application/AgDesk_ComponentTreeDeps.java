@@ -20,6 +20,7 @@ import dagger.hilt.processor.internal.definecomponent.codegen._dagger_hilt_compo
 import hilt_aggregated_deps._com_example_agdesk_Application_AgDesk_GeneratedInjector;
 import hilt_aggregated_deps._com_example_agdesk_MainActivity_GeneratedInjector;
 import hilt_aggregated_deps._com_example_agdesk_SplashScreen_GeneratedInjector;
+import hilt_aggregated_deps._com_example_agdesk_TestData_TestModule;
 import hilt_aggregated_deps._com_example_agdesk_ViewModels_AssetViewModel_HiltModules_BindsModule;
 import hilt_aggregated_deps._com_example_agdesk_ViewModels_AssetViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._com_example_agdesk_ViewModels_FieldViewModel_HiltModules_BindsModule;
@@ -80,6 +81,7 @@ import hilt_aggregated_deps._dagger_hilt_android_internal_modules_HiltWrapper_Ac
         _com_example_agdesk_Application_AgDesk_GeneratedInjector.class,
         _com_example_agdesk_MainActivity_GeneratedInjector.class,
         _com_example_agdesk_SplashScreen_GeneratedInjector.class,
+        _com_example_agdesk_TestData_TestModule.class,
         _com_example_agdesk_ViewModels_AssetViewModel_HiltModules_BindsModule.class,
         _com_example_agdesk_ViewModels_AssetViewModel_HiltModules_KeyModule.class,
         _com_example_agdesk_ViewModels_FieldViewModel_HiltModules_BindsModule.class,

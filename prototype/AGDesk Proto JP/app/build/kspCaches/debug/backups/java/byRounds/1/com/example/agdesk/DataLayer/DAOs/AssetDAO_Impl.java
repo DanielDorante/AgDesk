@@ -549,46 +549,58 @@ public final class AssetDAO_Impl implements AssetDAO {
 
   @Override
   public List<AssetNetworkModel> getOfflineAssets() {
-    final String _sql = "SELECT * FROM ASSET_SYNC INNER JOIN Asset ON asset_sync.uid = Asset.uid\n"
-            + "            INNER JOIN Large_Equipment ON asset_sync.uid = Large_Equipment.uid\n"
-            + "            INNER JOIN small_Equipment ON asset_sync.uid = small_Equipment.uid\n"
-            + "            INNER JOIN Vehicles ON asset_sync.uid = Vehicles.uid";
+    final String _sql = "\n"
+            + "    SELECT \n"
+            + "        asset_sync.uid AS uid,\n"
+            + "        Asset.asset_Prefix,\n"
+            + "        Asset.asset_Name,\n"
+            + "        Asset.manufacture,\n"
+            + "        Asset.part_List,\n"
+            + "        Asset.location,\n"
+            + "        Asset.date_Manufactured,\n"
+            + "        Asset.date_Purchased,\n"
+            + "        Asset.asset_Image,\n"
+            + "        Asset.farm_Id,\n"
+            + "        Asset.global_Id,\n"
+            + "        asset_sync.synctimestamp,\n"
+            + "        Large_Equipment.vin AS largeEquipmentVin,  -- Alias for the vin from Large_Equipment\n"
+            + "        small_Equipment.serial_Number,\n"
+            + "        Vehicles.vin AS vehicleVin,  -- Alias for the vin from Vehicles\n"
+            + "        Vehicles.registration\n"
+            + "    FROM ASSET_SYNC \n"
+            + "    INNER JOIN Asset ON asset_sync.uid = Asset.uid\n"
+            + "    LEFT JOIN Large_Equipment ON asset_sync.uid = Large_Equipment.uid\n"
+            + "    LEFT JOIN small_Equipment ON asset_sync.uid = small_Equipment.uid\n"
+            + "    LEFT JOIN Vehicles ON asset_sync.uid = Vehicles.uid\n";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
-      final int _cursorIndexOfUid = CursorUtil.getColumnIndexOrThrow(_cursor, "uid");
-      final int _cursorIndexOfSynctime = CursorUtil.getColumnIndexOrThrow(_cursor, "synctimestamp");
-      final int _cursorIndexOfAssetPrefix = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Prefix");
-      final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Name");
-      final int _cursorIndexOfManufac = CursorUtil.getColumnIndexOrThrow(_cursor, "manufacture");
-      final int _cursorIndexOfParts = CursorUtil.getColumnIndexOrThrow(_cursor, "part_List");
-      final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
-      final int _cursorIndexOfDateMade = CursorUtil.getColumnIndexOrThrow(_cursor, "date_Manufactured");
-      final int _cursorIndexOfDateBuy = CursorUtil.getColumnIndexOrThrow(_cursor, "date_Purchased");
-      final int _cursorIndexOfImage = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Image");
-      final int _cursorIndexOfFarmId = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
-      final int _cursorIndexOfSyncId = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
-      final int _cursorIndexOfVin = CursorUtil.getColumnIndexOrThrow(_cursor, "vin");
-      final int _cursorIndexOfSerialNo = CursorUtil.getColumnIndexOrThrow(_cursor, "serial_Number");
-      final int _cursorIndexOfReg = CursorUtil.getColumnIndexOrThrow(_cursor, "registration");
+      final int _cursorIndexOfUid = 0;
+      final int _cursorIndexOfAssetPrefix = 1;
+      final int _cursorIndexOfName = 2;
+      final int _cursorIndexOfManufac = 3;
+      final int _cursorIndexOfParts = 4;
+      final int _cursorIndexOfLocation = 5;
+      final int _cursorIndexOfDateMade = 6;
+      final int _cursorIndexOfDateBuy = 7;
+      final int _cursorIndexOfImage = 8;
+      final int _cursorIndexOfFarmId = 9;
+      final int _cursorIndexOfSyncId = 10;
+      final int _cursorIndexOfSynctime = 11;
+      final int _cursorIndexOfLargeEquipmentVin = 12;
+      final int _cursorIndexOfSerialNo = 13;
+      final int _cursorIndexOfVehicleVin = 14;
+      final int _cursorIndexOfReg = 15;
       final List<AssetNetworkModel> _result = new ArrayList<AssetNetworkModel>(_cursor.getCount());
       while (_cursor.moveToNext()) {
         final AssetNetworkModel _item;
-        final UUID _tmpUid;
-        final String _tmp;
+        final String _tmpUid;
         if (_cursor.isNull(_cursorIndexOfUid)) {
-          _tmp = null;
-        } else {
-          _tmp = _cursor.getString(_cursorIndexOfUid);
-        }
-        if (_tmp == null) {
           _tmpUid = null;
         } else {
-          _tmpUid = __databaseConverter.uuidFromString(_tmp);
+          _tmpUid = _cursor.getString(_cursorIndexOfUid);
         }
-        final String _tmpSynctime;
-        _tmpSynctime = _cursor.getString(_cursorIndexOfSynctime);
         final String _tmpAssetPrefix;
         if (_cursor.isNull(_cursorIndexOfAssetPrefix)) {
           _tmpAssetPrefix = null;
@@ -649,11 +661,13 @@ public final class AssetDAO_Impl implements AssetDAO {
         } else {
           _tmpSyncId = _cursor.getInt(_cursorIndexOfSyncId);
         }
-        final Integer _tmpVin;
-        if (_cursor.isNull(_cursorIndexOfVin)) {
-          _tmpVin = null;
+        final String _tmpSynctime;
+        _tmpSynctime = _cursor.getString(_cursorIndexOfSynctime);
+        final Integer _tmpLargeEquipmentVin;
+        if (_cursor.isNull(_cursorIndexOfLargeEquipmentVin)) {
+          _tmpLargeEquipmentVin = null;
         } else {
-          _tmpVin = _cursor.getInt(_cursorIndexOfVin);
+          _tmpLargeEquipmentVin = _cursor.getInt(_cursorIndexOfLargeEquipmentVin);
         }
         final Integer _tmpSerialNo;
         if (_cursor.isNull(_cursorIndexOfSerialNo)) {
@@ -661,13 +675,19 @@ public final class AssetDAO_Impl implements AssetDAO {
         } else {
           _tmpSerialNo = _cursor.getInt(_cursorIndexOfSerialNo);
         }
+        final Integer _tmpVehicleVin;
+        if (_cursor.isNull(_cursorIndexOfVehicleVin)) {
+          _tmpVehicleVin = null;
+        } else {
+          _tmpVehicleVin = _cursor.getInt(_cursorIndexOfVehicleVin);
+        }
         final Integer _tmpReg;
         if (_cursor.isNull(_cursorIndexOfReg)) {
           _tmpReg = null;
         } else {
           _tmpReg = _cursor.getInt(_cursorIndexOfReg);
         }
-        _item = new AssetNetworkModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,_tmpVin,_tmpSerialNo,_tmpReg,_tmpSyncId,_tmpSynctime);
+        _item = new AssetNetworkModel(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpImage,_tmpFarmId,_tmpLargeEquipmentVin,_tmpVehicleVin,_tmpSerialNo,_tmpReg,_tmpSyncId,_tmpSynctime);
         _result.add(_item);
       }
       return _result;

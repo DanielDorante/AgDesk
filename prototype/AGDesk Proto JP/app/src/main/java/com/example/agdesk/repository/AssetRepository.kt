@@ -34,12 +34,13 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
             val uuid = UUID.randomUUID().toString()
             val asset = Asset(uuid, e.assetPrefix, e.name, e.manufac, e.parts, e.location, e.dateMade, e.dateBuy, false, e.image,e.farmId, e.syncId)
             //When coming from the user the syncId SHOULD be null, when coming from the network sync it should be known.
+
+
+            assetDAO.insertAsset(asset)
             if (e.syncId == null) {
                 val assetOffline = AssetSync(uuid, System.currentTimeMillis().toString())
                 assetDAO.insertSync(assetOffline)
             }
-
-            assetDAO.insertAsset(asset)
             //creation of child table based on prefix.
             when(e.assetPrefix) {
                 "LV" -> assetDAO.insertVehicle(Vehicle(uuid,e.vin, e.reg))
@@ -120,24 +121,24 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
                 farmId = networkAsset.farmId,
                 syncId = networkAsset.syncId
             )
-
+            assetDAO.deleteSync(asset.uid)
             assetDAO.insertAsset(asset) // REPLACE ensures update/insert both work
 
             when(networkAsset.assetPrefix) {
-                "LV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vin, networkAsset.reg))
-                "HV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vin, networkAsset.reg))
+                "LV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vehicleVin, networkAsset.reg))
+                "HV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vehicleVin, networkAsset.reg))
                 "SE" -> assetDAO.insertSmallEquipment(SmallEquipment(asset.uid,networkAsset.serialNo))
-                "HE" -> assetDAO.insertLargeEquipment(LargeEquipment(asset.uid,networkAsset.vin))
+                "HE" -> assetDAO.insertLargeEquipment(LargeEquipment(asset.uid,networkAsset.largeEquipmentVin))
                 null -> return
                 else -> return
             }
 
-            assetDAO.deleteSync(asset.uid)
+
         }
     }
 
 
-    suspend fun getOfflineAssets(): MutableList<AssetNetworkModel> {
+    suspend fun getOfflineAssets(): List<AssetNetworkModel> {
         return  assetDAO.getOfflineAssets()
     }
 
