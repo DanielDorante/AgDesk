@@ -3,6 +3,7 @@ package com.example.agdesk.DataLayer.DAOs;
 import android.database.Cursor;
 import android.os.CancellationSignal;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.CoroutinesRoom;
 import androidx.room.EntityDeletionOrUpdateAdapter;
 import androidx.room.EntityInsertionAdapter;
@@ -12,6 +13,7 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter;
+import com.example.agdesk.DataLayer.entities.Asset.Asset;
 import com.example.agdesk.DataLayer.entities.Task;
 import com.example.agdesk.DataLayer.entities.sync.TaskSync;
 import com.example.agdesk.models.TaskModel;
@@ -53,7 +55,7 @@ public final class TaskDAO_Impl implements TaskDAO {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `Task` (`uid`,`taskName`,`description`,`time_stamp`,`is_Delete`,`due_Date`,`expire_Date`,`status`,`priority`,`assigned_To`,`farm_Id`,`global_Id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `Task` (`uid`,`taskName`,`description`,`time_stamp`,`is_Delete`,`due_Date`,`expire_Date`,`status`,`priority`,`assigned_To`,`farm_Id`,`global_Id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -518,6 +520,112 @@ public final class TaskDAO_Impl implements TaskDAO {
             }
             _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncid);
             _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object getBySyncId(final int syncId, final Continuation<? super Asset> $completion) {
+    final String _sql = "SELECT * FROM Asset WHERE global_Id = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, syncId);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<Asset>() {
+      @Override
+      @Nullable
+      public Asset call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfUid = CursorUtil.getColumnIndexOrThrow(_cursor, "uid");
+          final int _cursorIndexOfAssetPrefix = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Prefix");
+          final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Name");
+          final int _cursorIndexOfManufac = CursorUtil.getColumnIndexOrThrow(_cursor, "manufacture");
+          final int _cursorIndexOfParts = CursorUtil.getColumnIndexOrThrow(_cursor, "part_List");
+          final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
+          final int _cursorIndexOfDateMade = CursorUtil.getColumnIndexOrThrow(_cursor, "date_Manufactured");
+          final int _cursorIndexOfDateBuy = CursorUtil.getColumnIndexOrThrow(_cursor, "date_Purchased");
+          final int _cursorIndexOfIsDel = CursorUtil.getColumnIndexOrThrow(_cursor, "is_Delete");
+          final int _cursorIndexOfImage = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Image");
+          final int _cursorIndexOfFarmId = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
+          final int _cursorIndexOfSyncId = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
+          final Asset _result;
+          if (_cursor.moveToFirst()) {
+            final String _tmpUid;
+            _tmpUid = _cursor.getString(_cursorIndexOfUid);
+            final String _tmpAssetPrefix;
+            if (_cursor.isNull(_cursorIndexOfAssetPrefix)) {
+              _tmpAssetPrefix = null;
+            } else {
+              _tmpAssetPrefix = _cursor.getString(_cursorIndexOfAssetPrefix);
+            }
+            final String _tmpName;
+            if (_cursor.isNull(_cursorIndexOfName)) {
+              _tmpName = null;
+            } else {
+              _tmpName = _cursor.getString(_cursorIndexOfName);
+            }
+            final String _tmpManufac;
+            if (_cursor.isNull(_cursorIndexOfManufac)) {
+              _tmpManufac = null;
+            } else {
+              _tmpManufac = _cursor.getString(_cursorIndexOfManufac);
+            }
+            final String _tmpParts;
+            if (_cursor.isNull(_cursorIndexOfParts)) {
+              _tmpParts = null;
+            } else {
+              _tmpParts = _cursor.getString(_cursorIndexOfParts);
+            }
+            final String _tmpLocation;
+            if (_cursor.isNull(_cursorIndexOfLocation)) {
+              _tmpLocation = null;
+            } else {
+              _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
+            }
+            final Integer _tmpDateMade;
+            if (_cursor.isNull(_cursorIndexOfDateMade)) {
+              _tmpDateMade = null;
+            } else {
+              _tmpDateMade = _cursor.getInt(_cursorIndexOfDateMade);
+            }
+            final Integer _tmpDateBuy;
+            if (_cursor.isNull(_cursorIndexOfDateBuy)) {
+              _tmpDateBuy = null;
+            } else {
+              _tmpDateBuy = _cursor.getInt(_cursorIndexOfDateBuy);
+            }
+            final boolean _tmpIsDel;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfIsDel);
+            _tmpIsDel = _tmp != 0;
+            final String _tmpImage;
+            if (_cursor.isNull(_cursorIndexOfImage)) {
+              _tmpImage = null;
+            } else {
+              _tmpImage = _cursor.getString(_cursorIndexOfImage);
+            }
+            final Integer _tmpFarmId;
+            if (_cursor.isNull(_cursorIndexOfFarmId)) {
+              _tmpFarmId = null;
+            } else {
+              _tmpFarmId = _cursor.getInt(_cursorIndexOfFarmId);
+            }
+            final Integer _tmpSyncId;
+            if (_cursor.isNull(_cursorIndexOfSyncId)) {
+              _tmpSyncId = null;
+            } else {
+              _tmpSyncId = _cursor.getInt(_cursorIndexOfSyncId);
+            }
+            _result = new Asset(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpIsDel,_tmpImage,_tmpFarmId,_tmpSyncId);
+          } else {
+            _result = null;
           }
           return _result;
         } finally {

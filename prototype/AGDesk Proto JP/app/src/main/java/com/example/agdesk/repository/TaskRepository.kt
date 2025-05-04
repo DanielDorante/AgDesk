@@ -13,6 +13,7 @@ import com.example.agdesk.DataLayer.entities.sync.AssetSync
 import com.example.agdesk.DataLayer.entities.sync.TaskSync
 import com.example.agdesk.models.AssetModel
 import com.example.agdesk.models.TaskModel
+import com.example.agdesk.models.networkModels.dataModels.TaskNetworkModel
 import java.util.UUID
 import javax.inject.Inject
 
@@ -91,5 +92,38 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
         val taskOffline = TaskSync(taskModel.uid.toString(), System.currentTimeMillis().toString())
         taskDAO.updateTask(Task(taskModel.uid.toString(),  taskModel.name, taskModel.desc, taskModel.timestamp, false, taskModel.due, taskModel.exp, taskModel.status, taskModel.priority, taskModel.assignedId, taskModel.farm, taskModel.syncid))
         taskDAO.insertSync(taskOffline)
+    }
+
+
+    @WorkerThread
+    suspend fun updateTaskNetwork(taskNetworkModel: List<TaskNetworkModel>) {
+        for (networkTask in taskNetworkModel) {
+            if (networkTask.syncid == null) continue
+
+            val existing = taskDAO.getBySyncId(networkTask.syncid)
+
+            val task = Task(
+                uid = existing?.uid ?: UUID.randomUUID().toString(),
+                name = networkTask.name,
+                desc = networkTask.desc,
+                timestamp = networkTask.timestamp,
+                del = networkTask.del,
+                due = networkTask.due,
+                exp = networkTask.exp,
+                status = networkTask.status,
+                priority = networkTask.priority,
+                assigned = networkTask.assignedId,
+                farm = networkTask.farm,
+                syncid = networkTask.syncid
+            )
+
+            taskDAO.insertTask(task)
+
+
+        }
+    }
+
+    suspend fun getOfflineTasks(): List<TaskNetworkModel> {
+        return  taskDAO.getOfflineTasks()
     }
 }

@@ -447,13 +447,16 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
+      static String com_example_agdesk_ViewModels_InventoryViewModel = "com.example.agdesk.ViewModels.InventoryViewModel";
+
       static String com_example_agdesk_ViewModels_TaskViewModel = "com.example.agdesk.ViewModels.TaskViewModel";
 
       static String com_example_agdesk_ViewModels_FieldViewModel = "com.example.agdesk.ViewModels.FieldViewModel";
 
       static String com_example_agdesk_ViewModels_AssetViewModel = "com.example.agdesk.ViewModels.AssetViewModel";
 
-      static String com_example_agdesk_ViewModels_InventoryViewModel = "com.example.agdesk.ViewModels.InventoryViewModel";
+      @KeepFieldType
+      InventoryViewModel com_example_agdesk_ViewModels_InventoryViewModel2;
 
       @KeepFieldType
       TaskViewModel com_example_agdesk_ViewModels_TaskViewModel2;
@@ -463,9 +466,6 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
       @KeepFieldType
       AssetViewModel com_example_agdesk_ViewModels_AssetViewModel2;
-
-      @KeepFieldType
-      InventoryViewModel com_example_agdesk_ViewModels_InventoryViewModel2;
     }
   }
 
@@ -531,22 +531,22 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_example_agdesk_ViewModels_InventoryViewModel = "com.example.agdesk.ViewModels.InventoryViewModel";
+      static String com_example_agdesk_ViewModels_AssetViewModel = "com.example.agdesk.ViewModels.AssetViewModel";
 
       static String com_example_agdesk_ViewModels_FieldViewModel = "com.example.agdesk.ViewModels.FieldViewModel";
 
-      static String com_example_agdesk_ViewModels_AssetViewModel = "com.example.agdesk.ViewModels.AssetViewModel";
+      static String com_example_agdesk_ViewModels_InventoryViewModel = "com.example.agdesk.ViewModels.InventoryViewModel";
 
       static String com_example_agdesk_ViewModels_TaskViewModel = "com.example.agdesk.ViewModels.TaskViewModel";
 
       @KeepFieldType
-      InventoryViewModel com_example_agdesk_ViewModels_InventoryViewModel2;
+      AssetViewModel com_example_agdesk_ViewModels_AssetViewModel2;
 
       @KeepFieldType
       FieldViewModel com_example_agdesk_ViewModels_FieldViewModel2;
 
       @KeepFieldType
-      AssetViewModel com_example_agdesk_ViewModels_AssetViewModel2;
+      InventoryViewModel com_example_agdesk_ViewModels_InventoryViewModel2;
 
       @KeepFieldType
       TaskViewModel com_example_agdesk_ViewModels_TaskViewModel2;

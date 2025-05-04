@@ -9,6 +9,7 @@ import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment
 import com.example.agdesk.DataLayer.entities.Asset.Vehicle
 import com.example.agdesk.DataLayer.entities.sync.AssetSync
 import com.example.agdesk.models.AssetModel
+import com.example.agdesk.models.networkModels.dataModels.AssetNetworkModel
 
 import java.util.UUID
 import javax.inject.Inject
@@ -93,6 +94,51 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
         assetDAO.updateAsset(Asset(assetModel.uid.toString(), assetModel.assetPrefix, assetModel.name, assetModel.manufac, assetModel.parts, assetModel.location, assetModel.dateMade, assetModel.dateBuy, false, assetModel.image,assetModel.farmId, assetModel.syncId))
         assetDAO.insertSync(assetOffline)
     }
+
+
+    @WorkerThread
+    suspend fun updateAssetNetwork(assetNetworkModel: List<AssetNetworkModel>) {
+        for (networkAsset in assetNetworkModel) {
+            if (networkAsset.syncId == null) continue // can't process without sync ID
+
+            val resolvedUid = networkAsset.uid?.toString()
+                ?: assetDAO.getBySyncId(networkAsset.syncId)?.uid
+                ?: UUID.randomUUID().toString()
+
+
+            val asset = Asset(
+                uid = resolvedUid,
+                assetPrefix = networkAsset.assetPrefix,
+                name = networkAsset.name,
+                manufac = networkAsset.manufac,
+                parts = networkAsset.parts,
+                location = networkAsset.location,
+                dateMade = networkAsset.dateMade,
+                dateBuy = networkAsset.dateBuy,
+                isDel = false,
+                image = networkAsset.image,
+                farmId = networkAsset.farmId,
+                syncId = networkAsset.syncId
+            )
+
+            assetDAO.insertAsset(asset) // REPLACE ensures update/insert both work
+            when(networkAsset.assetPrefix) {
+                "LV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vin, networkAsset.reg))
+                "HV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vin, networkAsset.reg))
+                "SE" -> assetDAO.insertSmallEquipment(SmallEquipment(asset.uid,networkAsset.serialNo))
+                "HE" -> assetDAO.insertLargeEquipment(LargeEquipment(asset.uid,networkAsset.vin))
+                null -> return
+                else -> return
+            }
+        }
+    }
+
+
+    suspend fun getOfflineAssets(): MutableList<AssetNetworkModel> {
+        return  assetDAO.getOfflineAssets()
+    }
+
+
 
 
 
