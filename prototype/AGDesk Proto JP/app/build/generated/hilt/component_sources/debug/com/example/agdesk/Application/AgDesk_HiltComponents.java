@@ -7,6 +7,7 @@ import com.example.agdesk.ViewModels.FieldViewModel_HiltModules;
 import com.example.agdesk.ViewModels.InventoryViewModel_HiltModules;
 import com.example.agdesk.ViewModels.TaskViewModel_HiltModules;
 import com.example.agdesk.diModulesHilt.DatabaseModule;
+import com.example.agdesk.diModulesHilt.NetworkModule;
 import com.example.agdesk.fragments.AddAssetFragment_GeneratedInjector;
 import com.example.agdesk.fragments.AddTaskFragment_GeneratedInjector;
 import com.example.agdesk.fragments.AssetsFragment_GeneratedInjector;
@@ -133,7 +134,8 @@ public final class AgDesk_HiltComponents {
           ServiceCBuilderModule.class,
           ApplicationContextModule.class,
           DatabaseModule.class,
-          HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule.class
+          HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule.class,
+          NetworkModule.class
       }
   )
   @Singleton
