@@ -9,6 +9,7 @@ import androidx.room.EntityDeletionOrUpdateAdapter;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
+import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
@@ -17,6 +18,7 @@ import com.example.agdesk.DataLayer.entities.Asset.Asset;
 import com.example.agdesk.DataLayer.entities.Task;
 import com.example.agdesk.DataLayer.entities.sync.TaskSync;
 import com.example.agdesk.models.TaskModel;
+import com.example.agdesk.models.networkModels.dataModels.TaskNetworkModel;
 import java.lang.Boolean;
 import java.lang.Class;
 import java.lang.Exception;
@@ -46,6 +48,8 @@ public final class TaskDAO_Impl implements TaskDAO {
   private final EntityDeletionOrUpdateAdapter<Task> __deletionAdapterOfTask;
 
   private final EntityDeletionOrUpdateAdapter<Task> __updateAdapterOfTask;
+
+  private final SharedSQLiteStatement __preparedStmtOfDeleteSync;
 
   private final DatabaseConverter __databaseConverter = new DatabaseConverter();
 
@@ -217,6 +221,14 @@ public final class TaskDAO_Impl implements TaskDAO {
         statement.bindString(13, entity.getUid());
       }
     };
+    this.__preparedStmtOfDeleteSync = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM task_sync WHERE uid = ?";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -286,6 +298,31 @@ public final class TaskDAO_Impl implements TaskDAO {
           return Unit.INSTANCE;
         } finally {
           __db.endTransaction();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object deleteSync(final String delUid, final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteSync.acquire();
+        int _argIndex = 1;
+        _stmt.bindString(_argIndex, delUid);
+        try {
+          __db.beginTransaction();
+          try {
+            _stmt.executeUpdateDelete();
+            __db.setTransactionSuccessful();
+            return Unit.INSTANCE;
+          } finally {
+            __db.endTransaction();
+          }
+        } finally {
+          __preparedStmtOfDeleteSync.release(_stmt);
         }
       }
     }, $completion);
@@ -398,6 +435,124 @@ public final class TaskDAO_Impl implements TaskDAO {
               _tmpSyncid = _cursor.getInt(_cursorIndexOfSyncid);
             }
             _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncid);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object getOfflineTasks(final Continuation<? super List<TaskNetworkModel>> $completion) {
+    final String _sql = "SELECT * FROM TASK_SYNC INNER JOIN TASK ON TASK.uid = TASK_SYNC.uid";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<List<TaskNetworkModel>>() {
+      @Override
+      @NonNull
+      public List<TaskNetworkModel> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfUid = CursorUtil.getColumnIndexOrThrow(_cursor, "uid");
+          final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "taskName");
+          final int _cursorIndexOfDesc = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
+          final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "time_stamp");
+          final int _cursorIndexOfDel = CursorUtil.getColumnIndexOrThrow(_cursor, "is_Delete");
+          final int _cursorIndexOfDue = CursorUtil.getColumnIndexOrThrow(_cursor, "due_Date");
+          final int _cursorIndexOfExp = CursorUtil.getColumnIndexOrThrow(_cursor, "expire_Date");
+          final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+          final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
+          final int _cursorIndexOfAssignedId = CursorUtil.getColumnIndexOrThrow(_cursor, "assigned_To");
+          final int _cursorIndexOfFarm = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
+          final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
+          final List<TaskNetworkModel> _result = new ArrayList<TaskNetworkModel>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final TaskNetworkModel _item;
+            final UUID _tmpUid;
+            final String _tmp;
+            if (_cursor.isNull(_cursorIndexOfUid)) {
+              _tmp = null;
+            } else {
+              _tmp = _cursor.getString(_cursorIndexOfUid);
+            }
+            if (_tmp == null) {
+              _tmpUid = null;
+            } else {
+              _tmpUid = __databaseConverter.uuidFromString(_tmp);
+            }
+            final String _tmpName;
+            if (_cursor.isNull(_cursorIndexOfName)) {
+              _tmpName = null;
+            } else {
+              _tmpName = _cursor.getString(_cursorIndexOfName);
+            }
+            final String _tmpDesc;
+            if (_cursor.isNull(_cursorIndexOfDesc)) {
+              _tmpDesc = null;
+            } else {
+              _tmpDesc = _cursor.getString(_cursorIndexOfDesc);
+            }
+            final Integer _tmpTimestamp;
+            if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = _cursor.getInt(_cursorIndexOfTimestamp);
+            }
+            final Boolean _tmpDel;
+            final Integer _tmp_1;
+            if (_cursor.isNull(_cursorIndexOfDel)) {
+              _tmp_1 = null;
+            } else {
+              _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
+            }
+            _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
+            final Integer _tmpDue;
+            if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmpDue = null;
+            } else {
+              _tmpDue = _cursor.getInt(_cursorIndexOfDue);
+            }
+            final Integer _tmpExp;
+            if (_cursor.isNull(_cursorIndexOfExp)) {
+              _tmpExp = null;
+            } else {
+              _tmpExp = _cursor.getInt(_cursorIndexOfExp);
+            }
+            final Integer _tmpStatus;
+            if (_cursor.isNull(_cursorIndexOfStatus)) {
+              _tmpStatus = null;
+            } else {
+              _tmpStatus = _cursor.getInt(_cursorIndexOfStatus);
+            }
+            final Integer _tmpPriority;
+            if (_cursor.isNull(_cursorIndexOfPriority)) {
+              _tmpPriority = null;
+            } else {
+              _tmpPriority = _cursor.getInt(_cursorIndexOfPriority);
+            }
+            final Integer _tmpAssignedId;
+            if (_cursor.isNull(_cursorIndexOfAssignedId)) {
+              _tmpAssignedId = null;
+            } else {
+              _tmpAssignedId = _cursor.getInt(_cursorIndexOfAssignedId);
+            }
+            final Integer _tmpFarm;
+            if (_cursor.isNull(_cursorIndexOfFarm)) {
+              _tmpFarm = null;
+            } else {
+              _tmpFarm = _cursor.getInt(_cursorIndexOfFarm);
+            }
+            final Integer _tmpSyncid;
+            if (_cursor.isNull(_cursorIndexOfSyncid)) {
+              _tmpSyncid = null;
+            } else {
+              _tmpSyncid = _cursor.getInt(_cursorIndexOfSyncid);
+            }
+            _item = new TaskNetworkModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncid);
             _result.add(_item);
           }
           return _result;

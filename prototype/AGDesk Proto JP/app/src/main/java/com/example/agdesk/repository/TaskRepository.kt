@@ -100,10 +100,13 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
         for (networkTask in taskNetworkModel) {
             if (networkTask.syncid == null) continue
 
-            val existing = taskDAO.getBySyncId(networkTask.syncid)
+            val resolvedUid = networkTask.uid?.toString()
+                ?: taskDAO.getBySyncId(networkTask.syncid)?.uid
+                ?: UUID.randomUUID().toString()
+
 
             val task = Task(
-                uid = existing?.uid ?: UUID.randomUUID().toString(),
+                uid = resolvedUid,
                 name = networkTask.name,
                 desc = networkTask.desc,
                 timestamp = networkTask.timestamp,
@@ -118,7 +121,7 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
             )
 
             taskDAO.insertTask(task)
-
+            taskDAO.deleteSync(task.uid)
 
         }
     }

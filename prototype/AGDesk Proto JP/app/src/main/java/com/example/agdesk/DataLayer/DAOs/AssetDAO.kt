@@ -47,6 +47,9 @@ interface AssetDAO {
     @Insert
     suspend fun insertSync(vararg sync: AssetSync)
 
+    @Query("DELETE FROM ASSET_SYNC WHERE uid = :delUid")
+    suspend fun deleteSync(delUid: String)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertVehicle(vararg vehicle: Vehicle)
 

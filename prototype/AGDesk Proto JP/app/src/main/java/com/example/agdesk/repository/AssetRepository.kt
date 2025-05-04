@@ -122,6 +122,7 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
             )
 
             assetDAO.insertAsset(asset) // REPLACE ensures update/insert both work
+
             when(networkAsset.assetPrefix) {
                 "LV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vin, networkAsset.reg))
                 "HV" -> assetDAO.insertVehicle(Vehicle(asset.uid,networkAsset.vin, networkAsset.reg))
@@ -130,6 +131,8 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
                 null -> return
                 else -> return
             }
+
+            assetDAO.deleteSync(asset.uid)
         }
     }
 

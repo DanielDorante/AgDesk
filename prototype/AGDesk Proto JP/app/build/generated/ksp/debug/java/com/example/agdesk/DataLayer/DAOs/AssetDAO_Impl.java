@@ -9,6 +9,7 @@ import androidx.room.EntityDeletionOrUpdateAdapter;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
+import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
@@ -55,6 +56,8 @@ public final class AssetDAO_Impl implements AssetDAO {
   private final EntityDeletionOrUpdateAdapter<Asset> __deletionAdapterOfAsset;
 
   private final EntityDeletionOrUpdateAdapter<Asset> __updateAdapterOfAsset;
+
+  private final SharedSQLiteStatement __preparedStmtOfDeleteSync;
 
   private final DatabaseConverter __databaseConverter = new DatabaseConverter();
 
@@ -277,6 +280,14 @@ public final class AssetDAO_Impl implements AssetDAO {
         statement.bindString(13, entity.getUid());
       }
     };
+    this.__preparedStmtOfDeleteSync = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM ASSET_SYNC WHERE uid = ?";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -403,6 +414,31 @@ public final class AssetDAO_Impl implements AssetDAO {
           return Unit.INSTANCE;
         } finally {
           __db.endTransaction();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object deleteSync(final String delUid, final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteSync.acquire();
+        int _argIndex = 1;
+        _stmt.bindString(_argIndex, delUid);
+        try {
+          __db.beginTransaction();
+          try {
+            _stmt.executeUpdateDelete();
+            __db.setTransactionSuccessful();
+            return Unit.INSTANCE;
+          } finally {
+            __db.endTransaction();
+          }
+        } finally {
+          __preparedStmtOfDeleteSync.release(_stmt);
         }
       }
     }, $completion);

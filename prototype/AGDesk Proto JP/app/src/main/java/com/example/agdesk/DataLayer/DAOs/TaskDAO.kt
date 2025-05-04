@@ -42,6 +42,9 @@ interface TaskDAO {
     @Insert
     suspend fun insertSync(vararg sync: TaskSync)
 
+    @Query("DELETE FROM task_sync WHERE uid = :delUid")
+    suspend fun deleteSync(delUid: String)
+
     @Update
     suspend fun updateTask(task: Task)
 
