@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class FieldViewModel @Inject constructor(private val repository: FieldRepository, private val dbDataCreator: dbDataCreator): ViewModel() {
+class FieldViewModel @Inject constructor(private val repository: FieldRepository): ViewModel() {
 
 
     private val _fields = MutableStateFlow<List<FieldsModel>>(emptyList())
@@ -24,12 +24,7 @@ class FieldViewModel @Inject constructor(private val repository: FieldRepository
     val fields: StateFlow<List<FieldsModel>> = _fields.asStateFlow()
 
     init {
-        viewModelScope.launch {
-            withContext(Dispatchers.Default) {
-                    dbDataCreator.populateDB() // test stuff
-                }
 
-        }
         loadFields()
     }
 

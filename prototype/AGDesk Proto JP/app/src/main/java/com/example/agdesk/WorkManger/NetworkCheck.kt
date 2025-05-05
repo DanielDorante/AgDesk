@@ -6,8 +6,19 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.widget.Toast
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import dagger.assisted.AssistedInject
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.qualifiers.ApplicationContext
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class NetworkCheck(private val context: Context, workMangerHelper: WorkManagerHelper) {
+
+class NetworkCheck constructor(context: Context) {
 
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -19,12 +30,13 @@ class NetworkCheck(private val context: Context, workMangerHelper: WorkManagerHe
         .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
         .build()
 
-    private val workMangerHelper = WorkManagerHelper
+
 
     private val networkCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
-            // Trigger the sync immediately when network is available
-            workMangerHelper.triggerImmediateSync(context)
+
+
+            scheduleSyncWork(context)
             showToast("Online")
         }
 
@@ -55,8 +67,22 @@ class NetworkCheck(private val context: Context, workMangerHelper: WorkManagerHe
         connectivityManager.unregisterNetworkCallback(networkCallback)
     }
 
+    fun scheduleSyncWork(context: Context) {
+        val constraints = androidx.work.Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED) // Requires internet connectivity
+            .build()
+
+        val syncRequest = PeriodicWorkRequestBuilder<SyncWorker>(15, TimeUnit.MINUTES)
+            .setConstraints(constraints)
+            .build()
+
+        // Enqueue the periodic work
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork("Sync",ExistingPeriodicWorkPolicy.REPLACE,syncRequest)
+    }
+
+
     private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
 

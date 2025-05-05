@@ -9,6 +9,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import androidx.work.CoroutineWorker
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 
 @HiltWorker

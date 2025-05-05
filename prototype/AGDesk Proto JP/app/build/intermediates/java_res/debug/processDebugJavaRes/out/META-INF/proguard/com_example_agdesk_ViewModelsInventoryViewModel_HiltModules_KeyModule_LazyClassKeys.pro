@@ -1,0 +1,8 @@
+-keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.TaskViewModel
+-keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.TaskViewModel
+-keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.FieldViewModel
+-keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.FieldViewModel
+-keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.AssetViewModel
+-keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.AssetViewModel
+-keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.InventoryViewModel
+-keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.InventoryViewModel

@@ -1,6 +1,8 @@
 package com.example.agdesk.diModulesHilt
 
 
+import com.example.agdesk.WorkManger.NetworkCheck
+import com.example.agdesk.repository.NetworkRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
