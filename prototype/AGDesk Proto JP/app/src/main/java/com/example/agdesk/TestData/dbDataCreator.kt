@@ -63,7 +63,7 @@ class dbDataCreator @Inject constructor(private val networkRepository: NetworkRe
             i = i + 1
         }
         networkRepository.syncToServer()
-        networkRepository.syncFromServer("123154854")
+        networkRepository.syncFromServer()
 
 
 

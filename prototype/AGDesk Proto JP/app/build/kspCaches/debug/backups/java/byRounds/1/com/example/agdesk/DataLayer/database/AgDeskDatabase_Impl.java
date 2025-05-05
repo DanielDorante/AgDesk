@@ -13,6 +13,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import com.example.agdesk.DataLayer.DAOs.AssetDAO;
 import com.example.agdesk.DataLayer.DAOs.AssetDAO_Impl;
+import com.example.agdesk.DataLayer.DAOs.DbSyncDAO;
+import com.example.agdesk.DataLayer.DAOs.DbSyncDAO_Impl;
 import com.example.agdesk.DataLayer.DAOs.FieldDAO;
 import com.example.agdesk.DataLayer.DAOs.FieldDAO_Impl;
 import com.example.agdesk.DataLayer.DAOs.InventoryDAO;
@@ -47,10 +49,12 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
 
   private volatile UserDAO _userDAO;
 
+  private volatile DbSyncDAO _dbSyncDAO;
+
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(3) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(4) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `Asset` (`uid` TEXT NOT NULL, `asset_Prefix` TEXT, `asset_Name` TEXT, `manufacture` TEXT, `part_List` TEXT, `location` TEXT, `date_Manufactured` INTEGER, `date_Purchased` INTEGER, `is_Delete` INTEGER NOT NULL, `asset_Image` TEXT, `farm_Id` INTEGER, `global_Id` INTEGER, PRIMARY KEY(`uid`))");
@@ -69,8 +73,9 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
         db.execSQL("CREATE TABLE IF NOT EXISTS `inventory_Sync` (`uid` TEXT NOT NULL, `synctimestamp` TEXT NOT NULL, PRIMARY KEY(`uid`), FOREIGN KEY(`uid`) REFERENCES `InventoryItem`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE )");
         db.execSQL("CREATE TABLE IF NOT EXISTS `Users` (`placeholder` TEXT, `id` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS `UserAuth` (`placeholder` TEXT, `id` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`id`) REFERENCES `Users`(`id`) ON UPDATE CASCADE ON DELETE SET NULL )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `DbSync` (`dbInfoId` INTEGER NOT NULL, `lastSyncTimeStamp` TEXT NOT NULL, PRIMARY KEY(`dbInfoId`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bafc1ab8e3da95221fd3dcd7141e6c63')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3ea8f8b613cdf0cb14d5cdce079afccc')");
       }
 
       @Override
@@ -91,6 +96,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
         db.execSQL("DROP TABLE IF EXISTS `inventory_Sync`");
         db.execSQL("DROP TABLE IF EXISTS `Users`");
         db.execSQL("DROP TABLE IF EXISTS `UserAuth`");
+        db.execSQL("DROP TABLE IF EXISTS `DbSync`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -395,9 +401,21 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
                   + " Expected:\n" + _infoUserAuth + "\n"
                   + " Found:\n" + _existingUserAuth);
         }
+        final HashMap<String, TableInfo.Column> _columnsDbSync = new HashMap<String, TableInfo.Column>(2);
+        _columnsDbSync.put("dbInfoId", new TableInfo.Column("dbInfoId", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsDbSync.put("lastSyncTimeStamp", new TableInfo.Column("lastSyncTimeStamp", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysDbSync = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesDbSync = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoDbSync = new TableInfo("DbSync", _columnsDbSync, _foreignKeysDbSync, _indicesDbSync);
+        final TableInfo _existingDbSync = TableInfo.read(db, "DbSync");
+        if (!_infoDbSync.equals(_existingDbSync)) {
+          return new RoomOpenHelper.ValidationResult(false, "DbSync(com.example.agdesk.DataLayer.entities.sync.DbSync).\n"
+                  + " Expected:\n" + _infoDbSync + "\n"
+                  + " Found:\n" + _existingDbSync);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "bafc1ab8e3da95221fd3dcd7141e6c63", "aeb7db0fbbb75c72b54613fa12535da0");
+    }, "3ea8f8b613cdf0cb14d5cdce079afccc", "6e92ea460fbddec8582b9f5ac126c42c");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -408,7 +426,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "Asset","asset_sync","Operations","Damage","Expense","Vehicles","small_Equipment","Large_Equipment","Task","task_sync","Fields","Field_Sync","InventoryItem","inventory_Sync","Users","UserAuth");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "Asset","asset_sync","Operations","Damage","Expense","Vehicles","small_Equipment","Large_Equipment","Task","task_sync","Fields","Field_Sync","InventoryItem","inventory_Sync","Users","UserAuth","DbSync");
   }
 
   @Override
@@ -440,6 +458,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
       _db.execSQL("DELETE FROM `inventory_Sync`");
       _db.execSQL("DELETE FROM `Users`");
       _db.execSQL("DELETE FROM `UserAuth`");
+      _db.execSQL("DELETE FROM `DbSync`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -462,6 +481,7 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
     _typeConvertersMap.put(InventoryDAO.class, InventoryDAO_Impl.getRequiredConverters());
     _typeConvertersMap.put(FieldDAO.class, FieldDAO_Impl.getRequiredConverters());
     _typeConvertersMap.put(UserDAO.class, UserDAO_Impl.getRequiredConverters());
+    _typeConvertersMap.put(DbSyncDAO.class, DbSyncDAO_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -546,6 +566,20 @@ public final class AgDeskDatabase_Impl extends AgDeskDatabase {
           _userDAO = new UserDAO_Impl(this);
         }
         return _userDAO;
+      }
+    }
+  }
+
+  @Override
+  public DbSyncDAO dbSyncDao() {
+    if (_dbSyncDAO != null) {
+      return _dbSyncDAO;
+    } else {
+      synchronized(this) {
+        if(_dbSyncDAO == null) {
+          _dbSyncDAO = new DbSyncDAO_Impl(this);
+        }
+        return _dbSyncDAO;
       }
     }
   }

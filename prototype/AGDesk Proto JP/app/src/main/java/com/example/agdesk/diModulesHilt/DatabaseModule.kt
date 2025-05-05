@@ -4,10 +4,11 @@ import android.content.Context
 import com.example.agdesk.DataLayer.DAOs.AssetDAO
 import com.example.agdesk.DataLayer.DAOs.FieldDAO
 import com.example.agdesk.DataLayer.DAOs.InventoryDAO
+import com.example.agdesk.DataLayer.DAOs.DbSyncDAO
 import com.example.agdesk.DataLayer.DAOs.TaskDAO
 import com.example.agdesk.DataLayer.DAOs.UserDAO
 import com.example.agdesk.DataLayer.database.AgDeskDatabase
-import com.example.agdesk.networkComponents.*
+
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -54,6 +55,12 @@ object DatabaseModule {
     @Singleton
     fun provideUserDao(agDeskDatabase: AgDeskDatabase): UserDAO {
         return agDeskDatabase.userDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSyncDao(agDeskDatabase: AgDeskDatabase): DbSyncDAO {
+        return agDeskDatabase.dbSyncDao()
     }
 
 

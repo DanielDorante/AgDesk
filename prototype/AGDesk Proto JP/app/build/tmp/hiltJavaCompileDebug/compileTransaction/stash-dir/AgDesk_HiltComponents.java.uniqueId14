@@ -1,5 +1,6 @@
 package com.example.agdesk.Application;
 
+import androidx.hilt.work.HiltWrapper_WorkerFactoryModule;
 import com.example.agdesk.MainActivity_GeneratedInjector;
 import com.example.agdesk.SplashScreen_GeneratedInjector;
 import com.example.agdesk.TestData.TestModule;
@@ -136,6 +137,7 @@ public final class AgDesk_HiltComponents {
           ApplicationContextModule.class,
           DatabaseModule.class,
           HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule.class,
+          HiltWrapper_WorkerFactoryModule.class,
           NetworkModule.class,
           TestModule.class
       }

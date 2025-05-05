@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-75:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-76:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
             "map": [
                 {
-                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/bca8e5cbad779a138fc6059cc70bd9e2/transformed/material-1.12.0/res/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/ca9a6c2bb9355bce47150c44b0ac8fb3/transformed/material-1.12.0/res/values-w600dp-land-v13/values-w600dp-land-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

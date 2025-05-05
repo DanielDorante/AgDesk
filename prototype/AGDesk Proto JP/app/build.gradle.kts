@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.startup.runtime)
+    implementation("androidx.hilt:hilt-work:1.2.0")
     implementation(libs.hilt.android.v2511)
     implementation(libs.androidx.room.ktx)
     kapt(libs.hilt.compiler)
@@ -91,5 +92,10 @@ dependencies {
 
 
 
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
