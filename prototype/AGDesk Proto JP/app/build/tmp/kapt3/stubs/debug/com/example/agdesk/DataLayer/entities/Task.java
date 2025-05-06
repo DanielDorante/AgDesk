@@ -4,6 +4,7 @@ package com.example.agdesk.DataLayer.entities;
 @androidx.room.Entity(tableName = "Task", foreignKeys = {@androidx.room.ForeignKey(entity = com.example.agdesk.DataLayer.entities.User.Users.class, parentColumns = {"id"}, childColumns = {"assigned_To"}, onDelete = 3, onUpdate = 5)})
 public final class Task {
     @androidx.room.PrimaryKey()
+    @androidx.room.TypeConverters(value = {com.example.agdesk.DataLayer.Converters.DatabaseConverter.class})
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String uid = null;
     @androidx.room.ColumnInfo(name = "taskName")

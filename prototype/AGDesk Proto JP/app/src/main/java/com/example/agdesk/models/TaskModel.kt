@@ -6,6 +6,7 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter
+import java.util.Date
 import java.util.UUID
 
 data class TaskModel (
@@ -14,7 +15,7 @@ data class TaskModel (
     @ColumnInfo(name = "description") val desc: String?,
     @ColumnInfo(name = "time_stamp") val timestamp: Int?, //time stamp of task creation
     @ColumnInfo(name = "is_Delete") val del: Boolean?,
-    @ColumnInfo(name = "due_Date") val due: Int?,
+    @field:TypeConverters(DatabaseConverter::class) @ColumnInfo(name = "due_Date") val due: Date?,
     @ColumnInfo(name = "expire_Date") val exp: Int?,
     @ColumnInfo(name = "status") val status: Int?, //completion status, 0-5 see below
     @ColumnInfo(name = "priority") val priority: Int?, //See below 0-3

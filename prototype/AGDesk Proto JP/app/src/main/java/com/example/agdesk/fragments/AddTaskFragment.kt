@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.database.DatabaseHelper
@@ -16,6 +17,9 @@ import com.example.agdesk.databinding.FragmentAddTaskBinding
 import com.example.agdesk.models.HelperClass
 import com.example.agdesk.models.TaskModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -56,21 +60,26 @@ class AddTaskFragment : Fragment() {
         binding?.ivBack?.setOnClickListener { findNavController().navigateUp() }
         binding?.btnAddNow?.setOnClickListener {
             if (isValidated()) {
-                taskViewModel.insertTasks(TaskModel(
-                    uid = null,
-                    name = name,
-                    desc = "sample",
-                    timestamp = 123,
-                    del = null,
-                    due = 123,
-                    exp = null,
-                    status = null,
-                    priority = null,
-                    assignedId = null,
-                    assigned = null,
-                    farm = null,
-                    syncid = null
-                ))
+                lifecycleScope.launch {
+                    withContext(Dispatchers.Default) {
+                        taskViewModel.insertTasks(TaskModel(
+                            uid = null,
+                            name = name,
+                            desc = "sample",
+                            timestamp = 123,
+                            del = null,
+                            due = 123,
+                            exp = null,
+                            status = null,
+                            priority = null,
+                            assignedId = null,
+                            assigned = null,
+                            farm = null,
+                            syncid = null
+                        ))
+                    }
+                }
+
                 dbHelper?.addTask(HelperClass.users?.id.toString(), name ?: "", date ?: "", time ?: "")
                 showMessage("Task added successfully")
                 findNavController().navigateUp()

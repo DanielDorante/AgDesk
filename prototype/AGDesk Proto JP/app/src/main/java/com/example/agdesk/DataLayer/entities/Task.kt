@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.agdesk.DataLayer.Converters.DatabaseConverter
 import com.example.agdesk.DataLayer.entities.Asset.Asset
 import com.example.agdesk.DataLayer.entities.User.Users
 
@@ -20,7 +22,7 @@ import com.example.agdesk.DataLayer.entities.User.Users
         )]
 )
 data class Task(
-    @PrimaryKey val uid: String,
+    @field:TypeConverters(DatabaseConverter::class) @PrimaryKey val uid: String,
     @ColumnInfo(name = "taskName") val name: String?,
     @ColumnInfo(name = "description") val desc: String?,
     @ColumnInfo(name = "time_stamp") val timestamp: Int?,

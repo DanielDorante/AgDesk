@@ -29,6 +29,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -392,11 +393,17 @@ public final class TaskDAO_Impl implements TaskDAO {
               _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
             }
             _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
-            final Integer _tmpDue;
+            final Date _tmpDue;
+            final Integer _tmp_2;
             if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmp_2 = null;
+            } else {
+              _tmp_2 = _cursor.getInt(_cursorIndexOfDue);
+            }
+            if (_tmp_2 == null) {
               _tmpDue = null;
             } else {
-              _tmpDue = _cursor.getInt(_cursorIndexOfDue);
+              _tmpDue = __databaseConverter.fromUnix(_tmp_2);
             }
             final Integer _tmpExp;
             if (_cursor.isNull(_cursorIndexOfExp)) {
@@ -625,11 +632,17 @@ public final class TaskDAO_Impl implements TaskDAO {
               _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
             }
             _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
-            final Integer _tmpDue;
+            final Date _tmpDue;
+            final Integer _tmp_2;
             if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmp_2 = null;
+            } else {
+              _tmp_2 = _cursor.getInt(_cursorIndexOfDue);
+            }
+            if (_tmp_2 == null) {
               _tmpDue = null;
             } else {
-              _tmpDue = _cursor.getInt(_cursorIndexOfDue);
+              _tmpDue = __databaseConverter.fromUnix(_tmp_2);
             }
             final Integer _tmpExp;
             if (_cursor.isNull(_cursorIndexOfExp)) {
@@ -852,11 +865,17 @@ public final class TaskDAO_Impl implements TaskDAO {
               _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
             }
             _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
-            final Integer _tmpDue;
+            final Date _tmpDue;
+            final Integer _tmp_2;
             if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmp_2 = null;
+            } else {
+              _tmp_2 = _cursor.getInt(_cursorIndexOfDue);
+            }
+            if (_tmp_2 == null) {
               _tmpDue = null;
             } else {
-              _tmpDue = _cursor.getInt(_cursorIndexOfDue);
+              _tmpDue = __databaseConverter.fromUnix(_tmp_2);
             }
             final Integer _tmpExp;
             if (_cursor.isNull(_cursorIndexOfExp)) {

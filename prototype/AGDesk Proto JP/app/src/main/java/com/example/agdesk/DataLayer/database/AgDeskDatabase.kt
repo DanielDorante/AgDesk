@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.agdesk.DataLayer.Converters.DatabaseConverter
 import com.example.agdesk.DataLayer.DAOs.DbSyncDAO
 import com.example.agdesk.DataLayer.DAOs.AssetDAO
 import com.example.agdesk.DataLayer.DAOs.FieldDAO
@@ -28,6 +30,7 @@ import com.example.agdesk.DataLayer.entities.sync.TaskSync
 @Database(entities = [Asset::class, AssetSync::class, Operations::class, Damage::class, Expense::class, Vehicle::class, SmallEquipment::class,
                      LargeEquipment::class, Task::class, TaskSync::class, Fields::class, FieldSync::class,
                      InventoryItem::class, InventorySync::class, Users::class, UserAuth::class, DbSync::class ], version = 4)
+@TypeConverters(DatabaseConverter::class)
 abstract class AgDeskDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDAO
     abstract fun assetDao(): AssetDAO
