@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('test/', views.test_view),  # Temporary test endpoint
+    path('sync/', views.sync_assets_and_tasks),  
 ]
