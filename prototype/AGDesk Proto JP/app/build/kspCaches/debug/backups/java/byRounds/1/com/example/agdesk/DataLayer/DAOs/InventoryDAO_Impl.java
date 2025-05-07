@@ -14,7 +14,7 @@ import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.agdesk.DataLayer.entities.InventoryItem;
 import com.example.agdesk.DataLayer.entities.Supplier;
 import com.example.agdesk.DataLayer.entities.sync.InventorySync;
-import com.example.agdesk.models.InventoryModel;
+import com.example.agdesk.models.UIModels.InventoryModel;
 import java.lang.Class;
 import java.lang.Double;
 import java.lang.Exception;
@@ -65,7 +65,7 @@ public final class InventoryDAO_Impl implements InventoryDAO {
         if (entity.getSku() == null) {
           statement.bindNull(3);
         } else {
-          statement.bindLong(3, entity.getSku());
+          statement.bindString(3, entity.getSku());
         }
         if (entity.getCategory() == null) {
           statement.bindNull(4);
@@ -75,7 +75,7 @@ public final class InventoryDAO_Impl implements InventoryDAO {
         if (entity.getQuantity() == null) {
           statement.bindNull(5);
         } else {
-          statement.bindString(5, entity.getQuantity());
+          statement.bindLong(5, entity.getQuantity());
         }
         if (entity.getCostPrice() == null) {
           statement.bindNull(6);
@@ -107,7 +107,7 @@ public final class InventoryDAO_Impl implements InventoryDAO {
           if (_tmpSupplier.getPhone() == null) {
             statement.bindNull(11);
           } else {
-            statement.bindLong(11, _tmpSupplier.getPhone());
+            statement.bindString(11, _tmpSupplier.getPhone());
           }
         } else {
           statement.bindNull(9);
@@ -127,7 +127,7 @@ public final class InventoryDAO_Impl implements InventoryDAO {
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final InventorySync entity) {
         statement.bindString(1, entity.getUid());
-        statement.bindString(2, entity.getSynctime());
+        statement.bindLong(2, entity.getSynctime());
       }
     };
     this.__deletionAdapterOfInventoryItem = new EntityDeletionOrUpdateAdapter<InventoryItem>(__db) {
@@ -162,7 +162,7 @@ public final class InventoryDAO_Impl implements InventoryDAO {
         if (entity.getSku() == null) {
           statement.bindNull(3);
         } else {
-          statement.bindLong(3, entity.getSku());
+          statement.bindString(3, entity.getSku());
         }
         if (entity.getCategory() == null) {
           statement.bindNull(4);
@@ -172,7 +172,7 @@ public final class InventoryDAO_Impl implements InventoryDAO {
         if (entity.getQuantity() == null) {
           statement.bindNull(5);
         } else {
-          statement.bindString(5, entity.getQuantity());
+          statement.bindLong(5, entity.getQuantity());
         }
         if (entity.getCostPrice() == null) {
           statement.bindNull(6);
@@ -204,7 +204,7 @@ public final class InventoryDAO_Impl implements InventoryDAO {
           if (_tmpSupplier.getPhone() == null) {
             statement.bindNull(11);
           } else {
-            statement.bindLong(11, _tmpSupplier.getPhone());
+            statement.bindString(11, _tmpSupplier.getPhone());
           }
         } else {
           statement.bindNull(9);
@@ -310,7 +310,6 @@ public final class InventoryDAO_Impl implements InventoryDAO {
           final int _cursorIndexOfQuantity = CursorUtil.getColumnIndexOrThrow(_cursor, "quantity");
           final int _cursorIndexOfCostPrice = CursorUtil.getColumnIndexOrThrow(_cursor, "cost_Price");
           final int _cursorIndexOfSalePrice = CursorUtil.getColumnIndexOrThrow(_cursor, "sell_Price");
-          final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
           final int _cursorIndexOfName_1 = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
           final int _cursorIndexOfPhone = CursorUtil.getColumnIndexOrThrow(_cursor, "phone");
@@ -329,11 +328,11 @@ public final class InventoryDAO_Impl implements InventoryDAO {
             } else {
               _tmpName = _cursor.getString(_cursorIndexOfName);
             }
-            final Integer _tmpSku;
+            final String _tmpSku;
             if (_cursor.isNull(_cursorIndexOfSku)) {
               _tmpSku = null;
             } else {
-              _tmpSku = _cursor.getInt(_cursorIndexOfSku);
+              _tmpSku = _cursor.getString(_cursorIndexOfSku);
             }
             final String _tmpCategory;
             if (_cursor.isNull(_cursorIndexOfCategory)) {
@@ -341,11 +340,11 @@ public final class InventoryDAO_Impl implements InventoryDAO {
             } else {
               _tmpCategory = _cursor.getString(_cursorIndexOfCategory);
             }
-            final String _tmpQuantity;
+            final Integer _tmpQuantity;
             if (_cursor.isNull(_cursorIndexOfQuantity)) {
               _tmpQuantity = null;
             } else {
-              _tmpQuantity = _cursor.getString(_cursorIndexOfQuantity);
+              _tmpQuantity = _cursor.getInt(_cursorIndexOfQuantity);
             }
             final Double _tmpCostPrice;
             if (_cursor.isNull(_cursorIndexOfCostPrice)) {
@@ -359,13 +358,7 @@ public final class InventoryDAO_Impl implements InventoryDAO {
             } else {
               _tmpSalePrice = _cursor.getDouble(_cursorIndexOfSalePrice);
             }
-            final Integer _tmpSyncid;
-            if (_cursor.isNull(_cursorIndexOfSyncid)) {
-              _tmpSyncid = null;
-            } else {
-              _tmpSyncid = _cursor.getInt(_cursorIndexOfSyncid);
-            }
-            final com.example.agdesk.models.Supplier _tmpSupplier;
+            final com.example.agdesk.models.UIModels.Supplier _tmpSupplier;
             if (!(_cursor.isNull(_cursorIndexOfName_1) && _cursor.isNull(_cursorIndexOfEmail) && _cursor.isNull(_cursorIndexOfPhone))) {
               final String _tmpName_1;
               if (_cursor.isNull(_cursorIndexOfName_1)) {
@@ -379,17 +372,17 @@ public final class InventoryDAO_Impl implements InventoryDAO {
               } else {
                 _tmpEmail = _cursor.getString(_cursorIndexOfEmail);
               }
-              final Integer _tmpPhone;
+              final String _tmpPhone;
               if (_cursor.isNull(_cursorIndexOfPhone)) {
                 _tmpPhone = null;
               } else {
-                _tmpPhone = _cursor.getInt(_cursorIndexOfPhone);
+                _tmpPhone = _cursor.getString(_cursorIndexOfPhone);
               }
-              _tmpSupplier = new com.example.agdesk.models.Supplier(_tmpName_1,_tmpEmail,_tmpPhone);
+              _tmpSupplier = new com.example.agdesk.models.UIModels.Supplier(_tmpName_1,_tmpEmail,_tmpPhone);
             } else {
               _tmpSupplier = null;
             }
-            _item = new InventoryModel(_tmpUid,_tmpName,_tmpSku,_tmpCategory,_tmpQuantity,_tmpCostPrice,_tmpSalePrice,_tmpSupplier,_tmpSyncid);
+            _item = new InventoryModel(_tmpUid,_tmpName,_tmpSku,_tmpCategory,_tmpQuantity,_tmpCostPrice,_tmpSalePrice,_tmpSupplier);
             _result.add(_item);
           }
           return _result;

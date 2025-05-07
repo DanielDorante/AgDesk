@@ -17,7 +17,7 @@ import com.example.agdesk.R
 import com.example.agdesk.DataLayer.database.AgDeskDatabase
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentMapBinding
-import com.example.agdesk.models.FieldsModel
+import com.example.agdesk.models.UIModels.FieldsModel
 import com.example.agdesk.models.HelperClass
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

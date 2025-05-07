@@ -16,6 +16,7 @@ import com.example.agdesk.DataLayer.entities.sync.DbSync;
 import com.example.agdesk.models.networkModels.SyncRequest;
 import java.lang.Class;
 import java.lang.Exception;
+import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -49,7 +50,7 @@ public final class DbSyncDAO_Impl implements DbSyncDAO {
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final DbSync entity) {
         statement.bindLong(1, entity.getId());
-        statement.bindString(2, entity.getSynctime());
+        statement.bindLong(2, entity.getSynctime());
       }
     };
     this.__preparedStmtOfUpdateSyncTimestamp = new SharedSQLiteStatement(__db) {
@@ -120,11 +121,11 @@ public final class DbSyncDAO_Impl implements DbSyncDAO {
           final int _cursorIndexOfLastSyncTimeStamp = CursorUtil.getColumnIndexOrThrow(_cursor, "lastSyncTimeStamp");
           final SyncRequest _result;
           if (_cursor.moveToFirst()) {
-            final String _tmpLastSyncTimeStamp;
+            final Long _tmpLastSyncTimeStamp;
             if (_cursor.isNull(_cursorIndexOfLastSyncTimeStamp)) {
               _tmpLastSyncTimeStamp = null;
             } else {
-              _tmpLastSyncTimeStamp = _cursor.getString(_cursorIndexOfLastSyncTimeStamp);
+              _tmpLastSyncTimeStamp = _cursor.getLong(_cursorIndexOfLastSyncTimeStamp);
             }
             _result = new SyncRequest(_tmpLastSyncTimeStamp);
           } else {

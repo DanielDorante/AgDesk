@@ -30,13 +30,13 @@ import com.example.agdesk.DataLayer.entities.User.Users
 )
 data class Expense(
     @PrimaryKey @ColumnInfo(name = "Expense_id") val uid: String,
-    @ColumnInfo(name = "Global_id") val syncId: Int?,
-    @ColumnInfo(name = "Cost") val start: Int,
-    @ColumnInfo(name = "receipt_Number") val receipt: Int,
+    @ColumnInfo(name = "Global_id") val syncId: Long?,
+    @ColumnInfo(name = "Cost") val start: Double,
+    @ColumnInfo(name = "receipt_Number") val receipt: String,
     @ColumnInfo(name = "is_Delete") val isDelete: Boolean?,
-    @ColumnInfo(name = "Maintenance_Id") val maintenanceId: String,
+    @ColumnInfo(name = "Maintenance_Id") val maintenanceId: String, //unsure what this does
     @ColumnInfo(name = "Asset_Id") val assetId: String,
-    @ColumnInfo(name = "Lodged_by_id") val lodgedById: Int,
+    @ColumnInfo(name = "Lodged_by_id") val lodgedById: Long,
 
 
 )

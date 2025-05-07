@@ -1,7 +1,7 @@
 package com.example.agdesk.DataLayer.entities;
 
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000 \n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000b\n\u0002\b,\b\u0087\b\u0018\u00002\u00020\u0001B{\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\b\u0010\u0004\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0005\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0006\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\b\u001a\u0004\u0018\u00010\t\u0012\b\u0010\n\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\u000b\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\f\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\r\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\u000e\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\u000f\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\u0010\u001a\u0004\u0018\u00010\u0007\u00a2\u0006\u0002\u0010\u0011J\t\u0010#\u001a\u00020\u0003H\u00c6\u0003J\u0010\u0010$\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0013J\u0010\u0010%\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0013J\u0010\u0010&\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0013J\u000b\u0010\'\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010(\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0010\u0010)\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0013J\u0010\u0010*\u001a\u0004\u0018\u00010\tH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0016J\u0010\u0010+\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0013J\u0010\u0010,\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0013J\u0010\u0010-\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0013J\u0010\u0010.\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0013J\u009c\u0001\u0010/\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0005\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\b\u001a\u0004\u0018\u00010\t2\n\b\u0002\u0010\n\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\u000b\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\f\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\r\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\u000e\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\u000f\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\u0010\u001a\u0004\u0018\u00010\u0007H\u00c6\u0001\u00a2\u0006\u0002\u00100J\u0013\u00101\u001a\u00020\t2\b\u00102\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u00103\u001a\u00020\u0007H\u00d6\u0001J\t\u00104\u001a\u00020\u0003H\u00d6\u0001R\u001a\u0010\u000e\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0014\u001a\u0004\b\u0012\u0010\u0013R\u001a\u0010\b\u001a\u0004\u0018\u00010\t8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0017\u001a\u0004\b\u0015\u0010\u0016R\u0018\u0010\u0005\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0018\u0010\u0019R\u001a\u0010\n\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0014\u001a\u0004\b\u001a\u0010\u0013R\u001a\u0010\u000b\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0014\u001a\u0004\b\u001b\u0010\u0013R\u001a\u0010\u000f\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0014\u001a\u0004\b\u001c\u0010\u0013R\u0018\u0010\u0004\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0019R\u001a\u0010\r\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0014\u001a\u0004\b\u001e\u0010\u0013R\u001a\u0010\f\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0014\u001a\u0004\b\u001f\u0010\u0013R\u001a\u0010\u0010\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0014\u001a\u0004\b \u0010\u0013R\u001a\u0010\u0006\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0014\u001a\u0004\b!\u0010\u0013R\u0016\u0010\u0002\u001a\u00020\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\"\u0010\u0019\u00a8\u00065"}, d2 = {"Lcom/example/agdesk/DataLayer/entities/Task;", "", "uid", "", "name", "desc", "timestamp", "", "del", "", "due", "exp", "status", "priority", "assigned", "farm", "syncid", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V", "getAssigned", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "getDel", "()Ljava/lang/Boolean;", "Ljava/lang/Boolean;", "getDesc", "()Ljava/lang/String;", "getDue", "getExp", "getFarm", "getName", "getPriority", "getStatus", "getSyncid", "getTimestamp", "getUid", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Lcom/example/agdesk/DataLayer/entities/Task;", "equals", "other", "hashCode", "toString", "app_debug"})
-@androidx.room.Entity(tableName = "Task", foreignKeys = {@androidx.room.ForeignKey(entity = com.example.agdesk.DataLayer.entities.User.Users.class, parentColumns = {"id"}, childColumns = {"assigned_To"}, onDelete = 3, onUpdate = 5)})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000(\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\t\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0003\n\u0002\u0010\b\n\u0002\b+\b\u0087\b\u0018\u00002\u00020\u0001B{\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\b\u0010\u0004\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0005\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0006\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\b\u001a\u0004\u0018\u00010\t\u0012\b\u0010\n\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\u000b\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\f\u001a\u0004\u0018\u00010\r\u0012\b\u0010\u000e\u001a\u0004\u0018\u00010\r\u0012\b\u0010\u000f\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\u0010\u001a\u0004\u0018\u00010\u0007\u0012\b\u0010\u0011\u001a\u0004\u0018\u00010\u0007\u00a2\u0006\u0002\u0010\u0012J\t\u0010&\u001a\u00020\u0003H\u00c6\u0003J\u0010\u0010\'\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u0010(\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u0010)\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u000b\u0010*\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010+\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0010\u0010,\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u0010-\u001a\u0004\u0018\u00010\tH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0017J\u0010\u0010.\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u0010/\u001a\u0004\u0018\u00010\u0007H\u00c6\u0003\u00a2\u0006\u0002\u0010\u0014J\u0010\u00100\u001a\u0004\u0018\u00010\rH\u00c6\u0003\u00a2\u0006\u0002\u0010 J\u0010\u00101\u001a\u0004\u0018\u00010\rH\u00c6\u0003\u00a2\u0006\u0002\u0010 J\u009c\u0001\u00102\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0005\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\b\u001a\u0004\u0018\u00010\t2\n\b\u0002\u0010\n\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\u000b\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\f\u001a\u0004\u0018\u00010\r2\n\b\u0002\u0010\u000e\u001a\u0004\u0018\u00010\r2\n\b\u0002\u0010\u000f\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\u0010\u001a\u0004\u0018\u00010\u00072\n\b\u0002\u0010\u0011\u001a\u0004\u0018\u00010\u0007H\u00c6\u0001\u00a2\u0006\u0002\u00103J\u0013\u00104\u001a\u00020\t2\b\u00105\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u00106\u001a\u00020\rH\u00d6\u0001J\t\u00107\u001a\u00020\u0003H\u00d6\u0001R\u001a\u0010\u000f\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u0013\u0010\u0014R\u001a\u0010\b\u001a\u0004\u0018\u00010\t8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0018\u001a\u0004\b\u0016\u0010\u0017R\u0018\u0010\u0005\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u001aR\u001a\u0010\n\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u001b\u0010\u0014R\u001a\u0010\u000b\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u001c\u0010\u0014R\u001a\u0010\u0010\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b\u001d\u0010\u0014R\u0018\u0010\u0004\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001e\u0010\u001aR\u001a\u0010\u000e\u001a\u0004\u0018\u00010\r8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010!\u001a\u0004\b\u001f\u0010 R\u001a\u0010\f\u001a\u0004\u0018\u00010\r8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010!\u001a\u0004\b\"\u0010 R\u001a\u0010\u0011\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b#\u0010\u0014R\u001a\u0010\u0006\u001a\u0004\u0018\u00010\u00078\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0015\u001a\u0004\b$\u0010\u0014R\u0016\u0010\u0002\u001a\u00020\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b%\u0010\u001a\u00a8\u00068"}, d2 = {"Lcom/example/agdesk/DataLayer/entities/Task;", "", "uid", "", "name", "desc", "timestamp", "", "del", "", "due", "exp", "status", "", "priority", "assigned", "farm", "syncid", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Boolean;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;)V", "getAssigned", "()Ljava/lang/Long;", "Ljava/lang/Long;", "getDel", "()Ljava/lang/Boolean;", "Ljava/lang/Boolean;", "getDesc", "()Ljava/lang/String;", "getDue", "getExp", "getFarm", "getName", "getPriority", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "getStatus", "getSyncid", "getTimestamp", "getUid", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Boolean;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;)Lcom/example/agdesk/DataLayer/entities/Task;", "equals", "other", "hashCode", "toString", "app_debug"})
+@androidx.room.Entity(tableName = "Task")
 public final class Task {
     @androidx.room.PrimaryKey()
     @androidx.room.TypeConverters(value = {com.example.agdesk.DataLayer.Converters.DatabaseConverter.class})
@@ -15,16 +15,16 @@ public final class Task {
     private final java.lang.String desc = null;
     @androidx.room.ColumnInfo(name = "time_stamp")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer timestamp = null;
+    private final java.lang.Long timestamp = null;
     @androidx.room.ColumnInfo(name = "is_Delete")
     @org.jetbrains.annotations.Nullable()
     private final java.lang.Boolean del = null;
     @androidx.room.ColumnInfo(name = "due_Date")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer due = null;
+    private final java.lang.Long due = null;
     @androidx.room.ColumnInfo(name = "expire_Date")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer exp = null;
+    private final java.lang.Long exp = null;
     @androidx.room.ColumnInfo(name = "status")
     @org.jetbrains.annotations.Nullable()
     private final java.lang.Integer status = null;
@@ -33,13 +33,13 @@ public final class Task {
     private final java.lang.Integer priority = null;
     @androidx.room.ColumnInfo(name = "assigned_To")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer assigned = null;
+    private final java.lang.Long assigned = null;
     @androidx.room.ColumnInfo(name = "farm_Id")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer farm = null;
+    private final java.lang.Long farm = null;
     @androidx.room.ColumnInfo(name = "global_Id")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer syncid = null;
+    private final java.lang.Long syncid = null;
     
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component1() {
@@ -47,17 +47,17 @@ public final class Task {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component10() {
+    public final java.lang.Long component10() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component11() {
+    public final java.lang.Long component11() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component12() {
+    public final java.lang.Long component12() {
         return null;
     }
     
@@ -72,7 +72,7 @@ public final class Task {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component4() {
+    public final java.lang.Long component4() {
         return null;
     }
     
@@ -82,12 +82,12 @@ public final class Task {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component6() {
+    public final java.lang.Long component6() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component7() {
+    public final java.lang.Long component7() {
         return null;
     }
     
@@ -106,15 +106,15 @@ public final class Task {
     java.lang.String uid, @org.jetbrains.annotations.Nullable()
     java.lang.String name, @org.jetbrains.annotations.Nullable()
     java.lang.String desc, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer timestamp, @org.jetbrains.annotations.Nullable()
+    java.lang.Long timestamp, @org.jetbrains.annotations.Nullable()
     java.lang.Boolean del, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer due, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer exp, @org.jetbrains.annotations.Nullable()
+    java.lang.Long due, @org.jetbrains.annotations.Nullable()
+    java.lang.Long exp, @org.jetbrains.annotations.Nullable()
     java.lang.Integer status, @org.jetbrains.annotations.Nullable()
     java.lang.Integer priority, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer assigned, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer farm, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer syncid) {
+    java.lang.Long assigned, @org.jetbrains.annotations.Nullable()
+    java.lang.Long farm, @org.jetbrains.annotations.Nullable()
+    java.lang.Long syncid) {
         return null;
     }
     
@@ -139,15 +139,15 @@ public final class Task {
     java.lang.String uid, @org.jetbrains.annotations.Nullable()
     java.lang.String name, @org.jetbrains.annotations.Nullable()
     java.lang.String desc, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer timestamp, @org.jetbrains.annotations.Nullable()
+    java.lang.Long timestamp, @org.jetbrains.annotations.Nullable()
     java.lang.Boolean del, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer due, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer exp, @org.jetbrains.annotations.Nullable()
+    java.lang.Long due, @org.jetbrains.annotations.Nullable()
+    java.lang.Long exp, @org.jetbrains.annotations.Nullable()
     java.lang.Integer status, @org.jetbrains.annotations.Nullable()
     java.lang.Integer priority, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer assigned, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer farm, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer syncid) {
+    java.lang.Long assigned, @org.jetbrains.annotations.Nullable()
+    java.lang.Long farm, @org.jetbrains.annotations.Nullable()
+    java.lang.Long syncid) {
         super();
     }
     
@@ -167,7 +167,7 @@ public final class Task {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getTimestamp() {
+    public final java.lang.Long getTimestamp() {
         return null;
     }
     
@@ -177,12 +177,12 @@ public final class Task {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getDue() {
+    public final java.lang.Long getDue() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getExp() {
+    public final java.lang.Long getExp() {
         return null;
     }
     
@@ -197,17 +197,17 @@ public final class Task {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getAssigned() {
+    public final java.lang.Long getAssigned() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getFarm() {
+    public final java.lang.Long getFarm() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getSyncid() {
+    public final java.lang.Long getSyncid() {
         return null;
     }
 }

@@ -2,9 +2,8 @@ package com.example.agdesk.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.agdesk.models.AssetModel
-import com.example.agdesk.models.FieldsModel
-import com.example.agdesk.repository.AssetRepository
+import com.example.agdesk.models.UIModels.AssetModel
+import com.example.agdesk.DomainLayer.repository.AssetRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,6 +28,7 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
         loadAssets()
     }
 
+    //Saves an Asset to the database and refreshes the state post creation
     fun insertAsssets(vararg assetModel: AssetModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) { //Executing jobs on the InputOutput Thread, good for database interaction
             assetRepository.insertAsset(*assetModel)
@@ -36,7 +36,7 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
         }
     }
 
-
+    //Updates the state with a list of all Assets in the db
     fun loadAssets() = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val assetList = assetRepository.getAllAssets()
@@ -46,7 +46,7 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
     }
 
 
-
+    //Updates the state with a list of Assets of HV/LV vehicle type
     fun loadVehicleAssets() = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val assetList = assetRepository.getAllVehicles()
@@ -54,7 +54,7 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
         }
 
     }
-
+    //Updates the state with a list of Assets of SE Equipment type
     fun loadSmallAssets() = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val assetList = assetRepository.getAllSmallEquipment()
@@ -62,7 +62,7 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
         }
 
     }
-
+    //Updates the state with a list of Assets of LE Equipment type
     fun loadLargeAssets() = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val assetList = assetRepository.getAllLargeEquipment()
@@ -71,7 +71,11 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
 
     }
 
-    fun updateAssset(assetModel: AssetModel) = viewModelScope.launch {
+    //Updates an Asset via passing a complete AssetModel
+    //It will check if the uid matches one in the database
+    //Then updates every field in the asset according to the AssetModel passed
+    //Note: If you leave something null it will probably overwrite.
+    fun updateAsset(assetModel: AssetModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
             assetRepository.updateAsset(assetModel)
             loadAssets()

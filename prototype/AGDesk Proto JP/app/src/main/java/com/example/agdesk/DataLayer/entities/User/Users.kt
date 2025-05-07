@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class Users( // yet to implement
     val placeholder: String?,
-    @PrimaryKey val id: Int
+    @PrimaryKey val id: Long
 
 )

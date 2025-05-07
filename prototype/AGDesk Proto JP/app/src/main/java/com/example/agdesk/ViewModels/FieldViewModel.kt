@@ -2,9 +2,9 @@ package com.example.agdesk.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.agdesk.TestData.dbDataCreator
-import com.example.agdesk.models.FieldsModel
-import com.example.agdesk.repository.FieldRepository
+
+import com.example.agdesk.models.UIModels.FieldsModel
+import com.example.agdesk.DomainLayer.repository.FieldRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -9,7 +9,7 @@ import com.example.agdesk.DataLayer.Converters.DatabaseConverter
 
 @Entity
 data class Farm(
-    @PrimaryKey @ColumnInfo(name = "FarmID") val id: String,
+    @PrimaryKey @ColumnInfo(name = "FarmID") val id: Long,
     @ColumnInfo(name = "Farm_Name") val name: String,
     @ColumnInfo(name = "Farm_Street") val street: String,
     @ColumnInfo(name = "Farm_State") val state: String,

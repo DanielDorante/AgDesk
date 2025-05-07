@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.ActivityRegisterBinding
-import com.example.agdesk.models.UserModel
+import com.example.agdesk.models.UIModels.UserModel
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding

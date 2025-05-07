@@ -3,14 +3,13 @@ package com.example.agdesk.Application;
 import androidx.hilt.work.HiltWrapper_WorkerFactoryModule;
 import com.example.agdesk.MainActivity_GeneratedInjector;
 import com.example.agdesk.SplashScreen_GeneratedInjector;
-import com.example.agdesk.TestData.TestModule;
 import com.example.agdesk.ViewModels.AssetViewModel_HiltModules;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules;
 import com.example.agdesk.ViewModels.InventoryViewModel_HiltModules;
 import com.example.agdesk.ViewModels.TaskViewModel_HiltModules;
-import com.example.agdesk.diModulesHilt.DatabaseModule;
-import com.example.agdesk.diModulesHilt.NetworkModule;
-import com.example.agdesk.diModulesHilt.WorkerModule;
+import com.example.agdesk.dependencyInjectionModulesHilt.DatabaseModule;
+import com.example.agdesk.dependencyInjectionModulesHilt.NetworkModule;
+import com.example.agdesk.dependencyInjectionModulesHilt.WorkerModule;
 import com.example.agdesk.fragments.AddAssetFragment_GeneratedInjector;
 import com.example.agdesk.fragments.AddTaskFragment_GeneratedInjector;
 import com.example.agdesk.fragments.AssetsFragment_GeneratedInjector;
@@ -149,7 +148,6 @@ public final class AgDesk_HiltComponents {
           HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule.class,
           HiltWrapper_WorkerFactoryModule.class,
           NetworkModule.class,
-          TestModule.class,
           WorkerModule.class
       }
   )

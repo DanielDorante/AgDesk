@@ -13,8 +13,9 @@ import com.example.agdesk.DataLayer.entities.Asset.Vehicle
 
 
 import com.example.agdesk.DataLayer.entities.sync.AssetSync
-import com.example.agdesk.models.AssetModel
+import com.example.agdesk.models.UIModels.AssetModel
 import com.example.agdesk.models.networkModels.dataModels.AssetNetworkModel
+import io.ktor.util.StringValuesImpl
 
 @Dao
 interface AssetDAO {
@@ -50,7 +51,10 @@ interface AssetDAO {
 
 
     @Query("SELECT * FROM Asset WHERE global_Id = :syncId LIMIT 1")
-    suspend fun getBySyncId(syncId: Int): Asset?
+    suspend fun getBySyncId(syncId: Long): Asset?
+
+    @Query("SELECT * FROM Asset WHERE uid = :uid LIMIT 1")
+    suspend fun getByUid(uid: String): Asset?
 
     @Query("SELECT * FROM Asset INNER JOIN Large_Equipment ON Asset.uid = Large_Equipment.uid;")
     fun getAllLargeEquipment(): MutableList<AssetModel>

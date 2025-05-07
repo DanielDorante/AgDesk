@@ -18,11 +18,8 @@ import com.example.agdesk.R
 import com.example.agdesk.adapters.InventoryAdapter
 
 import com.example.agdesk.ViewModels.InventoryViewModel
-import com.example.agdesk.ViewModels.TaskViewModel
-import com.example.agdesk.adapters.TasksAdapter
 import com.example.agdesk.databinding.FragmentInventoryBinding
-import com.example.agdesk.models.HelperClass
-import com.example.agdesk.models.InventoryModel
+import com.example.agdesk.models.UIModels.InventoryModel
 import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -121,7 +118,7 @@ class InventoryFragment : Fragment() {
             if (name.isNotEmpty() && quantity.isNotEmpty()) {
                 lifecycleScope.launch {
                     withContext(Dispatchers.Default) {
-                        val inventoryItem = InventoryModel(null, name = name,null,null, quantity, null, null, null, null)
+                        val inventoryItem = InventoryModel(null, name = name,null,null, quantity.toInt(), null, null, null)
                         inventoryViewModel.insertItems(inventoryItem)
                         dialog.dismiss()
 

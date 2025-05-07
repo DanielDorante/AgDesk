@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agdesk.R
-import com.example.agdesk.models.InventoryModel
+import com.example.agdesk.models.UIModels.InventoryModel
 
 
 class InventoryAdapter(
@@ -42,7 +42,7 @@ class InventoryAdapter(
 
         fun bind(inventory: InventoryModel) {
             tvName.text = inventory.name
-            tvQuantity.text = inventory.quantity
+            tvQuantity.text = inventory.quantity.toString()
 
         }
 

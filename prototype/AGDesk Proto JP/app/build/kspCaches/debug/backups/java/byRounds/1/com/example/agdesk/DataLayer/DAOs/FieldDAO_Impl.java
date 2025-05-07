@@ -12,7 +12,7 @@ import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter;
 import com.example.agdesk.DataLayer.entities.Fields;
 import com.example.agdesk.DataLayer.entities.sync.FieldSync;
-import com.example.agdesk.models.FieldsModel;
+import com.example.agdesk.models.UIModels.FieldsModel;
 import com.google.android.gms.maps.model.LatLng;
 import java.lang.Class;
 import java.lang.Exception;
@@ -73,7 +73,7 @@ public final class FieldDAO_Impl implements FieldDAO {
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final FieldSync entity) {
         statement.bindString(1, entity.getUid());
-        statement.bindString(2, entity.getSynctime());
+        statement.bindLong(2, entity.getSynctime());
       }
     };
   }

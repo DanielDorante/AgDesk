@@ -44,14 +44,14 @@ class DatabaseConverter {
     }
 
     @TypeConverter
-    public fun fromUnix(timestamp: Int): Date {
-        val date = Date(timestamp.toLong())
+    public fun fromUnix(timestamp: Long): Date {
+        val date = Date(timestamp)
         return date
     }
 
     @TypeConverter
-    public fun dateToUnix(date: Date): Int {
-        return date.time.toInt()
+    public fun dateToUnix(date: Date): Long {
+        return date.time
     }
 
 

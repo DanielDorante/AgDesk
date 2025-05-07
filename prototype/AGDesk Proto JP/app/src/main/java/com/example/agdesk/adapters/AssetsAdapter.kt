@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.agdesk.R
-import com.example.agdesk.models.AssetModel
+import com.example.agdesk.models.UIModels.AssetModel
 import com.example.agdesk.models.OnClick
 import java.text.SimpleDateFormat
 import java.util.Date

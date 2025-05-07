@@ -1,6 +1,6 @@
 package com.example.agdesk.WorkManger;
 
-import com.example.agdesk.repository.NetworkRepository;
+import com.example.agdesk.DomainLayer.repository.NetworkRepository;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;

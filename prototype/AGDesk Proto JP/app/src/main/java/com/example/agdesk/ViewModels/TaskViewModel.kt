@@ -2,9 +2,8 @@ package com.example.agdesk.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.agdesk.models.AssetModel
-import com.example.agdesk.models.TaskModel
-import com.example.agdesk.repository.TaskRepository
+import com.example.agdesk.models.UIModels.TaskModel
+import com.example.agdesk.DomainLayer.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,13 +26,14 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
         loadTasks()
     }
 
+    //Saves a task to the database and refreshes the state post creation
     fun insertTasks(vararg taskModel: TaskModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) { //Executing jobs on the InputOutput Thread, good for database interaction
             taskRepository.insertTask(*taskModel)
             loadTasks()
         }
     }
-
+    //updates state with a list of all the tasks
     fun loadTasks() = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val taskList = taskRepository.getAllTasks()
@@ -42,6 +42,7 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
 
     }
 
+    //User system isn't fully implemented but it gets tasks based on the user in UserAuth
     fun loadUserTasks() = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val taskList = taskRepository.getThisUsersTasks()
@@ -49,7 +50,7 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
         }
 
     }
-
+    //Gets users by time frame, expects string of either 'Month' or 'Week'. Other strings will return all
     fun loadTasksByTimeFrame(timeFrame: String) = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val taskList = taskRepository.getTasksByTimeFrame(timeFrame)
@@ -59,6 +60,10 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
 
     }
 
+    //Updates a task via passing a complete TaskModel
+    //It will check if the uid matches one in the database
+    //Then updates every field in the task according to the TaskModel passed
+    //Note: If you leave something null it will probably overwrite.
     fun updateTask(taskModel: TaskModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
             taskRepository.updateTask(taskModel)

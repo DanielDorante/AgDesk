@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.example.agdesk.DataLayer.entities.Fields
 import com.example.agdesk.DataLayer.entities.sync.FieldSync
-import com.example.agdesk.models.FieldsModel
+import com.example.agdesk.models.UIModels.FieldsModel
 
 @Dao
 interface FieldDAO {

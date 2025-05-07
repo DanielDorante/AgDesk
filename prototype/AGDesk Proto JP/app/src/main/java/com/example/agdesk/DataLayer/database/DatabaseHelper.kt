@@ -4,16 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.agdesk.models.FieldsModel
-import com.example.agdesk.models.InventoryModel
-import com.example.agdesk.models.TaskModel
+import com.example.agdesk.models.UIModels.FieldsModel
+import com.example.agdesk.models.UIModels.InventoryModel
+import com.example.agdesk.models.UIModels.TaskModel
 import com.google.android.gms.maps.model.LatLng
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import android.content.ContentValues
-import com.example.agdesk.models.AssetModel
-import com.example.agdesk.models.UserModel
+import com.example.agdesk.models.UIModels.UserModel
 
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -349,7 +348,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return inventories
     }
 
-    fun insertAsset(asset: AssetModel): Long {
+    /*fun insertAsset(asset: AssetModel): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_ASSET_PREFIX, asset.assetPrefix)
@@ -371,9 +370,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val result = db.insert(TABLE_ASSETS, null, values)
         db.close()
         return result
-    }
+    }*/
 
-    @SuppressLint("Range")
+    /*@SuppressLint("Range")
     fun getAllAssets(): List<AssetModel> {
         val assets = mutableListOf<AssetModel>()
         val db = readableDatabase
@@ -407,9 +406,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         cursor.close()
         db.close()
         return assets
-    }
+    }*/
 
-    fun updateAsset(asset: AssetModel): Int {
+    /*fun updateAsset(asset: AssetModel): Int {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_ASSET_PREFIX, asset.assetPrefix)
@@ -428,16 +427,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             put(COLUMN_ASSET_CHECKOUT_STATUS, if (asset.checkoutStatus == true) 1 else 0)
             put(COLUMN_ASSET_CHECKOUT_BY, asset.checkoutBy)
         }
-
-        val result = db.update(
-            TABLE_ASSETS,
-            values,
-            "$COLUMN_ASSET_ID=?",
-            arrayOf(asset.toString())
-        )
-        db.close()
-        return result // returns number of rows affected
-    }
+*/
+//        val result = db.update(
+//            TABLE_ASSETS,
+//            values,
+//            "$COLUMN_ASSET_ID=?",
+//            arrayOf(asset.toString())
+//        )
+//        db.close()
+//        return result // returns number of rows affected
+//    }
 
 
 }

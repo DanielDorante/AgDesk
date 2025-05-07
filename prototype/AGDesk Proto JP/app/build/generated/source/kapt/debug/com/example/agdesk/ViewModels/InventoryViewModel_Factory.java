@@ -1,6 +1,6 @@
 package com.example.agdesk.ViewModels;
 
-import com.example.agdesk.repository.InventoryRepository;
+import com.example.agdesk.DomainLayer.repository.InventoryRepository;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;

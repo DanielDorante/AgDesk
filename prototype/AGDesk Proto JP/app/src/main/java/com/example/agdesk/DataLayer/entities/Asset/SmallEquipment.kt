@@ -19,6 +19,6 @@ import androidx.room.PrimaryKey
 data class SmallEquipment(
     @PrimaryKey
     @ColumnInfo(name = "uid") val uid: String,
-    @ColumnInfo(name = "serial_Number") val serialNo: Int?,
+    @ColumnInfo(name = "serial_Number") val serialNo: String?,
 
     )

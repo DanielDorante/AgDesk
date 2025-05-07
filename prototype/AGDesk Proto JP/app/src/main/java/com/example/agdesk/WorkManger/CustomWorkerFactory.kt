@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import com.example.agdesk.repository.NetworkRepository
+import com.example.agdesk.DomainLayer.repository.NetworkRepository
 import javax.inject.Inject
 
 class CustomWorkerFactory @Inject constructor(

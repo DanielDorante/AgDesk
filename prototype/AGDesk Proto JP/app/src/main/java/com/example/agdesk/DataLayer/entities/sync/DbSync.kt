@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class DbSync(
     @PrimaryKey
     @ColumnInfo(name = "dbInfoId") val id: Int = 1,
-    @ColumnInfo(name = "lastSyncTimeStamp") val synctime: String,
+    @ColumnInfo(name = "lastSyncTimeStamp") val synctime: Long,
 
 
     )

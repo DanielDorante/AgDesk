@@ -5,11 +5,9 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.agdesk.DataLayer.entities.Farm
 import com.example.agdesk.DataLayer.entities.InventoryItem
-import com.example.agdesk.DataLayer.entities.sync.AssetSync
 import com.example.agdesk.DataLayer.entities.sync.InventorySync
-import com.example.agdesk.models.InventoryModel
+import com.example.agdesk.models.UIModels.InventoryModel
 
 @Dao
 interface InventoryDAO {

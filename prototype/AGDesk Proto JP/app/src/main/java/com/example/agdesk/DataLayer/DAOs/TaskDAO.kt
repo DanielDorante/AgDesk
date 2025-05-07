@@ -6,19 +6,10 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.agdesk.DataLayer.entities.Asset.*
-import com.example.agdesk.DataLayer.entities.Asset.LargeEquipment
-import com.example.agdesk.DataLayer.entities.Asset.SmallEquipment
 import com.example.agdesk.DataLayer.entities.Task
-import com.example.agdesk.DataLayer.entities.Asset.Vehicle
-import com.example.agdesk.DataLayer.entities.sync.AssetSync
 import com.example.agdesk.DataLayer.entities.sync.TaskSync
-import com.example.agdesk.models.AssetModel
-import com.example.agdesk.models.FieldsModel
-import com.example.agdesk.models.TaskModel
-import com.example.agdesk.DataLayer.entities.User.UserAuth
+import com.example.agdesk.models.UIModels.TaskModel
 import com.example.agdesk.models.networkModels.dataModels.TaskNetworkModel
-import java.net.IDN
 
 @Dao
 interface TaskDAO {
@@ -29,17 +20,19 @@ interface TaskDAO {
     suspend fun getOfflineTasks(): MutableList<TaskNetworkModel>
 
     @Query("SELECT * FROM TASK WHERE due_Date < :timeFrame") //gets all the tasks that have a due date within the time frame
-    suspend fun getTimeframe(timeFrame: Int): MutableList<TaskModel>
+    suspend fun getTimeframe(timeFrame: Long): MutableList<TaskModel>
 
 
-    @Query("SELECT * FROM Asset WHERE global_Id = :syncId LIMIT 1")
-    suspend fun getBySyncId(syncId: Int): Asset?
+    @Query("SELECT * FROM Task WHERE global_Id = :syncId LIMIT 1")
+    suspend fun getBySyncId(syncId: Long): Task?
 
+    @Query("SELECT * FROM Task WHERE uid = :uid LIMIT 1")
+    suspend fun getByUid(uid: String): Task?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(vararg task: Task)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSync(vararg sync: TaskSync)
 
     @Query("DELETE FROM task_sync WHERE uid = :delUid")

@@ -2,7 +2,7 @@ package com.example.agdesk.WorkManger;
 
 import android.content.Context;
 import androidx.work.WorkerParameters;
-import com.example.agdesk.repository.NetworkRepository;
+import com.example.agdesk.DomainLayer.repository.NetworkRepository;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
