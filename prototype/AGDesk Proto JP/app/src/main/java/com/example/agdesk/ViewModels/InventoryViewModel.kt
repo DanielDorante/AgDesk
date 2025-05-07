@@ -2,11 +2,8 @@ package com.example.agdesk.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.agdesk.DataLayer.entities.InventoryItem
-import com.example.agdesk.models.AssetModel
-import com.example.agdesk.models.InventoryModel
-import com.example.agdesk.repository.AssetRepository
-import com.example.agdesk.repository.InventoryRepository
+import com.example.agdesk.models.UIModels.InventoryModel
+import com.example.agdesk.DomainLayer.repository.InventoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,6 +25,7 @@ class InventoryViewModel @Inject constructor(private val inventoryRepository: In
         loadItems()
     }
 
+    //Saves an item to the database and refreshes the state post creation
     fun insertItems(inventoryModel: InventoryModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) { //Executing jobs on the InputOutput Thread, good for database interaction
             inventoryRepository.insertInventoryItem(inventoryModel)
@@ -35,7 +33,7 @@ class InventoryViewModel @Inject constructor(private val inventoryRepository: In
         }
     }
 
-
+    //Updates state with a list of inventory models
     fun loadItems() = viewModelScope.launch {
         withContext(Dispatchers.IO){
             val itemList = inventoryRepository.getAllItems()

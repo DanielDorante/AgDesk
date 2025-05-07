@@ -16,5 +16,5 @@ data class Fields (
     val uid: String,
     val name: String,
     @field:TypeConverters(DatabaseConverter::class) val points: List<LatLng>,
-    @ColumnInfo(name = "global_Id") val syncid: Int?,
+    @ColumnInfo(name = "global_Id") val syncid: Long?,
 )

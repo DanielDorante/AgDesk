@@ -19,6 +19,6 @@ import com.example.agdesk.DataLayer.entities.Asset.Asset
 data class AssetSync(
     @PrimaryKey
     @ColumnInfo(name = "uid") val uid: String,
-    @ColumnInfo(name = "synctimestamp") val synctime: String,
+    @ColumnInfo(name = "synctimestamp") val synctime: Long,
 
     )

@@ -1,25 +1,21 @@
 package com.example.agdesk.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.agdesk.R
-import com.example.agdesk.ViewModels.FieldViewModel
 import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.adapters.TasksAdapter
 import com.example.agdesk.adapters.WeatherAdapter
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentHomeBinding
-import com.example.agdesk.models.HelperClass
-import com.example.agdesk.models.TaskModel
+import com.example.agdesk.models.UIModels.TaskModel
 import com.example.agdesk.models.WeatherInfo
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint

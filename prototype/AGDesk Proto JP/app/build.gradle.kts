@@ -1,9 +1,13 @@
+import com.google.devtools.ksp.gradle.model.Ksp
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.devtools.ksp") apply true
     id("kotlin-kapt") apply true
     id("com.google.dagger.hilt.android") apply true
+    kotlin("plugin.serialization") apply true// or whatever Kotlin version you're using
+
 }
 
 android {
@@ -30,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -57,9 +61,13 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.startup.runtime)
+    implementation("androidx.hilt:hilt-work:1.2.0")
     implementation(libs.hilt.android.v2511)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.hilt.compiler)
+
+
+    implementation("com.google.dagger:hilt-android:2.53")
+    kapt("com.google.dagger:hilt-compiler:2.53")
     implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.kotlinx.serialization.json)
@@ -89,5 +97,10 @@ dependencies {
 
 
 
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 

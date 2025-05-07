@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.ActivityLoginBinding
 import com.example.agdesk.models.HelperClass
-import com.example.agdesk.models.UserModel
+import com.example.agdesk.models.UIModels.UserModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding

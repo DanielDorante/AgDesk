@@ -8,14 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentAddTaskBinding
 import com.example.agdesk.models.HelperClass
+import com.example.agdesk.models.UIModels.TaskModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlin.getValue
 
 @AndroidEntryPoint
 class AddTaskFragment : Fragment() {
@@ -26,6 +30,7 @@ class AddTaskFragment : Fragment() {
     var startTime: Calendar? = null
     var endTime: Calendar? = null
     var dbHelper : DatabaseHelper? = null
+    private val taskViewModel: TaskViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +56,23 @@ class AddTaskFragment : Fragment() {
         binding?.ivBack?.setOnClickListener { findNavController().navigateUp() }
         binding?.btnAddNow?.setOnClickListener {
             if (isValidated()) {
+
+                        taskViewModel.insertTasks(TaskModel(
+                            uid = null,
+                            name = name,
+                            desc = "sample",
+                            timestamp = null, //Leave null
+                            del = null,
+                            due = null, //Store due date here as a Date type
+                            exp = null, //Store Expire date here as Date Type
+                            status = null,
+                            priority = null,
+                            assignedId = null,
+                            assigned = null,
+                            farm = null,
+                            ))
+
+
                 dbHelper?.addTask(HelperClass.users?.id.toString(), name ?: "", date ?: "", time ?: "")
                 showMessage("Task added successfully")
                 findNavController().navigateUp()

@@ -20,9 +20,10 @@ import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.adapters.AssetsAdapter
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentAssetsBinding
-import com.example.agdesk.models.AssetModel
+import com.example.agdesk.models.UIModels.AssetModel
 import com.example.agdesk.models.OnClick
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Date
 import java.util.Locale
 import java.util.UUID
 import kotlin.getValue
@@ -87,23 +88,23 @@ class AssetsFragment : Fragment(), OnClick {
     override fun onResume() {
         super.onResume()
 
-        checkAndInsertDefaultAssets()
+        /*checkAndInsertDefaultAssets()*/
 
     }
 
-    fun checkAndInsertDefaultAssets() {
+    /*fun checkAndInsertDefaultAssets() {
         listOfAssets = databaseHelper.getAllAssets()
         if (listOfAssets.isEmpty()) {
-            listOfAssets = listOf(
-                AssetModel(null, "LV", "Tractor", "John Deere", "Engine, Wheels", "Farm A", 2015, 2016, "https://4.imimg.com/data4/KJ/BY/MY-14831048/john-deere-5050d-tractor-500x500.jpg", 1, 12345, 67890, 98765, 1, false, ""),
-                AssetModel(null, "HV", "Harvester", "Case IH", "Blades, Engine", "Farm B", 2018, 2019, "https://www.bewindia.co/wp-content/uploads/2019/09/Greengold-220-Wheel.jpg", 2, 54321, 98765, 67890, 2, false, ""),
-                AssetModel(null, "SE", "Seeder", "Kubota", "Discs, Frame", "Farm C", 2020, 2021, "https://www.deere.ca/assets/images/region-4/products/frontier-implements/seeding-equipment/overseeder/gs/4060l/4391504_gs4060l_1024x576_large_42360ca7adfd8fb22b90aabefac6f25546a154f5.jpg", 3, 11111, 22222, 33333, 3, false, ""),
-                AssetModel(null, "LE", "Loader", "CAT", "Hydraulics, Frame", "Farm D", 2012, 2013, "https://www.wesgroupequipment.com/media/CACHE/images/equipment-model-photos/77FD56uQ_MOp88XS/d8edcc17817fb1ff41797a7d48b77266.jpg", 4, 44444, 55555, 66666, 4, false, ""),
-                AssetModel(null, "LV", "Plow", "New Holland", "Blades, Frame", "Farm E", 2017, 2018, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlTv1WO054B7ZuCnZoFimjQCWlzMcngrfeRg&s", 5, 77777, 88888, 99999, 5, false, ""),
-                AssetModel(null, "HV", "Sprayer", "John Deere", "Nozzles, Tank", "Farm F", 2014, 2015, "https://ik.imagekit.io/tuc2020/wp-content/uploads/2021/03/HW0422.jpg", 6, 13579, 24680, 97531, 6, false, ""),
-                AssetModel(null, "SE", "Baler", "CLAAS", "Rollers, Frame", "Farm G", 2019, 2020, "https://dealerwebcentral.s3.amazonaws.com/webres/john-deere-images/560m-megawide-hc%C2%B2-round-baler.jpeg", 7, 11121, 22232, 33343, 7, false, ""),
-                AssetModel(null, "LE", "Tiller", "Mahindra", "Blades, Engine", "Farm H", 2016, 2017, "https://pakistanpowertools.com/cdn/shop/files/PG0717001_194c088a-bf06-4446-ba55-7f519be65fcd.jpg?v=1691870063", 8, 44454, 55565, 66676, 8, false, "")
-            )
+            //listOfAssets = listOf(
+                //AssetModel(null, "LV", "Tractor", "John Deere", "Engine, Wheels", "Farm A", Date(2000,1 ,1), Date(2000,1 ,1), "https://4.imimg.com/data4/KJ/BY/MY-14831048/john-deere-5050d-tractor-500x500.jpg", 1, "12345", "67890", "98765", 1, false, ""),
+                //AssetModel(null, "HV", "Harvester", "Case IH", "Blades, Engine", "Farm B", Date(2000,1 ,1), Date(2000,1 ,1), "https://www.bewindia.co/wp-content/uploads/2019/09/Greengold-220-Wheel.jpg", 2, 54321, 98765, 67890, 2, false, ""),
+            // Asset Model has changed constructor //AssetModel(null, "SE", "Seeder", "Kubota", "Discs, Frame", "Farm C", Date(2000,1 ,1), Date(2000,1 ,1), "https://www.deere.ca/assets/images/region-4/products/frontier-implements/seeding-equipment/overseeder/gs/4060l/4391504_gs4060l_1024x576_large_42360ca7adfd8fb22b90aabefac6f25546a154f5.jpg", 3, 11111, 22222, 33333, 3, false, ""),
+               // AssetModel(null, "LE", "Loader", "CAT", "Hydraulics, Frame", "Farm D", Date(2000,1 ,1), Date(2000,1 ,1), "https://www.wesgroupequipment.com/media/CACHE/images/equipment-model-photos/77FD56uQ_MOp88XS/d8edcc17817fb1ff41797a7d48b77266.jpg", 4, 44444, 55555, 66666, 4, false, ""),
+                //AssetModel(null, "LV", "Plow", "New Holland", "Blades, Frame", "Farm E", Date(2000,1 ,1), Date(2000,1 ,1), "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlTv1WO054B7ZuCnZoFimjQCWlzMcngrfeRg&s", 5, 77777, 88888, 99999, 5, false, ""),
+                //AssetModel(null, "HV", "Sprayer", "John Deere", "Nozzles, Tank", "Farm F", Date(2000,1 ,1), Date(2000,1 ,1), "https://ik.imagekit.io/tuc2020/wp-content/uploads/2021/03/HW0422.jpg", 6, 13579, 24680, 97531, 6, false, ""),
+                //AssetModel(null, "SE", "Baler", "CLAAS", "Rollers, Frame", "Farm G", Date(2000,1 ,1), Date(2000,1 ,1), "https://dealerwebcentral.s3.amazonaws.com/webres/john-deere-images/560m-megawide-hc%C2%B2-round-baler.jpeg", 7, 11121, 22232, 33343, 7, false, ""),
+                //AssetModel(null, "LE", "Tiller", "Mahindra", "Blades, Engine", "Farm H", Date(2000,1 ,1), Date(2000,1 ,1), "https://pakistanpowertools.com/cdn/shop/files/PG0717001_194c088a-bf06-4446-ba55-7f519be65fcd.jpg?v=1691870063", 8, 44454, 55565, 66676, 8, false, "")
+            //)
 
             listOfAssets.forEach { databaseHelper.insertAsset(it) }
             assetsAdapter.setList(listOfAssets)
@@ -111,7 +112,7 @@ class AssetsFragment : Fragment(), OnClick {
             assetsAdapter.setList(listOfAssets)
         }
 
-    }
+    }*/
 
     private fun showAssetDialog(asset: AssetModel) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_asset_details, null)
@@ -162,20 +163,26 @@ class AssetsFragment : Fragment(), OnClick {
         btnCheckIn.setOnClickListener {
             if (asset.checkoutStatus!!){
                 asset.checkoutStatus = false
-                databaseHelper.updateAsset(asset)
+                //Operations aka checkout isn't implemented, cosmetic changes will do for now
+                /*databaseHelper.updateAsset(asset)*/
+
                 tvAssetStatus.text = "Checked out"
                 tvAssetStatus.setTextColor(requireContext().getColor(R.color.red))
                 btnCheckIn.text = "Check out"
                 btnCheckIn.setBackgroundColor(requireContext().getColor(R.color.dark_main))
             }else{
                 asset.checkoutStatus = true
-                databaseHelper.updateAsset(asset)
+                //Operations aka checkout isn't implemented, cosmetic changes will do for now
+                /*databaseHelper.updateAsset(asset)*/
+
                 tvAssetStatus.text = "Checked in"
                 tvAssetStatus.setTextColor(requireContext().getColor(R.color.dark_main))
                 btnCheckIn.text = "Check in"
                 btnCheckIn.setBackgroundColor(requireContext().getColor(R.color.red))
             }
-            listOfAssets = databaseHelper.getAllAssets()
+            //Nothing needs to be done here for the cosmetic changes
+            //Once operations has been implemented the page should reload automatically
+            /*listOfAssets = databaseHelper.getAllAssets()*/
             assetsAdapter.setList(listOfAssets)
             dialog.dismiss()
         }

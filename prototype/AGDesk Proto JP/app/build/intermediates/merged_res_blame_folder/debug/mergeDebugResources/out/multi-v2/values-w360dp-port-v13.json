@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-75:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-76:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/bca8e5cbad779a138fc6059cc70bd9e2/transformed/material-1.12.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/536ac03cc90afbe35d877a95cf91eee4/transformed/material-1.12.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

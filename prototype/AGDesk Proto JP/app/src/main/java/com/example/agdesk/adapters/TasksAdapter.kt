@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agdesk.R
-import com.example.agdesk.models.TaskModel
+import com.example.agdesk.models.UIModels.TaskModel
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

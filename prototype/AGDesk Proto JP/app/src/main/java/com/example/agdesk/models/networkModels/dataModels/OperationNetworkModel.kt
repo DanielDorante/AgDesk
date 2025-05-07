@@ -2,7 +2,9 @@ package com.example.agdesk.models.networkModels.dataModels
 
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class OperationNetworkModel(
     @PrimaryKey @ColumnInfo(name = "Log_id") val uid: String,
     @ColumnInfo(name = "Global_id") val syncId: Int?,

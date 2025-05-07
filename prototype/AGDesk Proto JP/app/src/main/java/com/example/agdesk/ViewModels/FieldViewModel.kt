@@ -2,8 +2,9 @@ package com.example.agdesk.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.agdesk.models.FieldsModel
-import com.example.agdesk.repository.FieldRepository
+
+import com.example.agdesk.models.UIModels.FieldsModel
+import com.example.agdesk.DomainLayer.repository.FieldRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,8 +24,11 @@ class FieldViewModel @Inject constructor(private val repository: FieldRepository
     val fields: StateFlow<List<FieldsModel>> = _fields.asStateFlow()
 
     init {
+
         loadFields()
     }
+
+
 
     fun insertFields(vararg fields: FieldsModel) = viewModelScope.launch {
         withContext(Dispatchers.IO) { //Executing jobs on the InputOutput Thread, good for database interaction

@@ -4,8 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.agdesk.DataLayer.entities.Farm
-import com.example.agdesk.models.AssetModel
-import com.example.agdesk.models.FarmModel
+import com.example.agdesk.models.UIModels.AssetModel
+import com.example.agdesk.models.UIModels.FarmModel
 
 
 @Dao

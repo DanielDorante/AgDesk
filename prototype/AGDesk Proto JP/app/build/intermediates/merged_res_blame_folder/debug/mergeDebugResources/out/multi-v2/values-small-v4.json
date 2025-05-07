@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.agdesk.app-mergeDebugResources-75:/values-small-v4/values-small-v4.xml",
+            "outputFile": "com.example.agdesk.app-mergeDebugResources-76:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/bca8e5cbad779a138fc6059cc70bd9e2/transformed/material-1.12.0/res/values-small-v4/values-small-v4.xml",
+                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/536ac03cc90afbe35d877a95cf91eee4/transformed/material-1.12.0/res/values-small-v4/values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

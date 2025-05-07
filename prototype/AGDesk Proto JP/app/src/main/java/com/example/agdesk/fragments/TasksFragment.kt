@@ -1,7 +1,6 @@
 package com.example.agdesk.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,12 +16,9 @@ import com.example.agdesk.R
 import com.example.agdesk.adapters.DateAdapter
 import com.example.agdesk.adapters.TasksAdapter
 import com.example.agdesk.ViewModels.AssetViewModel
-import com.example.agdesk.ViewModels.FieldViewModel
 import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.databinding.FragmentTasksBinding
-import com.example.agdesk.models.AssetModel
-import com.example.agdesk.models.HelperClass
-import com.example.agdesk.models.TaskModel
+import com.example.agdesk.models.UIModels.TaskModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

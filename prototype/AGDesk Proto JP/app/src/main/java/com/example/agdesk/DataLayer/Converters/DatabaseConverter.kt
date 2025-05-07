@@ -34,7 +34,7 @@ class DatabaseConverter {
 
 
     @TypeConverter
-    public fun fromUUID(uuid: UUID): String {
+    public fun fromUUID(uuid: UUID?): String {
             return uuid.toString()
     }
 
@@ -44,16 +44,15 @@ class DatabaseConverter {
     }
 
     @TypeConverter
-    public fun fromUnix(timestamp: Int): String {
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-        val date = Date(timestamp.toLong())
-        return sdf.format(date)
+    public fun fromUnix(timestamp: Long): Date {
+        val date = Date(timestamp)
+        return date
     }
 
-    //@TypeConverter
-    //public fun dateToUnix(string: String): UUID {
-    //    return UUID.fromString(string)
-   // }
+    @TypeConverter
+    public fun dateToUnix(date: Date): Long {
+        return date.time
+    }
 
 
 

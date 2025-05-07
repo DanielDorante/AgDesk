@@ -14,21 +14,22 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter;
-import com.example.agdesk.DataLayer.entities.Asset.Asset;
 import com.example.agdesk.DataLayer.entities.Task;
 import com.example.agdesk.DataLayer.entities.sync.TaskSync;
-import com.example.agdesk.models.TaskModel;
+import com.example.agdesk.models.UIModels.TaskModel;
 import com.example.agdesk.models.networkModels.dataModels.TaskNetworkModel;
 import java.lang.Boolean;
 import java.lang.Class;
 import java.lang.Exception;
 import java.lang.Integer;
+import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -128,14 +129,14 @@ public final class TaskDAO_Impl implements TaskDAO {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `task_sync` (`uid`,`synctimestamp`) VALUES (?,?)";
+        return "INSERT OR REPLACE INTO `task_sync` (`uid`,`synctimestamp`) VALUES (?,?)";
       }
 
       @Override
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final TaskSync entity) {
         statement.bindString(1, entity.getUid());
-        statement.bindString(2, entity.getSynctime());
+        statement.bindLong(2, entity.getSynctime());
       }
     };
     this.__deletionAdapterOfTask = new EntityDeletionOrUpdateAdapter<Task>(__db) {
@@ -350,7 +351,6 @@ public final class TaskDAO_Impl implements TaskDAO {
           final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
           final int _cursorIndexOfAssignedId = CursorUtil.getColumnIndexOrThrow(_cursor, "assigned_To");
           final int _cursorIndexOfFarm = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
-          final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
           final List<TaskModel> _result = new ArrayList<TaskModel>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final TaskModel _item;
@@ -378,31 +378,49 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpDesc = _cursor.getString(_cursorIndexOfDesc);
             }
-            final Integer _tmpTimestamp;
+            final Date _tmpTimestamp;
+            final Long _tmp_1;
             if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-              _tmpTimestamp = null;
-            } else {
-              _tmpTimestamp = _cursor.getInt(_cursorIndexOfTimestamp);
-            }
-            final Boolean _tmpDel;
-            final Integer _tmp_1;
-            if (_cursor.isNull(_cursorIndexOfDel)) {
               _tmp_1 = null;
             } else {
-              _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
+              _tmp_1 = _cursor.getLong(_cursorIndexOfTimestamp);
             }
-            _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
-            final Integer _tmpDue;
+            if (_tmp_1 == null) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = __databaseConverter.fromUnix(_tmp_1);
+            }
+            final Boolean _tmpDel;
+            final Integer _tmp_2;
+            if (_cursor.isNull(_cursorIndexOfDel)) {
+              _tmp_2 = null;
+            } else {
+              _tmp_2 = _cursor.getInt(_cursorIndexOfDel);
+            }
+            _tmpDel = _tmp_2 == null ? null : _tmp_2 != 0;
+            final Date _tmpDue;
+            final Long _tmp_3;
             if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmp_3 = null;
+            } else {
+              _tmp_3 = _cursor.getLong(_cursorIndexOfDue);
+            }
+            if (_tmp_3 == null) {
               _tmpDue = null;
             } else {
-              _tmpDue = _cursor.getInt(_cursorIndexOfDue);
+              _tmpDue = __databaseConverter.fromUnix(_tmp_3);
             }
-            final Integer _tmpExp;
+            final Date _tmpExp;
+            final Long _tmp_4;
             if (_cursor.isNull(_cursorIndexOfExp)) {
+              _tmp_4 = null;
+            } else {
+              _tmp_4 = _cursor.getLong(_cursorIndexOfExp);
+            }
+            if (_tmp_4 == null) {
               _tmpExp = null;
             } else {
-              _tmpExp = _cursor.getInt(_cursorIndexOfExp);
+              _tmpExp = __databaseConverter.fromUnix(_tmp_4);
             }
             final Integer _tmpStatus;
             if (_cursor.isNull(_cursorIndexOfStatus)) {
@@ -416,25 +434,19 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpPriority = _cursor.getInt(_cursorIndexOfPriority);
             }
-            final Integer _tmpAssignedId;
+            final Long _tmpAssignedId;
             if (_cursor.isNull(_cursorIndexOfAssignedId)) {
               _tmpAssignedId = null;
             } else {
-              _tmpAssignedId = _cursor.getInt(_cursorIndexOfAssignedId);
+              _tmpAssignedId = _cursor.getLong(_cursorIndexOfAssignedId);
             }
-            final Integer _tmpFarm;
+            final Long _tmpFarm;
             if (_cursor.isNull(_cursorIndexOfFarm)) {
               _tmpFarm = null;
             } else {
-              _tmpFarm = _cursor.getInt(_cursorIndexOfFarm);
+              _tmpFarm = _cursor.getLong(_cursorIndexOfFarm);
             }
-            final Integer _tmpSyncid;
-            if (_cursor.isNull(_cursorIndexOfSyncid)) {
-              _tmpSyncid = null;
-            } else {
-              _tmpSyncid = _cursor.getInt(_cursorIndexOfSyncid);
-            }
-            _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncid);
+            _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm);
             _result.add(_item);
           }
           return _result;
@@ -458,6 +470,7 @@ public final class TaskDAO_Impl implements TaskDAO {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
           final int _cursorIndexOfUid = CursorUtil.getColumnIndexOrThrow(_cursor, "uid");
+          final int _cursorIndexOfSynctime = CursorUtil.getColumnIndexOrThrow(_cursor, "synctimestamp");
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "taskName");
           final int _cursorIndexOfDesc = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "time_stamp");
@@ -468,21 +481,21 @@ public final class TaskDAO_Impl implements TaskDAO {
           final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
           final int _cursorIndexOfAssignedId = CursorUtil.getColumnIndexOrThrow(_cursor, "assigned_To");
           final int _cursorIndexOfFarm = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
-          final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
+          final int _cursorIndexOfSyncId = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
           final List<TaskNetworkModel> _result = new ArrayList<TaskNetworkModel>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final TaskNetworkModel _item;
-            final UUID _tmpUid;
-            final String _tmp;
+            final String _tmpUid;
             if (_cursor.isNull(_cursorIndexOfUid)) {
-              _tmp = null;
-            } else {
-              _tmp = _cursor.getString(_cursorIndexOfUid);
-            }
-            if (_tmp == null) {
               _tmpUid = null;
             } else {
-              _tmpUid = __databaseConverter.uuidFromString(_tmp);
+              _tmpUid = _cursor.getString(_cursorIndexOfUid);
+            }
+            final Long _tmpSynctime;
+            if (_cursor.isNull(_cursorIndexOfSynctime)) {
+              _tmpSynctime = null;
+            } else {
+              _tmpSynctime = _cursor.getLong(_cursorIndexOfSynctime);
             }
             final String _tmpName;
             if (_cursor.isNull(_cursorIndexOfName)) {
@@ -496,31 +509,31 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpDesc = _cursor.getString(_cursorIndexOfDesc);
             }
-            final Integer _tmpTimestamp;
+            final Long _tmpTimestamp;
             if (_cursor.isNull(_cursorIndexOfTimestamp)) {
               _tmpTimestamp = null;
             } else {
-              _tmpTimestamp = _cursor.getInt(_cursorIndexOfTimestamp);
+              _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
             }
             final Boolean _tmpDel;
-            final Integer _tmp_1;
+            final Integer _tmp;
             if (_cursor.isNull(_cursorIndexOfDel)) {
-              _tmp_1 = null;
+              _tmp = null;
             } else {
-              _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
+              _tmp = _cursor.getInt(_cursorIndexOfDel);
             }
-            _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
-            final Integer _tmpDue;
+            _tmpDel = _tmp == null ? null : _tmp != 0;
+            final Long _tmpDue;
             if (_cursor.isNull(_cursorIndexOfDue)) {
               _tmpDue = null;
             } else {
-              _tmpDue = _cursor.getInt(_cursorIndexOfDue);
+              _tmpDue = _cursor.getLong(_cursorIndexOfDue);
             }
-            final Integer _tmpExp;
+            final Long _tmpExp;
             if (_cursor.isNull(_cursorIndexOfExp)) {
               _tmpExp = null;
             } else {
-              _tmpExp = _cursor.getInt(_cursorIndexOfExp);
+              _tmpExp = _cursor.getLong(_cursorIndexOfExp);
             }
             final Integer _tmpStatus;
             if (_cursor.isNull(_cursorIndexOfStatus)) {
@@ -534,25 +547,25 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpPriority = _cursor.getInt(_cursorIndexOfPriority);
             }
-            final Integer _tmpAssignedId;
+            final Long _tmpAssignedId;
             if (_cursor.isNull(_cursorIndexOfAssignedId)) {
               _tmpAssignedId = null;
             } else {
-              _tmpAssignedId = _cursor.getInt(_cursorIndexOfAssignedId);
+              _tmpAssignedId = _cursor.getLong(_cursorIndexOfAssignedId);
             }
-            final Integer _tmpFarm;
+            final Long _tmpFarm;
             if (_cursor.isNull(_cursorIndexOfFarm)) {
               _tmpFarm = null;
             } else {
-              _tmpFarm = _cursor.getInt(_cursorIndexOfFarm);
+              _tmpFarm = _cursor.getLong(_cursorIndexOfFarm);
             }
-            final Integer _tmpSyncid;
-            if (_cursor.isNull(_cursorIndexOfSyncid)) {
-              _tmpSyncid = null;
+            final Long _tmpSyncId;
+            if (_cursor.isNull(_cursorIndexOfSyncId)) {
+              _tmpSyncId = null;
             } else {
-              _tmpSyncid = _cursor.getInt(_cursorIndexOfSyncid);
+              _tmpSyncId = _cursor.getLong(_cursorIndexOfSyncId);
             }
-            _item = new TaskNetworkModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncid);
+            _item = new TaskNetworkModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncId,_tmpSynctime);
             _result.add(_item);
           }
           return _result;
@@ -589,7 +602,6 @@ public final class TaskDAO_Impl implements TaskDAO {
           final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
           final int _cursorIndexOfAssignedId = CursorUtil.getColumnIndexOrThrow(_cursor, "assigned_To");
           final int _cursorIndexOfFarm = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
-          final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
           final List<TaskModel> _result = new ArrayList<TaskModel>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final TaskModel _item;
@@ -617,31 +629,49 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpDesc = _cursor.getString(_cursorIndexOfDesc);
             }
-            final Integer _tmpTimestamp;
+            final Date _tmpTimestamp;
+            final Long _tmp_1;
             if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-              _tmpTimestamp = null;
-            } else {
-              _tmpTimestamp = _cursor.getInt(_cursorIndexOfTimestamp);
-            }
-            final Boolean _tmpDel;
-            final Integer _tmp_1;
-            if (_cursor.isNull(_cursorIndexOfDel)) {
               _tmp_1 = null;
             } else {
-              _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
+              _tmp_1 = _cursor.getLong(_cursorIndexOfTimestamp);
             }
-            _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
-            final Integer _tmpDue;
+            if (_tmp_1 == null) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = __databaseConverter.fromUnix(_tmp_1);
+            }
+            final Boolean _tmpDel;
+            final Integer _tmp_2;
+            if (_cursor.isNull(_cursorIndexOfDel)) {
+              _tmp_2 = null;
+            } else {
+              _tmp_2 = _cursor.getInt(_cursorIndexOfDel);
+            }
+            _tmpDel = _tmp_2 == null ? null : _tmp_2 != 0;
+            final Date _tmpDue;
+            final Long _tmp_3;
             if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmp_3 = null;
+            } else {
+              _tmp_3 = _cursor.getLong(_cursorIndexOfDue);
+            }
+            if (_tmp_3 == null) {
               _tmpDue = null;
             } else {
-              _tmpDue = _cursor.getInt(_cursorIndexOfDue);
+              _tmpDue = __databaseConverter.fromUnix(_tmp_3);
             }
-            final Integer _tmpExp;
+            final Date _tmpExp;
+            final Long _tmp_4;
             if (_cursor.isNull(_cursorIndexOfExp)) {
+              _tmp_4 = null;
+            } else {
+              _tmp_4 = _cursor.getLong(_cursorIndexOfExp);
+            }
+            if (_tmp_4 == null) {
               _tmpExp = null;
             } else {
-              _tmpExp = _cursor.getInt(_cursorIndexOfExp);
+              _tmpExp = __databaseConverter.fromUnix(_tmp_4);
             }
             final Integer _tmpStatus;
             if (_cursor.isNull(_cursorIndexOfStatus)) {
@@ -655,25 +685,19 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpPriority = _cursor.getInt(_cursorIndexOfPriority);
             }
-            final Integer _tmpAssignedId;
+            final Long _tmpAssignedId;
             if (_cursor.isNull(_cursorIndexOfAssignedId)) {
               _tmpAssignedId = null;
             } else {
-              _tmpAssignedId = _cursor.getInt(_cursorIndexOfAssignedId);
+              _tmpAssignedId = _cursor.getLong(_cursorIndexOfAssignedId);
             }
-            final Integer _tmpFarm;
+            final Long _tmpFarm;
             if (_cursor.isNull(_cursorIndexOfFarm)) {
               _tmpFarm = null;
             } else {
-              _tmpFarm = _cursor.getInt(_cursorIndexOfFarm);
+              _tmpFarm = _cursor.getLong(_cursorIndexOfFarm);
             }
-            final Integer _tmpSyncid;
-            if (_cursor.isNull(_cursorIndexOfSyncid)) {
-              _tmpSyncid = null;
-            } else {
-              _tmpSyncid = _cursor.getInt(_cursorIndexOfSyncid);
-            }
-            _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncid);
+            _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm);
             _result.add(_item);
           }
           return _result;
@@ -686,99 +710,213 @@ public final class TaskDAO_Impl implements TaskDAO {
   }
 
   @Override
-  public Object getBySyncId(final int syncId, final Continuation<? super Asset> $completion) {
-    final String _sql = "SELECT * FROM Asset WHERE global_Id = ? LIMIT 1";
+  public Object getBySyncId(final long syncId, final Continuation<? super Task> $completion) {
+    final String _sql = "SELECT * FROM Task WHERE global_Id = ? LIMIT 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
     _statement.bindLong(_argIndex, syncId);
     final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
-    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<Asset>() {
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<Task>() {
       @Override
       @Nullable
-      public Asset call() throws Exception {
+      public Task call() throws Exception {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
           final int _cursorIndexOfUid = CursorUtil.getColumnIndexOrThrow(_cursor, "uid");
-          final int _cursorIndexOfAssetPrefix = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Prefix");
-          final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Name");
-          final int _cursorIndexOfManufac = CursorUtil.getColumnIndexOrThrow(_cursor, "manufacture");
-          final int _cursorIndexOfParts = CursorUtil.getColumnIndexOrThrow(_cursor, "part_List");
-          final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
-          final int _cursorIndexOfDateMade = CursorUtil.getColumnIndexOrThrow(_cursor, "date_Manufactured");
-          final int _cursorIndexOfDateBuy = CursorUtil.getColumnIndexOrThrow(_cursor, "date_Purchased");
-          final int _cursorIndexOfIsDel = CursorUtil.getColumnIndexOrThrow(_cursor, "is_Delete");
-          final int _cursorIndexOfImage = CursorUtil.getColumnIndexOrThrow(_cursor, "asset_Image");
-          final int _cursorIndexOfFarmId = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
-          final int _cursorIndexOfSyncId = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
-          final Asset _result;
+          final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "taskName");
+          final int _cursorIndexOfDesc = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
+          final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "time_stamp");
+          final int _cursorIndexOfDel = CursorUtil.getColumnIndexOrThrow(_cursor, "is_Delete");
+          final int _cursorIndexOfDue = CursorUtil.getColumnIndexOrThrow(_cursor, "due_Date");
+          final int _cursorIndexOfExp = CursorUtil.getColumnIndexOrThrow(_cursor, "expire_Date");
+          final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+          final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
+          final int _cursorIndexOfAssigned = CursorUtil.getColumnIndexOrThrow(_cursor, "assigned_To");
+          final int _cursorIndexOfFarm = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
+          final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
+          final Task _result;
           if (_cursor.moveToFirst()) {
             final String _tmpUid;
             _tmpUid = _cursor.getString(_cursorIndexOfUid);
-            final String _tmpAssetPrefix;
-            if (_cursor.isNull(_cursorIndexOfAssetPrefix)) {
-              _tmpAssetPrefix = null;
-            } else {
-              _tmpAssetPrefix = _cursor.getString(_cursorIndexOfAssetPrefix);
-            }
             final String _tmpName;
             if (_cursor.isNull(_cursorIndexOfName)) {
               _tmpName = null;
             } else {
               _tmpName = _cursor.getString(_cursorIndexOfName);
             }
-            final String _tmpManufac;
-            if (_cursor.isNull(_cursorIndexOfManufac)) {
-              _tmpManufac = null;
+            final String _tmpDesc;
+            if (_cursor.isNull(_cursorIndexOfDesc)) {
+              _tmpDesc = null;
             } else {
-              _tmpManufac = _cursor.getString(_cursorIndexOfManufac);
+              _tmpDesc = _cursor.getString(_cursorIndexOfDesc);
             }
-            final String _tmpParts;
-            if (_cursor.isNull(_cursorIndexOfParts)) {
-              _tmpParts = null;
+            final Long _tmpTimestamp;
+            if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+              _tmpTimestamp = null;
             } else {
-              _tmpParts = _cursor.getString(_cursorIndexOfParts);
+              _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
             }
-            final String _tmpLocation;
-            if (_cursor.isNull(_cursorIndexOfLocation)) {
-              _tmpLocation = null;
+            final Boolean _tmpDel;
+            final Integer _tmp;
+            if (_cursor.isNull(_cursorIndexOfDel)) {
+              _tmp = null;
             } else {
-              _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
+              _tmp = _cursor.getInt(_cursorIndexOfDel);
             }
-            final Integer _tmpDateMade;
-            if (_cursor.isNull(_cursorIndexOfDateMade)) {
-              _tmpDateMade = null;
+            _tmpDel = _tmp == null ? null : _tmp != 0;
+            final Long _tmpDue;
+            if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmpDue = null;
             } else {
-              _tmpDateMade = _cursor.getInt(_cursorIndexOfDateMade);
+              _tmpDue = _cursor.getLong(_cursorIndexOfDue);
             }
-            final Integer _tmpDateBuy;
-            if (_cursor.isNull(_cursorIndexOfDateBuy)) {
-              _tmpDateBuy = null;
+            final Long _tmpExp;
+            if (_cursor.isNull(_cursorIndexOfExp)) {
+              _tmpExp = null;
             } else {
-              _tmpDateBuy = _cursor.getInt(_cursorIndexOfDateBuy);
+              _tmpExp = _cursor.getLong(_cursorIndexOfExp);
             }
-            final boolean _tmpIsDel;
-            final int _tmp;
-            _tmp = _cursor.getInt(_cursorIndexOfIsDel);
-            _tmpIsDel = _tmp != 0;
-            final String _tmpImage;
-            if (_cursor.isNull(_cursorIndexOfImage)) {
-              _tmpImage = null;
+            final Integer _tmpStatus;
+            if (_cursor.isNull(_cursorIndexOfStatus)) {
+              _tmpStatus = null;
             } else {
-              _tmpImage = _cursor.getString(_cursorIndexOfImage);
+              _tmpStatus = _cursor.getInt(_cursorIndexOfStatus);
             }
-            final Integer _tmpFarmId;
-            if (_cursor.isNull(_cursorIndexOfFarmId)) {
-              _tmpFarmId = null;
+            final Integer _tmpPriority;
+            if (_cursor.isNull(_cursorIndexOfPriority)) {
+              _tmpPriority = null;
             } else {
-              _tmpFarmId = _cursor.getInt(_cursorIndexOfFarmId);
+              _tmpPriority = _cursor.getInt(_cursorIndexOfPriority);
             }
-            final Integer _tmpSyncId;
-            if (_cursor.isNull(_cursorIndexOfSyncId)) {
-              _tmpSyncId = null;
+            final Long _tmpAssigned;
+            if (_cursor.isNull(_cursorIndexOfAssigned)) {
+              _tmpAssigned = null;
             } else {
-              _tmpSyncId = _cursor.getInt(_cursorIndexOfSyncId);
+              _tmpAssigned = _cursor.getLong(_cursorIndexOfAssigned);
             }
-            _result = new Asset(_tmpUid,_tmpAssetPrefix,_tmpName,_tmpManufac,_tmpParts,_tmpLocation,_tmpDateMade,_tmpDateBuy,_tmpIsDel,_tmpImage,_tmpFarmId,_tmpSyncId);
+            final Long _tmpFarm;
+            if (_cursor.isNull(_cursorIndexOfFarm)) {
+              _tmpFarm = null;
+            } else {
+              _tmpFarm = _cursor.getLong(_cursorIndexOfFarm);
+            }
+            final Long _tmpSyncid;
+            if (_cursor.isNull(_cursorIndexOfSyncid)) {
+              _tmpSyncid = null;
+            } else {
+              _tmpSyncid = _cursor.getLong(_cursorIndexOfSyncid);
+            }
+            _result = new Task(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssigned,_tmpFarm,_tmpSyncid);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object getByUid(final String uid, final Continuation<? super Task> $completion) {
+    final String _sql = "SELECT * FROM Task WHERE uid = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindString(_argIndex, uid);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<Task>() {
+      @Override
+      @Nullable
+      public Task call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfUid = CursorUtil.getColumnIndexOrThrow(_cursor, "uid");
+          final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "taskName");
+          final int _cursorIndexOfDesc = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
+          final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "time_stamp");
+          final int _cursorIndexOfDel = CursorUtil.getColumnIndexOrThrow(_cursor, "is_Delete");
+          final int _cursorIndexOfDue = CursorUtil.getColumnIndexOrThrow(_cursor, "due_Date");
+          final int _cursorIndexOfExp = CursorUtil.getColumnIndexOrThrow(_cursor, "expire_Date");
+          final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+          final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
+          final int _cursorIndexOfAssigned = CursorUtil.getColumnIndexOrThrow(_cursor, "assigned_To");
+          final int _cursorIndexOfFarm = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
+          final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
+          final Task _result;
+          if (_cursor.moveToFirst()) {
+            final String _tmpUid;
+            _tmpUid = _cursor.getString(_cursorIndexOfUid);
+            final String _tmpName;
+            if (_cursor.isNull(_cursorIndexOfName)) {
+              _tmpName = null;
+            } else {
+              _tmpName = _cursor.getString(_cursorIndexOfName);
+            }
+            final String _tmpDesc;
+            if (_cursor.isNull(_cursorIndexOfDesc)) {
+              _tmpDesc = null;
+            } else {
+              _tmpDesc = _cursor.getString(_cursorIndexOfDesc);
+            }
+            final Long _tmpTimestamp;
+            if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            }
+            final Boolean _tmpDel;
+            final Integer _tmp;
+            if (_cursor.isNull(_cursorIndexOfDel)) {
+              _tmp = null;
+            } else {
+              _tmp = _cursor.getInt(_cursorIndexOfDel);
+            }
+            _tmpDel = _tmp == null ? null : _tmp != 0;
+            final Long _tmpDue;
+            if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmpDue = null;
+            } else {
+              _tmpDue = _cursor.getLong(_cursorIndexOfDue);
+            }
+            final Long _tmpExp;
+            if (_cursor.isNull(_cursorIndexOfExp)) {
+              _tmpExp = null;
+            } else {
+              _tmpExp = _cursor.getLong(_cursorIndexOfExp);
+            }
+            final Integer _tmpStatus;
+            if (_cursor.isNull(_cursorIndexOfStatus)) {
+              _tmpStatus = null;
+            } else {
+              _tmpStatus = _cursor.getInt(_cursorIndexOfStatus);
+            }
+            final Integer _tmpPriority;
+            if (_cursor.isNull(_cursorIndexOfPriority)) {
+              _tmpPriority = null;
+            } else {
+              _tmpPriority = _cursor.getInt(_cursorIndexOfPriority);
+            }
+            final Long _tmpAssigned;
+            if (_cursor.isNull(_cursorIndexOfAssigned)) {
+              _tmpAssigned = null;
+            } else {
+              _tmpAssigned = _cursor.getLong(_cursorIndexOfAssigned);
+            }
+            final Long _tmpFarm;
+            if (_cursor.isNull(_cursorIndexOfFarm)) {
+              _tmpFarm = null;
+            } else {
+              _tmpFarm = _cursor.getLong(_cursorIndexOfFarm);
+            }
+            final Long _tmpSyncid;
+            if (_cursor.isNull(_cursorIndexOfSyncid)) {
+              _tmpSyncid = null;
+            } else {
+              _tmpSyncid = _cursor.getLong(_cursorIndexOfSyncid);
+            }
+            _result = new Task(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssigned,_tmpFarm,_tmpSyncid);
           } else {
             _result = null;
           }
@@ -816,7 +954,6 @@ public final class TaskDAO_Impl implements TaskDAO {
           final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
           final int _cursorIndexOfAssignedId = CursorUtil.getColumnIndexOrThrow(_cursor, "assigned_To");
           final int _cursorIndexOfFarm = CursorUtil.getColumnIndexOrThrow(_cursor, "farm_Id");
-          final int _cursorIndexOfSyncid = CursorUtil.getColumnIndexOrThrow(_cursor, "global_Id");
           final List<TaskModel> _result = new ArrayList<TaskModel>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final TaskModel _item;
@@ -844,31 +981,49 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpDesc = _cursor.getString(_cursorIndexOfDesc);
             }
-            final Integer _tmpTimestamp;
+            final Date _tmpTimestamp;
+            final Long _tmp_1;
             if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-              _tmpTimestamp = null;
-            } else {
-              _tmpTimestamp = _cursor.getInt(_cursorIndexOfTimestamp);
-            }
-            final Boolean _tmpDel;
-            final Integer _tmp_1;
-            if (_cursor.isNull(_cursorIndexOfDel)) {
               _tmp_1 = null;
             } else {
-              _tmp_1 = _cursor.getInt(_cursorIndexOfDel);
+              _tmp_1 = _cursor.getLong(_cursorIndexOfTimestamp);
             }
-            _tmpDel = _tmp_1 == null ? null : _tmp_1 != 0;
-            final Integer _tmpDue;
+            if (_tmp_1 == null) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = __databaseConverter.fromUnix(_tmp_1);
+            }
+            final Boolean _tmpDel;
+            final Integer _tmp_2;
+            if (_cursor.isNull(_cursorIndexOfDel)) {
+              _tmp_2 = null;
+            } else {
+              _tmp_2 = _cursor.getInt(_cursorIndexOfDel);
+            }
+            _tmpDel = _tmp_2 == null ? null : _tmp_2 != 0;
+            final Date _tmpDue;
+            final Long _tmp_3;
             if (_cursor.isNull(_cursorIndexOfDue)) {
+              _tmp_3 = null;
+            } else {
+              _tmp_3 = _cursor.getLong(_cursorIndexOfDue);
+            }
+            if (_tmp_3 == null) {
               _tmpDue = null;
             } else {
-              _tmpDue = _cursor.getInt(_cursorIndexOfDue);
+              _tmpDue = __databaseConverter.fromUnix(_tmp_3);
             }
-            final Integer _tmpExp;
+            final Date _tmpExp;
+            final Long _tmp_4;
             if (_cursor.isNull(_cursorIndexOfExp)) {
+              _tmp_4 = null;
+            } else {
+              _tmp_4 = _cursor.getLong(_cursorIndexOfExp);
+            }
+            if (_tmp_4 == null) {
               _tmpExp = null;
             } else {
-              _tmpExp = _cursor.getInt(_cursorIndexOfExp);
+              _tmpExp = __databaseConverter.fromUnix(_tmp_4);
             }
             final Integer _tmpStatus;
             if (_cursor.isNull(_cursorIndexOfStatus)) {
@@ -882,25 +1037,19 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpPriority = _cursor.getInt(_cursorIndexOfPriority);
             }
-            final Integer _tmpAssignedId;
+            final Long _tmpAssignedId;
             if (_cursor.isNull(_cursorIndexOfAssignedId)) {
               _tmpAssignedId = null;
             } else {
-              _tmpAssignedId = _cursor.getInt(_cursorIndexOfAssignedId);
+              _tmpAssignedId = _cursor.getLong(_cursorIndexOfAssignedId);
             }
-            final Integer _tmpFarm;
+            final Long _tmpFarm;
             if (_cursor.isNull(_cursorIndexOfFarm)) {
               _tmpFarm = null;
             } else {
-              _tmpFarm = _cursor.getInt(_cursorIndexOfFarm);
+              _tmpFarm = _cursor.getLong(_cursorIndexOfFarm);
             }
-            final Integer _tmpSyncid;
-            if (_cursor.isNull(_cursorIndexOfSyncid)) {
-              _tmpSyncid = null;
-            } else {
-              _tmpSyncid = _cursor.getInt(_cursorIndexOfSyncid);
-            }
-            _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncid);
+            _item = new TaskModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm);
             _result.add(_item);
           }
           return _result;

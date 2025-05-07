@@ -1,0 +1,29 @@
+package com.example.agdesk.ViewModels;
+
+import dagger.internal.DaggerGenerated;
+import dagger.internal.IdentifierNameString;
+import dagger.internal.KeepFieldType;
+import java.lang.String;
+import java.lang.SuppressWarnings;
+import javax.annotation.processing.Generated;
+
+@IdentifierNameString
+@DaggerGenerated
+@Generated(
+    value = "dagger.internal.codegen.LazyClassKeyProcessor",
+    comments = "https://dagger.dev"
+)
+@SuppressWarnings({
+    "unchecked",
+    "rawtypes",
+    "KotlinInternal",
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation"
+})
+public final class AssetViewModel_HiltModules_KeyModule_Provide_LazyMapKey {
+  @KeepFieldType
+  static AssetViewModel keepFieldType;
+
+  public static String lazyClassKeyName = "com.example.agdesk.ViewModels.AssetViewModel";
+}

@@ -1,6 +1,6 @@
 package com.example.agdesk.DataLayer.entities.Asset;
 
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\"\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0006\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b&\b\u0087\b\u0018\u00002\u00020\u0001By\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\b\u0010\u0004\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0005\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0006\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0007\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\b\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\t\u001a\u0004\u0018\u00010\n\u0012\b\u0010\u000b\u001a\u0004\u0018\u00010\n\u0012\u0006\u0010\f\u001a\u00020\r\u0012\b\u0010\u000e\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u000f\u001a\u0004\u0018\u00010\n\u0012\b\u0010\u0010\u001a\u0004\u0018\u00010\n\u00a2\u0006\u0002\u0010\u0011J\t\u0010!\u001a\u00020\u0003H\u00c6\u0003J\u000b\u0010\"\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0010\u0010#\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0015J\u0010\u0010$\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0015J\u000b\u0010%\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010&\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010\'\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010(\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010)\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0010\u0010*\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0015J\u0010\u0010+\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0015J\t\u0010,\u001a\u00020\rH\u00c6\u0003J\u009a\u0001\u0010-\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0005\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\b\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\t\u001a\u0004\u0018\u00010\n2\n\b\u0002\u0010\u000b\u001a\u0004\u0018\u00010\n2\b\b\u0002\u0010\f\u001a\u00020\r2\n\b\u0002\u0010\u000e\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u000f\u001a\u0004\u0018\u00010\n2\n\b\u0002\u0010\u0010\u001a\u0004\u0018\u00010\nH\u00c6\u0001\u00a2\u0006\u0002\u0010.J\u0013\u0010/\u001a\u00020\r2\b\u00100\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u00101\u001a\u00020\nH\u00d6\u0001J\t\u00102\u001a\u00020\u0003H\u00d6\u0001R\u0018\u0010\u0004\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0012\u0010\u0013R\u001a\u0010\u000b\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0016\u001a\u0004\b\u0014\u0010\u0015R\u001a\u0010\t\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0016\u001a\u0004\b\u0017\u0010\u0015R\u001a\u0010\u000f\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0016\u001a\u0004\b\u0018\u0010\u0015R\u0018\u0010\u000e\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u0013R\u0016\u0010\f\u001a\u00020\r8\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\f\u0010\u001aR\u0018\u0010\b\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u0013R\u0018\u0010\u0006\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001c\u0010\u0013R\u0018\u0010\u0005\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0013R\u0018\u0010\u0007\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001e\u0010\u0013R\u001a\u0010\u0010\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0016\u001a\u0004\b\u001f\u0010\u0015R\u0016\u0010\u0002\u001a\u00020\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b \u0010\u0013\u00a8\u00063"}, d2 = {"Lcom/example/agdesk/DataLayer/entities/Asset/Asset;", "", "uid", "", "assetPrefix", "name", "manufac", "parts", "location", "dateMade", "", "dateBuy", "isDel", "", "image", "farmId", "syncId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;)V", "getAssetPrefix", "()Ljava/lang/String;", "getDateBuy", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "getDateMade", "getFarmId", "getImage", "()Z", "getLocation", "getManufac", "getName", "getParts", "getSyncId", "getUid", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;)Lcom/example/agdesk/DataLayer/entities/Asset/Asset;", "equals", "other", "hashCode", "toString", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000*\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0006\n\u0002\u0010\t\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b$\n\u0002\u0010\b\n\u0002\b\u0002\b\u0087\b\u0018\u00002\u00020\u0001By\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\b\u0010\u0004\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0005\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0006\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u0007\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\b\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\t\u001a\u0004\u0018\u00010\n\u0012\b\u0010\u000b\u001a\u0004\u0018\u00010\n\u0012\u0006\u0010\f\u001a\u00020\r\u0012\b\u0010\u000e\u001a\u0004\u0018\u00010\u0003\u0012\b\u0010\u000f\u001a\u0004\u0018\u00010\n\u0012\b\u0010\u0010\u001a\u0004\u0018\u00010\n\u00a2\u0006\u0002\u0010\u0011J\t\u0010!\u001a\u00020\u0003H\u00c6\u0003J\u000b\u0010\"\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0010\u0010#\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0015J\u0010\u0010$\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0015J\u000b\u0010%\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010&\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010\'\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010(\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000b\u0010)\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0010\u0010*\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0015J\u0010\u0010+\u001a\u0004\u0018\u00010\nH\u00c6\u0003\u00a2\u0006\u0002\u0010\u0015J\t\u0010,\u001a\u00020\rH\u00c6\u0003J\u009a\u0001\u0010-\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0005\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\b\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\t\u001a\u0004\u0018\u00010\n2\n\b\u0002\u0010\u000b\u001a\u0004\u0018\u00010\n2\b\b\u0002\u0010\f\u001a\u00020\r2\n\b\u0002\u0010\u000e\u001a\u0004\u0018\u00010\u00032\n\b\u0002\u0010\u000f\u001a\u0004\u0018\u00010\n2\n\b\u0002\u0010\u0010\u001a\u0004\u0018\u00010\nH\u00c6\u0001\u00a2\u0006\u0002\u0010.J\u0013\u0010/\u001a\u00020\r2\b\u00100\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u00101\u001a\u000202H\u00d6\u0001J\t\u00103\u001a\u00020\u0003H\u00d6\u0001R\u0018\u0010\u0004\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0012\u0010\u0013R\u001a\u0010\u000b\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0016\u001a\u0004\b\u0014\u0010\u0015R\u001a\u0010\t\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0016\u001a\u0004\b\u0017\u0010\u0015R\u001a\u0010\u000f\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0016\u001a\u0004\b\u0018\u0010\u0015R\u0018\u0010\u000e\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u0013R\u0016\u0010\f\u001a\u00020\r8\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\f\u0010\u001aR\u0018\u0010\b\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u0013R\u0018\u0010\u0006\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001c\u0010\u0013R\u0018\u0010\u0005\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0013R\u0018\u0010\u0007\u001a\u0004\u0018\u00010\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001e\u0010\u0013R\u001a\u0010\u0010\u001a\u0004\u0018\u00010\n8\u0006X\u0087\u0004\u00a2\u0006\n\n\u0002\u0010\u0016\u001a\u0004\b\u001f\u0010\u0015R\u0016\u0010\u0002\u001a\u00020\u00038\u0006X\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b \u0010\u0013\u00a8\u00064"}, d2 = {"Lcom/example/agdesk/DataLayer/entities/Asset/Asset;", "", "uid", "", "assetPrefix", "name", "manufac", "parts", "location", "dateMade", "", "dateBuy", "isDel", "", "image", "farmId", "syncId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;ZLjava/lang/String;Ljava/lang/Long;Ljava/lang/Long;)V", "getAssetPrefix", "()Ljava/lang/String;", "getDateBuy", "()Ljava/lang/Long;", "Ljava/lang/Long;", "getDateMade", "getFarmId", "getImage", "()Z", "getLocation", "getManufac", "getName", "getParts", "getSyncId", "getUid", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;ZLjava/lang/String;Ljava/lang/Long;Ljava/lang/Long;)Lcom/example/agdesk/DataLayer/entities/Asset/Asset;", "equals", "other", "hashCode", "", "toString", "app_debug"})
 @androidx.room.Entity()
 public final class Asset {
     @androidx.room.PrimaryKey()
@@ -24,10 +24,10 @@ public final class Asset {
     private final java.lang.String location = null;
     @androidx.room.ColumnInfo(name = "date_Manufactured")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer dateMade = null;
+    private final java.lang.Long dateMade = null;
     @androidx.room.ColumnInfo(name = "date_Purchased")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer dateBuy = null;
+    private final java.lang.Long dateBuy = null;
     @androidx.room.ColumnInfo(name = "is_Delete")
     private final boolean isDel = false;
     @androidx.room.ColumnInfo(name = "asset_Image")
@@ -35,10 +35,10 @@ public final class Asset {
     private final java.lang.String image = null;
     @androidx.room.ColumnInfo(name = "farm_Id")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer farmId = null;
+    private final java.lang.Long farmId = null;
     @androidx.room.ColumnInfo(name = "global_Id")
     @org.jetbrains.annotations.Nullable()
-    private final java.lang.Integer syncId = null;
+    private final java.lang.Long syncId = null;
     
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component1() {
@@ -51,12 +51,12 @@ public final class Asset {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component11() {
+    public final java.lang.Long component11() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component12() {
+    public final java.lang.Long component12() {
         return null;
     }
     
@@ -86,12 +86,12 @@ public final class Asset {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component7() {
+    public final java.lang.Long component7() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer component8() {
+    public final java.lang.Long component8() {
         return null;
     }
     
@@ -107,11 +107,11 @@ public final class Asset {
     java.lang.String manufac, @org.jetbrains.annotations.Nullable()
     java.lang.String parts, @org.jetbrains.annotations.Nullable()
     java.lang.String location, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer dateMade, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer dateBuy, boolean isDel, @org.jetbrains.annotations.Nullable()
+    java.lang.Long dateMade, @org.jetbrains.annotations.Nullable()
+    java.lang.Long dateBuy, boolean isDel, @org.jetbrains.annotations.Nullable()
     java.lang.String image, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer farmId, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer syncId) {
+    java.lang.Long farmId, @org.jetbrains.annotations.Nullable()
+    java.lang.Long syncId) {
         return null;
     }
     
@@ -139,11 +139,11 @@ public final class Asset {
     java.lang.String manufac, @org.jetbrains.annotations.Nullable()
     java.lang.String parts, @org.jetbrains.annotations.Nullable()
     java.lang.String location, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer dateMade, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer dateBuy, boolean isDel, @org.jetbrains.annotations.Nullable()
+    java.lang.Long dateMade, @org.jetbrains.annotations.Nullable()
+    java.lang.Long dateBuy, boolean isDel, @org.jetbrains.annotations.Nullable()
     java.lang.String image, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer farmId, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer syncId) {
+    java.lang.Long farmId, @org.jetbrains.annotations.Nullable()
+    java.lang.Long syncId) {
         super();
     }
     
@@ -178,12 +178,12 @@ public final class Asset {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getDateMade() {
+    public final java.lang.Long getDateMade() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getDateBuy() {
+    public final java.lang.Long getDateBuy() {
         return null;
     }
     
@@ -197,12 +197,12 @@ public final class Asset {
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getFarmId() {
+    public final java.lang.Long getFarmId() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
-    public final java.lang.Integer getSyncId() {
+    public final java.lang.Long getSyncId() {
         return null;
     }
 }
