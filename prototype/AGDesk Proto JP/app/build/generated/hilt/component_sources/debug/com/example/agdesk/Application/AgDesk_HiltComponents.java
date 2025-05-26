@@ -5,6 +5,7 @@ import com.example.agdesk.MainActivity_GeneratedInjector;
 import com.example.agdesk.SplashScreen_GeneratedInjector;
 import com.example.agdesk.ViewModels.AssetViewModel_HiltModules;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules;
+import com.example.agdesk.ViewModels.HomeViewModel_HiltModules;
 import com.example.agdesk.ViewModels.InventoryViewModel_HiltModules;
 import com.example.agdesk.ViewModels.TaskViewModel_HiltModules;
 import com.example.agdesk.dependencyInjectionModulesHilt.DatabaseModule;
@@ -177,6 +178,7 @@ public final class AgDesk_HiltComponents {
           FieldViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
           HiltWrapper_SavedStateHandleModule.class,
+          HomeViewModel_HiltModules.KeyModule.class,
           InventoryViewModel_HiltModules.KeyModule.class,
           TaskViewModel_HiltModules.KeyModule.class
       }
@@ -218,6 +220,7 @@ public final class AgDesk_HiltComponents {
           AssetViewModel_HiltModules.BindsModule.class,
           FieldViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
+          HomeViewModel_HiltModules.BindsModule.class,
           InventoryViewModel_HiltModules.BindsModule.class,
           TaskViewModel_HiltModules.BindsModule.class
       }

@@ -28,6 +28,10 @@ import com.example.agdesk.ViewModels.FieldViewModel;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules_BindsModule_Binds_LazyMapKey;
 import com.example.agdesk.ViewModels.FieldViewModel_HiltModules_KeyModule_Provide_LazyMapKey;
+import com.example.agdesk.ViewModels.HomeViewModel;
+import com.example.agdesk.ViewModels.HomeViewModel_HiltModules;
+import com.example.agdesk.ViewModels.HomeViewModel_HiltModules_BindsModule_Binds_LazyMapKey;
+import com.example.agdesk.ViewModels.HomeViewModel_HiltModules_KeyModule_Provide_LazyMapKey;
 import com.example.agdesk.ViewModels.InventoryViewModel;
 import com.example.agdesk.ViewModels.InventoryViewModel_HiltModules;
 import com.example.agdesk.ViewModels.InventoryViewModel_HiltModules_BindsModule_Binds_LazyMapKey;
@@ -447,7 +451,7 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     @Override
     public Map<Class<?>, Boolean> getViewModelKeys() {
-      return LazyClassKeyMap.<Boolean>of(MapBuilder.<String, Boolean>newMapBuilder(4).put(AssetViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, AssetViewModel_HiltModules.KeyModule.provide()).put(FieldViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, FieldViewModel_HiltModules.KeyModule.provide()).put(InventoryViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, InventoryViewModel_HiltModules.KeyModule.provide()).put(TaskViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, TaskViewModel_HiltModules.KeyModule.provide()).build());
+      return LazyClassKeyMap.<Boolean>of(MapBuilder.<String, Boolean>newMapBuilder(5).put(AssetViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, AssetViewModel_HiltModules.KeyModule.provide()).put(FieldViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, FieldViewModel_HiltModules.KeyModule.provide()).put(HomeViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, HomeViewModel_HiltModules.KeyModule.provide()).put(InventoryViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, InventoryViewModel_HiltModules.KeyModule.provide()).put(TaskViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, TaskViewModel_HiltModules.KeyModule.provide()).build());
     }
 
     @Override
@@ -477,6 +481,8 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private Provider<FieldViewModel> fieldViewModelProvider;
 
+    private Provider<HomeViewModel> homeViewModelProvider;
+
     private Provider<InventoryViewModel> inventoryViewModelProvider;
 
     private Provider<TaskViewModel> taskViewModelProvider;
@@ -504,13 +510,14 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
         final ViewModelLifecycle viewModelLifecycleParam) {
       this.assetViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
       this.fieldViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
-      this.inventoryViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
-      this.taskViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.homeViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
+      this.inventoryViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.taskViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
     }
 
     @Override
     public Map<Class<?>, javax.inject.Provider<ViewModel>> getHiltViewModelMap() {
-      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(MapBuilder.<String, javax.inject.Provider<ViewModel>>newMapBuilder(4).put(AssetViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) assetViewModelProvider)).put(FieldViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) fieldViewModelProvider)).put(InventoryViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) inventoryViewModelProvider)).put(TaskViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) taskViewModelProvider)).build());
+      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(MapBuilder.<String, javax.inject.Provider<ViewModel>>newMapBuilder(5).put(AssetViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) assetViewModelProvider)).put(FieldViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) fieldViewModelProvider)).put(HomeViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) homeViewModelProvider)).put(InventoryViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) inventoryViewModelProvider)).put(TaskViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) taskViewModelProvider)).build());
     }
 
     @Override
@@ -545,10 +552,13 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
           case 1: // com.example.agdesk.ViewModels.FieldViewModel 
           return (T) new FieldViewModel(viewModelCImpl.fieldRepository());
 
-          case 2: // com.example.agdesk.ViewModels.InventoryViewModel 
+          case 2: // com.example.agdesk.ViewModels.HomeViewModel 
+          return (T) new HomeViewModel(singletonCImpl.networkRepository());
+
+          case 3: // com.example.agdesk.ViewModels.InventoryViewModel 
           return (T) new InventoryViewModel(viewModelCImpl.inventoryRepository());
 
-          case 3: // com.example.agdesk.ViewModels.TaskViewModel 
+          case 4: // com.example.agdesk.ViewModels.TaskViewModel 
           return (T) new TaskViewModel(singletonCImpl.taskRepository());
 
           default: throw new AssertionError(id);

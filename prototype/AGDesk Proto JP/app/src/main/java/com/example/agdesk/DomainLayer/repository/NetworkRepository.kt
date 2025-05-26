@@ -9,6 +9,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.*
 import io.ktor.http.*
+import java.util.Date
 import javax.inject.Inject
 
 class NetworkRepository @Inject constructor(private val assetRepository: AssetRepository,
@@ -35,6 +36,15 @@ class NetworkRepository @Inject constructor(private val assetRepository: AssetRe
             e.printStackTrace()
             // Log or handle sync failure appropriately
         }
+    }
+
+    suspend fun getSyncTimeUI(): Date {
+        val time = dbSyncDAO.getLastSyncInfo()?.lastSyncTimeStamp
+        if (time == null) {
+            return Date(0)
+        }
+        return Date(time)
+
     }
 
     suspend fun syncToServer() {

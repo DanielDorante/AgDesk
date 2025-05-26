@@ -1,6 +1,7 @@
 package com.example.agdesk.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.agdesk.R
+import com.example.agdesk.ViewModels.HomeViewModel
 import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.adapters.TasksAdapter
 import com.example.agdesk.adapters.WeatherAdapter
@@ -35,7 +37,7 @@ class HomeFragment : Fragment() {
     lateinit var databaseHelper: DatabaseHelper
     lateinit var taskAdapter: TasksAdapter
     private val taskViewModel: TaskViewModel by viewModels()
-
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,6 +83,16 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             withContext(Dispatchers.Default) {
+                homeViewModel.manualUpdate()
+                homeViewModel.loadTime()
+                homeViewModel.date.collect {currentLastUpdate ->
+                    Log.d("DebugTest", currentLastUpdate.toString())
+                }
+
+
+
+
+
                 taskViewModel.loadUserTasks()
 
                 taskViewModel.tasks.collect {savedTasks ->
