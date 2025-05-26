@@ -4,7 +4,7 @@
             "outputFile": "com.example.agdesk.app-mergeDebugResources-76:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/536ac03cc90afbe35d877a95cf91eee4/transformed/material-1.12.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/JackPate_1/.gradle/caches/8.11.1/transforms/536ac03cc90afbe35d877a95cf91eee4/transformed/material-1.12.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/2f368fc501b96bf7ebb933a5f8d4d4bc/transformed/appcompat-1.7.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/JackPate_1/.gradle/caches/8.11.1/transforms/2f368fc501b96bf7ebb933a5f8d4d4bc/transformed/appcompat-1.7.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

@@ -28,22 +28,53 @@ public final class ItemAddInventoryBinding implements ViewBinding {
   public final MaterialButton btnCancel;
 
   @NonNull
+  public final EditText etCategory;
+
+  @NonNull
+  public final EditText etCostPrice;
+
+  @NonNull
   public final EditText etName;
 
   @NonNull
   public final EditText etQuantity;
 
   @NonNull
+  public final EditText etSalePrice;
+
+  @NonNull
+  public final EditText etSku;
+
+  @NonNull
+  public final EditText etSupplierEmail;
+
+  @NonNull
+  public final EditText etSupplierName;
+
+  @NonNull
+  public final EditText etSupplierPhone;
+
+  @NonNull
   public final AppCompatTextView tvSplash;
 
   private ItemAddInventoryBinding(@NonNull CardView rootView, @NonNull MaterialButton btnAddNow,
-      @NonNull MaterialButton btnCancel, @NonNull EditText etName, @NonNull EditText etQuantity,
+      @NonNull MaterialButton btnCancel, @NonNull EditText etCategory,
+      @NonNull EditText etCostPrice, @NonNull EditText etName, @NonNull EditText etQuantity,
+      @NonNull EditText etSalePrice, @NonNull EditText etSku, @NonNull EditText etSupplierEmail,
+      @NonNull EditText etSupplierName, @NonNull EditText etSupplierPhone,
       @NonNull AppCompatTextView tvSplash) {
     this.rootView = rootView;
     this.btnAddNow = btnAddNow;
     this.btnCancel = btnCancel;
+    this.etCategory = etCategory;
+    this.etCostPrice = etCostPrice;
     this.etName = etName;
     this.etQuantity = etQuantity;
+    this.etSalePrice = etSalePrice;
+    this.etSku = etSku;
+    this.etSupplierEmail = etSupplierEmail;
+    this.etSupplierName = etSupplierName;
+    this.etSupplierPhone = etSupplierPhone;
     this.tvSplash = tvSplash;
   }
 
@@ -86,6 +117,18 @@ public final class ItemAddInventoryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.etCategory;
+      EditText etCategory = ViewBindings.findChildViewById(rootView, id);
+      if (etCategory == null) {
+        break missingId;
+      }
+
+      id = R.id.etCostPrice;
+      EditText etCostPrice = ViewBindings.findChildViewById(rootView, id);
+      if (etCostPrice == null) {
+        break missingId;
+      }
+
       id = R.id.etName;
       EditText etName = ViewBindings.findChildViewById(rootView, id);
       if (etName == null) {
@@ -98,14 +141,45 @@ public final class ItemAddInventoryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.etSalePrice;
+      EditText etSalePrice = ViewBindings.findChildViewById(rootView, id);
+      if (etSalePrice == null) {
+        break missingId;
+      }
+
+      id = R.id.etSku;
+      EditText etSku = ViewBindings.findChildViewById(rootView, id);
+      if (etSku == null) {
+        break missingId;
+      }
+
+      id = R.id.etSupplierEmail;
+      EditText etSupplierEmail = ViewBindings.findChildViewById(rootView, id);
+      if (etSupplierEmail == null) {
+        break missingId;
+      }
+
+      id = R.id.etSupplierName;
+      EditText etSupplierName = ViewBindings.findChildViewById(rootView, id);
+      if (etSupplierName == null) {
+        break missingId;
+      }
+
+      id = R.id.etSupplierPhone;
+      EditText etSupplierPhone = ViewBindings.findChildViewById(rootView, id);
+      if (etSupplierPhone == null) {
+        break missingId;
+      }
+
       id = R.id.tvSplash;
       AppCompatTextView tvSplash = ViewBindings.findChildViewById(rootView, id);
       if (tvSplash == null) {
         break missingId;
       }
 
-      return new ItemAddInventoryBinding((CardView) rootView, btnAddNow, btnCancel, etName,
-          etQuantity, tvSplash);
+      return new ItemAddInventoryBinding((CardView) rootView, btnAddNow, btnCancel, etCategory,
+          etCostPrice, etName, etQuantity, etSalePrice, etSku, etSupplierEmail, etSupplierName,
+          etSupplierPhone, tvSplash);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

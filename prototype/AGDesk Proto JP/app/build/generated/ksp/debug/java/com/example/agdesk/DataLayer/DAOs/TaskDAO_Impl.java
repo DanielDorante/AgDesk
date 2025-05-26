@@ -578,7 +578,7 @@ public final class TaskDAO_Impl implements TaskDAO {
   }
 
   @Override
-  public Object getTimeframe(final int timeFrame,
+  public Object getTimeframe(final long timeFrame,
       final Continuation<? super List<TaskModel>> $completion) {
     final String _sql = "SELECT * FROM TASK WHERE due_Date < ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);

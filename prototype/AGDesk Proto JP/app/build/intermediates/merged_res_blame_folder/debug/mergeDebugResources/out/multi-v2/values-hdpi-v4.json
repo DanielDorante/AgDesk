@@ -4,7 +4,7 @@
             "outputFile": "com.example.agdesk.app-mergeDebugResources-76:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/2f368fc501b96bf7ebb933a5f8d4d4bc/transformed/appcompat-1.7.0/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "source": "/Users/JackPate_1/.gradle/caches/8.11.1/transforms/2f368fc501b96bf7ebb933a5f8d4d4bc/transformed/appcompat-1.7.0/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

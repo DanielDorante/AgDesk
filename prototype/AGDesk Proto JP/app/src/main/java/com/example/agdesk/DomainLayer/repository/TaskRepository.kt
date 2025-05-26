@@ -21,13 +21,13 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
             //If the uuid is not null then it isn't a new asset and should be using update instead
             //Both the local user and the network will not be creating a UUID for the resource
             //Creating and assigning the UUID here works well to link all the entities by the uuid upon creation
-            if (e.uid != null) {
-                Log.d("InsertTask", "InsertFailed: id already initialised, refer to update instead")
-                return@forEach
-            }
+//            if (e.uid != null) {
+//                Log.d("InsertTask", "InsertFailed: id already initialised, refer to update instead")
+//                return@forEach
+//            }
 
             //generating UUID for local db, because this id is used both as the primary key and foreign key
-            //for the child tables. Autogenerate an int would be a pain to link it seems.
+            //for the child tables. Autogtestenerate an int would be a pain to link it seems.
             //cons for UUID is primarily storage, as the primary keys are indexed so query speed should be no issue
 
             //e.uid = UUID.randomUUID() /made redundant by mapper
