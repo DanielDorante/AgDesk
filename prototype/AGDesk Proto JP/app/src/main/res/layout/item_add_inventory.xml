@@ -7,87 +7,267 @@
     app:cardElevation="5dp"
     android:layout_margin="20dp">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="15dp">
+        android:scrollbars="none">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSplash"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Add Inventory"
-            android:gravity="center"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="15dp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name of Product"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/textColor"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSplash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Add Inventory Item"
+                android:gravity="center"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_input"
-            android:layout_marginTop="10dp"
-            android:hint="Enter Name"
-            android:inputType="text"
-            android:padding="15dp"
-            android:textSize="16sp"
-            android:textColor="@color/textColor"/>
+            <!-- Inventory Basic Info Section -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Item Information"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quantity"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/textColor"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <!-- Name Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name of Product"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/etQuantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_input"
-            android:layout_marginTop="10dp"
-            android:hint="e.g 24"
-            android:inputType="text"
-            android:padding="15dp"
-            android:textSize="16sp"
-            android:textColor="@color/textColor"/>
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter Product Name"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddNow"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginHorizontal="15dp"
-            android:text="Add now"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"/>
+            <!-- SKU Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SKU/Barcode"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCancel"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginHorizontal="15dp"
-            android:text="Cancel"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"/>
+            <EditText
+                android:id="@+id/etSku"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter SKU or Barcode"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
 
-    </LinearLayout>
+            <!-- Category Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
 
+            <EditText
+                android:id="@+id/etCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter Category"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
+
+            <!-- Quantity Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter Quantity"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
+
+            <!-- Cost Price Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost Price"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etCostPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter Cost Price"
+                android:inputType="numberDecimal"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
+
+            <!-- Sale Price Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sale Price"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etSalePrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter Sale Price"
+                android:inputType="numberDecimal"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
+
+            <!-- Supplier Section -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Supplier Information"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Supplier Name Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Supplier Name"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etSupplierName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter Supplier Name"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
+
+            <!-- Supplier Email Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Supplier Email"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etSupplierEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter Supplier Email"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
+
+            <!-- Supplier Phone Field -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Supplier Phone"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etSupplierPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:layout_marginTop="5dp"
+                android:hint="Enter Supplier Phone"
+                android:inputType="phone"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCancel"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Cancel"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    app:cornerRadius="8dp"
+                    android:backgroundTint="@android:color/darker_gray"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddNow"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="5dp"
+                    android:text="Add Item"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    app:cornerRadius="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.cardview.widget.CardView>

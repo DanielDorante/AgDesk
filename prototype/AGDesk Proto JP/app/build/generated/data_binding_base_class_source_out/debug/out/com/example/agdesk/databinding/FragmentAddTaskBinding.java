@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -26,10 +27,22 @@ public final class FragmentAddTaskBinding implements ViewBinding {
   public final MaterialButton btnAddNow;
 
   @NonNull
-  public final EditText etChooseDate;
+  public final EditText etAssignedId;
 
   @NonNull
-  public final EditText etChooseTime;
+  public final EditText etAssignedName;
+
+  @NonNull
+  public final EditText etDescription;
+
+  @NonNull
+  public final EditText etDueDate;
+
+  @NonNull
+  public final EditText etExpiryDate;
+
+  @NonNull
+  public final EditText etFarmId;
 
   @NonNull
   public final EditText etName;
@@ -38,17 +51,32 @@ public final class FragmentAddTaskBinding implements ViewBinding {
   public final ImageView ivBack;
 
   @NonNull
+  public final Spinner spinnerPriority;
+
+  @NonNull
+  public final Spinner spinnerStatus;
+
+  @NonNull
   public final AppCompatTextView tvSplash;
 
   private FragmentAddTaskBinding(@NonNull LinearLayout rootView, @NonNull MaterialButton btnAddNow,
-      @NonNull EditText etChooseDate, @NonNull EditText etChooseTime, @NonNull EditText etName,
-      @NonNull ImageView ivBack, @NonNull AppCompatTextView tvSplash) {
+      @NonNull EditText etAssignedId, @NonNull EditText etAssignedName,
+      @NonNull EditText etDescription, @NonNull EditText etDueDate, @NonNull EditText etExpiryDate,
+      @NonNull EditText etFarmId, @NonNull EditText etName, @NonNull ImageView ivBack,
+      @NonNull Spinner spinnerPriority, @NonNull Spinner spinnerStatus,
+      @NonNull AppCompatTextView tvSplash) {
     this.rootView = rootView;
     this.btnAddNow = btnAddNow;
-    this.etChooseDate = etChooseDate;
-    this.etChooseTime = etChooseTime;
+    this.etAssignedId = etAssignedId;
+    this.etAssignedName = etAssignedName;
+    this.etDescription = etDescription;
+    this.etDueDate = etDueDate;
+    this.etExpiryDate = etExpiryDate;
+    this.etFarmId = etFarmId;
     this.etName = etName;
     this.ivBack = ivBack;
+    this.spinnerPriority = spinnerPriority;
+    this.spinnerStatus = spinnerStatus;
     this.tvSplash = tvSplash;
   }
 
@@ -85,15 +113,39 @@ public final class FragmentAddTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.etChooseDate;
-      EditText etChooseDate = ViewBindings.findChildViewById(rootView, id);
-      if (etChooseDate == null) {
+      id = R.id.etAssignedId;
+      EditText etAssignedId = ViewBindings.findChildViewById(rootView, id);
+      if (etAssignedId == null) {
         break missingId;
       }
 
-      id = R.id.etChooseTime;
-      EditText etChooseTime = ViewBindings.findChildViewById(rootView, id);
-      if (etChooseTime == null) {
+      id = R.id.etAssignedName;
+      EditText etAssignedName = ViewBindings.findChildViewById(rootView, id);
+      if (etAssignedName == null) {
+        break missingId;
+      }
+
+      id = R.id.etDescription;
+      EditText etDescription = ViewBindings.findChildViewById(rootView, id);
+      if (etDescription == null) {
+        break missingId;
+      }
+
+      id = R.id.etDueDate;
+      EditText etDueDate = ViewBindings.findChildViewById(rootView, id);
+      if (etDueDate == null) {
+        break missingId;
+      }
+
+      id = R.id.etExpiryDate;
+      EditText etExpiryDate = ViewBindings.findChildViewById(rootView, id);
+      if (etExpiryDate == null) {
+        break missingId;
+      }
+
+      id = R.id.etFarmId;
+      EditText etFarmId = ViewBindings.findChildViewById(rootView, id);
+      if (etFarmId == null) {
         break missingId;
       }
 
@@ -109,14 +161,27 @@ public final class FragmentAddTaskBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.spinnerPriority;
+      Spinner spinnerPriority = ViewBindings.findChildViewById(rootView, id);
+      if (spinnerPriority == null) {
+        break missingId;
+      }
+
+      id = R.id.spinnerStatus;
+      Spinner spinnerStatus = ViewBindings.findChildViewById(rootView, id);
+      if (spinnerStatus == null) {
+        break missingId;
+      }
+
       id = R.id.tvSplash;
       AppCompatTextView tvSplash = ViewBindings.findChildViewById(rootView, id);
       if (tvSplash == null) {
         break missingId;
       }
 
-      return new FragmentAddTaskBinding((LinearLayout) rootView, btnAddNow, etChooseDate,
-          etChooseTime, etName, ivBack, tvSplash);
+      return new FragmentAddTaskBinding((LinearLayout) rootView, btnAddNow, etAssignedId,
+          etAssignedName, etDescription, etDueDate, etExpiryDate, etFarmId, etName, ivBack,
+          spinnerPriority, spinnerStatus, tvSplash);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

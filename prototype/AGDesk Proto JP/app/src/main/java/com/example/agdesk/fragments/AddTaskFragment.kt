@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.agdesk.R
 import com.example.agdesk.ViewModels.TaskViewModel
 import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentAddTaskBinding
@@ -18,19 +20,31 @@ import com.example.agdesk.models.UIModels.TaskModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
+import java.util.UUID
 import kotlin.getValue
 
 @AndroidEntryPoint
 class AddTaskFragment : Fragment() {
     var binding: FragmentAddTaskBinding? = null
     var name: String? = ""
-    var date: String? = ""
-    var time: String? = ""
+    var description: String? = ""
     var startTime: Calendar? = null
     var endTime: Calendar? = null
+    var dueDateCalendar: Calendar? = null
+    var expiryDateCalendar: Calendar? = null
+    var status: Int? = null
+    var priority: Int? = null
+    var assignedId: Long? = null
+    var assignedName: String? = ""
+    var farmId: Long? = null
     var dbHelper : DatabaseHelper? = null
     private val taskViewModel: TaskViewModel by viewModels()
+
+    // Status and priority labels
+    private val statusLabels = arrayOf("Not Started", "In Progress", "Blocked", "Completed", "Failed", "Cancelled")
+    private val priorityLabels = arrayOf("Low", "Medium", "High", "Critical")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,82 +67,117 @@ class AddTaskFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         dbHelper = DatabaseHelper(requireContext())
+
+        // Set up status spinner
+        val statusAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            statusLabels
+        )
+        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding?.spinnerStatus?.adapter = statusAdapter
+
+        // Set up priority spinner
+        val priorityAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            priorityLabels
+        )
+        priorityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding?.spinnerPriority?.adapter = priorityAdapter
+
         binding?.ivBack?.setOnClickListener { findNavController().navigateUp() }
+
+        binding?.etDueDate?.setOnClickListener {
+            selectDueDate()
+        }
+
+        binding?.etExpiryDate?.setOnClickListener {
+            selectExpiryDate()
+        }
+
         binding?.btnAddNow?.setOnClickListener {
             if (isValidated()) {
+                // Convert the date strings to Date objects
+                val dueDate = if (!binding?.etDueDate?.text.isNullOrEmpty()) {
+                    SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(binding?.etDueDate?.text.toString())
+                } else null
 
-                        taskViewModel.insertTasks(TaskModel(
-                            uid = null,
-                            name = name,
-                            desc = "sample",
-                            timestamp = null, //Leave null
-                            del = null,
-                            due = null, //Store due date here as a Date type
-                            exp = null, //Store Expire date here as Date Type
-                            status = null,
-                            priority = null,
-                            assignedId = null,
-                            assigned = null,
-                            farm = null,
-                            ))
+                val expiryDate = if (!binding?.etExpiryDate?.text.isNullOrEmpty()) {
+                    SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(binding?.etExpiryDate?.text.toString())
+                } else null
 
+                taskViewModel.insertTasks(TaskModel(
+                    uid = UUID.randomUUID(),
+                    name = name,
+                    desc = description,
+                    timestamp = Date(), // Auto-set the timestamp on creation
+                    del = false,
+                    due = dueDate,
+                    exp = expiryDate,
+                    status = status,
+                    priority = priority,
+                    assignedId = assignedId,
+                    assigned = assignedName,
+                    farm = farmId,
+                ))
 
-                dbHelper?.addTask(HelperClass.users?.id.toString(), name ?: "", date ?: "", time ?: "")
                 showMessage("Task added successfully")
                 findNavController().navigateUp()
             }
         }
-
-        binding?.etChooseDate?.setOnClickListener {
-            selectDate()
-        }
-
-        binding?.etChooseTime?.setOnClickListener {
-            selectTime()
-        }
-
     }
 
     private fun isValidated(): Boolean {
         name = binding?.etName?.text.toString().trim()
-        date = binding?.etChooseDate?.text.toString().trim()
-        time = binding?.etChooseTime?.text.toString().trim()
+        description = binding?.etDescription?.text.toString().trim()
 
+        status = binding?.spinnerStatus?.selectedItemPosition
+        priority = binding?.spinnerPriority?.selectedItemPosition
+
+        val assignedIdText = binding?.etAssignedId?.text.toString().trim()
+        assignedId = if (assignedIdText.isNotEmpty()) assignedIdText.toLongOrNull() else null
+
+        assignedName = binding?.etAssignedName?.text.toString().trim()
+
+        val farmIdText = binding?.etFarmId?.text.toString().trim()
+        farmId = if (farmIdText.isNotEmpty()) farmIdText.toLongOrNull() else null
 
         if (name?.isEmpty() == true) {
             showMessage("Please enter name")
             return false
         }
 
-        if (date?.isEmpty() == true) {
-            showMessage("Please select date")
+        if (description?.isEmpty() == true) {
+            showMessage("Please enter description")
             return false
         }
 
-        if (time?.isEmpty() == true) {
-            showMessage("Please select time")
+        // Due date is required
+        if (binding?.etDueDate?.text.toString().isEmpty()) {
+            showMessage("Please select due date")
             return false
         }
 
-        // Check if startTime is set and is before endTime
-        if (startTime != null && endTime != null && startTime!!.after(endTime)) {
-            showMessage("Start time cannot be later than end time")
+        // Check if due date is before expiry date when both are set
+        if (dueDateCalendar != null && expiryDateCalendar != null && dueDateCalendar!!.after(expiryDateCalendar)) {
+            showMessage("Due date cannot be later than expiry date")
             return false
         }
 
         return true
     }
 
-    // Select date method
-    private fun selectDate() {
+    // Select due date method
+    private fun selectDueDate() {
         val calendar = Calendar.getInstance()
         val datePickerDialog = DatePickerDialog(
             requireContext(),
             { _, year, month, dayOfMonth ->
-                val selectedDate = Calendar.getInstance()
-                selectedDate.set(year, month, dayOfMonth)
+                dueDateCalendar = Calendar.getInstance()
+                dueDateCalendar?.set(year, month, dayOfMonth)
                 val format = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-                binding?.etChooseDate?.setText(format.format(selectedDate.time))
+                binding?.etDueDate?.setText(format.format(dueDateCalendar?.time))
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -137,49 +186,25 @@ class AddTaskFragment : Fragment() {
         datePickerDialog.show()
     }
 
-    // Select start and end time method
-    private fun selectTime() {
+    // Select expiry date method
+    private fun selectExpiryDate() {
         val calendar = Calendar.getInstance()
-
-        // Time format for AM/PM
-        val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
-
-        // Show the first TimePicker for start time
-        TimePickerDialog(
+        val datePickerDialog = DatePickerDialog(
             requireContext(),
-            { _, startHour, startMinute ->
-                startTime = Calendar.getInstance()
-                startTime?.set(Calendar.HOUR_OF_DAY, startHour)
-                startTime?.set(Calendar.MINUTE, startMinute)
-
-                // After selecting start time, show the second TimePicker for end time
-                TimePickerDialog(
-                    requireContext(),
-                    { _, endHour, endMinute ->
-                        endTime = Calendar.getInstance()
-                        endTime?.set(Calendar.HOUR_OF_DAY, endHour)
-                        endTime?.set(Calendar.MINUTE, endMinute)
-
-                        // Set the time range to etChooseTime
-                        val formattedStartTime = timeFormat.format(startTime?.time)
-                        val formattedEndTime = timeFormat.format(endTime?.time)
-                        binding?.etChooseTime?.setText("$formattedStartTime - $formattedEndTime")
-                    },
-                    calendar.get(Calendar.HOUR_OF_DAY),
-                    calendar.get(Calendar.MINUTE),
-                    false // use 12-hour format
-                ).show()
+            { _, year, month, dayOfMonth ->
+                expiryDateCalendar = Calendar.getInstance()
+                expiryDateCalendar?.set(year, month, dayOfMonth)
+                val format = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                binding?.etExpiryDate?.setText(format.format(expiryDateCalendar?.time))
             },
-            calendar.get(Calendar.HOUR_OF_DAY),
-            calendar.get(Calendar.MINUTE),
-            false // use 12-hour format
-        ).show()
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
     }
-
 
     private fun showMessage(message: String?) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
-
-
 }

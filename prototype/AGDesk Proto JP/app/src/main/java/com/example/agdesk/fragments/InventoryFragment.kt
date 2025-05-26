@@ -20,6 +20,7 @@ import com.example.agdesk.adapters.InventoryAdapter
 import com.example.agdesk.ViewModels.InventoryViewModel
 import com.example.agdesk.databinding.FragmentInventoryBinding
 import com.example.agdesk.models.UIModels.InventoryModel
+import com.example.agdesk.models.UIModels.Supplier
 import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -105,34 +106,74 @@ class InventoryFragment : Fragment() {
 
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        // Initialize views in the dialog
+        // Initialize views in the dialog - Basic inventory fields
         val etName = dialogView.findViewById<EditText>(R.id.etName)
+        val etSku = dialogView.findViewById<EditText>(R.id.etSku)
+        val etCategory = dialogView.findViewById<EditText>(R.id.etCategory)
         val etQuantity = dialogView.findViewById<EditText>(R.id.etQuantity)
+        val etCostPrice = dialogView.findViewById<EditText>(R.id.etCostPrice)
+        val etSalePrice = dialogView.findViewById<EditText>(R.id.etSalePrice)
+
+        // Supplier fields
+        val etSupplierName = dialogView.findViewById<EditText>(R.id.etSupplierName)
+        val etSupplierEmail = dialogView.findViewById<EditText>(R.id.etSupplierEmail)
+        val etSupplierPhone = dialogView.findViewById<EditText>(R.id.etSupplierPhone)
+
+        // Buttons
         val btnAddNow = dialogView.findViewById<MaterialButton>(R.id.btnAddNow)
         val btnCancel = dialogView.findViewById<MaterialButton>(R.id.btnCancel)
 
         btnAddNow.setOnClickListener {
+            // Get all field values
             val name = etName.text.toString().trim()
-            val quantity = etQuantity.text.toString().trim()
+            val sku = etSku.text.toString().trim()
+            val category = etCategory.text.toString().trim()
+            val quantityStr = etQuantity.text.toString().trim()
+            val costPriceStr = etCostPrice.text.toString().trim()
+            val salePriceStr = etSalePrice.text.toString().trim()
 
-            if (name.isNotEmpty() && quantity.isNotEmpty()) {
+            // Supplier info
+            val supplierName = etSupplierName.text.toString().trim()
+            val supplierEmail = etSupplierEmail.text.toString().trim()
+            val supplierPhone = etSupplierPhone.text.toString().trim()
+
+            // Validate required fields
+            if (name.isNotEmpty() && quantityStr.isNotEmpty()) {
+                // Convert numeric fields
+                val quantity = quantityStr.toIntOrNull() ?: 0
+                val costPrice = costPriceStr.toDoubleOrNull()
+                val salePrice = salePriceStr.toDoubleOrNull()
+
+                // Create supplier object if any supplier field is provided
+                val supplier = if (supplierName.isNotEmpty() || supplierEmail.isNotEmpty() || supplierPhone.isNotEmpty()) {
+                    Supplier(
+                        name = supplierName.ifEmpty { null },
+                        email = supplierEmail.ifEmpty { null },
+                        phone = supplierPhone.ifEmpty { null }
+                    )
+                } else null
+
                 lifecycleScope.launch {
                     withContext(Dispatchers.Default) {
-                        val inventoryItem = InventoryModel(null, name = name,null,null, quantity.toInt(), null, null, null)
+                        val inventoryItem = InventoryModel(
+                            uid = null,
+                            name = name,
+                            sku = sku.ifEmpty { null },
+                            category = category.ifEmpty { null },
+                            quantity = quantity,
+                            costPrice = costPrice,
+                            salePrice = salePrice,
+                            supplier = supplier
+                        )
                         inventoryViewModel.insertItems(inventoryItem)
-                        dialog.dismiss()
-
-
-
-                        }
                     }
-                Toast.makeText(requireContext(), "Inventory added successfully", Toast.LENGTH_SHORT).show()
-
-
-
-
+                    withContext(Dispatchers.Main) {
+                        dialog.dismiss()
+                        Toast.makeText(requireContext(), "Inventory added successfully", Toast.LENGTH_SHORT).show()
+                    }
+                }
             } else {
-                Toast.makeText(requireContext(), "Please enter both name and quantity", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please enter at least name and quantity", Toast.LENGTH_SHORT).show()
             }
         }
 
