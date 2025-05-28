@@ -36,6 +36,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -62,12 +63,12 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.startup.runtime)
     implementation("androidx.hilt:hilt-work:1.2.0")
-    implementation(libs.hilt.android.v2511)
+    //implementation(libs.hilt.android.v2511)
     implementation(libs.androidx.room.ktx)
 
 
-    implementation("com.google.dagger:hilt-android:2.53")
-    kapt("com.google.dagger:hilt-compiler:2.53")
+    implementation("com.google.dagger:hilt-android:2.56")
+    kapt("com.google.dagger:hilt-compiler:2.56")
     implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.kotlinx.serialization.json)
@@ -103,4 +104,6 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
+
+
 
