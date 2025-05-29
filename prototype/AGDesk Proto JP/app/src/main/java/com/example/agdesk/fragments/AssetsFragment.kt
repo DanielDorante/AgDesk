@@ -10,18 +10,24 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.agdesk.R
-import com.example.agdesk.ViewModels.TaskViewModel
+import com.example.agdesk.ViewModels.AssetViewModel
 import com.example.agdesk.adapters.AssetsAdapter
-import com.example.agdesk.database.DatabaseHelper
 import com.example.agdesk.databinding.FragmentAssetsBinding
 import com.example.agdesk.models.UIModels.AssetModel
 import com.example.agdesk.models.OnClick
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Date
 import java.util.Locale
@@ -29,13 +35,16 @@ import java.util.UUID
 import kotlin.getValue
 
 @AndroidEntryPoint
-class AssetsFragment : Fragment(), OnClick {
+class AssetsFragment : Fragment(), OnClick, AssetsAdapter.AssetItemListener {
     private var _binding: FragmentAssetsBinding? = null
     private val binding get() = _binding!!
     var listOfAssets: List<AssetModel> = ArrayList()
-    lateinit var databaseHelper: DatabaseHelper
     lateinit var assetsAdapter: AssetsAdapter
-    private val taskViewModel: TaskViewModel by viewModels()
+    private val assetViewModel: AssetViewModel by viewModels()
+
+    companion object {
+        const val ARG_ASSET = "asset"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,13 +67,18 @@ class AssetsFragment : Fragment(), OnClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        databaseHelper = DatabaseHelper(requireContext())
+        // Set up the RecyclerView
         binding.rvInventory.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        assetsAdapter = AssetsAdapter(requireContext(), listOfAssets, this)
+        assetsAdapter = AssetsAdapter(requireContext(), listOfAssets, this, this)
         binding.rvInventory.adapter = assetsAdapter
-        binding.fabAddAsset.setOnClickListener { Navigation.findNavController(it).navigate(R.id.action_navigation_assets_to_addAssetFragment) }
 
+        // Navigate to Add Asset screen when FAB is clicked
+        binding.fabAddAsset.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_assets_to_addAssetFragment)
+        }
+
+        // Set up search functionality
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                 // No action needed
@@ -83,36 +97,50 @@ class AssetsFragment : Fragment(), OnClick {
             }
         })
 
+        // Observe assets from ViewModel
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                assetViewModel.assets.collectLatest { assets ->
+                    listOfAssets = assets
+                    assetsAdapter.setList(assets)
+                }
+            }
+        }
+    }
+
+    // AssetItemListener implementation
+    override fun onEditClick(asset: AssetModel) {
+        // Create a bundle to pass the asset to AddAssetFragment
+        val bundle = Bundle().apply {
+            putSerializable(ARG_ASSET, asset)
+        }
+
+        // Navigate to AddAssetFragment with the asset data using Navigation component
+        findNavController().navigate(R.id.action_navigation_assets_to_addAssetFragment, bundle)
+    }
+
+    override fun onDeleteClick(asset: AssetModel) {
+        // Show confirmation dialog before deleting
+        AlertDialog.Builder(requireContext())
+            .setTitle("Delete Asset")
+            .setMessage("Are you sure you want to delete this asset?")
+            .setPositiveButton("Delete") { _, _ ->
+                // Delete the asset using ViewModel
+                lifecycleScope.launch {
+                    assetViewModel.deleteAsset(asset)
+                }
+                Toast.makeText(requireContext(), "Asset deleted successfully", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     override fun onResume() {
         super.onResume()
 
-        /*checkAndInsertDefaultAssets()*/
-
+        // Load all assets when the fragment resumes
+        assetViewModel.loadAssets()
     }
-
-    /*fun checkAndInsertDefaultAssets() {
-        listOfAssets = databaseHelper.getAllAssets()
-        if (listOfAssets.isEmpty()) {
-            //listOfAssets = listOf(
-                //AssetModel(null, "LV", "Tractor", "John Deere", "Engine, Wheels", "Farm A", Date(2000,1 ,1), Date(2000,1 ,1), "https://4.imimg.com/data4/KJ/BY/MY-14831048/john-deere-5050d-tractor-500x500.jpg", 1, "12345", "67890", "98765", 1, false, ""),
-                //AssetModel(null, "HV", "Harvester", "Case IH", "Blades, Engine", "Farm B", Date(2000,1 ,1), Date(2000,1 ,1), "https://www.bewindia.co/wp-content/uploads/2019/09/Greengold-220-Wheel.jpg", 2, 54321, 98765, 67890, 2, false, ""),
-            // Asset Model has changed constructor //AssetModel(null, "SE", "Seeder", "Kubota", "Discs, Frame", "Farm C", Date(2000,1 ,1), Date(2000,1 ,1), "https://www.deere.ca/assets/images/region-4/products/frontier-implements/seeding-equipment/overseeder/gs/4060l/4391504_gs4060l_1024x576_large_42360ca7adfd8fb22b90aabefac6f25546a154f5.jpg", 3, 11111, 22222, 33333, 3, false, ""),
-               // AssetModel(null, "LE", "Loader", "CAT", "Hydraulics, Frame", "Farm D", Date(2000,1 ,1), Date(2000,1 ,1), "https://www.wesgroupequipment.com/media/CACHE/images/equipment-model-photos/77FD56uQ_MOp88XS/d8edcc17817fb1ff41797a7d48b77266.jpg", 4, 44444, 55555, 66666, 4, false, ""),
-                //AssetModel(null, "LV", "Plow", "New Holland", "Blades, Frame", "Farm E", Date(2000,1 ,1), Date(2000,1 ,1), "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlTv1WO054B7ZuCnZoFimjQCWlzMcngrfeRg&s", 5, 77777, 88888, 99999, 5, false, ""),
-                //AssetModel(null, "HV", "Sprayer", "John Deere", "Nozzles, Tank", "Farm F", Date(2000,1 ,1), Date(2000,1 ,1), "https://ik.imagekit.io/tuc2020/wp-content/uploads/2021/03/HW0422.jpg", 6, 13579, 24680, 97531, 6, false, ""),
-                //AssetModel(null, "SE", "Baler", "CLAAS", "Rollers, Frame", "Farm G", Date(2000,1 ,1), Date(2000,1 ,1), "https://dealerwebcentral.s3.amazonaws.com/webres/john-deere-images/560m-megawide-hc%C2%B2-round-baler.jpeg", 7, 11121, 22232, 33343, 7, false, ""),
-                //AssetModel(null, "LE", "Tiller", "Mahindra", "Blades, Engine", "Farm H", Date(2000,1 ,1), Date(2000,1 ,1), "https://pakistanpowertools.com/cdn/shop/files/PG0717001_194c088a-bf06-4446-ba55-7f519be65fcd.jpg?v=1691870063", 8, 44454, 55565, 66676, 8, false, "")
-            //)
-
-            listOfAssets.forEach { databaseHelper.insertAsset(it) }
-            assetsAdapter.setList(listOfAssets)
-        }else{
-            assetsAdapter.setList(listOfAssets)
-        }
-
-    }*/
 
     private fun showAssetDialog(asset: AssetModel) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_asset_details, null)
@@ -148,7 +176,7 @@ class AssetsFragment : Fragment(), OnClick {
         tvParts.text = "Parts: ${asset.parts}"
         tvFarmId.text = "Farm ID: ${asset.farmId}"
 
-        if (asset.checkoutStatus!!){
+        if (asset.checkoutStatus == true){
             tvAssetStatus.text = "Checked out"
             tvAssetStatus.setTextColor(requireContext().getColor(R.color.red))
             btnCheckIn.text = "Check in"
@@ -163,8 +191,10 @@ class AssetsFragment : Fragment(), OnClick {
         btnCheckIn.setOnClickListener {
             if (asset.checkoutStatus!!){
                 asset.checkoutStatus = false
-                //Operations aka checkout isn't implemented, cosmetic changes will do for now
-                /*databaseHelper.updateAsset(asset)*/
+                // Update the asset status through ViewModel
+                viewLifecycleOwner.lifecycleScope.launch {
+                    assetViewModel.updateAsset(asset)
+                }
 
                 tvAssetStatus.text = "Checked out"
                 tvAssetStatus.setTextColor(requireContext().getColor(R.color.red))
@@ -172,19 +202,19 @@ class AssetsFragment : Fragment(), OnClick {
                 btnCheckIn.setBackgroundColor(requireContext().getColor(R.color.dark_main))
             }else{
                 asset.checkoutStatus = true
-                //Operations aka checkout isn't implemented, cosmetic changes will do for now
-                /*databaseHelper.updateAsset(asset)*/
+                // Update the asset status through ViewModel
+                viewLifecycleOwner.lifecycleScope.launch {
+                    assetViewModel.updateAsset(asset)
+                }
 
                 tvAssetStatus.text = "Checked in"
                 tvAssetStatus.setTextColor(requireContext().getColor(R.color.dark_main))
                 btnCheckIn.text = "Check in"
                 btnCheckIn.setBackgroundColor(requireContext().getColor(R.color.red))
             }
-            //Nothing needs to be done here for the cosmetic changes
-            //Once operations has been implemented the page should reload automatically
-            /*listOfAssets = databaseHelper.getAllAssets()*/
-            assetsAdapter.setList(listOfAssets)
+
             dialog.dismiss()
+            // No need to manually update the list as the StateFlow observer will handle it
         }
 
         ivClose.setOnClickListener { dialog.dismiss() }

@@ -16,7 +16,7 @@ import java.util.UUID
 import javax.inject.Inject
 
 //Repository used to separate logic from datasource/DAO
-class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
+class AssetRepository @Inject constructor(val assetDAO: AssetDAO) {
     @WorkerThread
     suspend fun insertAsset(vararg assetModel: AssetModel) {
         assetModel.forEach { e ->
@@ -87,18 +87,37 @@ class AssetRepository @Inject constructor(private val assetDAO: AssetDAO) {
     @WorkerThread
     suspend fun updateAsset(assetModel: AssetModel) {
         // if the id is null the value hasn't been initalised
-
         if (assetModel.uid == null) {
             Log.d("UpdateAsset", "UpdateFailed: uid is null, cannot locate local asset")
             return
         }
 
         //Because the UI model doesn't know its sync id we inject it here so the local update dosen't set syncId to null
-        val asset = assetModel.toAssetEntity(assetDAO.getByUid(assetModel.uid.toString()))
+        val existingAsset = assetDAO.getByUid(assetModel.uid.toString())
+        val asset = assetModel.toAssetEntity(existingAsset)
+
+        // Update the main asset record
         assetDAO.updateAsset(asset)
 
-        val assetOffline = AssetSync(asset.uid.toString(), System.currentTimeMillis())
-        assetDAO.insertSync(assetOffline)
+        // Update corresponding child table record based on asset prefix
+        when(assetModel.assetPrefix) {
+            "LV", "HV" -> assetDAO.insertVehicle(Vehicle(asset.uid, assetModel.vin, assetModel.reg))
+            "SE" -> assetDAO.insertSmallEquipment(SmallEquipment(asset.uid, assetModel.serialNo))
+            "HE", "LE" -> assetDAO.insertLargeEquipment(LargeEquipment(asset.uid, assetModel.vin))
+            null -> Log.w("UpdateAsset", "No asset prefix specified, skipping child table update")
+            else -> Log.w("UpdateAsset", "Unknown asset prefix: ${assetModel.assetPrefix}")
+        }
+
+        try {
+            // First delete any existing sync record for this asset
+            assetDAO.deleteSync(asset.uid.toString())
+
+            // Then insert a new sync record
+            val assetOffline = AssetSync(asset.uid.toString(), System.currentTimeMillis())
+            assetDAO.insertSync(assetOffline)
+        } catch (e: Exception) {
+            Log.e("UpdateAsset", "Error updating sync record: ${e.message}")
+        }
     }
 
 

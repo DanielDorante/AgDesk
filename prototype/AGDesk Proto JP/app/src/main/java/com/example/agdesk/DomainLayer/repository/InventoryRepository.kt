@@ -48,6 +48,61 @@ class InventoryRepository @Inject constructor(private val inventoryDAO: Inventor
 
     }
 
+    @WorkerThread
+    suspend fun updateInventoryItem(inventoryModel: InventoryModel) {
+        // Check if the uid is present - required for update
+        if (inventoryModel.uid == null) {
+            Log.d("UpdateItem", "UpdateFailed: id is null, cannot locate inventory item")
+            return
+        }
+
+        val item = InventoryItem(
+            inventoryModel.uid,
+            inventoryModel.name,
+            inventoryModel.sku,
+            inventoryModel.category,
+            inventoryModel.quantity,
+            inventoryModel.costPrice,
+            inventoryModel.salePrice,
+            Supplier(inventoryModel.supplier?.name, inventoryModel.supplier?.email, inventoryModel.supplier?.phone),
+            null
+        )
+
+        inventoryDAO.updateItem(item)
+
+        // Update the sync record
+        try {
+            // First delete any existing sync record for this item
+            val itemOffline = InventorySync(inventoryModel.uid, System.currentTimeMillis())
+            inventoryDAO.insertSync(itemOffline)
+        } catch (e: Exception) {
+            Log.e("UpdateInventory", "Error updating sync record: ${e.message}")
+        }
+    }
+
+    @WorkerThread
+    suspend fun deleteInventoryItem(inventoryModel: InventoryModel) {
+        // Check if the uid is present - required for deletion
+        if (inventoryModel.uid == null) {
+            Log.d("DeleteItem", "DeleteFailed: id is null, cannot locate inventory item")
+            return
+        }
+
+        val item = InventoryItem(
+            inventoryModel.uid,
+            inventoryModel.name,
+            inventoryModel.sku,
+            inventoryModel.category,
+            inventoryModel.quantity,
+            inventoryModel.costPrice,
+            inventoryModel.salePrice,
+            Supplier(inventoryModel.supplier?.name, inventoryModel.supplier?.email, inventoryModel.supplier?.phone),
+            null
+        )
+
+        inventoryDAO.deleteItem(item)
+    }
+
 
 
 

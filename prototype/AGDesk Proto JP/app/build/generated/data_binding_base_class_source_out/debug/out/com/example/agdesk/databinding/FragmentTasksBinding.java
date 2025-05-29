@@ -26,6 +26,9 @@ public final class FragmentTasksBinding implements ViewBinding {
   public final MaterialButton btnAddTask;
 
   @NonNull
+  public final LinearLayout emptyStateLayout;
+
+  @NonNull
   public final RecyclerView rvDates;
 
   @NonNull
@@ -35,35 +38,18 @@ public final class FragmentTasksBinding implements ViewBinding {
   public final Spinner spSort;
 
   @NonNull
-  public final AppCompatTextView tvName;
-
-  @NonNull
-  public final AppCompatTextView tvNoTaskFound;
-
-  @NonNull
   public final AppCompatTextView tvSplash;
 
-  @NonNull
-  public final AppCompatTextView tvTaskDate;
-
-  @NonNull
-  public final AppCompatTextView tvTaskTime;
-
   private FragmentTasksBinding(@NonNull LinearLayout rootView, @NonNull MaterialButton btnAddTask,
-      @NonNull RecyclerView rvDates, @NonNull RecyclerView rvTasks, @NonNull Spinner spSort,
-      @NonNull AppCompatTextView tvName, @NonNull AppCompatTextView tvNoTaskFound,
-      @NonNull AppCompatTextView tvSplash, @NonNull AppCompatTextView tvTaskDate,
-      @NonNull AppCompatTextView tvTaskTime) {
+      @NonNull LinearLayout emptyStateLayout, @NonNull RecyclerView rvDates,
+      @NonNull RecyclerView rvTasks, @NonNull Spinner spSort, @NonNull AppCompatTextView tvSplash) {
     this.rootView = rootView;
     this.btnAddTask = btnAddTask;
+    this.emptyStateLayout = emptyStateLayout;
     this.rvDates = rvDates;
     this.rvTasks = rvTasks;
     this.spSort = spSort;
-    this.tvName = tvName;
-    this.tvNoTaskFound = tvNoTaskFound;
     this.tvSplash = tvSplash;
-    this.tvTaskDate = tvTaskDate;
-    this.tvTaskTime = tvTaskTime;
   }
 
   @Override
@@ -99,6 +85,12 @@ public final class FragmentTasksBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.emptyStateLayout;
+      LinearLayout emptyStateLayout = ViewBindings.findChildViewById(rootView, id);
+      if (emptyStateLayout == null) {
+        break missingId;
+      }
+
       id = R.id.rvDates;
       RecyclerView rvDates = ViewBindings.findChildViewById(rootView, id);
       if (rvDates == null) {
@@ -117,38 +109,14 @@ public final class FragmentTasksBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvName;
-      AppCompatTextView tvName = ViewBindings.findChildViewById(rootView, id);
-      if (tvName == null) {
-        break missingId;
-      }
-
-      id = R.id.tvNoTaskFound;
-      AppCompatTextView tvNoTaskFound = ViewBindings.findChildViewById(rootView, id);
-      if (tvNoTaskFound == null) {
-        break missingId;
-      }
-
       id = R.id.tvSplash;
       AppCompatTextView tvSplash = ViewBindings.findChildViewById(rootView, id);
       if (tvSplash == null) {
         break missingId;
       }
 
-      id = R.id.tvTaskDate;
-      AppCompatTextView tvTaskDate = ViewBindings.findChildViewById(rootView, id);
-      if (tvTaskDate == null) {
-        break missingId;
-      }
-
-      id = R.id.tvTaskTime;
-      AppCompatTextView tvTaskTime = ViewBindings.findChildViewById(rootView, id);
-      if (tvTaskTime == null) {
-        break missingId;
-      }
-
-      return new FragmentTasksBinding((LinearLayout) rootView, btnAddTask, rvDates, rvTasks, spSort,
-          tvName, tvNoTaskFound, tvSplash, tvTaskDate, tvTaskTime);
+      return new FragmentTasksBinding((LinearLayout) rootView, btnAddTask, emptyStateLayout,
+          rvDates, rvTasks, spSort, tvSplash);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

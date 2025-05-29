@@ -1,6 +1,6 @@
 package com.example.agdesk.DomainLayer.repository;
 
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010!\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0003\u0018\u00002\u00020\u0001B\u000f\b\u0007\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u0014\u0010\u0005\u001a\b\u0012\u0004\u0012\u00020\u00070\u0006H\u0087@\u00a2\u0006\u0002\u0010\bJ\u0016\u0010\t\u001a\u00020\n2\u0006\u0010\u000b\u001a\u00020\u0007H\u0087@\u00a2\u0006\u0002\u0010\fR\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\r"}, d2 = {"Lcom/example/agdesk/DomainLayer/repository/InventoryRepository;", "", "inventoryDAO", "Lcom/example/agdesk/DataLayer/DAOs/InventoryDAO;", "(Lcom/example/agdesk/DataLayer/DAOs/InventoryDAO;)V", "getAllItems", "", "Lcom/example/agdesk/models/UIModels/InventoryModel;", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "insertInventoryItem", "", "inventoryModel", "(Lcom/example/agdesk/models/UIModels/InventoryModel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000(\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010!\n\u0002\b\u0004\u0018\u00002\u00020\u0001B\u000f\b\u0007\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u0016\u0010\u0005\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\bH\u0087@\u00a2\u0006\u0002\u0010\tJ\u0014\u0010\n\u001a\b\u0012\u0004\u0012\u00020\b0\u000bH\u0087@\u00a2\u0006\u0002\u0010\fJ\u0016\u0010\r\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\bH\u0087@\u00a2\u0006\u0002\u0010\tJ\u0016\u0010\u000e\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\bH\u0087@\u00a2\u0006\u0002\u0010\tR\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u000f"}, d2 = {"Lcom/example/agdesk/DomainLayer/repository/InventoryRepository;", "", "inventoryDAO", "Lcom/example/agdesk/DataLayer/DAOs/InventoryDAO;", "(Lcom/example/agdesk/DataLayer/DAOs/InventoryDAO;)V", "deleteInventoryItem", "", "inventoryModel", "Lcom/example/agdesk/models/UIModels/InventoryModel;", "(Lcom/example/agdesk/models/UIModels/InventoryModel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getAllItems", "", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "insertInventoryItem", "updateInventoryItem", "app_debug"})
 public final class InventoryRepository {
     @org.jetbrains.annotations.NotNull()
     private final com.example.agdesk.DataLayer.DAOs.InventoryDAO inventoryDAO = null;
@@ -21,6 +21,22 @@ public final class InventoryRepository {
     @androidx.annotation.WorkerThread()
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object insertInventoryItem(@org.jetbrains.annotations.NotNull()
+    com.example.agdesk.models.UIModels.InventoryModel inventoryModel, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
+        return null;
+    }
+    
+    @androidx.annotation.WorkerThread()
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Object updateInventoryItem(@org.jetbrains.annotations.NotNull()
+    com.example.agdesk.models.UIModels.InventoryModel inventoryModel, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
+        return null;
+    }
+    
+    @androidx.annotation.WorkerThread()
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Object deleteInventoryItem(@org.jetbrains.annotations.NotNull()
     com.example.agdesk.models.UIModels.InventoryModel inventoryModel, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
         return null;

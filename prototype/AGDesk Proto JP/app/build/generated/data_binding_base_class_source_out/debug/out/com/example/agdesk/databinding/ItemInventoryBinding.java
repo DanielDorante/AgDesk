@@ -4,6 +4,7 @@ package com.example.agdesk.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -20,6 +21,9 @@ public final class ItemInventoryBinding implements ViewBinding {
   private final CardView rootView;
 
   @NonNull
+  public final ImageButton btnInventoryMenu;
+
+  @NonNull
   public final CardView cvDate;
 
   @NonNull
@@ -28,9 +32,11 @@ public final class ItemInventoryBinding implements ViewBinding {
   @NonNull
   public final AppCompatTextView tvQuantity;
 
-  private ItemInventoryBinding(@NonNull CardView rootView, @NonNull CardView cvDate,
-      @NonNull AppCompatTextView tvName, @NonNull AppCompatTextView tvQuantity) {
+  private ItemInventoryBinding(@NonNull CardView rootView, @NonNull ImageButton btnInventoryMenu,
+      @NonNull CardView cvDate, @NonNull AppCompatTextView tvName,
+      @NonNull AppCompatTextView tvQuantity) {
     this.rootView = rootView;
+    this.btnInventoryMenu = btnInventoryMenu;
     this.cvDate = cvDate;
     this.tvName = tvName;
     this.tvQuantity = tvQuantity;
@@ -63,6 +69,12 @@ public final class ItemInventoryBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnInventoryMenu;
+      ImageButton btnInventoryMenu = ViewBindings.findChildViewById(rootView, id);
+      if (btnInventoryMenu == null) {
+        break missingId;
+      }
+
       id = R.id.cvDate;
       CardView cvDate = ViewBindings.findChildViewById(rootView, id);
       if (cvDate == null) {
@@ -81,7 +93,8 @@ public final class ItemInventoryBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemInventoryBinding((CardView) rootView, cvDate, tvName, tvQuantity);
+      return new ItemInventoryBinding((CardView) rootView, btnInventoryMenu, cvDate, tvName,
+          tvQuantity);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

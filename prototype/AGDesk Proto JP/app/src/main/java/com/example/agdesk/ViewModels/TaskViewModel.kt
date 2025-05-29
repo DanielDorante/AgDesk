@@ -2,6 +2,7 @@ package com.example.agdesk.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.agdesk.DomainLayer.mapper.toEntity
 import com.example.agdesk.models.UIModels.TaskModel
 import com.example.agdesk.DomainLayer.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -55,7 +56,6 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
         withContext(Dispatchers.IO){
             val taskList = taskRepository.getTasksByTimeFrame(timeFrame)
             _tasks.value = taskList // Update the StateFlow
-
         }
 
     }
@@ -68,6 +68,16 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
         withContext(Dispatchers.IO) {
             taskRepository.updateTask(taskModel)
             loadTasks()
+        }
+    }
+
+    // Delete a task
+    fun deleteTask(taskModel: TaskModel) = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
+            // First convert the TaskModel to an entity using the extension function
+            val task = taskModel.toEntity(null)
+            taskRepository.deleteTask(task)
+            loadTasks() // Refresh the task list after deletion
         }
     }
 

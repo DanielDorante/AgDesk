@@ -3,6 +3,7 @@ package com.example.agdesk.models.UIModels
 import androidx.room.ColumnInfo
 import androidx.room.TypeConverters
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter
+import java.io.Serializable
 import java.util.Date
 import java.util.UUID
 
@@ -24,4 +25,4 @@ data class AssetModel(
 
     var checkoutStatus: Boolean?,// TO BE IMPLEMENTED
     var checkoutBy: String?, // TO BE IMPLEMENTED, will be a name of user who checked out
-    )
+) : Serializable
