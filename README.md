@@ -50,3 +50,18 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
+```
+## API Endpoints
+
+All API requests are made to your local backend running at:
+
+```
+http://127.0.0.1:8000/
+```
+
+| Method | Endpoint               | URL                                     | Description                                           |
+|--------|------------------------|-----------------------------------------|-------------------------------------------------------|
+| POST   | `update-master`        | `/api/update-master/`                   | Smart sync. Creates or updates assets/tasks based on timestamp and ID. |
+| GET    | `fetch`                | `/api/fetch/`                           | Returns **all** local assets and tasks.              |
+| POST   | `push`                 | `/api/push/`                            | Pushes local DB (assets/tasks) to cloud server.      |
+| POST   | `update-sync`          | `/api/update-sync/`                     | Returns **only new or updated** records since a given timestamp. |
