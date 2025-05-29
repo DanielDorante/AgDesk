@@ -4,6 +4,7 @@ package com.example.agdesk.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
@@ -20,6 +21,9 @@ import java.lang.String;
 public final class ItemTaskBinding implements ViewBinding {
   @NonNull
   private final CardView rootView;
+
+  @NonNull
+  public final ImageButton btnMenu;
 
   @NonNull
   public final CardView cvDate;
@@ -39,11 +43,12 @@ public final class ItemTaskBinding implements ViewBinding {
   @NonNull
   public final AppCompatTextView tvTaskTime;
 
-  private ItemTaskBinding(@NonNull CardView rootView, @NonNull CardView cvDate,
-      @NonNull ImageView ivImage, @NonNull RelativeLayout rlItemTask,
+  private ItemTaskBinding(@NonNull CardView rootView, @NonNull ImageButton btnMenu,
+      @NonNull CardView cvDate, @NonNull ImageView ivImage, @NonNull RelativeLayout rlItemTask,
       @NonNull AppCompatTextView tvName, @NonNull AppCompatTextView tvTaskDate,
       @NonNull AppCompatTextView tvTaskTime) {
     this.rootView = rootView;
+    this.btnMenu = btnMenu;
     this.cvDate = cvDate;
     this.ivImage = ivImage;
     this.rlItemTask = rlItemTask;
@@ -79,6 +84,12 @@ public final class ItemTaskBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnMenu;
+      ImageButton btnMenu = ViewBindings.findChildViewById(rootView, id);
+      if (btnMenu == null) {
+        break missingId;
+      }
+
       id = R.id.cvDate;
       CardView cvDate = ViewBindings.findChildViewById(rootView, id);
       if (cvDate == null) {
@@ -115,7 +126,7 @@ public final class ItemTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemTaskBinding((CardView) rootView, cvDate, ivImage, rlItemTask, tvName,
+      return new ItemTaskBinding((CardView) rootView, btnMenu, cvDate, ivImage, rlItemTask, tvName,
           tvTaskDate, tvTaskTime);
     }
     String missingId = rootView.getResources().getResourceName(id);

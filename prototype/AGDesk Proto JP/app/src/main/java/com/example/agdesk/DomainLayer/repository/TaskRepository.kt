@@ -94,6 +94,22 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
         taskDAO.insertSync(taskOffline)
     }
 
+    @WorkerThread
+    suspend fun deleteTask(task: com.example.agdesk.DataLayer.entities.Task) {
+        if (task.uid.isNotEmpty()) {
+            try {
+                // First delete any sync records for this task
+                taskDAO.deleteSync(task.uid)
+                // Then delete the task itself
+                taskDAO.deleteTask(task)
+                Log.d("DeleteTask", "Task deleted successfully, uid: ${task.uid}")
+            } catch (e: Exception) {
+                Log.e("DeleteTask", "Error deleting task: ${e.message}")
+            }
+        } else {
+            Log.d("DeleteTask", "DeleteFailed: Invalid task uid")
+        }
+    }
 
     @WorkerThread
     suspend fun updateTaskNetwork(taskNetworkModel: List<TaskNetworkModel>) {

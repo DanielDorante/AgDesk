@@ -16,6 +16,18 @@
         android:background="@color/white"
         android:padding="15dp">
 
+        <!-- Add menu options button to the top right corner -->
+        <ImageButton
+            android:id="@+id/btnAssetMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_more_vert"
+            android:contentDescription="Options Menu" />
+
         <LinearLayout
             android:layout_toEndOf="@+id/cvDate"
             android:layout_width="match_parent"
@@ -90,7 +102,7 @@
             </LinearLayout>
 
         </LinearLayout>
-        
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cvDate"
             android:layout_width="90dp"

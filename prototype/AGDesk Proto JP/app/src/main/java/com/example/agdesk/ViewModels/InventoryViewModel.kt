@@ -33,6 +33,22 @@ class InventoryViewModel @Inject constructor(private val inventoryRepository: In
         }
     }
 
+    //Updates an existing inventory item in the database and refreshes the state
+    fun updateItem(inventoryModel: InventoryModel) = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
+            inventoryRepository.updateInventoryItem(inventoryModel)
+            loadItems()
+        }
+    }
+
+    //Deletes an inventory item from the database and refreshes the state
+    fun deleteItem(inventoryModel: InventoryModel) = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
+            inventoryRepository.deleteInventoryItem(inventoryModel)
+            loadItems()
+        }
+    }
+
     //Updates state with a list of inventory models
     fun loadItems() = viewModelScope.launch {
         withContext(Dispatchers.IO){
