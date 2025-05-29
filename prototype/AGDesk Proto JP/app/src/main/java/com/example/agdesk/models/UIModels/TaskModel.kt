@@ -3,6 +3,7 @@ package com.example.agdesk.models.UIModels
 import androidx.room.ColumnInfo
 import androidx.room.TypeConverters
 import com.example.agdesk.DataLayer.Converters.DatabaseConverter
+import java.io.Serializable
 import java.util.Date
 import java.util.UUID
 
@@ -21,8 +22,7 @@ data class TaskModel (
     @ColumnInfo(name = "assigned_To") val assignedId: Long?, //user assigned to task
     @ColumnInfo(name = "assigned_ToName") val assigned: String?, //Name associated with user id
     @ColumnInfo(name = "farm_Id") val farm: Long?, //Id that the task belongs to
-
-    )
+) : Serializable
 
 // from orefox agdesk
 //Status

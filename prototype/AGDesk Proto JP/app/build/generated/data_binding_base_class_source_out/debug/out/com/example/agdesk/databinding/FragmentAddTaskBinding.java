@@ -57,14 +57,14 @@ public final class FragmentAddTaskBinding implements ViewBinding {
   public final Spinner spinnerStatus;
 
   @NonNull
-  public final AppCompatTextView tvSplash;
+  public final AppCompatTextView tvTitle;
 
   private FragmentAddTaskBinding(@NonNull LinearLayout rootView, @NonNull MaterialButton btnAddNow,
       @NonNull EditText etAssignedId, @NonNull EditText etAssignedName,
       @NonNull EditText etDescription, @NonNull EditText etDueDate, @NonNull EditText etExpiryDate,
       @NonNull EditText etFarmId, @NonNull EditText etName, @NonNull ImageView ivBack,
       @NonNull Spinner spinnerPriority, @NonNull Spinner spinnerStatus,
-      @NonNull AppCompatTextView tvSplash) {
+      @NonNull AppCompatTextView tvTitle) {
     this.rootView = rootView;
     this.btnAddNow = btnAddNow;
     this.etAssignedId = etAssignedId;
@@ -77,7 +77,7 @@ public final class FragmentAddTaskBinding implements ViewBinding {
     this.ivBack = ivBack;
     this.spinnerPriority = spinnerPriority;
     this.spinnerStatus = spinnerStatus;
-    this.tvSplash = tvSplash;
+    this.tvTitle = tvTitle;
   }
 
   @Override
@@ -173,15 +173,15 @@ public final class FragmentAddTaskBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvSplash;
-      AppCompatTextView tvSplash = ViewBindings.findChildViewById(rootView, id);
-      if (tvSplash == null) {
+      id = R.id.tvTitle;
+      AppCompatTextView tvTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvTitle == null) {
         break missingId;
       }
 
       return new FragmentAddTaskBinding((LinearLayout) rootView, btnAddNow, etAssignedId,
           etAssignedName, etDescription, etDueDate, etExpiryDate, etFarmId, etName, ivBack,
-          spinnerPriority, spinnerStatus, tvSplash);
+          spinnerPriority, spinnerStatus, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

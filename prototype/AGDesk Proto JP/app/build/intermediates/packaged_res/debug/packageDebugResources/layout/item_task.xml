@@ -58,20 +58,28 @@
                 android:textColor="@color/textColor"
                 android:textSize="14sp" />
 
-        </LinearLayout>
+        </LinearLayout>        <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/iv_plant"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@drawable/bg_circle"
+        android:textColor="@color/main"
+        android:textSize="16sp"
+        android:layout_toStartOf="@+id/btnMenu"/>
 
-        <ImageView
-            android:id="@+id/ivImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/iv_plant"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:padding="10dp"
-            android:background="@drawable/bg_circle"
-            android:textColor="@color/main"
-            android:textSize="16sp"
+            android:src="@android:drawable/ic_menu_more"
+            android:contentDescription="Menu options"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_alignParentEnd="true"/>
 
         <androidx.cardview.widget.CardView

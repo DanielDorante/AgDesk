@@ -4,6 +4,7 @@ package com.example.agdesk.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,9 @@ public final class ItemAssetBinding implements ViewBinding {
   private final CardView rootView;
 
   @NonNull
+  public final ImageButton btnAssetMenu;
+
+  @NonNull
   public final CardView cvDate;
 
   @NonNull
@@ -35,10 +39,11 @@ public final class ItemAssetBinding implements ViewBinding {
   @NonNull
   public final AppCompatTextView tvStatus;
 
-  private ItemAssetBinding(@NonNull CardView rootView, @NonNull CardView cvDate,
-      @NonNull ImageView ivImage, @NonNull AppCompatTextView tvLocation,
+  private ItemAssetBinding(@NonNull CardView rootView, @NonNull ImageButton btnAssetMenu,
+      @NonNull CardView cvDate, @NonNull ImageView ivImage, @NonNull AppCompatTextView tvLocation,
       @NonNull AppCompatTextView tvName, @NonNull AppCompatTextView tvStatus) {
     this.rootView = rootView;
+    this.btnAssetMenu = btnAssetMenu;
     this.cvDate = cvDate;
     this.ivImage = ivImage;
     this.tvLocation = tvLocation;
@@ -73,6 +78,12 @@ public final class ItemAssetBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnAssetMenu;
+      ImageButton btnAssetMenu = ViewBindings.findChildViewById(rootView, id);
+      if (btnAssetMenu == null) {
+        break missingId;
+      }
+
       id = R.id.cvDate;
       CardView cvDate = ViewBindings.findChildViewById(rootView, id);
       if (cvDate == null) {
@@ -103,8 +114,8 @@ public final class ItemAssetBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemAssetBinding((CardView) rootView, cvDate, ivImage, tvLocation, tvName,
-          tvStatus);
+      return new ItemAssetBinding((CardView) rootView, btnAssetMenu, cvDate, ivImage, tvLocation,
+          tvName, tvStatus);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

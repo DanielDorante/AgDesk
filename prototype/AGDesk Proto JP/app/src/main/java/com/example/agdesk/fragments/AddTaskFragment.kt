@@ -42,14 +42,25 @@ class AddTaskFragment : Fragment() {
     var dbHelper : DatabaseHelper? = null
     private val taskViewModel: TaskViewModel by viewModels()
 
+    // Track whether we're editing an existing task
+    private var isEditMode = false
+    private var existingTask: TaskModel? = null
+
     // Status and priority labels
     private val statusLabels = arrayOf("Not Started", "In Progress", "Blocked", "Completed", "Failed", "Cancelled")
     private val priorityLabels = arrayOf("Low", "Medium", "High", "Critical")
 
+    companion object {
+        const val ARG_TASK = "task"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
+        arguments?.let { args ->
+            if (args.containsKey(ARG_TASK)) {
+                existingTask = args.getSerializable(ARG_TASK) as? TaskModel
+                isEditMode = existingTask != null
+            }
         }
     }
 
@@ -96,36 +107,114 @@ class AddTaskFragment : Fragment() {
             selectExpiryDate()
         }
 
+        // Update UI based on mode (add or edit)
+        setupUI()
+
         binding?.btnAddNow?.setOnClickListener {
             if (isValidated()) {
-                // Convert the date strings to Date objects
-                val dueDate = if (!binding?.etDueDate?.text.isNullOrEmpty()) {
-                    SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(binding?.etDueDate?.text.toString())
-                } else null
+                saveTask()
+            }
+        }
+    }
 
-                val expiryDate = if (!binding?.etExpiryDate?.text.isNullOrEmpty()) {
-                    SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(binding?.etExpiryDate?.text.toString())
-                } else null
+    private fun setupUI() {
+        if (isEditMode) {
+            // Set title for edit mode
+            binding?.tvTitle?.text = "Edit Task"
+            binding?.btnAddNow?.text = "Update"
 
-                taskViewModel.insertTasks(TaskModel(
-                    uid = UUID.randomUUID(),
+            // Populate fields with existing task data
+            existingTask?.let { task ->
+                binding?.etName?.setText(task.name)
+                binding?.etDescription?.setText(task.desc)
+
+                // Set due date if available
+                task.due?.let { dueDate ->
+                    val calendar = Calendar.getInstance()
+                    calendar.time = dueDate
+                    dueDateCalendar = calendar
+                    val format = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                    binding?.etDueDate?.setText(format.format(dueDate))
+                }
+
+                // Set expiry date if available
+                task.exp?.let { expiryDate ->
+                    val calendar = Calendar.getInstance()
+                    calendar.time = expiryDate
+                    expiryDateCalendar = calendar
+                    val format = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                    binding?.etExpiryDate?.setText(format.format(expiryDate))
+                }
+
+                // Set status if available
+                task.status?.let { statusValue ->
+                    binding?.spinnerStatus?.setSelection(statusValue)
+                }
+
+                // Set priority if available
+                task.priority?.let { priorityValue ->
+                    binding?.spinnerPriority?.setSelection(priorityValue)
+                }
+
+                // Set assigned information if available
+                binding?.etAssignedId?.setText(task.assignedId?.toString() ?: "")
+                binding?.etAssignedName?.setText(task.assigned ?: "")
+
+                // Set farm ID if available
+                binding?.etFarmId?.setText(task.farm?.toString() ?: "")
+            }
+        } else {
+            binding?.tvTitle?.text = "Add Task"
+            binding?.btnAddNow?.text = "Add Now"
+        }
+    }
+
+    private fun saveTask() {
+        // Convert the date strings to Date objects
+        val dueDate = if (!binding?.etDueDate?.text.isNullOrEmpty()) {
+            SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(binding?.etDueDate?.text.toString())
+        } else null
+
+        val expiryDate = if (!binding?.etExpiryDate?.text.isNullOrEmpty()) {
+            SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(binding?.etExpiryDate?.text.toString())
+        } else null
+
+        if (isEditMode) {
+            // Update existing task
+            existingTask?.let { task ->
+                val updatedTask = task.copy(
                     name = name,
                     desc = description,
-                    timestamp = Date(), // Auto-set the timestamp on creation
-                    del = false,
                     due = dueDate,
                     exp = expiryDate,
                     status = status,
                     priority = priority,
                     assignedId = assignedId,
                     assigned = assignedName,
-                    farm = farmId,
-                ))
-
-                showMessage("Task added successfully")
-                findNavController().navigateUp()
+                    farm = farmId
+                )
+                taskViewModel.updateTask(updatedTask)
+                showMessage("Task updated successfully")
             }
+        } else {
+            // Create new task
+            taskViewModel.insertTasks(TaskModel(
+                uid = UUID.randomUUID(),
+                name = name,
+                desc = description,
+                timestamp = Date(), // Auto-set the timestamp on creation
+                del = false,
+                due = dueDate,
+                exp = expiryDate,
+                status = status,
+                priority = priority,
+                assignedId = assignedId,
+                assigned = assignedName,
+                farm = farmId,
+            ))
+            showMessage("Task added successfully")
         }
+        findNavController().navigateUp()
     }
 
     private fun isValidated(): Boolean {

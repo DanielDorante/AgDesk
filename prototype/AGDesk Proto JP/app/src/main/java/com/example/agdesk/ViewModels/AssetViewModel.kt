@@ -2,6 +2,7 @@ package com.example.agdesk.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.agdesk.DomainLayer.mapper.toAssetEntity
 import com.example.agdesk.models.UIModels.AssetModel
 import com.example.agdesk.DomainLayer.repository.AssetRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -82,6 +83,18 @@ class AssetViewModel @Inject constructor(private val assetRepository: AssetRepos
         }
     }
 
-
-
+    // Delete an asset
+    fun deleteAsset(assetModel: AssetModel) = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
+            // Convert the AssetModel to an entity using the extension function from the repository
+            if (assetModel.uid != null) {
+                val existingAsset = assetRepository.assetDAO.getByUid(assetModel.uid.toString())
+                if (existingAsset != null) {
+                    val asset = assetModel.toAssetEntity(existingAsset)
+                    assetRepository.assetDAO.deleteAsset(asset)
+                    loadAssets() // Refresh the asset list after deletion
+                }
+            }
+        }
+    }
 }

@@ -3192,6 +3192,7 @@ drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
 drawable ic_map
 drawable ic_map_marker
+drawable ic_more_vert
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -3397,10 +3398,13 @@ id bounceEnd
 id bounceStart
 id btnAddNow
 id btnAddTask
+id btnAssetMenu
 id btnCancel
 id btnCheckIn
 id btnConfirmField
 id btnGenerateQR
+id btnInventoryMenu
+id btnMenu
 id btnRegister
 id btnSaveAsset
 id btnScanQR
@@ -3493,6 +3497,7 @@ id edit_query
 id edit_text_id
 id elastic
 id embed
+id emptyStateLayout
 id end
 id endToStart
 id enterAlways
@@ -3649,6 +3654,8 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
+id menu_delete
+id menu_edit
 id message
 id middle
 id mini
@@ -3912,7 +3919,6 @@ id tvLoginDesc
 id tvLoginTitle
 id tvManufacturer
 id tvName
-id tvNoTaskFound
 id tvOrContinue
 id tvParts
 id tvPassword
@@ -3927,6 +3933,7 @@ id tvTaskDate
 id tvTaskTime
 id tvTemprature
 id tvTime
+id tvTitle
 id tvViewAll
 id tvVin
 id unchecked
@@ -4191,7 +4198,10 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout zxing_barcode_scanner
 layout zxing_capture
+menu asset_item_menu
 menu bottom_nav_menu
+menu inventory_item_menu
+menu task_item_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation

@@ -45,6 +45,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_map
 drawable ic_map_marker
+drawable ic_more_vert
 drawable ic_notification
 drawable ic_notifications_black_24dp
 drawable ic_tasks
@@ -67,10 +68,13 @@ id addTaskFragment
 id appTitle
 id btnAddNow
 id btnAddTask
+id btnAssetMenu
 id btnCancel
 id btnCheckIn
 id btnConfirmField
 id btnGenerateQR
+id btnInventoryMenu
+id btnMenu
 id btnRegister
 id btnSaveAsset
 id btnScanQR
@@ -84,6 +88,7 @@ id container
 id cvDate
 id cvSearch
 id dateTextView
+id emptyStateLayout
 id etAssetName
 id etAssignedId
 id etAssignedName
@@ -138,6 +143,8 @@ id leftLine
 id main
 id map
 id mapContainer
+id menu_delete
+id menu_edit
 id mobile_navigation
 id nav_host_fragment_activity_main
 id nav_view
@@ -183,7 +190,6 @@ id tvLoginDesc
 id tvLoginTitle
 id tvManufacturer
 id tvName
-id tvNoTaskFound
 id tvOrContinue
 id tvParts
 id tvPassword
@@ -198,6 +204,7 @@ id tvTaskDate
 id tvTaskTime
 id tvTemprature
 id tvTime
+id tvTitle
 id tvViewAll
 id tvVin
 id vieww
@@ -227,7 +234,10 @@ layout item_inventory
 layout item_sort
 layout item_task
 layout item_weather
+menu asset_item_menu
 menu bottom_nav_menu
+menu inventory_item_menu
+menu task_item_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation

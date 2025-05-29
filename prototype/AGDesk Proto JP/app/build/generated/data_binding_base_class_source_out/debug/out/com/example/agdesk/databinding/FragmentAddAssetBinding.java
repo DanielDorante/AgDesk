@@ -98,7 +98,7 @@ public final class FragmentAddAssetBinding implements ViewBinding {
   public final TextView tvAssetDetails;
 
   @NonNull
-  public final AppCompatTextView tvSplash;
+  public final AppCompatTextView tvTitle;
 
   private FragmentAddAssetBinding(@NonNull ScrollView rootView, @NonNull Button btnGenerateQR,
       @NonNull Button btnSaveAsset, @NonNull Button btnScanQR, @NonNull Button btnUploadImage,
@@ -110,7 +110,7 @@ public final class FragmentAddAssetBinding implements ViewBinding {
       @NonNull ImageView ivDatePurchasedPicker, @NonNull ImageView ivQRCode,
       @NonNull LinearLayout layoutRegistration, @NonNull LinearLayout layoutSerialNo,
       @NonNull LinearLayout layoutVin, @NonNull Spinner spinnerAssetPrefix,
-      @NonNull TextView tvAssetDetails, @NonNull AppCompatTextView tvSplash) {
+      @NonNull TextView tvAssetDetails, @NonNull AppCompatTextView tvTitle) {
     this.rootView = rootView;
     this.btnGenerateQR = btnGenerateQR;
     this.btnSaveAsset = btnSaveAsset;
@@ -136,7 +136,7 @@ public final class FragmentAddAssetBinding implements ViewBinding {
     this.layoutVin = layoutVin;
     this.spinnerAssetPrefix = spinnerAssetPrefix;
     this.tvAssetDetails = tvAssetDetails;
-    this.tvSplash = tvSplash;
+    this.tvTitle = tvTitle;
   }
 
   @Override
@@ -310,9 +310,9 @@ public final class FragmentAddAssetBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvSplash;
-      AppCompatTextView tvSplash = ViewBindings.findChildViewById(rootView, id);
-      if (tvSplash == null) {
+      id = R.id.tvTitle;
+      AppCompatTextView tvTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvTitle == null) {
         break missingId;
       }
 
@@ -320,7 +320,7 @@ public final class FragmentAddAssetBinding implements ViewBinding {
           btnScanQR, btnUploadImage, etAssetName, etDateManufactured, etDatePurchased, etFarmId,
           etLocation, etManufacturer, etParts, etRegistration, etSerialNo, etVin, ivAssetImage,
           ivBack, ivDateManufacturedPicker, ivDatePurchasedPicker, ivQRCode, layoutRegistration,
-          layoutSerialNo, layoutVin, spinnerAssetPrefix, tvAssetDetails, tvSplash);
+          layoutSerialNo, layoutVin, spinnerAssetPrefix, tvAssetDetails, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

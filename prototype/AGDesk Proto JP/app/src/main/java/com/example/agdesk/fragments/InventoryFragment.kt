@@ -12,7 +12,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.agdesk.R
 import com.example.agdesk.adapters.InventoryAdapter
@@ -52,20 +54,29 @@ class InventoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            withContext(Dispatchers.Default) {
-                inventoryViewModel.loadItems()
-
-                inventoryViewModel.items.collect {savedTasks ->
-                    listOfInventories.clear()
-                    listOfInventories.addAll(savedTasks)
-
-                }
-            }
-
-        }
         setAdapter()
         setSortSpinner()
+
+        // Properly observe inventory items using lifecycle-aware collection
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                inventoryViewModel.items.collect { savedItems ->
+                    // Update inventory list
+                    listOfInventories.clear()
+                    listOfInventories.addAll(savedItems)
+
+                    // Update adapter with new data
+                    inventoryAdapter.setList(savedItems)
+
+                    // Update UI visibility based on data
+                    binding.rvInventory.visibility = if (savedItems.isEmpty()) View.GONE else View.VISIBLE
+                }
+            }
+        }
+
+        // Load inventory items when fragment is created
+        inventoryViewModel.loadItems()
+
         binding.fabAddInventory.setOnClickListener {
             showAddInventoryDialog()
         }
@@ -94,7 +105,21 @@ class InventoryFragment : Fragment() {
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvInventory.layoutManager = layoutManager
-        inventoryAdapter = InventoryAdapter(listOfInventories)
+
+        // Create adapter with proper listener for popup menu actions
+        inventoryAdapter = InventoryAdapter(
+            listOfInventories,
+            object : InventoryAdapter.InventoryItemListener {
+                override fun onEditClick(inventory: InventoryModel) {
+                    showEditInventoryDialog(inventory)
+                }
+
+                override fun onDeleteClick(inventory: InventoryModel) {
+                    showDeleteConfirmationDialog(inventory)
+                }
+            }
+        )
+
         binding.rvInventory.adapter = inventoryAdapter
     }
 
@@ -184,6 +209,130 @@ class InventoryFragment : Fragment() {
         dialog.show()
     }
 
+    private fun showEditInventoryDialog(inventoryModel: InventoryModel) {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.item_add_inventory, null)
+        val dialog = android.app.AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .setTitle("Update Inventory")
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        // Initialize views in the dialog - Basic inventory fields
+        val etName = dialogView.findViewById<EditText>(R.id.etName)
+        val etSku = dialogView.findViewById<EditText>(R.id.etSku)
+        val etCategory = dialogView.findViewById<EditText>(R.id.etCategory)
+        val etQuantity = dialogView.findViewById<EditText>(R.id.etQuantity)
+        val etCostPrice = dialogView.findViewById<EditText>(R.id.etCostPrice)
+        val etSalePrice = dialogView.findViewById<EditText>(R.id.etSalePrice)
+
+        // Supplier fields
+        val etSupplierName = dialogView.findViewById<EditText>(R.id.etSupplierName)
+        val etSupplierEmail = dialogView.findViewById<EditText>(R.id.etSupplierEmail)
+        val etSupplierPhone = dialogView.findViewById<EditText>(R.id.etSupplierPhone)
+
+        // Populate fields with existing data
+        inventoryModel.run {
+            etName.setText(name)
+            etSku.setText(sku)
+            etCategory.setText(category)
+            etQuantity.setText(quantity.toString())
+            etCostPrice.setText(costPrice?.toString() ?: "")
+            etSalePrice.setText(salePrice?.toString() ?: "")
+
+            supplier?.let {
+                etSupplierName.setText(it.name)
+                etSupplierEmail.setText(it.email)
+                etSupplierPhone.setText(it.phone)
+            }
+        }
+
+        // Buttons
+        val btnAddNow = dialogView.findViewById<MaterialButton>(R.id.btnAddNow)
+        btnAddNow.text = "Update" // Change button text to reflect update action
+        val btnCancel = dialogView.findViewById<MaterialButton>(R.id.btnCancel)
+
+        btnAddNow.setOnClickListener {
+            // Get all field values
+            val name = etName.text.toString().trim()
+            val sku = etSku.text.toString().trim()
+            val category = etCategory.text.toString().trim()
+            val quantityStr = etQuantity.text.toString().trim()
+            val costPriceStr = etCostPrice.text.toString().trim()
+            val salePriceStr = etSalePrice.text.toString().trim()
+
+            // Supplier info
+            val supplierName = etSupplierName.text.toString().trim()
+            val supplierEmail = etSupplierEmail.text.toString().trim()
+            val supplierPhone = etSupplierPhone.text.toString().trim()
+
+            // Validate required fields
+            if (name.isNotEmpty() && quantityStr.isNotEmpty()) {
+                // Convert numeric fields
+                val quantity = quantityStr.toIntOrNull() ?: 0
+                val costPrice = costPriceStr.toDoubleOrNull()
+                val salePrice = salePriceStr.toDoubleOrNull()
+
+                // Create supplier object if any supplier field is provided
+                val supplier = if (supplierName.isNotEmpty() || supplierEmail.isNotEmpty() || supplierPhone.isNotEmpty()) {
+                    Supplier(
+                        name = supplierName.ifEmpty { null },
+                        email = supplierEmail.ifEmpty { null },
+                        phone = supplierPhone.ifEmpty { null }
+                    )
+                } else null
+
+                lifecycleScope.launch {
+                    withContext(Dispatchers.Default) {
+                        val updatedItem = InventoryModel(
+                            uid = inventoryModel.uid, // Keep the original ID
+                            name = name,
+                            sku = sku.ifEmpty { null },
+                            category = category.ifEmpty { null },
+                            quantity = quantity,
+                            costPrice = costPrice,
+                            salePrice = salePrice,
+                            supplier = supplier
+                        )
+                        inventoryViewModel.updateItem(updatedItem)
+                    }
+                    withContext(Dispatchers.Main) {
+                        dialog.dismiss()
+                        Toast.makeText(requireContext(), "Inventory updated successfully", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(requireContext(), "Please enter at least name and quantity", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun showDeleteConfirmationDialog(inventoryModel: InventoryModel) {
+        android.app.AlertDialog.Builder(requireContext())
+            .setTitle("Delete Inventory")
+            .setMessage("Are you sure you want to delete ${inventoryModel.name}?")
+            .setPositiveButton("Delete") { dialog, _ ->
+                lifecycleScope.launch {
+                    withContext(Dispatchers.Default) {
+                        inventoryViewModel.deleteItem(inventoryModel)
+                    }
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(requireContext(), "Inventory deleted successfully", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -226,14 +375,23 @@ class InventoryFragment : Fragment() {
     // Filter products based on the provided text
     fun filter(text: String) {
         val filteredList: MutableList<InventoryModel> = ArrayList()
-        for (model in listOfInventories) {
-            if (model.name?.lowercase(Locale.ROOT)
-                    ?.contains(text.lowercase(Locale.getDefault())) == true
-            ) {
-                filteredList.add(model)
+
+        // Only proceed if we have items to filter
+        if (listOfInventories.isNotEmpty()) {
+            for (model in listOfInventories) {
+                if (model.name?.lowercase(Locale.ROOT)
+                        ?.contains(text.lowercase(Locale.getDefault())) == true
+                ) {
+                    filteredList.add(model)
+                }
             }
+
+            // Update adapter with filtered results
+            inventoryAdapter.setList(filteredList)
+
+            // Update UI visibility based on filtered results
+            binding.rvInventory.visibility = if (filteredList.isEmpty()) View.GONE else View.VISIBLE
         }
-        inventoryAdapter.setList(filteredList)
     }
 
 }
