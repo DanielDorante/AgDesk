@@ -21,22 +21,24 @@ The system includes:
 ---
 
 ## Project Structure
+```
 AgDesk/
-├── AgDesk/ 
-│ ├── artefact/ 
-│ │ └── OfflineFirstArtefact/
-│ │ └── Artefact.md
-│ ├── backend/ 
-│ │ ├── api/ 
-│ │ ├── backend/ 
-│ │ ├── venv/ 
-│ │ └── db.sqlite3 
-│ ├── documents/ 
-│ ├── prototype/ 
-│ │ └── AGDesk Proto JP/
-│ │ └── prototype.md
-│ └── README.md 
----
+├── AgDesk/
+│   ├── artefact/
+│   │   └── OfflineFirstArtefact/
+│   │       └── Artefact.md
+│   ├── backend/
+│   │   ├── api/
+│   │   ├── backend/
+│   │   ├── venv/
+│   │   └── db.sqlite3
+│   ├── documents/
+│   ├── prototype/
+│   │   └── AGDesk Proto JP/
+│   │       └── prototype.md
+│   └── README.md
+```
+
 
 ## Setup Instructions
 ### Backend (Django)
