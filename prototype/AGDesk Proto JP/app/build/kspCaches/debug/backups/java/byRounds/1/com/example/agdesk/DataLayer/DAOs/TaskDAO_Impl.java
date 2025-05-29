@@ -486,11 +486,7 @@ public final class TaskDAO_Impl implements TaskDAO {
           while (_cursor.moveToNext()) {
             final TaskNetworkModel _item;
             final String _tmpUid;
-            if (_cursor.isNull(_cursorIndexOfUid)) {
-              _tmpUid = null;
-            } else {
-              _tmpUid = _cursor.getString(_cursorIndexOfUid);
-            }
+            _tmpUid = _cursor.getString(_cursorIndexOfUid);
             final Long _tmpSynctime;
             if (_cursor.isNull(_cursorIndexOfSynctime)) {
               _tmpSynctime = null;

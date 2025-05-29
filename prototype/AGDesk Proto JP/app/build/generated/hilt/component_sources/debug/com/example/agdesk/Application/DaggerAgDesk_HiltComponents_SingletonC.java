@@ -332,7 +332,7 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final ViewWithFragmentCImpl viewWithFragmentCImpl = this;
 
-    private ViewWithFragmentCImpl(SingletonCImpl singletonCImpl,
+    ViewWithFragmentCImpl(SingletonCImpl singletonCImpl,
         ActivityRetainedCImpl activityRetainedCImpl, ActivityCImpl activityCImpl,
         FragmentCImpl fragmentCImpl, View viewParam) {
       this.singletonCImpl = singletonCImpl;
@@ -353,9 +353,8 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final FragmentCImpl fragmentCImpl = this;
 
-    private FragmentCImpl(SingletonCImpl singletonCImpl,
-        ActivityRetainedCImpl activityRetainedCImpl, ActivityCImpl activityCImpl,
-        Fragment fragmentParam) {
+    FragmentCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+        ActivityCImpl activityCImpl, Fragment fragmentParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
       this.activityCImpl = activityCImpl;
@@ -411,7 +410,7 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final ViewCImpl viewCImpl = this;
 
-    private ViewCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+    ViewCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
         ActivityCImpl activityCImpl, View viewParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
@@ -428,8 +427,8 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final ActivityCImpl activityCImpl = this;
 
-    private ActivityCImpl(SingletonCImpl singletonCImpl,
-        ActivityRetainedCImpl activityRetainedCImpl, Activity activityParam) {
+    ActivityCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+        Activity activityParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
 
@@ -477,19 +476,18 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final ViewModelCImpl viewModelCImpl = this;
 
-    private Provider<AssetViewModel> assetViewModelProvider;
+    Provider<AssetViewModel> assetViewModelProvider;
 
-    private Provider<FieldViewModel> fieldViewModelProvider;
+    Provider<FieldViewModel> fieldViewModelProvider;
 
-    private Provider<HomeViewModel> homeViewModelProvider;
+    Provider<HomeViewModel> homeViewModelProvider;
 
-    private Provider<InventoryViewModel> inventoryViewModelProvider;
+    Provider<InventoryViewModel> inventoryViewModelProvider;
 
-    private Provider<TaskViewModel> taskViewModelProvider;
+    Provider<TaskViewModel> taskViewModelProvider;
 
-    private ViewModelCImpl(SingletonCImpl singletonCImpl,
-        ActivityRetainedCImpl activityRetainedCImpl, SavedStateHandle savedStateHandleParam,
-        ViewModelLifecycle viewModelLifecycleParam) {
+    ViewModelCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+        SavedStateHandle savedStateHandleParam, ViewModelLifecycle viewModelLifecycleParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
 
@@ -497,11 +495,11 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     }
 
-    private FieldRepository fieldRepository() {
+    FieldRepository fieldRepository() {
       return new FieldRepository(singletonCImpl.provideFeildDaoProvider.get());
     }
 
-    private InventoryRepository inventoryRepository() {
+    InventoryRepository inventoryRepository() {
       return new InventoryRepository(singletonCImpl.provideInventoryDaoProvider.get());
     }
 
@@ -546,19 +544,19 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.example.agdesk.ViewModels.AssetViewModel 
+          case 0: // com.example.agdesk.ViewModels.AssetViewModel
           return (T) new AssetViewModel(singletonCImpl.assetRepository());
 
-          case 1: // com.example.agdesk.ViewModels.FieldViewModel 
+          case 1: // com.example.agdesk.ViewModels.FieldViewModel
           return (T) new FieldViewModel(viewModelCImpl.fieldRepository());
 
-          case 2: // com.example.agdesk.ViewModels.HomeViewModel 
+          case 2: // com.example.agdesk.ViewModels.HomeViewModel
           return (T) new HomeViewModel(singletonCImpl.networkRepository());
 
-          case 3: // com.example.agdesk.ViewModels.InventoryViewModel 
+          case 3: // com.example.agdesk.ViewModels.InventoryViewModel
           return (T) new InventoryViewModel(viewModelCImpl.inventoryRepository());
 
-          case 4: // com.example.agdesk.ViewModels.TaskViewModel 
+          case 4: // com.example.agdesk.ViewModels.TaskViewModel
           return (T) new TaskViewModel(singletonCImpl.taskRepository());
 
           default: throw new AssertionError(id);
@@ -572,9 +570,9 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final ActivityRetainedCImpl activityRetainedCImpl = this;
 
-    private Provider<ActivityRetainedLifecycle> provideActivityRetainedLifecycleProvider;
+    Provider<ActivityRetainedLifecycle> provideActivityRetainedLifecycleProvider;
 
-    private ActivityRetainedCImpl(SingletonCImpl singletonCImpl,
+    ActivityRetainedCImpl(SingletonCImpl singletonCImpl,
         SavedStateHandleHolder savedStateHandleHolderParam) {
       this.singletonCImpl = singletonCImpl;
 
@@ -615,7 +613,7 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // dagger.hilt.android.ActivityRetainedLifecycle 
+          case 0: // dagger.hilt.android.ActivityRetainedLifecycle
           return (T) ActivityRetainedComponentManager_LifecycleModule_ProvideActivityRetainedLifecycleFactory.provideActivityRetainedLifecycle();
 
           default: throw new AssertionError(id);
@@ -629,7 +627,7 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final ServiceCImpl serviceCImpl = this;
 
-    private ServiceCImpl(SingletonCImpl singletonCImpl, Service serviceParam) {
+    ServiceCImpl(SingletonCImpl singletonCImpl, Service serviceParam) {
       this.singletonCImpl = singletonCImpl;
 
 
@@ -641,39 +639,39 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
 
     private final SingletonCImpl singletonCImpl = this;
 
-    private Provider<AgDeskDatabase> provideDatabaseProvider;
+    Provider<AgDeskDatabase> provideDatabaseProvider;
 
-    private Provider<AssetDAO> provideAssetDaoProvider;
+    Provider<AssetDAO> provideAssetDaoProvider;
 
-    private Provider<TaskDAO> provideTaskDaoProvider;
+    Provider<TaskDAO> provideTaskDaoProvider;
 
-    private Provider<UserDAO> provideUserDaoProvider;
+    Provider<UserDAO> provideUserDaoProvider;
 
-    private Provider<HttpClient> provideHttpClientProvider;
+    Provider<HttpClient> provideHttpClientProvider;
 
-    private Provider<DbSyncDAO> provideSyncDaoProvider;
+    Provider<DbSyncDAO> provideSyncDaoProvider;
 
-    private Provider<CustomWorkerFactory> provideWorkerFactoryProvider;
+    Provider<CustomWorkerFactory> provideWorkerFactoryProvider;
 
-    private Provider<FieldDAO> provideFeildDaoProvider;
+    Provider<FieldDAO> provideFeildDaoProvider;
 
-    private Provider<InventoryDAO> provideInventoryDaoProvider;
+    Provider<InventoryDAO> provideInventoryDaoProvider;
 
-    private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
+    SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
       this.applicationContextModule = applicationContextModuleParam;
       initialize(applicationContextModuleParam);
 
     }
 
-    private AssetRepository assetRepository() {
+    AssetRepository assetRepository() {
       return new AssetRepository(provideAssetDaoProvider.get());
     }
 
-    private TaskRepository taskRepository() {
+    TaskRepository taskRepository() {
       return new TaskRepository(provideTaskDaoProvider.get(), provideUserDaoProvider.get());
     }
 
-    private NetworkRepository networkRepository() {
+    NetworkRepository networkRepository() {
       return new NetworkRepository(assetRepository(), taskRepository(), provideHttpClientProvider.get(), provideSyncDaoProvider.get());
     }
 
@@ -730,31 +728,31 @@ public final class DaggerAgDesk_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.example.agdesk.WorkManger.CustomWorkerFactory 
+          case 0: // com.example.agdesk.WorkManger.CustomWorkerFactory
           return (T) WorkerModule_ProvideWorkerFactoryFactory.provideWorkerFactory(singletonCImpl.networkRepository());
 
-          case 1: // com.example.agdesk.DataLayer.DAOs.AssetDAO 
+          case 1: // com.example.agdesk.DataLayer.DAOs.AssetDAO
           return (T) DatabaseModule_ProvideAssetDaoFactory.provideAssetDao(singletonCImpl.provideDatabaseProvider.get());
 
-          case 2: // com.example.agdesk.DataLayer.database.AgDeskDatabase 
+          case 2: // com.example.agdesk.DataLayer.database.AgDeskDatabase
           return (T) DatabaseModule_ProvideDatabaseFactory.provideDatabase(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
 
-          case 3: // com.example.agdesk.DataLayer.DAOs.TaskDAO 
+          case 3: // com.example.agdesk.DataLayer.DAOs.TaskDAO
           return (T) DatabaseModule_ProvideTaskDaoFactory.provideTaskDao(singletonCImpl.provideDatabaseProvider.get());
 
-          case 4: // com.example.agdesk.DataLayer.DAOs.UserDAO 
+          case 4: // com.example.agdesk.DataLayer.DAOs.UserDAO
           return (T) DatabaseModule_ProvideUserDaoFactory.provideUserDao(singletonCImpl.provideDatabaseProvider.get());
 
-          case 5: // io.ktor.client.HttpClient 
+          case 5: // io.ktor.client.HttpClient
           return (T) NetworkModule_ProvideHttpClientFactory.provideHttpClient();
 
-          case 6: // com.example.agdesk.DataLayer.DAOs.DbSyncDAO 
+          case 6: // com.example.agdesk.DataLayer.DAOs.DbSyncDAO
           return (T) DatabaseModule_ProvideSyncDaoFactory.provideSyncDao(singletonCImpl.provideDatabaseProvider.get());
 
-          case 7: // com.example.agdesk.DataLayer.DAOs.FieldDAO 
+          case 7: // com.example.agdesk.DataLayer.DAOs.FieldDAO
           return (T) DatabaseModule_ProvideFeildDaoFactory.provideFeildDao(singletonCImpl.provideDatabaseProvider.get());
 
-          case 8: // com.example.agdesk.DataLayer.DAOs.InventoryDAO 
+          case 8: // com.example.agdesk.DataLayer.DAOs.InventoryDAO
           return (T) DatabaseModule_ProvideInventoryDaoFactory.provideInventoryDao(singletonCImpl.provideDatabaseProvider.get());
 
           default: throw new AssertionError(id);

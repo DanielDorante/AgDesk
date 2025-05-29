@@ -8,7 +8,7 @@ import java.util.UUID
 
 @Serializable
 data class TaskNetworkModel(
-    @field:TypeConverters(DatabaseConverter::class) var uid: String?, //UUID for local use
+    @field:TypeConverters(DatabaseConverter::class) var uid: String, //UUID for local use
     @ColumnInfo(name = "taskName") val name: String?,
     @ColumnInfo(name = "description") val desc: String?,
     @ColumnInfo(name = "time_stamp") val timestamp: Long?, //time stamp of task creation

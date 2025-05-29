@@ -1,3 +1,0 @@
--keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.HomeViewModel
--keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.HomeViewModel
--keep,allowobfuscation,allowshrinking class com.example.agdesk.ViewModels.TaskViewModel

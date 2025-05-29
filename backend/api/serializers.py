@@ -8,7 +8,7 @@ class EquipmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def to_internal_value(self, data):
-        for field in ['dateMade', 'dateBuy', 'synctime']:
+        for field in []:
             if field in data and data[field]:
                 try:
                     data[field] = datetime.fromtimestamp(int(data[field]) / 1000)
@@ -23,7 +23,7 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def to_internal_value(self, data):
-        for field in ['timestamp', 'due', 'exp']:
+        for field in []:
             if field in data and data[field]:
                 try:
                     data[field] = int(data[field])

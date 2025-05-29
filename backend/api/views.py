@@ -71,54 +71,72 @@ def push_to_cloud_view(request):
         return Response({"error": str(e)}, status=500)
 
 
-# NEW: UpdateMaster endpoint (syncId + timestamp logic)
 @api_view(['POST'])
 def update_master(request):
     updated_assets = []
     updated_tasks = []
 
+    # --- ASSETS ---
     for asset in request.data.get('assets', []):
         sync_id = asset.get('syncId')
+        uid = asset.get('uid')
         incoming_time = asset.get('synctime')
 
         if not sync_id:
+            print("case1 asset")
+            # CASE 1: New record
             serializer = EquipmentSerializer(data=asset)
             if serializer.is_valid():
-                saved = serializer.save()
-                asset['syncId'] = saved.id
+                serializer.save()
+                asset['syncId'] = 1
+                asset['synctime'] = None
                 updated_assets.append(asset)
+            else:
+                print("❌ Asset create error:", serializer.errors)
         else:
+            # CASE 2: Update if newer
             try:
-                db_asset = Equipment.objects.get(id=sync_id)
-                if incoming_time and db_asset.synctime and int(incoming_time) > int(db_asset.synctime.timestamp() * 1000):
+                db_asset = Equipment.objects.get(uid=uid)
+                if incoming_time and db_asset.synctime and int(incoming_time) > int(db_asset.synctime):
                     serializer = EquipmentSerializer(db_asset, data=asset)
                     if serializer.is_valid():
                         serializer.save()
+                # Always return with synctime = null
+                asset['synctime'] = None
                 updated_assets.append(asset)
             except Equipment.DoesNotExist:
-                pass
+                print(f"⚠️ Asset with uid {uid} not found.")
 
+    # --- TASKS ---
     for task in request.data.get('tasks', []):
-        sync_id = task.get('syncid')
-        incoming_time = task.get('timestamp')
+        sync_id = task.get('syncId')
+        uid = task.get('uid')
+        incoming_time = task.get('synctime')
 
         if not sync_id:
+            print("case1 task")
+            # CASE 1: New record
             serializer = TaskSerializer(data=task)
             if serializer.is_valid():
-                saved = serializer.save()
-                task['syncid'] = str(saved.uid)
+                serializer.save()
+                task['syncId'] = 1
+                task['synctime'] = None
                 updated_tasks.append(task)
+            else:
+                print("❌ Task create error:", serializer.errors)
         else:
+            # CASE 2: Update if newer
             try:
-                db_task = Task.objects.get(id=sync_id)
-                if incoming_time and db_task.timestamp and int(incoming_time) > int(db_task.timestamp):
+                db_task = Task.objects.get(uid=uid)
+                if incoming_time and db_task.synctime and int(incoming_time) > int(db_task.synctime):
                     serializer = TaskSerializer(db_task, data=task)
                     if serializer.is_valid():
                         serializer.save()
+                task['synctime'] = None
                 updated_tasks.append(task)
             except Task.DoesNotExist:
-                pass
-
+                print(f"⚠️ Task with uid {uid} not found.")
+    print("✅ Sending response")
     return Response({
         "assets": updated_assets,
         "tasks": updated_tasks

@@ -603,11 +603,7 @@ public final class AssetDAO_Impl implements AssetDAO {
       while (_cursor.moveToNext()) {
         final AssetNetworkModel _item;
         final String _tmpUid;
-        if (_cursor.isNull(_cursorIndexOfUid)) {
-          _tmpUid = null;
-        } else {
-          _tmpUid = _cursor.getString(_cursorIndexOfUid);
-        }
+        _tmpUid = _cursor.getString(_cursorIndexOfUid);
         final String _tmpAssetPrefix;
         if (_cursor.isNull(_cursorIndexOfAssetPrefix)) {
           _tmpAssetPrefix = null;

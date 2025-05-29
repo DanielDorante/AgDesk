@@ -114,17 +114,14 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
     @WorkerThread
     suspend fun updateTaskNetwork(taskNetworkModel: List<TaskNetworkModel>) {
         for (networkTask in taskNetworkModel) {
-            if (networkTask.syncId == null) continue
+            //if (networkTask.syncId == null) continue
 
-            val resolvedUid = networkTask.uid?.toString() //Set Uid to that in the response(Used in the SyncToServer())
-                ?: taskDAO.getBySyncId(networkTask.syncId)?.uid //Set Uid based on the SyncId(Used in the SyncFromServer())
-                ?: UUID.randomUUID().toString()//New Item coming from network, generate new Uid(Used in SyncFromServer())
 
 
             //set the networkTask uid so it can be mapped to an entity object
             //if uid resolution isn't done it will create new local task where a preexisting
             //task could have the same sync Id.
-            networkTask.uid = resolvedUid
+
             val task = networkTask.toEntity()
 
 

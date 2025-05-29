@@ -4,7 +4,7 @@
             "outputFile": "com.example.agdesk.app-mergeDebugResources-76:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "/home/computer/.gradle/caches/8.11.1/transforms/536ac03cc90afbe35d877a95cf91eee4/transformed/material-1.12.0/res/values-small-v4/values-small-v4.xml",
+                    "source": "C:\\Users\\xande\\.gradle\\caches\\8.11.1\\transforms\\40626bb619e2116ec8110e199689a543\\transformed\\material-1.12.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

@@ -124,11 +124,10 @@ class AssetRepository @Inject constructor(val assetDAO: AssetDAO) {
     @WorkerThread
     suspend fun updateAssetNetwork(assetNetworkModel: List<AssetNetworkModel>) {
         for (networkAsset in assetNetworkModel) {
-            if (networkAsset.syncId == null) continue // can't process without sync ID
+            //if (networkAsset.syncId == null) continue // can't process without sync ID
 
-            val resolvedUid = networkAsset.uid?.toString()
-                ?: assetDAO.getBySyncId(networkAsset.syncId)?.uid
-                ?: UUID.randomUUID().toString()
+            val resolvedUid = networkAsset.uid
+
 
 
             val asset = Asset(

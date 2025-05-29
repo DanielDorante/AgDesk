@@ -10,7 +10,7 @@ import java.util.UUID
 @Serializable
 data class AssetNetworkModel(
 
-    @field:TypeConverters(DatabaseConverter::class) var uid: String?, //unique ID for local storage
+    @field:TypeConverters(DatabaseConverter::class) var uid: String, //unique ID for local storage
     @ColumnInfo(name = "asset_Prefix") val assetPrefix: String?, //differentiates between vehicles/equipment LV,HV,SE,LE
     @ColumnInfo(name = "asset_Name") val name: String?,
     @ColumnInfo(name = "manufacture") val manufac: String?,

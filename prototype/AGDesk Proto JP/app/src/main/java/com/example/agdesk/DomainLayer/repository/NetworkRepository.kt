@@ -2,6 +2,7 @@ package com.example.agdesk.DomainLayer.repository
 
 
 
+import android.util.Log
 import com.example.agdesk.DataLayer.DAOs.DbSyncDAO
 import com.example.agdesk.DataLayer.entities.sync.DbSync
 import com.example.agdesk.models.networkModels.*
@@ -22,12 +23,14 @@ class NetworkRepository @Inject constructor(private val assetRepository: AssetRe
 
 
         try {
-            val response: SyncResponse = httpClient.post("https://run.mocky.io/v3/ebb5653a-17d0-413b-900e-5170aac21f7c") {
+            val response: SyncResponse = httpClient.post("http://10.0.2.2:8000/api/sync/") {
                 contentType(ContentType.Application.Json)
                 setBody(dbSyncDAO.getLastSyncInfo())
             }.body()
 
             // Save to local Room DB through your repositories
+            Log.d("SyncDebug", "Received ${response.assets.size} assets from server")
+            Log.d("SyncDebug", "Received ${response.tasks.size} assets from server")
             assetRepository.updateAssetNetwork(response.assets)
             taskRepository.updateTaskNetwork(response.tasks)
             dbSyncDAO.insertSyncInfo(DbSync(1, System.currentTimeMillis()))
@@ -53,12 +56,14 @@ class NetworkRepository @Inject constructor(private val assetRepository: AssetRe
 
         val syncWrite = SyncWrite(assets, tasks)
         try {
-            val response: SyncWrite = httpClient.post("https://run.mocky.io/v3/72280e67-2d66-489f-8ffa-9fa6b21856a6") {
+            val response: SyncWrite = httpClient.post("http://10.0.2.2:8000/api/update-master/") {
                 contentType(ContentType.Application.Json)
                 setBody(syncWrite)
             }.body()
 
             // Save to local Room DB through your repositories
+            Log.d("SyncDebug", "Received ${response.assets.size} assets from server")
+            Log.d("SyncDebug", "Received ${response.tasks.size} assets from server")
             assetRepository.updateAssetNetwork(response.assets)
             taskRepository.updateTaskNetwork(response.tasks)
 
