@@ -68,8 +68,10 @@ class NetworkRepository @Inject constructor(private val assetRepository: AssetRe
             // Save to local Room DB through your repositories
             Log.d("SyncDebug", "Received ${response.assets.size} assets from server")
             Log.d("SyncDebug", "Received ${response.tasks.size} assets from server")
-            assetRepository.updateAssetNetwork(response.assets)
-            taskRepository.updateTaskNetwork(response.tasks)
+
+            assetRepository.delAssetNetwork(response.assets)
+            taskRepository.delTaskNetwork(response.tasks)
+
 
         } catch (e: Exception) {
             e.printStackTrace()

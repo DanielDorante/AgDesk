@@ -161,6 +161,37 @@ class AssetRepository @Inject constructor(val assetDAO: AssetDAO) {
     }
 
 
+    @WorkerThread
+    suspend fun delAssetNetwork(assetNetworkModel: List<AssetNetworkModel>) {
+        for (networkAsset in assetNetworkModel) {
+            //if (networkAsset.syncId == null) continue // can't process without sync ID
+
+            val resolvedUid = networkAsset.uid
+
+
+
+            val asset = Asset(
+                uid = resolvedUid,
+                assetPrefix = networkAsset.assetPrefix,
+                name = networkAsset.name,
+                manufac = networkAsset.manufac,
+                parts = networkAsset.parts,
+                location = networkAsset.location,
+                dateMade = networkAsset.dateMade,
+                dateBuy = networkAsset.dateBuy,
+                isDel = false,
+                image = networkAsset.image,
+                farmId = networkAsset.farmId,
+                syncId = networkAsset.syncId
+            )
+
+            assetDAO.deleteAsset(asset) // REPLACE ensures update/insert both work
+            assetDAO.deleteSync(asset.uid)
+
+        }
+    }
+
+
     suspend fun getOfflineAssets(): List<AssetNetworkModel> {
         return  assetDAO.getOfflineAssets()
     }

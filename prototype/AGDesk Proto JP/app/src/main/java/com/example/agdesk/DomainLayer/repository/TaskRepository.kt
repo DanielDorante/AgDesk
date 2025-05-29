@@ -131,6 +131,26 @@ class TaskRepository @Inject constructor(private val taskDAO: TaskDAO, private v
         }
     }
 
+    @WorkerThread
+    suspend fun delTaskNetwork(taskNetworkModel: List<TaskNetworkModel>) {
+        for (networkTask in taskNetworkModel) {
+            //if (networkTask.syncId == null) continue
+
+
+
+            //set the networkTask uid so it can be mapped to an entity object
+            //if uid resolution isn't done it will create new local task where a preexisting
+            //task could have the same sync Id.
+
+            val task = networkTask.toEntity()
+
+
+            taskDAO.deleteTask(task)
+            taskDAO.deleteSync(task.uid)
+
+        }
+    }
+
     suspend fun getOfflineTasks(): List<TaskNetworkModel> {
         return  taskDAO.getOfflineTasks()
     }
