@@ -106,7 +106,7 @@ def update_master(request):
             serializer = TaskSerializer(data=task)
             if serializer.is_valid():
                 saved = serializer.save()
-                task['syncid'] = saved.id
+                task['syncid'] = str(saved.uid)
                 updated_tasks.append(task)
         else:
             try:
