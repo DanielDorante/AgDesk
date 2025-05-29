@@ -24,7 +24,7 @@ class Task(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
     desc = models.TextField(null=True, blank=True)
     timestamp = models.BigIntegerField(null=True, blank=True)
-    del_field = models.BooleanField(default=False, null=True, blank=True)
+    isDel = models.BooleanField(default=False, null=True, blank=True)
     due = models.BigIntegerField(null=True, blank=True)
     exp = models.BigIntegerField(null=True, blank=True)
     status = models.IntegerField(null=True, blank=True)

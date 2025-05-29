@@ -474,7 +474,7 @@ public final class TaskDAO_Impl implements TaskDAO {
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "taskName");
           final int _cursorIndexOfDesc = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "time_stamp");
-          final int _cursorIndexOfDel = CursorUtil.getColumnIndexOrThrow(_cursor, "is_Delete");
+          final int _cursorIndexOfIsDel = CursorUtil.getColumnIndexOrThrow(_cursor, "is_Delete");
           final int _cursorIndexOfDue = CursorUtil.getColumnIndexOrThrow(_cursor, "due_Date");
           final int _cursorIndexOfExp = CursorUtil.getColumnIndexOrThrow(_cursor, "expire_Date");
           final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
@@ -511,14 +511,14 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
             }
-            final Boolean _tmpDel;
+            final Boolean _tmpIsDel;
             final Integer _tmp;
-            if (_cursor.isNull(_cursorIndexOfDel)) {
+            if (_cursor.isNull(_cursorIndexOfIsDel)) {
               _tmp = null;
             } else {
-              _tmp = _cursor.getInt(_cursorIndexOfDel);
+              _tmp = _cursor.getInt(_cursorIndexOfIsDel);
             }
-            _tmpDel = _tmp == null ? null : _tmp != 0;
+            _tmpIsDel = _tmp == null ? null : _tmp != 0;
             final Long _tmpDue;
             if (_cursor.isNull(_cursorIndexOfDue)) {
               _tmpDue = null;
@@ -561,7 +561,7 @@ public final class TaskDAO_Impl implements TaskDAO {
             } else {
               _tmpSyncId = _cursor.getLong(_cursorIndexOfSyncId);
             }
-            _item = new TaskNetworkModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncId,_tmpSynctime);
+            _item = new TaskNetworkModel(_tmpUid,_tmpName,_tmpDesc,_tmpTimestamp,_tmpIsDel,_tmpDue,_tmpExp,_tmpStatus,_tmpPriority,_tmpAssignedId,null,_tmpFarm,_tmpSyncId,_tmpSynctime);
             _result.add(_item);
           }
           return _result;

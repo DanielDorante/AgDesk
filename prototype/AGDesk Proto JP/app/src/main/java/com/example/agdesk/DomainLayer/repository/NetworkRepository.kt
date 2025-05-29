@@ -20,12 +20,15 @@ class NetworkRepository @Inject constructor(private val assetRepository: AssetRe
 
     suspend fun syncFromServer() {
 
-
+        var lastSync = dbSyncDAO.getLastSyncInfo()
+        if (lastSync == null) {
+            lastSync = SyncRequest(0)
+        }
 
         try {
             val response: SyncResponse = httpClient.post("http://10.0.2.2:8000/api/sync/") {
                 contentType(ContentType.Application.Json)
-                setBody(dbSyncDAO.getLastSyncInfo())
+                setBody(lastSync)
             }.body()
 
             // Save to local Room DB through your repositories
@@ -33,6 +36,7 @@ class NetworkRepository @Inject constructor(private val assetRepository: AssetRe
             Log.d("SyncDebug", "Received ${response.tasks.size} assets from server")
             assetRepository.updateAssetNetwork(response.assets)
             taskRepository.updateTaskNetwork(response.tasks)
+
             dbSyncDAO.insertSyncInfo(DbSync(1, System.currentTimeMillis()))
 
         } catch (e: Exception) {

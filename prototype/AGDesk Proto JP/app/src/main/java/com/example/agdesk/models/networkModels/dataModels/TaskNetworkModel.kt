@@ -12,7 +12,7 @@ data class TaskNetworkModel(
     @ColumnInfo(name = "taskName") val name: String?,
     @ColumnInfo(name = "description") val desc: String?,
     @ColumnInfo(name = "time_stamp") val timestamp: Long?, //time stamp of task creation
-    @ColumnInfo(name = "is_Delete") val del: Boolean?,
+    @ColumnInfo(name = "is_Delete") val isDel: Boolean?,
     @ColumnInfo(name = "due_Date") val due: Long?,
     @ColumnInfo(name = "expire_Date") val exp: Long?,
     @ColumnInfo(name = "status") val status: Int?, //completion status, 0-5 see below

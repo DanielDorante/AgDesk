@@ -33,7 +33,7 @@ fun TaskNetworkModel.toEntity(): Task {
         name = this.name,  // Direct mapping
         desc = this.desc,  // Direct mapping
         timestamp = this.timestamp,  // Direct mapping for timestamp (already in Long)
-        del = this.del ?: false,  // If null, default to false
+        del = this.isDel ?: false,  // If null, default to false
         due = this.due,  // Direct mapping for due date (already in Long)
         exp = this.exp,  // Direct mapping for expiration date (already in Long)
         status = this.status,  // Direct mapping for status

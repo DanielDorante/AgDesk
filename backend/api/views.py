@@ -5,35 +5,30 @@ from .serializers import EquipmentSerializer, TaskSerializer
 import requests
 from datetime import datetime
 
+import uuid
+
+
 CLOUD_SYNC_URL = "https://cloud.example.com/api/sync"  # Replace with URL
+
 
 
 @api_view(['POST'])
 def sync_assets_and_tasks(request):
-    assets = request.data.get('assets', [])
-    tasks = request.data.get('tasks', [])
+    try:
+        last_sync_time = int(request.data.get('lastSyncTimeStamp', 0))
+    except (TypeError, ValueError):
+        return Response({"error": "Invalid or missing lastSyncTimeStamp"}, status=400)
 
-    print(" Incoming Assets:", assets)
-    print(" Incoming Tasks:", tasks)
+    updated_assets = Equipment.objects.filter(synctime__gt=last_sync_time)
+    updated_tasks = Task.objects.filter(synctime__gt=last_sync_time)
 
-    asset_serializer = EquipmentSerializer(data=assets, many=True)
-    task_serializer = TaskSerializer(data=tasks, many=True)
-
-    print("✅ Asset Valid?", asset_serializer.is_valid())
-    print("✅ Task Valid?", task_serializer.is_valid())
-    print("❌ Asset Errors:", asset_serializer.errors)
-    print("❌ Task Errors:", task_serializer.errors)
-
-    if asset_serializer.is_valid() and task_serializer.is_valid():
-        asset_serializer.save()
-        task_serializer.save()
-        return Response({"message": "Assets and Tasks synced successfully."}, status=201)
+    asset_serializer = EquipmentSerializer(updated_assets, many=True)
+    task_serializer = TaskSerializer(updated_tasks, many=True)
 
     return Response({
-        "asset_errors": asset_serializer.errors,
-        "task_errors": task_serializer.errors
-    }, status=400)
-
+        "assets": asset_serializer.data,
+        "tasks": task_serializer.data
+    }, status=200)
 
 @api_view(['GET'])
 def fetch_assets_and_tasks(request):
@@ -70,7 +65,6 @@ def push_to_cloud_view(request):
     except requests.RequestException as e:
         return Response({"error": str(e)}, status=500)
 
-
 @api_view(['POST'])
 def update_master(request):
     updated_assets = []
@@ -82,8 +76,20 @@ def update_master(request):
         uid = asset.get('uid')
         incoming_time = asset.get('synctime')
 
+        # Ensure UID is string and parseable UUID or generate if missing
+        if not uid:
+            uid = str(uuid.uuid4())
+            asset['uid'] = uid
+
+        try:
+            uid_obj = uuid.UUID(uid)
+        except ValueError:
+            # Invalid UID format, generate new UID and save that
+            uid = str(uuid.uuid4())
+            uid_obj = uuid.UUID(uid)
+            asset['uid'] = uid
+
         if not sync_id:
-            print("case1 asset")
             # CASE 1: New record
             serializer = EquipmentSerializer(data=asset)
             if serializer.is_valid():
@@ -94,18 +100,25 @@ def update_master(request):
             else:
                 print("❌ Asset create error:", serializer.errors)
         else:
-            # CASE 2: Update if newer
+            # CASE 2: Update if newer, else create if not found
             try:
-                db_asset = Equipment.objects.get(uid=uid)
+                db_asset = Equipment.objects.get(uid=uid_obj)
                 if incoming_time and db_asset.synctime and int(incoming_time) > int(db_asset.synctime):
                     serializer = EquipmentSerializer(db_asset, data=asset)
                     if serializer.is_valid():
                         serializer.save()
-                # Always return with synctime = null
                 asset['synctime'] = None
                 updated_assets.append(asset)
             except Equipment.DoesNotExist:
-                print(f"⚠️ Asset with uid {uid} not found.")
+                # Create new asset with this UID
+                serializer = EquipmentSerializer(data=asset)
+                if serializer.is_valid():
+                    serializer.save()
+                    asset['syncId'] = 1
+                    asset['synctime'] = None
+                    updated_assets.append(asset)
+                else:
+                    print("❌ Asset create error on missing UID:", serializer.errors)
 
     # --- TASKS ---
     for task in request.data.get('tasks', []):
@@ -113,8 +126,18 @@ def update_master(request):
         uid = task.get('uid')
         incoming_time = task.get('synctime')
 
+        if not uid:
+            uid = str(uuid.uuid4())
+            task['uid'] = uid
+
+        try:
+            uid_obj = uuid.UUID(uid)
+        except ValueError:
+            uid = str(uuid.uuid4())
+            uid_obj = uuid.UUID(uid)
+            task['uid'] = uid
+
         if not sync_id:
-            print("case1 task")
             # CASE 1: New record
             serializer = TaskSerializer(data=task)
             if serializer.is_valid():
@@ -125,9 +148,9 @@ def update_master(request):
             else:
                 print("❌ Task create error:", serializer.errors)
         else:
-            # CASE 2: Update if newer
+            # CASE 2: Update if newer, else create if not found
             try:
-                db_task = Task.objects.get(uid=uid)
+                db_task = Task.objects.get(uid=uid_obj)
                 if incoming_time and db_task.synctime and int(incoming_time) > int(db_task.synctime):
                     serializer = TaskSerializer(db_task, data=task)
                     if serializer.is_valid():
@@ -135,8 +158,15 @@ def update_master(request):
                 task['synctime'] = None
                 updated_tasks.append(task)
             except Task.DoesNotExist:
-                print(f"⚠️ Task with uid {uid} not found.")
-    print("✅ Sending response")
+                serializer = TaskSerializer(data=task)
+                if serializer.is_valid():
+                    serializer.save()
+                    task['syncId'] = 1
+                    task['synctime'] = None
+                    updated_tasks.append(task)
+                else:
+                    print("❌ Task create error on missing UID:", serializer.errors)
+
     return Response({
         "assets": updated_assets,
         "tasks": updated_tasks
