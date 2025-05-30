@@ -41,6 +41,55 @@ AgDesk/
 
 
 ## Setup Instructions
+##  Python & Pip Setup
+
+Before running the backend, make sure you have **Python 3.10+** and **pip** installed.
+
+### Check if Python & pip are installed
+
+```bash
+python --version
+pip --version
+```
+
+You should see something like:
+```
+Python 3.10.x
+pip 21.x.x
+```
+
+> On some systems (especially macOS or Linux), use `python3` and `pip3` instead:
+```bash
+python3 --version
+pip3 --version
+```
+
+---
+
+### If Python is not installed:
+
+Download the latest version of Python from the official website:
+
+🔗 https://www.python.org/downloads/
+
+During installation on Windows:
+- Check the box that says **“Add Python to PATH”**
+- Then click **“Install Now”**
+
+---
+
+### Optional: Upgrade pip to the latest version
+
+```bash
+python -m pip install --upgrade pip
+```
+
+or
+
+```bash
+python3 -m pip install --upgrade pip
+```
+
 ### Backend (Django)
 
 ```bash
