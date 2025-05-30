@@ -114,3 +114,16 @@ http://127.0.0.1:8000/
 | GET    | `fetch`                | `/api/fetch/`                           | Returns **all** local assets and tasks.              |
 | POST   | `push`                 | `/api/push/`                            | Pushes local DB (assets/tasks) to cloud server.      |
 | POST   | `update-sync`          | `/api/update-sync/`                     | Returns **only new or updated** records since a given timestamp. |
+
+## 📚 Useful Resources
+-  [Python Official Documentation](https://docs.python.org/3/)
+-  [Django Documentation (REST Framework)](https://www.django-rest-framework.org/)
+-  [Django Official Docs](https://docs.djangoproject.com/en/stable/)
+-  [Kotlin Language Reference](https://kotlinlang.org/docs/home.html)
+-  [Postman – API Testing Tool](https://www.postman.com/)
+- 🧪 [UUID Info (Universally Unique Identifiers)](https://www.uuidgenerator.net/dev-corner/python)
+-  [Epoch & Unix Timestamp Converter](https://www.epochconverter.com/)
+-  [SQLite Docs (for local DB)](https://sqlite.org/docs.html)
+```
+
+---
