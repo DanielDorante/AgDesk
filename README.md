@@ -92,14 +92,43 @@ python3 -m pip install --upgrade pip
 
 ### Backend (Django)
 
+Follow these steps to set up and run the backend locally:
+
 ```bash
 cd backend
+```
+🔹 Navigate into the `backend` directory where the Django project lives.
+
+```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+🔹 Create a **virtual environment** named `venv` to isolate your Python dependencies.
+
+```bash
+source venv/bin/activate
+# On Windows: venv\Scripts\activate
+```
+🔹 Activate the virtual environment so your terminal uses the local Python interpreter and packages.
+
+```bash
 pip install -r requirements.txt
+```
+🔹 Install all required Python packages listed in the `requirements.txt` file — this sets up Django, DRF, requests, etc.
+
+```bash
 python manage.py migrate
+```
+🔹 Apply any database migrations — this creates your tables (e.g. for Equipment and Task models) in `db.sqlite3`.
+
+```bash
 python manage.py runserver
 ```
+🔹 Start the Django development server. By default, it runs at:
+```
+http://127.0.0.1:8000/
+```
+Use this address to make API requests locally or connect from your frontend app.
+
 ## API Endpoints
 
 All API requests are made to your local backend running at:
