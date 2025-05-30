@@ -24,9 +24,6 @@ The system includes:
 ```
 AgDesk/
 ├── AgDesk/
-│   ├── artefact/
-│   │   └── OfflineFirstArtefact/
-│   │       └── Artefact.md
 │   ├── backend/
 │   │   ├── api/
 │   │   ├── backend/
@@ -154,3 +151,25 @@ http://127.0.0.1:8000/
 -  [Epoch & Unix Timestamp Converter](https://www.epochconverter.com/)
 -  [SQLite Docs (for local DB)](https://sqlite.org/docs.html)
 
+##  Android Studio Agdesk app Setup
+
+Download and install android studio using the default settings
+
+https://developer.android.com/studio
+
+
+Open Android studio
+
+Navigate to File->Open and click on it
+
+From the root directory of the repoistory navigate into /prototype/
+
+Then select AGDesk Proto JP and click ok
+
+Sync project files with gradel by pressing "Ctrl+Shift+O"
+
+Ensure there is a virtual device by clicking on Device Manager on the right hand side of the screen
+
+Then click the + symbol and "Add virtual device" then select the Pixel8a -> Next -> Finish
+
+Then Press "Shift+F10" to launch build and launch the Emulator
