@@ -177,3 +177,26 @@ Then Press "Shift+F10" to launch build and launch the Emulator
 ## API LINK
 
 If both of these are running on the same device the android emulator will be able to find the endpoint. Otherwith see NetworkRepository.kt to change the Url if hosting the endpoint elsewhere
+
+## Resources
+# Offline first
+
+https://developer.android.com/topic/architecture/data-layer/offline-first
+# Mvvm
+
+https://www.geeksforgeeks.org/mvvm-model-view-viewmodel-architecture-pattern-in-android/
+# Hilt
+
+https://developer.android.com/training/dependency-injection/hilt-android
+# Room
+
+https://developer.android.com/training/data-storage/room/
+# Ksp & Kapt
+
+https://developer.android.com/build/migrate-to-ksp
+# ViewModels
+
+https://developer.android.com/topic/libraries/architecture/viewmodel
+# Work Manager
+
+https://developer.android.com/topic/libraries/architecture/workmanager/
