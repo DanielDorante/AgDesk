@@ -173,3 +173,7 @@ Ensure there is a virtual device by clicking on Device Manager on the right hand
 Then click the + symbol and "Add virtual device" then select the Pixel8a -> Next -> Finish
 
 Then Press "Shift+F10" to launch build and launch the Emulator
+
+## API LINK
+
+If both of these are running on the same device the android emulator will be able to find the endpoint. Otherwith see NetworkRepository.kt to change the Url if hosting the endpoint elsewhere
