@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             withContext(Dispatchers.Default) {
-                taskViewModel.loadUserTasks()
+                taskViewModel.loadTasks()
 
                 taskViewModel.tasks.collect {savedTasks ->
                     listOfTasks.clear()
