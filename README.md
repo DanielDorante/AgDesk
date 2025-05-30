@@ -121,7 +121,7 @@ http://127.0.0.1:8000/
 -  [Django Official Docs](https://docs.djangoproject.com/en/stable/)
 -  [Kotlin Language Reference](https://kotlinlang.org/docs/home.html)
 -  [Postman – API Testing Tool](https://www.postman.com/)
-- 🧪 [UUID Info (Universally Unique Identifiers)](https://www.uuidgenerator.net/dev-corner/python)
+-  [UUID Info (Universally Unique Identifiers)](https://www.uuidgenerator.net/dev-corner/python)
 -  [Epoch & Unix Timestamp Converter](https://www.epochconverter.com/)
 -  [SQLite Docs (for local DB)](https://sqlite.org/docs.html)
 ```
