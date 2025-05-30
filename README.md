@@ -1,4 +1,4 @@
-# AgDesk Sync System
+# AgDesk Offline First Andriod Application
 
 A full-stack sync system for managing agricultural assets and tasks across local Android devices and a Django REST backend. 
 Built as part of a capstone project for QUT.
