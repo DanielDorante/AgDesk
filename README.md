@@ -225,25 +225,26 @@ Then Press "Shift+F10" to launch build and launch the Emulator
 
 If both of these are running on the same device the android emulator will be able to find the endpoint. Otherwith see NetworkRepository.kt to change the Url if hosting the endpoint elsewhere
 
-## Resources
-# Offline first
+##  Resources
 
-https://developer.android.com/topic/architecture/data-layer/offline-first
-# Mvvm
+### Offline-First Architecture
+- [Offline-First Guide – Android Developers](https://developer.android.com/topic/architecture/data-layer/offline-first)
 
-https://www.geeksforgeeks.org/mvvm-model-view-viewmodel-architecture-pattern-in-android/
-# Hilt
+### MVVM Architecture
+- [MVVM (Model-View-ViewModel) Pattern – GeeksforGeeks](https://www.geeksforgeeks.org/mvvm-model-view-viewmodel-architecture-pattern-in-android/)
 
-https://developer.android.com/training/dependency-injection/hilt-android
-# Room
+### Dependency Injection with Hilt
+- [Hilt for Android – Android Developers](https://developer.android.com/training/dependency-injection/hilt-android)
 
-https://developer.android.com/training/data-storage/room/
-# Ksp & Kapt
+### Room Persistence Library
+- [Room Overview – Android Developers](https://developer.android.com/training/data-storage/room/)
 
-https://developer.android.com/build/migrate-to-ksp
-# ViewModels
+### KSP & KAPT (Annotation Processing)
+- [Migrate to KSP – Android Developers](https://developer.android.com/build/migrate-to-ksp)
 
-https://developer.android.com/topic/libraries/architecture/viewmodel
-# Work Manager
+### ViewModels
+- [ViewModel Guide – Android Developers](https://developer.android.com/topic/libraries/architecture/viewmodel)
 
-https://developer.android.com/topic/libraries/architecture/workmanager/
+### WorkManager
+- [WorkManager Documentation – Android Developers](https://developer.android.com/topic/libraries/architecture/workmanager/)
+
