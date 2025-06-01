@@ -227,24 +227,11 @@ If both of these are running on the same device the android emulator will be abl
 
 ##  Resources
 
-### Offline-First Architecture
+## Android Development Resources
 - [Offline-First Guide – Android Developers](https://developer.android.com/topic/architecture/data-layer/offline-first)
-
-### MVVM Architecture
-- [MVVM (Model-View-ViewModel) Pattern – GeeksforGeeks](https://www.geeksforgeeks.org/mvvm-model-view-viewmodel-architecture-pattern-in-android/)
-
-### Dependency Injection with Hilt
-- [Hilt for Android – Android Developers](https://developer.android.com/training/dependency-injection/hilt-android)
-
-### Room Persistence Library
-- [Room Overview – Android Developers](https://developer.android.com/training/data-storage/room/)
-
-### KSP & KAPT (Annotation Processing)
-- [Migrate to KSP – Android Developers](https://developer.android.com/build/migrate-to-ksp)
-
-### ViewModels
-- [ViewModel Guide – Android Developers](https://developer.android.com/topic/libraries/architecture/viewmodel)
-
-### WorkManager
-- [WorkManager Documentation – Android Developers](https://developer.android.com/topic/libraries/architecture/workmanager/)
-
+- [MVVM Pattern – GeeksforGeeks](https://www.geeksforgeeks.org/mvvm-model-view-viewmodel-architecture-pattern-in-android/)
+- [Hilt Dependency Injection – Android Developers](https://developer.android.com/training/dependency-injection/hilt-android)
+- [Room Persistence Library – Android Developers](https://developer.android.com/training/data-storage/room/)
+- [KSP & KAPT Overview – Android Developers](https://developer.android.com/build/migrate-to-ksp)
+- [ViewModel Architecture – Android Developers](https://developer.android.com/topic/libraries/architecture/viewmodel)
+- [WorkManager Overview – Android Developers](https://developer.android.com/topic/libraries/architecture/workmanager/)
