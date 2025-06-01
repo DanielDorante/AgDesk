@@ -141,7 +141,54 @@ http://127.0.0.1:8000/
 | POST   | `push`                 | `/api/push/`                            | Pushes local DB (assets/tasks) to cloud server.      |
 | POST   | `update-sync`          | `/api/update-sync/`                     | Returns **only new or updated** records since a given timestamp. |
 
-## 📚 Useful Resources
+##  Expected Payload Format
+
+The API expects incoming data in JSON format containing two main keys: `assets` and `tasks`. Each key maps to a list of objects representing records for the `Equipment` and `Task` models.
+
+###  Example Payload
+
+```json
+{
+  "assets": [
+    {
+      "assetPrefix": "TRACT",
+      "name": "Field Tractor",
+      "manufac": "Yanmar",
+      "parts": "Engine, Tires, Seat",
+      "location": "North Farm",
+      "dateMade": 1673761800000,
+      "dateBuy": 1679826000000,
+      "image": "tractor.jpg",
+      "farmId": 1,
+      "largeEquipmentVin": "YNM1234",
+      "vehicleVin": null,
+      "serialNo": "SN54321",
+      "reg": "REG4567",
+      "syncId": null,
+      "synctime": 1716768900000
+    }
+  ],
+  "tasks": [
+    {
+      "name": "Replace Air Filter",
+      "desc": "Swap out the air filter on the Yanmar tractor.",
+      "timestamp": 1716768900000,
+      "isDel": false,
+      "due": 1717353600000,
+      "exp": 1717526400000,
+      "status": 0,
+      "priority": 1,
+      "assignedId": "worker_007",
+      "assigned": "Alice",
+      "farm": 1,
+      "syncId": null,
+      "synctime": 1716768900000
+    }
+  ]
+}
+
+
+##  Useful Resources
 -  [Python Official Documentation](https://docs.python.org/3/)
 -  [Django Documentation (REST Framework)](https://www.django-rest-framework.org/)
 -  [Django Official Docs](https://docs.djangoproject.com/en/stable/)
