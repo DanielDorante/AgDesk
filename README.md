@@ -186,7 +186,7 @@ The API expects incoming data in JSON format containing two main keys: `assets` 
     }
   ]
 }
-
+```
 
 ##  Useful Resources
 -  [Python Official Documentation](https://docs.python.org/3/)
